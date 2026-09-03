@@ -1,0 +1,232 @@
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   GLOBAL FOOTER
+   ========================================================= */
+
+.site-footer {
+    background: #171717;
+    color: #ffffff;
+    padding-top: 70px;
+}
+
+/* =========================================================
+   FOOTER BRAND
+   ========================================================= */
+
+.site-footer-brand {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 18px;
+}
+
+.site-footer-brand span {
+    color: #c89b3c;
+}
+
+.site-footer-description {
+    max-width: 390px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.site-footer-location {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.6;
+}
+
+.site-footer-location i {
+    color: #c89b3c;
+    margin-top: 4px;
+}
+
+/* =========================================================
+   FOOTER HEADINGS
+   ========================================================= */
+
+.site-footer-heading {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
+
+.site-footer-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-footer-links li {
+    margin-bottom: 11px;
+}
+
+.site-footer-links a {
+    color: rgba(255, 255, 255, 0.62);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.site-footer-links a:hover {
+    color: #c89b3c;
+    padding-left: 4px;
+}
+
+/* =========================================================
+   FOOTER CONTACT
+   ========================================================= */
+
+.site-footer-contact-text {
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.site-footer-quote {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 7px;
+    background: #c89b3c;
+    color: #171717;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.site-footer-quote:hover {
+    background: #ffffff;
+    color: #171717;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER ICON LINKS
+   ========================================================= */
+
+.site-footer-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.site-footer-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.site-footer-icon:hover {
+    background: #c89b3c;
+    border-color: #c89b3c;
+    color: #171717;
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   FOOTER DIVIDER
+   ========================================================= */
+
+.site-footer-divider {
+    margin: 45px 0 25px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
+.site-footer-bottom {
+    padding-bottom: 28px;
+}
+
+.site-footer-copyright {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.site-footer-legal {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.site-footer-legal a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.25s ease;
+}
+
+.site-footer-legal a:hover {
+    color: #c89b3c;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .site-footer {
+        padding-top: 50px;
+    }
+
+    .site-footer-brand {
+        font-size: 1.15rem;
+    }
+
+    .site-footer-description {
+        max-width: 100%;
+    }
+
+    .site-footer-heading {
+        margin-top: 10px;
+    }
+
+    .site-footer-divider {
+        margin: 30px 0 20px;
+    }
+
+    .site-footer-legal {
+        justify-content: flex-start;
+        margin-top: 15px;
+        gap: 12px 18px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.site-footer a:focus-visible {
+    outline: 3px solid rgba(200, 155, 60, 0.55);
+    outline-offset: 3px;
+}

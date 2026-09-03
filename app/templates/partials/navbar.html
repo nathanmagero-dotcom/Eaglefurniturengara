@@ -1,0 +1,388 @@
+<nav class="navbar navbar-expand-lg eagle-navbar sticky-top">
+
+<div class="container">
+
+    <!-- BRAND -->
+    <a
+        class="navbar-brand eagle-brand"
+        href="{{ url_for('main.home') }}"
+        aria-label="Eagle Furniture Ngara Home"
+    >
+        <span>EAGLE</span> FURNITURE
+    </a>
+
+
+    <!-- MOBILE MENU BUTTON -->
+    <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        aria-expanded="false"
+        aria-label="Open navigation menu"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <!-- MAIN NAVIGATION -->
+    <div
+        class="collapse navbar-collapse"
+        id="mainNavbar"
+    >
+
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+            <!-- HOME -->
+            <li class="nav-item">
+                <a
+                    class="nav-link eagle-nav-link"
+                    href="{{ url_for('main.home') }}"
+                >
+                    Home
+                </a>
+            </li>
+
+
+            <!-- SHOP -->
+            <li class="nav-item">
+                <a
+                    class="nav-link eagle-nav-link"
+                    href="{{ url_for('main.shop') }}"
+                >
+                    Shop
+                </a>
+            </li>
+
+
+            <!-- CATEGORIES -->
+            <li class="nav-item dropdown">
+
+                <a
+                    class="nav-link dropdown-toggle eagle-nav-link"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Categories
+                </a>
+
+                <ul class="dropdown-menu eagle-dropdown">
+
+                    <!-- MAIN FURNITURE -->
+
+                    <li>
+                        <h6 class="dropdown-header">
+                            Furniture
+                        </h6>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='sofas') }}"
+                        >
+                            Sofas
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='beds') }}"
+                        >
+                            Beds
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='wardrobes') }}"
+                        >
+                            Wardrobes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='coffee-tables') }}"
+                        >
+                            Coffee Tables
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='dining-sets') }}"
+                        >
+                            Dining Sets
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='tv-units') }}"
+                        >
+                            TV Units
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='mattresses') }}"
+                        >
+                            Mattresses
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+
+                    <!-- SPECIALIZED -->
+
+                    <li>
+                        <h6 class="dropdown-header">
+                            Specialized Furniture
+                        </h6>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='restaurant-furniture') }}"
+                        >
+                            Restaurant Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='school-furniture') }}"
+                        >
+                            School Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='office-furniture') }}"
+                        >
+                            Office Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='home-furniture') }}"
+                        >
+                            Home Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='full-package-furniture') }}"
+                        >
+                            Full Package Furniture
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+
+                    <!-- OUTDOOR & ACCESSORIES -->
+
+                    <li>
+                        <h6 class="dropdown-header">
+                            Outdoor & Accessories
+                        </h6>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='outdoor-furniture') }}"
+                        >
+                            Outdoor Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.category', slug='home-accessories') }}"
+                        >
+                            Home Accessories
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- OFFERS -->
+            <li class="nav-item">
+
+                <a
+                    class="nav-link eagle-offers-link"
+                    href="{{ url_for('main.offers') }}"
+                >
+                    <i class="bi bi-tag-fill me-1"></i>
+                    Offers
+                </a>
+
+            </li>
+
+
+            <!-- SERVICES -->
+            <li class="nav-item dropdown">
+
+                <a
+                    class="nav-link dropdown-toggle eagle-nav-link"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Services
+                </a>
+
+                <ul class="dropdown-menu eagle-dropdown">
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.custom_furniture') }}"
+                        >
+                            Custom Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.interior_design') }}"
+                        >
+                            Interior Design
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.office_furniture') }}"
+                        >
+                            Office Furniture
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            class="dropdown-item"
+                            href="{{ url_for('main.airbnb_packages') }}"
+                        >
+                            Airbnb Packages
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- ABOUT -->
+            <li class="nav-item">
+
+                <a
+                    class="nav-link eagle-nav-link"
+                    href="{{ url_for('main.about') }}"
+                >
+                    About
+                </a>
+
+            </li>
+
+
+            <!-- CONTACT -->
+            <li class="nav-item">
+
+                <a
+                    class="nav-link eagle-nav-link"
+                    href="{{ url_for('main.contact') }}"
+                >
+                    Contact
+                </a>
+
+            </li>
+
+        </ul>
+
+
+        <!-- RIGHT ACTIONS -->
+        <div class="d-flex align-items-center gap-2">
+
+            <!-- SEARCH -->
+            <a
+                href="{{ url_for('main.search_results') }}"
+                class="eagle-icon-btn"
+                title="Search products"
+                aria-label="Search products"
+            >
+                <i class="bi bi-search"></i>
+            </a>
+
+
+            <!-- WISHLIST -->
+            <a
+                href="{{ url_for('main.wishlist') }}"
+                class="eagle-icon-btn"
+                title="Wishlist"
+                aria-label="Wishlist"
+            >
+                <i class="bi bi-heart"></i>
+            </a>
+
+
+            <!-- CART -->
+            <a
+                href="{{ url_for('main.cart') }}"
+                class="eagle-cart-btn"
+                title="Shopping Cart"
+                aria-label="Shopping Cart"
+            >
+
+                <i class="bi bi-cart3"></i>
+
+                {% if cart_count > 0 %}
+                    <span class="eagle-cart-count">
+                        {{ cart_count }}
+                    </span>
+                {% endif %}
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</nav>

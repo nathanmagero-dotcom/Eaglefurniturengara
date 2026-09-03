@@ -1,0 +1,471 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search Furniture | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     SEARCH HERO
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-8">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    EAGLE FURNITURE NGARA
+                </span>
+
+                <h1 class="display-5 fw-bold mb-3">
+                    Search Our Furniture
+                </h1>
+
+                <p class="lead text-white-50 mb-4">
+                    Find sofas, beds, dining sets, wardrobes,
+                    TV units and more.
+                </p>
+
+                <!-- SEARCH FORM -->
+
+                <form method="GET"
+                      action="{{ url_for('main.search_results') }}">
+
+                    <div class="input-group input-group-lg shadow">
+
+                        <input
+                            type="search"
+                            name="q"
+                            class="form-control"
+                            placeholder="Search sofas, beds, dining tables..."
+                            value="{{ query }}"
+                            aria-label="Search furniture"
+                        >
+
+                        <button
+                            type="submit"
+                            class="btn btn-warning px-4 fw-bold">
+
+                            <i class="bi bi-search me-1"></i>
+                            Search
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     SEARCH RESULTS
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        {% if query %}
+
+            <div class="mb-4">
+
+                <h2 class="fw-bold">
+                    Search Results
+                </h2>
+
+                <p class="text-muted mb-0">
+
+                    Results for:
+
+                    <strong class="text-dark">
+                        "{{ query }}"
+                    </strong>
+
+                    <span class="ms-2">
+                        ({{ results|length }} found)
+                    </span>
+
+                </p>
+
+            </div>
+
+        {% else %}
+
+            <div class="text-center mb-5">
+
+                <h2 class="fw-bold">
+                    Explore Our Furniture
+                </h2>
+
+                <p class="text-muted">
+                    Search for the furniture you're looking for.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             RESULTS FOUND
+        ================================================== -->
+
+        {% if results %}
+
+        <div class="row g-4">
+
+            {% for product in results %}
+
+            <div class="col-xl-3 col-lg-4 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 product-card">
+
+                    <!-- PRODUCT IMAGE -->
+
+                    <div class="position-relative overflow-hidden">
+
+                        <img
+                            src="{{ url_for('static', filename=product.image) }}"
+                            class="card-img-top product-image"
+                            alt="{{ product.name }}"
+                            loading="lazy"
+                        >
+
+                        <!-- SALE -->
+
+                        {% if product.sale_price < product.price %}
+
+                        <span class="badge bg-danger position-absolute top-0 start-0 m-3">
+                            SALE
+                        </span>
+
+                        {% endif %}
+
+
+                        <!-- BEST SELLER -->
+
+                        {% if product.best_seller %}
+
+                        <span class="badge bg-success position-absolute top-0 end-0 m-3">
+                            BEST SELLER
+                        </span>
+
+                        {% endif %}
+
+
+                        <!-- NEW -->
+
+                        {% if product.new_arrival %}
+
+                        <span class="badge bg-warning text-dark position-absolute bottom-0 start-0 m-3">
+                            NEW
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PRODUCT BODY -->
+
+                    <div class="card-body d-flex flex-column">
+
+                        <!-- CATEGORY -->
+
+                        <small class="text-muted text-uppercase fw-semibold">
+
+                            {{ product.category }}
+
+                        </small>
+
+
+                        <!-- NAME -->
+
+                        <h5 class="fw-bold mt-2 mb-2">
+
+                            {{ product.name }}
+
+                        </h5>
+
+
+                        <!-- DESCRIPTION -->
+
+                        <p class="text-muted small">
+
+                            {{ product.description[:100] }}
+
+                            {% if product.description|length > 100 %}
+                            ...
+                            {% endif %}
+
+                        </p>
+
+
+                        <!-- RATING -->
+
+                        <div class="mb-3">
+
+                            {% for i in range(5) %}
+
+                            <i class="bi bi-star-fill text-warning"></i>
+
+                            {% endfor %}
+
+                            {% if product.reviews is defined %}
+
+                            <small class="text-muted ms-1">
+                                ({{ product.reviews }})
+                            </small>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <!-- PRICE -->
+
+                        <div class="mb-3">
+
+                            {% if product.sale_price < product.price %}
+
+                            <span class="text-muted text-decoration-line-through me-2">
+
+                                KSh {{ "{:,.0f}".format(product.price) }}
+
+                            </span>
+
+                            {% endif %}
+
+                            <h4 class="fw-bold text-primary mb-0">
+
+                                KSh
+                                {{ "{:,.0f}".format(
+                                    product.sale_price
+                                    if product.sale_price is defined
+                                    else product.price
+                                ) }}
+
+                            </h4>
+
+                        </div>
+
+
+                        <!-- STOCK -->
+
+                        {% if product.stock is defined %}
+
+                            {% if product.stock > 5 %}
+
+                            <span class="badge bg-success align-self-start mb-3">
+                                In Stock
+                            </span>
+
+                            {% elif product.stock > 0 %}
+
+                            <span class="badge bg-warning text-dark align-self-start mb-3">
+                                Limited Stock
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-danger align-self-start mb-3">
+                                Out of Stock
+                            </span>
+
+                            {% endif %}
+
+                        {% endif %}
+
+
+                        <!-- BUTTON -->
+
+                        <div class="mt-auto">
+
+                            <a
+                                href="{{ url_for('main.product', product_id=product.id) }}"
+                                class="btn btn-dark w-100">
+
+                                <i class="bi bi-eye me-1"></i>
+
+                                View Details
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- =================================================
+             BACK TO SHOP
+        ================================================== -->
+
+        <div class="text-center mt-5">
+
+            <a
+                href="{{ url_for('main.shop') }}"
+                class="btn btn-outline-dark px-4">
+
+                <i class="bi bi-grid me-1"></i>
+
+                Browse All Furniture
+
+            </a>
+
+        </div>
+
+
+        {% else %}
+
+
+        <!-- =================================================
+             NO RESULTS
+        ================================================== -->
+
+        <div class="text-center py-5">
+
+            <div class="mb-4">
+
+                <i class="bi bi-search display-1 text-muted"></i>
+
+            </div>
+
+            {% if query %}
+
+            <h2 class="fw-bold">
+                No Furniture Found
+            </h2>
+
+            <p class="text-muted mx-auto"
+               style="max-width: 600px;">
+
+                We couldn't find any furniture matching
+                <strong>"{{ query }}"</strong>.
+
+                Try searching for something else such as
+                sofas, beds, dining tables or wardrobes.
+
+            </p>
+
+            {% else %}
+
+            <h2 class="fw-bold">
+                What Are You Looking For?
+            </h2>
+
+            <p class="text-muted">
+
+                Use the search box above to find your
+                perfect furniture.
+
+            </p>
+
+            {% endif %}
+
+
+            <div class="mt-4">
+
+                <a
+                    href="{{ url_for('main.shop') }}"
+                    class="btn btn-dark px-4">
+
+                    <i class="bi bi-shop me-1"></i>
+
+                    Visit Our Shop
+
+                </a>
+
+                <a
+                    href="{{ url_for('main.contact') }}"
+                    class="btn btn-outline-warning px-4 ms-2">
+
+                    <i class="bi bi-chat-dots me-1"></i>
+
+                    Need Help?
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEARCH CTA
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-9">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-5 text-center">
+
+                        <span class="badge bg-warning text-dark mb-3">
+                            CUSTOM FURNITURE
+                        </span>
+
+                        <h2 class="fw-bold">
+                            Can't Find What You're Looking For?
+                        </h2>
+
+                        <p class="text-muted lead">
+
+                            We also create custom furniture according
+                            to your preferred size, design, colour,
+                            fabric and finish.
+
+                        </p>
+
+                        <a
+                            href="{{ url_for('main.quote') }}"
+                            class="btn btn-dark btn-lg px-5">
+
+                            <i class="bi bi-pencil-square me-2"></i>
+
+                            Request a Custom Quote
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

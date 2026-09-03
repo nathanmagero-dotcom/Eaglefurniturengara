@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>{% block title %}Admin{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/admin.css') }}">
+
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <aside class="sidebar">
+
+        <h2>Eagle Furniture</h2>
+
+        <ul>
+
+            <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+
+            <li><a href="{{ url_for('main.admin_products') }}">Products</a></li>
+
+            <li><a href="{{ url_for('main.admin_categories') }}">Categories</a></li>
+
+            <li><a href="{{ url_for('main.admin_bundles') }}">Bundles</a></li>
+            <li><a href="{{ url_for('main.admin_orders') }}">Orders</a></li>
+
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+</div>
+
+</body>
+
+</html>

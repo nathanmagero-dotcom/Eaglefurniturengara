@@ -1,0 +1,1273 @@
+{% extends "base.html" %}
+
+{% block title %}
+Airbnb Furniture Packages | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     AIRBNB HERO
+========================================================= -->
+
+<section class="service-hero airbnb-hero">
+
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-6">
+
+            <span class="service-badge">
+                AIRBNB FURNITURE SOLUTIONS
+            </span>
+
+            <h1 class="service-title">
+                Furnish Your Airbnb.
+                <span>Attract More Guests.</span>
+            </h1>
+
+            <p class="service-lead">
+
+                Transform your Airbnb, short-stay apartment or serviced
+                apartment into a stylish, comfortable and guest-ready
+                space with complete furniture solutions from
+                Eagle Furniture Ngara.
+
+            </p>
+
+            <p>
+
+                From a single apartment to multiple Airbnb units, we
+                help property owners furnish their spaces with practical,
+                beautiful and durable furniture designed for short-stay
+                living.
+
+            </p>
+
+            <div class="service-hero-actions">
+
+                <a href="{{ url_for('main.quote') }}"
+                   class="btn btn-dark btn-lg">
+
+                    Get an Airbnb Quote
+
+                </a>
+
+                <a href="{{ url_for('main.contact') }}"
+                   class="btn btn-outline-dark btn-lg">
+
+                    Talk to Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-6">
+
+            <div class="service-hero-image">
+
+                <img
+                    src="{{ url_for('static', filename='images/services/airbnb-packages.jpg') }}"
+                    alt="Airbnb furniture package by Eagle Furniture Ngara"
+                    class="img-fluid"
+                >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section class="service-intro section-padding">
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9 text-center">
+
+            <span class="section-tag">
+                COMPLETE AIRBNB FURNISHING
+            </span>
+
+            <h2>
+                Everything You Need to Make Your Property Guest-Ready
+            </h2>
+
+            <p class="lead">
+
+                Setting up an Airbnb should not require you to coordinate
+                different furniture suppliers for every room. Eagle
+                Furniture Ngara provides coordinated furniture solutions
+                that help you create a complete and attractive property
+                from one place.
+
+            </p>
+
+            <p>
+
+                Whether you are launching your first Airbnb, upgrading
+                an existing unit or furnishing several apartments,
+                we can help you select furniture that matches your
+                space, target guests and budget.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     WHAT WE PROVIDE
+========================================================= -->
+
+<section class="service-features section-padding bg-light">
+
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="section-tag">
+            WHAT WE PROVIDE
+        </span>
+
+        <h2>
+            Complete Furniture for Every Room
+        </h2>
+
+        <p class="text-muted">
+            We help you furnish the important spaces that make an Airbnb
+            comfortable, functional and visually appealing.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- BEDROOM -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-house-heart"></i>
+                </div>
+
+                <h3>
+                    Bedroom Furniture
+                </h3>
+
+                <p>
+                    Create a comfortable sleeping environment with
+                    quality beds and complementary bedroom furniture.
+                </p>
+
+                <ul>
+
+                    <li>Beds</li>
+                    <li>Bedside tables</li>
+                    <li>Wardrobes</li>
+                    <li>Dressers</li>
+                    <li>Bedroom storage solutions</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- LIVING ROOM -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-lamp"></i>
+                </div>
+
+                <h3>
+                    Living Room Furniture
+                </h3>
+
+                <p>
+                    Give guests a welcoming space to relax, socialize
+                    and enjoy their stay.
+                </p>
+
+                <ul>
+
+                    <li>Sofa sets</li>
+                    <li>L-shaped sofas</li>
+                    <li>Coffee tables</li>
+                    <li>TV stands</li>
+                    <li>Accent furniture</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- DINING -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-grid-3x3-gap"></i>
+                </div>
+
+                <h3>
+                    Dining Areas
+                </h3>
+
+                <p>
+                    Make your Airbnb more functional with dining
+                    furniture suitable for couples, families and groups.
+                </p>
+
+                <ul>
+
+                    <li>Dining tables</li>
+                    <li>Dining chairs</li>
+                    <li>Compact dining sets</li>
+                    <li>Breakfast-area furniture</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- STORAGE -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+
+                <h3>
+                    Storage Solutions
+                </h3>
+
+                <p>
+                    Help guests keep their belongings organised while
+                    making the most of your available space.
+                </p>
+
+                <ul>
+
+                    <li>Wardrobes</li>
+                    <li>TV units</li>
+                    <li>Storage cabinets</li>
+                    <li>Shoe storage</li>
+                    <li>Custom storage solutions</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- WORKSPACE -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-laptop"></i>
+                </div>
+
+                <h3>
+                    Work & Study Areas
+                </h3>
+
+                <p>
+                    Cater for business travellers and remote workers
+                    with practical workspaces.
+                </p>
+
+                <ul>
+
+                    <li>Study desks</li>
+                    <li>Office chairs</li>
+                    <li>Compact workstations</li>
+                    <li>Storage units</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <!-- CUSTOM -->
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="service-card h-100">
+
+                <div class="service-icon">
+                    <i class="bi bi-tools"></i>
+                </div>
+
+                <h3>
+                    Custom Furniture
+                </h3>
+
+                <p>
+                    Have an unusual space or specific design requirement?
+                    We can create furniture according to your measurements
+                    and preferred style.
+                </p>
+
+                <ul>
+
+                    <li>Custom beds</li>
+                    <li>Built-in storage</li>
+                    <li>Custom TV units</li>
+                    <li>Special-size furniture</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     PACKAGE OPTIONS
+========================================================= -->
+
+<section class="airbnb-packages section-padding">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="section-tag">
+            AIRBNB PACKAGES
+        </span>
+
+        <h2>
+            Choose a Package That Fits Your Property
+        </h2>
+
+        <p>
+            Packages can be customised depending on your apartment size,
+            number of bedrooms, furniture requirements and budget.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- STUDIO -->
+
+        <div class="col-lg-4">
+
+            <div class="package-card h-100">
+
+                <div class="package-header">
+
+                    <span>
+                        PACKAGE 01
+                    </span>
+
+                    <h3>
+                        Studio Package
+                    </h3>
+
+                    <p>
+                        Ideal for studio apartments and compact
+                        short-stay spaces.
+                    </p>
+
+                </div>
+
+                <div class="package-body">
+
+                    <ul>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Bed
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Sofa or lounge chair
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Coffee table
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            TV stand
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Wardrobe/storage
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Dining or breakfast table
+                        </li>
+
+                    </ul>
+
+                    <a href="{{ url_for('main.quote') }}"
+                       class="btn btn-outline-dark w-100">
+
+                        Request Package Quote
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ONE BEDROOM -->
+
+        <div class="col-lg-4">
+
+            <div class="package-card package-featured h-100">
+
+                <div class="package-popular">
+                    POPULAR
+                </div>
+
+                <div class="package-header">
+
+                    <span>
+                        PACKAGE 02
+                    </span>
+
+                    <h3>
+                        One-Bedroom Package
+                    </h3>
+
+                    <p>
+                        A complete solution for one-bedroom
+                        Airbnb apartments.
+                    </p>
+
+                </div>
+
+                <div class="package-body">
+
+                    <ul>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Bedroom furniture
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Sofa set
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Coffee table
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            TV stand
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Wardrobe
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Dining set
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Additional storage
+                        </li>
+
+                    </ul>
+
+                    <a href="{{ url_for('main.quote') }}"
+                       class="btn btn-dark w-100">
+
+                        Request Package Quote
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PREMIUM -->
+
+        <div class="col-lg-4">
+
+            <div class="package-card h-100">
+
+                <div class="package-header">
+
+                    <span>
+                        PACKAGE 03
+                    </span>
+
+                    <h3>
+                        Premium Package
+                    </h3>
+
+                    <p>
+                        A complete furnishing solution for premium
+                        short-stay properties.
+                    </p>
+
+                </div>
+
+                <div class="package-body">
+
+                    <ul>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Complete bedroom furniture
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Premium sofa set
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Dining furniture
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            TV and entertainment unit
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Wardrobes and storage
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Workspace furniture
+                        </li>
+
+                        <li>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Custom furniture options
+                        </li>
+
+                    </ul>
+
+                    <a href="{{ url_for('main.quote') }}"
+                       class="btn btn-outline-dark w-100">
+
+                        Build My Package
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+
+        <p class="text-muted">
+
+            <strong>Need something different?</strong>
+            Every package can be customised to your property's
+            requirements.
+
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     WHY EAGLE
+========================================================= -->
+
+<section class="service-benefits section-padding bg-light">
+
+<div class="container">
+
+    <div class="row align-items-center g-5">
+
+        <div class="col-lg-5">
+
+            <span class="section-tag">
+                WHY CHOOSE US
+            </span>
+
+            <h2>
+                Furniture Built for Real Airbnb Living
+            </h2>
+
+            <p>
+
+                Airbnb furniture needs to do more than look good.
+                It needs to be practical, comfortable and suitable
+                for frequent guest use.
+
+            </p>
+
+            <a href="{{ url_for('main.quote') }}"
+               class="btn btn-dark">
+
+                Start Your Project
+
+            </a>
+
+        </div>
+
+
+        <div class="col-lg-7">
+
+            <div class="row g-4">
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-palette"></i>
+
+                        <h4>
+                            Stylish Designs
+                        </h4>
+
+                        <p>
+                            Furniture that helps create attractive
+                            interiors and memorable guest spaces.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-rulers"></i>
+
+                        <h4>
+                            Space Efficient
+                        </h4>
+
+                        <p>
+                            We consider your available space when
+                            recommending furniture and layouts.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <h4>
+                            Built to Last
+                        </h4>
+
+                        <p>
+                            Choose practical furniture designed for
+                            everyday use and regular guest turnover.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-wallet2"></i>
+
+                        <h4>
+                            Budget Conscious
+                        </h4>
+
+                        <p>
+                            We help you balance appearance,
+                            functionality and your furnishing budget.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-grid"></i>
+
+                        <h4>
+                            Complete Packages
+                        </h4>
+
+                        <p>
+                            Furnish multiple areas through one
+                            coordinated furniture solution.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="benefit-item">
+
+                        <i class="bi bi-house-check"></i>
+
+                        <h4>
+                            Guest-Focused Spaces
+                        </h4>
+
+                        <p>
+                            Furniture selections designed around
+                            comfort and practical guest needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     OUR PROCESS
+========================================================= -->
+
+<section class="service-process section-padding">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="section-tag">
+            HOW IT WORKS
+        </span>
+
+        <h2>
+            From Empty Apartment to Guest-Ready Space
+        </h2>
+
+        <p>
+            Our process makes furnishing your Airbnb simple and organised.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="process-step">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Tell Us About Your Property
+                </h3>
+
+                <p>
+                    Share your property details, number of rooms,
+                    measurements, photos and furnishing requirements.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="process-step">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Choose Your Furniture
+                </h3>
+
+                <p>
+                    We help you select suitable furniture based on
+                    your space, style and budget.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="process-step">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    We Prepare Your Order
+                </h3>
+
+                <p>
+                    Your selected furniture is prepared and coordinated
+                    according to the agreed requirements.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="process-step">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Furnish Your Space
+                </h3>
+
+                <p>
+                    Your property receives the furniture needed to
+                    create a comfortable and attractive guest environment.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- =========================================================
+     IDEAL FOR
+========================================================= -->
+
+<section class="service-audience section-padding bg-light">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="section-tag">
+            WHO WE SERVE
+        </span>
+
+        <h2>
+            Airbnb Furniture Solutions for Different Properties
+        </h2>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="audience-card">
+
+                <i class="bi bi-building"></i>
+
+                <h3>
+                    Airbnb Hosts
+                </h3>
+
+                <p>
+                    Furnish new or existing Airbnb units with
+                    coordinated furniture.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="audience-card">
+
+                <i class="bi bi-key"></i>
+
+                <h3>
+                    Property Investors
+                </h3>
+
+                <p>
+                    Prepare investment properties for short-stay
+                    or furnished rental use.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="audience-card">
+
+                <i class="bi bi-buildings"></i>
+
+                <h3>
+                    Apartment Developers
+                </h3>
+
+                <p>
+                    Furnish multiple units with consistent furniture
+                    and interior solutions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6 col-lg-3">
+
+            <div class="audience-card">
+
+                <i class="bi bi-house"></i>
+
+                <h3>
+                    Serviced Apartments
+                </h3>
+
+                <p>
+                    Create comfortable and professional spaces
+                    for short and extended stays.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     FAQ
+========================================================= -->
+
+<section class="service-faq section-padding">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="section-tag">
+            AIRBNB FAQ
+        </span>
+
+        <h2>
+            Frequently Asked Questions
+        </h2>
+
+    </div>
+
+
+    <div class="accordion mx-auto"
+         id="airbnbFaq"
+         style="max-width:900px;">
+
+
+        <div class="accordion-item">
+
+            <h3 class="accordion-header">
+
+                <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faqOne">
+
+                    Can I customise an Airbnb package?
+
+                </button>
+
+            </h3>
+
+            <div id="faqOne"
+                 class="accordion-collapse collapse show"
+                 data-bs-parent="#airbnbFaq">
+
+                <div class="accordion-body">
+
+                    Yes. Our Airbnb packages are flexible. Furniture can
+                    be added, removed or customised according to your
+                    property size, style and budget.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion-item">
+
+            <h3 class="accordion-header">
+
+                <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faqTwo">
+
+                    Can you furnish multiple Airbnb units?
+
+                </button>
+
+            </h3>
+
+            <div id="faqTwo"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#airbnbFaq">
+
+                <div class="accordion-body">
+
+                    Yes. We can discuss furnishing requirements for
+                    multiple units and help you create a coordinated
+                    furniture solution.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion-item">
+
+            <h3 class="accordion-header">
+
+                <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faqThree">
+
+                    Do you make custom furniture?
+
+                </button>
+
+            </h3>
+
+            <div id="faqThree"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#airbnbFaq">
+
+                <div class="accordion-body">
+
+                    Yes. We offer custom furniture solutions for spaces
+                    that require specific dimensions, designs or storage
+                    requirements.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion-item">
+
+            <h3 class="accordion-header">
+
+                <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faqFour">
+
+                    How do I get a quotation?
+
+                </button>
+
+            </h3>
+
+            <div id="faqFour"
+                 class="accordion-collapse collapse"
+                 data-bs-parent="#airbnbFaq">
+
+                <div class="accordion-body">
+
+                    Use our quote request page and provide your property
+                    details and furniture requirements. Our team can then
+                    help you determine the appropriate solution.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="service-cta">
+
+<div class="container">
+
+    <div class="row justify-content-center text-center">
+
+        <div class="col-lg-9">
+
+            <span class="service-badge">
+                READY TO FURNISH?
+            </span>
+
+            <h2>
+                Let's Turn Your Airbnb Into a Guest-Ready Space
+            </h2>
+
+            <p>
+
+                Tell us about your property and the furniture you need.
+                We'll help you create a practical and attractive
+                furnishing solution.
+
+            </p>
+
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+
+                <a href="{{ url_for('main.quote') }}"
+                   class="btn btn-light btn-lg">
+
+                    Request an Airbnb Quote
+
+                </a>
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-outline-light btn-lg">
+
+                    Browse Furniture
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}

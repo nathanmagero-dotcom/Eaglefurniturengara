@@ -1,0 +1,764 @@
+﻿{% extends "base.html" %}
+
+{% block title %}
+Shop Furniture | Eagle Furniture Ngara
+{% endblock %}
+
+
+{% block page_css %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/shop.css') }}"
+>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ============================================================
+     SHOP HERO
+============================================================= -->
+
+<section class="shop-hero">
+
+    <div class="container">
+
+        <div class="shop-hero-content">
+
+            <span class="shop-eyebrow">
+                EAGLE FURNITURE NGARA
+            </span>
+
+            <h1>
+                Furniture Designed
+                <span>For Your Space.</span>
+            </h1>
+
+            <p>
+                Explore our collection of quality furniture,
+                custom designs and pieces made for beautiful
+                everyday living.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     SHOP
+============================================================= -->
+
+<section class="shop-section">
+
+    <div class="container">
+
+        <!-- ====================================================
+             SHOP HEADER
+        ===================================================== -->
+
+        <div class="shop-header">
+
+            <div class="shop-heading">
+
+                <span class="shop-section-label">
+                    OUR COLLECTION
+                </span>
+
+                <h2>
+                    Shop Furniture
+                </h2>
+
+                <p>
+                    Find the right furniture for your home,
+                    office or investment property.
+                </p>
+
+            </div>
+
+            <div class="shop-result-count">
+
+                <strong>
+                    {{ products|length }}
+                </strong>
+
+                <span>
+                    {% if products|length == 1 %}
+                        Product
+                    {% else %}
+                        Products
+                    {% endif %}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ====================================================
+             FILTER / SEARCH TOOLBAR
+        ===================================================== -->
+
+        <div class="shop-toolbar">
+
+            <form
+                method="GET"
+                action="{{ url_for('main.shop') }}"
+                class="shop-filter-form"
+            >
+
+                <!-- SEARCH -->
+
+                <div class="shop-search">
+
+                    <label
+                        for="shop-search-input"
+                        class="visually-hidden"
+                    >
+                        Search furniture
+                    </label>
+
+                    <i class="bi bi-search"></i>
+
+                    <input
+                        type="search"
+                        id="shop-search-input"
+                        name="search"
+                        value="{{ search }}"
+                        placeholder="Search furniture..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+               <!-- CATEGORY -->
+
+<div class="shop-filter">
+
+    <label for="shop-category">
+        Category
+    </label>
+
+    <select
+        id="shop-category"
+        name="category"
+    >
+
+        <option value="">
+            All Categories
+        </option>
+
+        {% for category in categories %}
+
+            <option
+                value="{{ category.slug }}"
+                {% if selected_category_slug == category.slug %}
+                    selected
+                {% endif %}
+            >
+                {{ category.name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+</div> 
+
+
+<!-- SUBCATEGORY -->
+
+{% if selected_subcategories %}
+
+<div class="shop-filter">
+
+    <label for="shop-subcategory">
+        Subcategory
+    </label>
+
+    <select
+        id="shop-subcategory"
+        name="subcategory"
+    >
+
+        <option value="">
+            All {{ selected_category.name }}
+        </option>
+
+        {% for subcategory in selected_subcategories %}
+
+            <option
+                value="{{ subcategory.slug }}"
+                {% if selected_subcategory_slug == subcategory.slug %}
+                    selected
+                {% endif %}
+            >
+                {{ subcategory.name }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+</div>
+
+{% endif %}
+
+                <!-- SORT -->
+
+                <div class="shop-filter">
+
+                    <label for="shop-sort">
+                        Sort By
+                    </label>
+
+                    <select
+                        id="shop-sort"
+                        name="sort"
+                    >
+
+                        <option
+                            value=""
+                            {% if not selected_sort %}
+                                selected
+                            {% endif %}
+                        >
+                            Default
+                        </option>
+
+                        <option
+                            value="newest"
+                            {% if selected_sort == "newest" %}
+                                selected
+                            {% endif %}
+                        >
+                            New Arrivals
+                        </option>
+
+                        <option
+                            value="best_selling"
+                            {% if selected_sort == "best_selling" %}
+                                selected
+                            {% endif %}
+                        >
+                            Best Sellers
+                        </option>
+
+                        <option
+                            value="price_low"
+                            {% if selected_sort == "price_low" %}
+                                selected
+                            {% endif %}
+                        >
+                            Price: Low to High
+                        </option>
+
+                        <option
+                            value="price_high"
+                            {% if selected_sort == "price_high" %}
+                                selected
+                            {% endif %}
+                        >
+                            Price: High to Low
+                        </option>
+
+                        <option
+                            value="name"
+                            {% if selected_sort == "name" %}
+                                selected
+                            {% endif %}
+                        >
+                            Name: A–Z
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- APPLY -->
+
+                <button
+                    type="submit"
+                    class="shop-filter-button"
+                >
+                    <i class="bi bi-sliders"></i>
+                    Apply
+                </button>
+
+            </form>
+
+
+            <!-- CLEAR -->
+
+            {% if search or selected_category_slug or selected_subcategory_slug or selected_sort %}
+
+                <a
+                    href="{{ url_for('main.shop') }}"
+                    class="shop-clear-button"
+                >
+                    <i class="bi bi-x-circle"></i>
+                    Clear Filters
+                </a>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- ====================================================
+     ACTIVE FILTERS
+===================================================== -->
+
+{% if search or selected_category_slug or selected_subcategory_slug %}
+
+    <div class="shop-active-filters">
+
+        <span>
+            Active:
+        </span>
+
+
+        {% if search %}
+
+            <span class="shop-filter-tag">
+
+                Search:
+                <strong>
+                    {{ search }}
+                </strong>
+
+            </span>
+
+        {% endif %}
+
+
+        {% if selected_category %}
+
+            <span class="shop-filter-tag">
+
+                Category:
+                <strong>
+                    {{ selected_category.name }}
+                </strong>
+
+            </span>
+
+        {% endif %}
+
+
+        {% if selected_subcategory %}
+
+            <span class="shop-filter-tag">
+
+                Subcategory:
+                <strong>
+                    {{ selected_subcategory.name }}
+                </strong>
+
+            </span>
+
+        {% endif %}
+
+    </div>
+
+{% endif %}
+
+        <!-- ====================================================
+             PRODUCT GRID
+        ===================================================== -->
+
+        {% if products %}
+
+            <div class="shop-product-grid">
+
+                {% for product in products %}
+
+                    <article class="shop-product-card">
+
+
+                        <!-- IMAGE -->
+
+                        <div class="shop-product-image">
+
+                            <a
+                                href="{{ url_for(
+                                    'main.product',
+                                    product_id=product.id
+                                ) }}"
+                                aria-label="View {{ product.name }}"
+                            >
+
+                                {% if product.image %}
+
+                                    <img
+                                        src="{{ url_for(
+                                            'static',
+                                            filename=product.image
+                                        ) }}"
+                                        alt="{{ product.name }}"
+                                        loading="lazy"
+                                    >
+
+                                {% else %}
+
+                                    <div class="shop-image-placeholder">
+
+                                        <i class="bi bi-image"></i>
+
+                                        <span>
+                                            Image Coming Soon
+                                        </span>
+
+                                    </div>
+
+                                {% endif %}
+
+                            </a>
+
+
+                            <!-- BADGES -->
+
+                            <div class="shop-product-badges">
+
+                                {% if product.sale_price
+                                    and product.price
+                                    and product.sale_price < product.price %}
+
+                                    <span class="shop-badge shop-badge-sale">
+                                        SALE
+                                    </span>
+
+                                {% endif %}
+
+
+                                {% if product.best_seller %}
+
+                                    <span class="shop-badge shop-badge-best">
+                                        BEST SELLER
+                                    </span>
+
+                                {% elif product.new_arrival %}
+
+                                    <span class="shop-badge shop-badge-new">
+                                        NEW
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- QUICK ACTIONS -->
+
+                            <div class="shop-product-actions">
+
+                                <a
+                                    href="{{ url_for(
+                                        'main.product',
+                                        product_id=product.id
+                                    ) }}"
+                                    class="shop-action-button"
+                                    aria-label="View {{ product.name }}"
+                                    title="View Product"
+                                >
+                                    <i class="bi bi-eye"></i>
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="shop-action-button"
+                                    aria-label="Add {{ product.name }} to wishlist"
+                                    title="Wishlist"
+                                    data-product-id="{{ product.id }}"
+                                >
+                                    <i class="bi bi-heart"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- PRODUCT INFORMATION -->
+
+                        <div class="shop-product-content">
+
+
+                            <span class="shop-product-category">
+
+    {% if product.category %}
+
+        {{ product.category.name }}
+
+    {% endif %}
+
+    {% if product.subcategory %}
+
+        · {{ product.subcategory.name }}
+
+    {% endif %}
+
+</span>
+
+                            <h3 class="shop-product-title">
+
+                                <a
+                                    href="{{ url_for(
+                                        'main.product',
+                                        product_id=product.id
+                                    ) }}"
+                                >
+                                    {{ product.name }}
+                                </a>
+
+                            </h3>
+
+
+                            <!-- PRICE -->
+
+                            <div class="shop-product-price">
+
+                                {% if product.sale_price
+                                    and product.price
+                                    and product.sale_price < product.price %}
+
+                                    <strong>
+                                        KSh {{
+                                            "{:,.0f}".format(
+                                                product.sale_price
+                                            )
+                                        }}
+                                    </strong>
+
+                                    <del>
+                                        KSh {{
+                                            "{:,.0f}".format(
+                                                product.price
+                                            )
+                                        }}
+                                    </del>
+
+                                {% else %}
+
+                                    <strong>
+                                        KSh {{
+                                            "{:,.0f}".format(
+                                                product.price
+                                            )
+                                        }}
+                                    </strong>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- STOCK -->
+
+                            <div class="shop-stock">
+
+                                {% if product.stock is defined
+                                    and product.stock > 0 %}
+
+                                    {% if product.stock <= 5 %}
+
+                                        <span class="shop-stock-limited">
+
+                                            <i class="bi bi-exclamation-circle"></i>
+
+                                            Only
+                                            {{ product.stock }}
+                                            left
+
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="shop-stock-available">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                            In Stock
+
+                                        </span>
+
+                                    {% endif %}
+
+                                {% elif product.stock is defined %}
+
+                                    <span class="shop-stock-out">
+
+                                        <i class="bi bi-x-circle"></i>
+
+                                        Out of Stock
+
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="shop-stock-available">
+
+                                        <i class="bi bi-check-circle"></i>
+
+                                        Available
+
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- ADD TO CART -->
+
+                            <form
+                                method="POST"
+                                action="{{ url_for(
+                                    'main.add_product_to_cart',
+                                    product_id=product.id
+                                ) }}"
+                                class="shop-add-cart-form"
+                            >
+
+                                <input
+                                    type="hidden"
+                                    name="quantity"
+                                    value="1"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="shop-add-cart-button"
+                                    {% if product.stock is defined
+                                        and product.stock <= 0 %}
+                                        disabled
+                                    {% endif %}
+                                >
+
+                                    <i class="bi bi-cart-plus"></i>
+
+                                    {% if product.stock is defined
+                                        and product.stock <= 0 %}
+
+                                        Out of Stock
+
+                                    {% else %}
+
+                                        Add to Cart
+
+                                    {% endif %}
+
+                                </button>
+
+                            </form>
+
+
+                            <!-- DETAILS -->
+
+                            <a
+                                href="{{ url_for(
+                                    'main.product',
+                                    product_id=product.id
+                                ) }}"
+                                class="shop-view-product"
+                            >
+                                View Details
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+
+        {% else %}
+
+            <!-- =================================================
+                 EMPTY RESULTS
+            ================================================== -->
+
+            <div class="shop-empty-state">
+
+                <div class="shop-empty-icon">
+
+                    <i class="bi bi-search"></i>
+
+                </div>
+
+                <span class="shop-section-label">
+                    NO PRODUCTS FOUND
+                </span>
+
+                <h2>
+                    We Couldn't Find What You're Looking For.
+                </h2>
+
+                <p>
+                    Try another search term or browse our
+                    complete furniture collection.
+                </p>
+
+                <a
+                    href="{{ url_for('main.shop') }}"
+                    class="shop-empty-button"
+                >
+                    View All Furniture
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- ============================================================
+     SHOP CTA
+============================================================= -->
+
+<section class="shop-cta">
+
+    <div class="container">
+
+        <div class="shop-cta-content">
+
+            <span class="shop-section-label">
+                NEED SOMETHING DIFFERENT?
+            </span>
+
+            <h2>
+                Let Us Create It For You.
+            </h2>
+
+            <p>
+                Looking for a specific size, colour, fabric or
+                design? Our custom furniture service can bring
+                your idea to life.
+            </p>
+
+            <a
+                href="{{ url_for('main.custom_furniture') }}"
+                class="shop-cta-button"
+            >
+                Explore Custom Furniture
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

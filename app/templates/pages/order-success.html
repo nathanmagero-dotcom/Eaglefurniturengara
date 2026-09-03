@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+
+{% block title %}Order Confirmed | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     ORDER SUCCESS
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card border-0 shadow-lg">
+
+                    <div class="card-body text-center p-5">
+
+                        <!-- SUCCESS ICON -->
+
+                        <div class="mb-4">
+
+                            <div class="d-inline-flex
+                                        align-items-center
+                                        justify-content-center
+                                        rounded-circle
+                                        bg-success
+                                        text-white"
+                                 style="width: 100px; height: 100px;">
+
+                                <i class="bi bi-check-lg display-3"></i>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- HEADING -->
+
+                        <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                            Eagle Furniture Ngara
+                        </span>
+
+                        <h1 class="display-5 fw-bold mb-3">
+                            Thank You for Your Order!
+                        </h1>
+
+                        <p class="lead text-muted mb-4">
+                            Your order has been successfully received.
+                            We appreciate your choice to shop with
+                            Eagle Furniture Ngara.
+                        </p>
+
+
+                        <!-- ORDER MESSAGE -->
+
+                        <div class="alert alert-success border-0 p-4 mb-4">
+
+                            <i class="bi bi-check-circle-fill me-2"></i>
+
+                            <strong>
+                                Order received successfully.
+                            </strong>
+
+                            <p class="mb-0 mt-2">
+                                Our team will review your order and
+                                contact you to confirm the details,
+                                payment and delivery arrangements.
+                            </p>
+
+                        </div>
+
+
+                        <!-- WHAT HAPPENS NEXT -->
+
+                        <div class="text-start mt-5">
+
+                            <h3 class="fw-bold text-center mb-4">
+                                What Happens Next?
+                            </h3>
+
+
+                            <div class="row g-4">
+
+                                <!-- STEP 1 -->
+
+                                <div class="col-md-4">
+
+                                    <div class="text-center">
+
+                                        <div class="mb-3">
+
+                                            <span class="d-inline-flex
+                                                         align-items-center
+                                                         justify-content-center
+                                                         rounded-circle
+                                                         bg-dark
+                                                         text-white"
+                                                  style="width:55px;height:55px;">
+
+                                                <strong>1</strong>
+
+                                            </span>
+
+                                        </div>
+
+                                        <h6 class="fw-bold">
+                                            Order Review
+                                        </h6>
+
+                                        <p class="small text-muted mb-0">
+                                            We review your order and
+                                            confirm product availability.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- STEP 2 -->
+
+                                <div class="col-md-4">
+
+                                    <div class="text-center">
+
+                                        <div class="mb-3">
+
+                                            <span class="d-inline-flex
+                                                         align-items-center
+                                                         justify-content-center
+                                                         rounded-circle
+                                                         bg-dark
+                                                         text-white"
+                                                  style="width:55px;height:55px;">
+
+                                                <strong>2</strong>
+
+                                            </span>
+
+                                        </div>
+
+                                        <h6 class="fw-bold">
+                                            Confirmation
+                                        </h6>
+
+                                        <p class="small text-muted mb-0">
+                                            Our team contacts you to
+                                            confirm your order details.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- STEP 3 -->
+
+                                <div class="col-md-4">
+
+                                    <div class="text-center">
+
+                                        <div class="mb-3">
+
+                                            <span class="d-inline-flex
+                                                         align-items-center
+                                                         justify-content-center
+                                                         rounded-circle
+                                                         bg-dark
+                                                         text-white"
+                                                  style="width:55px;height:55px;">
+
+                                                <strong>3</strong>
+
+                                            </span>
+
+                                        </div>
+
+                                        <h6 class="fw-bold">
+                                            Delivery
+                                        </h6>
+
+                                        <p class="small text-muted mb-0">
+                                            We arrange delivery and
+                                            installation where applicable.
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ORDER REFERENCE -->
+
+                        <div class="card bg-light border-0 mt-5">
+
+                            <div class="card-body p-4">
+
+                                <div class="row align-items-center">
+
+                                    <div class="col-md-6 text-md-start">
+
+                                        <small class="text-muted d-block">
+                                            Order Status
+                                        </small>
+
+                                        <strong class="text-success">
+                                            <i class="bi bi-circle-fill me-1"
+                                               style="font-size:8px;"></i>
+                                            Received
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+
+                                        <small class="text-muted d-block">
+                                            Need Help?
+                                        </small>
+
+                                        <a href="{{ url_for('main.contact') }}"
+                                           class="fw-bold text-decoration-none">
+
+                                            Contact Us
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="mt-5">
+
+                            <a href="{{ url_for('main.shop') }}"
+                               class="btn btn-dark btn-lg px-4 me-2 mb-2">
+
+                                <i class="bi bi-shop me-2"></i>
+                                Continue Shopping
+
+                            </a>
+
+                            <a href="{{ url_for('main.home') }}"
+                               class="btn btn-outline-dark btn-lg px-4 mb-2">
+
+                                <i class="bi bi-house me-2"></i>
+                                Back to Home
+
+                            </a>
+
+                        </div>
+
+
+                        <!-- THANK YOU -->
+
+                        <p class="text-muted mt-5 mb-0">
+
+                            Thank you for choosing
+                            <strong>Eagle Furniture Ngara</strong>.
+
+                            <br>
+
+                            <small>
+                                Quality furniture. Beautiful spaces.
+                            </small>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

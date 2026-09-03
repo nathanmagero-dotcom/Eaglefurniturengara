@@ -1,0 +1,913 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}
+Interior Design Services in Nairobi | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     INTERIOR DESIGN PAGE
+========================================================= -->
+
+<section class="interior-page">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="interior-hero py-5">
+        <div class="container py-lg-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <span class="badge rounded-pill px-4 py-2 mb-3"
+                          style="background:#F2E7DA;color:#5D4037;">
+                        INTERIOR DESIGN SERVICES
+                    </span>
+
+                    <h1 class="display-4 fw-bold mb-4"
+                        style="color:#2C2C2C;">
+                        Transform Your Space Into Something Beautiful.
+                    </h1>
+
+                    <p class="lead mb-4"
+                       style="color:#666;line-height:1.8;">
+                        We design beautiful, functional and welcoming spaces
+                        that reflect your personality, lifestyle and vision.
+                        From a single room to a complete property,
+                        Eagle Furniture Ngara helps you bring your dream
+                        interior to life.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3">
+
+                        <a href="{{ url_for('main.quote') }}"
+                           class="btn btn-dark btn-lg px-4">
+                            <i class="bi bi-chat-dots me-2"></i>
+                            Request a Consultation
+                        </a>
+
+                        <a href="{{ url_for('main.gallery') }}"
+                           class="btn btn-outline-dark btn-lg px-4">
+                            <i class="bi bi-images me-2"></i>
+                            View Our Work
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="rounded-4 overflow-hidden shadow-lg">
+
+                        <img src="{{ url_for('static',
+                                  filename='images/services/interior-design.jpg') }}"
+                             class="img-fluid w-100"
+                             alt="Interior design by Eagle Furniture Ngara"
+                             loading="eager">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         INTRODUCTION
+    ====================================================== -->
+
+    <section class="py-5"
+             style="background:#F8F7F5;">
+
+        <div class="container py-lg-4">
+
+            <div class="row justify-content-center text-center">
+
+                <div class="col-lg-9">
+
+                    <span class="fw-semibold"
+                          style="color:#C89B3C;letter-spacing:2px;">
+                        DESIGN WITH PURPOSE
+                    </span>
+
+                    <h2 class="display-6 fw-bold mt-3 mb-4">
+                        Your Space Should Feel Like You
+                    </h2>
+
+                    <p class="lead"
+                       style="color:#666;line-height:1.9;">
+
+                        Good interior design is more than choosing beautiful
+                        furniture. It is about creating harmony between
+                        furniture, colour, lighting, layout, textures and
+                        functionality.
+
+                    </p>
+
+                    <p style="color:#666;line-height:1.9;">
+
+                        At Eagle Furniture Ngara, we combine our furniture
+                        expertise with thoughtful interior design to create
+                        spaces that are practical, comfortable and visually
+                        appealing. Whether you are furnishing your home,
+                        setting up an office, preparing an Airbnb or
+                        renovating an existing space, we can help you
+                        develop a complete design direction.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES WE OFFER
+    ====================================================== -->
+
+    <section class="py-5">
+
+        <div class="container py-lg-5">
+
+            <div class="text-center mb-5">
+
+                <span class="badge rounded-pill px-4 py-2"
+                      style="background:#F2E7DA;color:#5D4037;">
+                    OUR INTERIOR DESIGN SERVICES
+                </span>
+
+                <h2 class="display-6 fw-bold mt-3">
+                    Complete Interior Design Solutions
+                </h2>
+
+                <p class="text-muted mx-auto"
+                   style="max-width:700px;line-height:1.8;">
+                    We offer flexible interior design solutions for homes,
+                    businesses, hospitality spaces and investment properties.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- HOME DESIGN -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-house-heart fs-1"
+                               style="color:#C89B3C;"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Residential Interior Design
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            Create a home that feels comfortable, elegant
+                            and uniquely yours. We can help with living
+                            rooms, bedrooms, dining areas, entryways and
+                            complete home interiors.
+
+                        </p>
+
+                        <ul class="text-muted ps-3">
+
+                            <li>Living room design</li>
+                            <li>Bedroom styling</li>
+                            <li>Dining spaces</li>
+                            <li>Furniture selection</li>
+                            <li>Colour coordination</li>
+                            <li>Space planning</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OFFICE -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-building fs-1"
+                               style="color:#C89B3C;"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Office & Commercial Design
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            Build professional spaces that support
+                            productivity while creating a strong impression
+                            on your clients, customers and employees.
+
+                        </p>
+
+                        <ul class="text-muted ps-3">
+
+                            <li>Office layout planning</li>
+                            <li>Reception areas</li>
+                            <li>Workstations</li>
+                            <li>Boardrooms</li>
+                            <li>Waiting areas</li>
+                            <li>Office furniture selection</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AIRBNB -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-door-open fs-1"
+                               style="color:#C89B3C;"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Airbnb & Short-Stay Design
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            Make your Airbnb or short-stay property
+                            attractive, comfortable and memorable to guests
+                            while maintaining practical furnishing choices.
+
+                        </p>
+
+                        <ul class="text-muted ps-3">
+
+                            <li>Complete apartment styling</li>
+                            <li>Furniture packages</li>
+                            <li>Bedroom setup</li>
+                            <li>Living room setup</li>
+                            <li>Décor coordination</li>
+                            <li>Guest-focused layouts</li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COLOUR -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-palette fs-1"
+                               style="color:#C89B3C;"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Colour & Styling
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            We help you choose colours, textures, finishes
+                            and decorative elements that work together to
+                            create a cohesive interior.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FURNITURE -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-lamp fs-1"
+                               style="color:#C89B3C;"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Furniture Planning
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            Select furniture that fits your space,
+                            complements your design and provides the
+                            comfort and functionality you need.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- COMPLETE -->
+
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 shadow-sm rounded-4 p-4"
+                         style="background:#5D4037;color:#fff;">
+
+                        <div class="mb-3">
+
+                            <i class="bi bi-stars fs-1 text-warning"></i>
+
+                        </div>
+
+                        <h3 class="h4 fw-bold">
+                            Complete Interior Makeovers
+                        </h3>
+
+                        <p style="color:rgba(255,255,255,.8);line-height:1.8;">
+
+                            Looking for a complete transformation?
+                            We can coordinate the furniture, styling,
+                            colours and overall design direction to give
+                            your space a completely refreshed appearance.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DESIGN PROCESS
+    ====================================================== -->
+
+    <section class="py-5"
+             style="background:#F8F7F5;">
+
+        <div class="container py-lg-5">
+
+            <div class="text-center mb-5">
+
+                <span class="fw-semibold"
+                      style="color:#C89B3C;letter-spacing:2px;">
+                    OUR PROCESS
+                </span>
+
+                <h2 class="display-6 fw-bold mt-3">
+                    From Your Idea to Your Finished Space
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <!-- STEP 1 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="text-center">
+
+                        <div class="rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width:80px;height:80px;
+                                    background:#5D4037;color:#fff;">
+
+                            <span class="fs-3 fw-bold">01</span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Consultation
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            We discuss your space, lifestyle, preferences,
+                            budget and overall vision.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 2 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="text-center">
+
+                        <div class="rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width:80px;height:80px;
+                                    background:#5D4037;color:#fff;">
+
+                            <span class="fs-3 fw-bold">02</span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Space Assessment
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            We assess dimensions, layout, existing furniture,
+                            functionality and opportunities within the space.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 3 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="text-center">
+
+                        <div class="rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width:80px;height:80px;
+                                    background:#5D4037;color:#fff;">
+
+                            <span class="fs-3 fw-bold">03</span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Design Direction
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            We develop the furniture, colour, styling and
+                            layout direction for your project.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 4 -->
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="text-center">
+
+                        <div class="rounded-circle d-inline-flex
+                                    align-items-center justify-content-center
+                                    mb-4"
+                             style="width:80px;height:80px;
+                                    background:#5D4037;color:#fff;">
+
+                            <span class="fs-3 fw-bold">04</span>
+
+                        </div>
+
+                        <h3 class="h5 fw-bold">
+                            Implementation
+                        </h3>
+
+                        <p class="text-muted"
+                           style="line-height:1.8;">
+
+                            We help bring the approved design together with
+                            the appropriate furniture and finishing touches.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         WHY CHOOSE US
+    ====================================================== -->
+
+    <section class="py-5">
+
+        <div class="container py-lg-5">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <span class="badge rounded-pill px-4 py-2"
+                          style="background:#F2E7DA;color:#5D4037;">
+                        WHY EAGLE FURNITURE NGARA
+                    </span>
+
+                    <h2 class="display-6 fw-bold mt-3 mb-4">
+                        Design & Furniture Under One Roof
+                    </h2>
+
+                    <p class="text-muted"
+                       style="line-height:1.9;">
+
+                        One of our biggest advantages is that we understand
+                        both interior design and furniture. This allows us
+                        to create interiors where the furniture is not an
+                        afterthought but an important part of the overall
+                        design.
+
+                    </p>
+
+
+                    <div class="mt-4">
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-check-circle-fill fs-4 me-3"
+                               style="color:#C89B3C;"></i>
+
+                            <div>
+
+                                <h3 class="h5 fw-bold">
+                                    Practical Design
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Beautiful spaces that are also comfortable
+                                    and practical for everyday use.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-check-circle-fill fs-4 me-3"
+                               style="color:#C89B3C;"></i>
+
+                            <div>
+
+                                <h3 class="h5 fw-bold">
+                                    Furniture Expertise
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    We understand furniture sizes,
+                                    materials, layouts and functionality.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-check-circle-fill fs-4 me-3"
+                               style="color:#C89B3C;"></i>
+
+                            <div>
+
+                                <h3 class="h5 fw-bold">
+                                    Personalised Solutions
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    Every project is developed around the
+                                    client's needs, taste and budget.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex">
+
+                            <i class="bi bi-check-circle-fill fs-4 me-3"
+                               style="color:#C89B3C;"></i>
+
+                            <div>
+
+                                <h3 class="h5 fw-bold">
+                                    Complete Support
+                                </h3>
+
+                                <p class="text-muted mb-0">
+                                    From the first consultation to furniture
+                                    selection and final styling.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="rounded-4 p-4 p-lg-5"
+                         style="background:#F2E7DA;">
+
+                        <h3 class="fw-bold mb-4">
+                            What Can We Help You Design?
+                        </h3>
+
+                        <div class="row g-3">
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-house-door me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Living Rooms
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-moon-stars me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Bedrooms
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-cup-hot me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Dining Areas
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-building me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Offices
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-door-open me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Airbnb Units
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="bg-white rounded-3 p-3">
+                                    <i class="bi bi-shop me-2"
+                                       style="color:#C89B3C;"></i>
+                                    Commercial Spaces
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="py-5">
+
+        <div class="container">
+
+            <div class="rounded-4 p-5 text-center"
+                 style="background:#5D4037;color:#fff;">
+
+                <span class="text-warning fw-semibold">
+                    READY TO TRANSFORM YOUR SPACE?
+                </span>
+
+                <h2 class="display-6 fw-bold mt-3 mb-3">
+                    Let's Create an Interior You'll Love Coming Home To.
+                </h2>
+
+                <p class="mx-auto mb-4"
+                   style="max-width:700px;
+                          color:rgba(255,255,255,.8);
+                          line-height:1.8;">
+
+                    Tell us about your space, your ideas and what you want
+                    to achieve. Our team will help you explore the right
+                    interior design solution for your project.
+
+                </p>
+
+                <div class="d-flex justify-content-center
+                            flex-wrap gap-3">
+
+                    <a href="{{ url_for('main.quote') }}"
+                       class="btn btn-warning btn-lg px-4">
+
+                        <i class="bi bi-chat-dots me-2"></i>
+                        Start Your Project
+
+                    </a>
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-outline-light btn-lg px-4">
+
+                        Contact Us
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         RELATED SERVICES
+    ====================================================== -->
+
+    <section class="py-5"
+             style="background:#F8F7F5;">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2 class="fw-bold">
+                    Explore Our Other Services
+                </h2>
+
+            </div>
+
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-md-4">
+
+                    <a href="{{ url_for('main.custom_furniture') }}"
+                       class="text-decoration-none">
+
+                        <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+
+                            <i class="bi bi-tools fs-2"
+                               style="color:#C89B3C;"></i>
+
+                            <h3 class="h5 fw-bold mt-3">
+                                Custom Furniture
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Furniture designed and made around your
+                                space, style and requirements.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="{{ url_for('main.office_furniture') }}"
+                       class="text-decoration-none">
+
+                        <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+
+                            <i class="bi bi-building fs-2"
+                               style="color:#C89B3C;"></i>
+
+                            <h3 class="h5 fw-bold mt-3">
+                                Office Furniture
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Functional and professional furniture
+                                solutions for modern workplaces.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="{{ url_for('main.airbnb_packages') }}"
+                       class="text-decoration-none">
+
+                        <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+
+                            <i class="bi bi-door-open fs-2"
+                               style="color:#C89B3C;"></i>
+
+                            <h3 class="h5 fw-bold mt-3">
+                                Airbnb Packages
+                            </h3>
+
+                            <p class="text-muted mb-0">
+                                Complete furnishing and styling solutions
+                                for Airbnb and short-stay properties.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

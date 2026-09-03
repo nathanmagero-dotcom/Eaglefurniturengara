@@ -1,0 +1,398 @@
+css
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   SERVICES SHARED STYLESHEET
+
+   Used by:
+   - custom_furniture.html
+   - interior_design.html
+   - office_furniture.html
+   - airbnb_packages.html
+
+   IMPORTANT:
+   All selectors are scoped under .service-page
+   to prevent CSS conflicts with other pages.
+========================================================= */
+
+
+/* =========================================================
+   PAGE WRAPPER
+========================================================= */
+
+.service-page {
+    background: #f8f7f5;
+    color: #2c2c2c;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.service-page .service-hero {
+    padding: 90px 0;
+    background: #f8f7f5;
+}
+
+.service-page .service-hero-content {
+    max-width: 650px;
+}
+
+.service-page .service-tag {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: #f2e7da;
+    color: #5d4037;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.service-page .service-hero h1 {
+    margin-bottom: 22px;
+    color: #2c2c2c;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.service-page .service-hero p {
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 1.08rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.service-page .service-hero-image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.service-page .service-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-page .service-hero-image:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.service-page .service-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border: 2px solid #5d4037;
+    border-radius: 8px;
+    background: #5d4037;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.service-page .service-btn-primary:hover {
+    background: #4a322b;
+    border-color: #4a322b;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.service-page .service-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 26px;
+    border: 2px solid #5d4037;
+    border-radius: 8px;
+    background: transparent;
+    color: #5d4037;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.service-page .service-btn-outline:hover {
+    background: #5d4037;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   INTRODUCTION SECTION
+========================================================= */
+
+.service-page .service-intro {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.service-page .service-section-tag {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #b28735;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.service-page .service-section-title {
+    margin-bottom: 20px;
+    color: #2c2c2c;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.service-page .service-section-text {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SERVICE FEATURE CARDS
+========================================================= */
+
+.service-page .service-features {
+    padding: 90px 0;
+    background: #f8f7f5;
+}
+
+.service-page .service-card {
+    height: 100%;
+    padding: 35px 28px;
+    border: 1px solid #e8e1da;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.service-page .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.09);
+}
+
+.service-page .service-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    margin-bottom: 22px;
+    border-radius: 50%;
+    background: #f2e7da;
+    color: #5d4037;
+    font-size: 1.6rem;
+}
+
+.service-page .service-card h3 {
+    margin-bottom: 12px;
+    color: #2c2c2c;
+    font-family: "Playfair Display", serif;
+    font-size: 1.45rem;
+}
+
+.service-page .service-card p {
+    margin-bottom: 0;
+    color: #666;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PROCESS SECTION
+========================================================= */
+
+.service-page .service-process {
+    padding: 90px 0;
+    background: #fff;
+}
+
+.service-page .process-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #5d4037;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.service-page .process-item {
+    position: relative;
+    text-align: center;
+}
+
+.service-page .process-item h3 {
+    margin-bottom: 10px;
+    color: #2c2c2c;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.service-page .process-item p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SERVICE CTA
+========================================================= */
+
+.service-page .service-cta {
+    padding: 85px 0;
+    background: #5d4037;
+    color: #fff;
+}
+
+.service-page .service-cta h2 {
+    margin-bottom: 15px;
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+}
+
+.service-page .service-cta p {
+    max-width: 700px;
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+}
+
+.service-page .service-cta .service-btn-primary {
+    background: #fff;
+    border-color: #fff;
+    color: #5d4037;
+}
+
+.service-page .service-cta .service-btn-primary:hover {
+    background: #f2e7da;
+    border-color: #f2e7da;
+    color: #5d4037;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+.service-page .service-list {
+    padding: 0;
+    margin: 25px 0 0;
+    list-style: none;
+}
+
+.service-page .service-list li {
+    position: relative;
+    padding: 8px 0 8px 30px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.service-page .service-list li i {
+    position: absolute;
+    top: 11px;
+    left: 0;
+    color: #b28735;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .service-page .service-hero {
+        padding: 70px 0;
+    }
+
+    .service-page .service-hero-image {
+        height: 420px;
+        margin-top: 40px;
+    }
+
+    .service-page .service-intro,
+    .service-page .service-features,
+    .service-page .service-process {
+        padding: 70px 0;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .service-page .service-hero {
+        padding: 55px 0;
+    }
+
+    .service-page .service-hero h1 {
+        font-size: 2.7rem;
+    }
+
+    .service-page .service-hero p {
+        font-size: 1rem;
+    }
+
+    .service-page .service-hero-image {
+        height: 320px;
+        margin-top: 30px;
+        border-radius: 20px;
+    }
+
+    .service-page .service-intro,
+    .service-page .service-features,
+    .service-page .service-process,
+    .service-page .service-cta {
+        padding: 60px 0;
+    }
+
+    .service-page .service-section-title {
+        font-size: 2.2rem;
+    }
+
+    .service-page .service-card {
+        padding: 28px 22px;
+    }
+
+    .service-page .service-btn-primary,
+    .service-page .service-btn-outline {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

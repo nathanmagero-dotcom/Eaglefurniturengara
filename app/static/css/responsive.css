@@ -1,0 +1,209 @@
+/*==================================================
+    Eagle Furniture Design System (EFDS)
+    File: responsive.css
+    Purpose: Global Responsive Styles
+==================================================*/
+
+
+/*=========================================
+    LARGE LAPTOPS
+=========================================*/
+
+@media (max-width:1200px){
+
+    .container{
+
+        width:92%;
+
+    }
+
+}
+
+
+/*=========================================
+    TABLETS
+=========================================*/
+
+@media (max-width:992px){
+
+    :root{
+
+        --fs-display:52px;
+
+        --fs-h1:42px;
+
+        --fs-h2:34px;
+
+        --fs-h3:28px;
+
+    }
+
+    .grid-4{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-3{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .grid-2{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .navbar{
+
+        height:72px;
+
+    }
+
+    section{
+
+        padding:80px 0;
+
+    }
+
+}
+
+
+/*=========================================
+    MOBILE
+=========================================*/
+
+@media (max-width:768px){
+
+    :root{
+
+        --fs-display:42px;
+
+        --fs-h1:36px;
+
+        --fs-h2:30px;
+
+        --fs-h3:24px;
+
+        --fs-body-lg:17px;
+
+        --fs-body:16px;
+
+    }
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .grid-4,
+    .grid-3,
+    .grid-2{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .flex-between{
+
+        flex-direction:column;
+
+        gap:24px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .hero-buttons{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:16px;
+
+    }
+
+    section{
+
+        padding:64px 0;
+
+    }
+
+    h1{
+
+        line-height:1.15;
+
+    }
+
+}
+
+
+/*=========================================
+    SMALL PHONES
+=========================================*/
+
+@media (max-width:480px){
+
+    :root{
+
+        --fs-display:36px;
+
+        --fs-h1:32px;
+
+        --fs-h2:26px;
+
+        --fs-h3:22px;
+
+        --fs-body:15px;
+
+    }
+
+    .container{
+
+        width:95%;
+
+    }
+
+    .card-body{
+
+        padding:24px;
+
+    }
+
+    .trust-card{
+
+        padding:28px 20px;
+
+    }
+
+    .navbar{
+
+        height:68px;
+
+    }
+
+    .logo{
+
+        font-size:20px;
+
+    }
+
+    .logo img{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+}

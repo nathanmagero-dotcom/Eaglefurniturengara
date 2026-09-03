@@ -1,0 +1,412 @@
+/* ============================================================
+   SINGLE PRODUCT PAGE
+   Eagle Furniture Ngara
+============================================================ */
+
+.product-page {
+    background: #f8f6f2;
+    padding: 50px 0 80px;
+    min-height: 70vh;
+}
+
+.product-page .container {
+    max-width: 1200px;
+}
+
+
+/* ============================================================
+   PRODUCT MAIN CARD
+============================================================ */
+
+.product-detail-card {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e8e3dc;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ============================================================
+   IMAGE SECTION
+============================================================ */
+
+.product-detail-image-wrapper {
+    position: relative;
+    background: #f3f0eb;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.product-detail-image {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    display: block;
+}
+
+.product-detail-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #6b4226;
+    color: #ffffff;
+    padding: 7px 13px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* ============================================================
+   PRODUCT INFORMATION
+============================================================ */
+
+.product-detail-info {
+    padding: 40px;
+}
+
+.product-detail-category {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #8a6a4a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.product-detail-title {
+    margin: 0 0 15px;
+    color: #2d241e;
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 600;
+}
+
+.product-detail-description {
+    color: #66605a;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   PRICE
+============================================================ */
+
+.product-detail-price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.product-current-price {
+    color: #5a351f;
+    font-size: 1.55rem;
+    font-weight: 700;
+}
+
+.product-old-price {
+    color: #999;
+    font-size: 0.95rem;
+    text-decoration: line-through;
+}
+
+
+/* ============================================================
+   STOCK
+============================================================ */
+
+.product-stock {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    color: #4d6b4d;
+}
+
+.product-stock i {
+    font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   CART FORM
+============================================================ */
+
+.product-cart-form {
+    margin-top: 20px;
+}
+
+.product-quantity-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #3d342e;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.product-quantity-control {
+    width: 130px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d8d0c7;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    background: #ffffff;
+}
+
+.quantity-button {
+    width: 38px;
+    height: 100%;
+    border: none;
+    background: #f5f1ec;
+    color: #5a351f;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.quantity-button:hover {
+    background: #e9e0d6;
+}
+
+.product-quantity-control input {
+    width: 54px;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #302820;
+}
+
+
+/* Remove browser arrows */
+
+.product-quantity-control input::-webkit-inner-spin-button,
+.product-quantity-control input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.product-quantity-control input[type="number"] {
+    appearance: textfield;
+}
+
+
+/* ============================================================
+   ACTION BUTTONS
+============================================================ */
+
+.product-action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.product-add-cart-button,
+.product-buy-now-button {
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 6px;
+    border: none;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.product-add-cart-button {
+    background: #5a351f;
+    color: #ffffff;
+}
+
+.product-add-cart-button:hover {
+    background: #422616;
+    transform: translateY(-1px);
+}
+
+.product-buy-now-button {
+    background: #b58a60;
+    color: #ffffff;
+}
+
+.product-buy-now-button:hover {
+    background: #96704d;
+    transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   PRODUCT BENEFITS
+============================================================ */
+
+.product-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #e8e1d9;
+}
+
+.product-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+}
+
+.product-benefit i {
+    color: #8a6a4a;
+    font-size: 1rem;
+}
+
+.product-benefit span {
+    color: #66605a;
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+
+/* ============================================================
+   PRODUCT DESCRIPTION SECTION
+============================================================ */
+
+.product-description-section {
+    margin-top: 30px;
+    background: #ffffff;
+    padding: 30px;
+    border: 1px solid #e8e3dc;
+    border-radius: 12px;
+}
+
+.product-description-section h2 {
+    margin-bottom: 15px;
+    color: #2d241e;
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+}
+
+.product-description-section p {
+    margin: 0;
+    color: #66605a;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+
+/* ============================================================
+   RELATED PRODUCTS
+============================================================ */
+
+.related-products-section {
+    margin-top: 55px;
+}
+
+.related-products-section h2 {
+    margin-bottom: 25px;
+    color: #2d241e;
+    font-family: "Playfair Display", serif;
+    font-size: 1.55rem;
+}
+
+.related-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 991px) {
+
+    .product-page {
+        padding: 35px 0 60px;
+    }
+
+    .product-detail-image-wrapper {
+        min-height: 380px;
+    }
+
+    .product-detail-image {
+        height: 380px;
+    }
+
+    .product-detail-info {
+        padding: 30px;
+    }
+
+    .product-detail-title {
+        font-size: 1.7rem;
+    }
+
+    .related-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .product-page {
+        padding: 20px 0 45px;
+    }
+
+    .product-detail-image-wrapper {
+        min-height: 300px;
+        padding: 20px;
+    }
+
+    .product-detail-image {
+        height: 300px;
+    }
+
+    .product-detail-info {
+        padding: 22px;
+    }
+
+    .product-detail-title {
+        font-size: 1.45rem;
+    }
+
+    .product-detail-description {
+        font-size: 0.86rem;
+    }
+
+    .product-current-price {
+        font-size: 1.3rem;
+    }
+
+    .product-action-buttons {
+        flex-direction: column;
+    }
+
+    .product-add-cart-button,
+    .product-buy-now-button {
+        width: 100%;
+    }
+
+    .product-benefits {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .related-products-grid {
+        grid-template-columns: 1fr;
+    }
+}

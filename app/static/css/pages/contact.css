@@ -1,0 +1,908 @@
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   PROFESSIONAL CONTACT PAGE
+========================================================= */
+
+:root {
+    --contact-dark: #171717;
+    --contact-black: #0d0d0d;
+    --contact-gold: #f4b400;
+    --contact-gold-dark: #d99c00;
+    --contact-light: #f7f6f2;
+    --contact-white: #ffffff;
+    --contact-text: #222222;
+    --contact-muted: #6d6d6d;
+    --contact-border: #e7e3da;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.contact-hero {
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(244, 180, 0, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(135deg, #101010, #252525);
+
+    color: white;
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.contact-eyebrow,
+.section-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--contact-gold);
+    margin-bottom: 16px;
+}
+
+.contact-hero h1 {
+    font-size: clamp(2.6rem, 5vw, 4.6rem);
+    line-height: 1.05;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.contact-hero h1 span {
+    color: var(--contact-gold);
+    display: block;
+}
+
+.contact-hero-text {
+    color: #d9d9d9;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 700px;
+}
+
+.contact-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 32px;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+}
+
+.contact-btn-primary {
+    background: var(--contact-gold);
+    color: #111;
+}
+
+.contact-btn-whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.contact-hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 32px;
+    color: #d8d8d8;
+    font-size: 0.9rem;
+}
+
+.contact-hero-trust i {
+    color: var(--contact-gold);
+    margin-right: 5px;
+}
+
+.contact-hero-card {
+    background: white;
+    color: #171717;
+    padding: 38px;
+    border-radius: 24px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.contact-hero-card-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff4cc;
+    color: var(--contact-gold-dark);
+    font-size: 1.7rem;
+    margin-bottom: 22px;
+}
+
+.contact-hero-card h3 {
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.contact-hero-card p {
+    color: var(--contact-muted);
+    line-height: 1.7;
+}
+
+.contact-address {
+    display: flex;
+    gap: 14px;
+    margin: 25px 0;
+}
+
+.contact-address > i {
+    color: var(--contact-gold-dark);
+    font-size: 1.3rem;
+}
+
+.contact-address strong,
+.contact-address span {
+    display: block;
+}
+
+.contact-address span {
+    color: var(--contact-muted);
+    margin-top: 4px;
+}
+
+.contact-card-link {
+    color: #111;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.contact-card-link i {
+    margin-left: 7px;
+}
+
+
+/* =========================================================
+   QUICK CONTACT
+========================================================= */
+
+.contact-quick-section {
+    background: white;
+    padding: 45px 0;
+}
+
+.quick-contact-card {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    border: 1px solid var(--contact-border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--contact-text);
+    background: white;
+    transition: 0.25s ease;
+}
+
+.quick-contact-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--contact-gold);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.quick-contact-icon {
+    min-width: 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff4cc;
+    color: #b98200;
+    font-size: 1.25rem;
+}
+
+.whatsapp-icon {
+    background: #e5f9ec;
+    color: #19a951;
+}
+
+.quick-contact-card small {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    color: #888;
+}
+
+.quick-contact-card h5 {
+    margin: 4px 0;
+    font-weight: 800;
+}
+
+.quick-contact-card p {
+    margin: 0;
+    color: #777;
+    font-size: 0.85rem;
+}
+
+
+/* =========================================================
+   MAIN CONTACT
+========================================================= */
+
+.contact-main-section {
+    background: var(--contact-light);
+    padding: 90px 0;
+}
+
+.contact-form-card {
+    background: white;
+    padding: 45px;
+    border-radius: 24px;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.07);
+}
+
+.contact-form-card h2,
+.contact-details h2,
+.founders-section h2,
+.contact-benefits-section h2,
+.location-info h2,
+.contact-links-section h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.section-description {
+    max-width: 700px;
+    color: var(--contact-muted);
+    line-height: 1.8;
+}
+
+.professional-contact-form {
+    margin-top: 35px;
+}
+
+.professional-contact-form label {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.professional-contact-form input,
+.professional-contact-form select,
+.professional-contact-form textarea {
+    width: 100%;
+    border: 1px solid #dedbd4;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #fff;
+    transition: 0.2s ease;
+}
+
+.professional-contact-form input,
+.professional-contact-form select {
+    height: 52px;
+}
+
+.professional-contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.professional-contact-form input:focus,
+.professional-contact-form select:focus,
+.professional-contact-form textarea:focus {
+    border-color: var(--contact-gold);
+    box-shadow: 0 0 0 4px rgba(244, 180, 0, 0.12);
+}
+
+.form-check-custom {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 500 !important;
+    color: #666;
+}
+
+.form-check-custom input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--contact-gold);
+}
+
+.contact-submit-btn {
+    border: 0;
+    width: 100%;
+    padding: 16px 25px;
+    border-radius: 10px;
+    background: var(--contact-dark);
+    color: white;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.contact-submit-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+}
+
+.contact-submit-btn i {
+    color: var(--contact-gold);
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   CONTACT DETAILS
+========================================================= */
+
+.contact-details {
+    padding: 20px 10px 20px 15px;
+}
+
+.contact-details > p {
+    color: var(--contact-muted);
+    line-height: 1.8;
+    margin: 20px 0 35px;
+}
+
+.detail-item {
+    display: flex;
+    gap: 17px;
+    margin-bottom: 25px;
+}
+
+.detail-icon {
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 13px;
+    background: #fff4cc;
+    color: #b98200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail-item span,
+.detail-item strong,
+.detail-item small {
+    display: block;
+}
+
+.detail-item span {
+    color: #888;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+}
+
+.detail-item a {
+    color: #111;
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.detail-item strong {
+    color: #222;
+}
+
+.detail-item small {
+    color: #777;
+    margin-top: 4px;
+}
+
+.direct-contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.direct-contact-buttons a {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 18px;
+    border-radius: 9px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.direct-call-btn {
+    background: #111;
+    color: white;
+}
+
+.direct-whatsapp-btn {
+    background: #25d366;
+    color: white;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+.contact-success-wrapper {
+    padding: 30px 0;
+    background: #f0fff5;
+}
+
+.contact-success {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 22px;
+    background: white;
+    border-left: 5px solid #25a55a;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.contact-success > i {
+    font-size: 2rem;
+    color: #25a55a;
+}
+
+.contact-success h4 {
+    margin-bottom: 5px;
+    font-weight: 800;
+}
+
+.contact-success p {
+    margin: 0;
+    color: #666;
+}
+
+
+/* =========================================================
+   FOUNDERS
+========================================================= */
+
+.founders-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.founders-section h2 span,
+.contact-benefits-section h2 span,
+.location-info h2 span,
+.contact-links-section h2 span {
+    color: var(--contact-gold-dark);
+}
+
+.founder-card {
+    height: 100%;
+    overflow: hidden;
+    background: white;
+    border: 1px solid var(--contact-border);
+    border-radius: 22px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.07);
+    transition: 0.25s ease;
+}
+
+.founder-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+.founder-image-wrapper {
+    height: 440px;
+    overflow: hidden;
+    background: #eee;
+}
+
+.founder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: 0.4s ease;
+}
+
+.founder-card:hover .founder-image {
+    transform: scale(1.03);
+}
+
+.founder-content {
+    padding: 30px;
+}
+
+.founder-role {
+    color: #ad7b00;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    font-weight: 800;
+}
+
+.founder-content h3 {
+    margin: 7px 0 12px;
+    font-size: 1.65rem;
+    font-weight: 800;
+}
+
+.founder-content p {
+    color: #6d6d6d;
+    line-height: 1.75;
+}
+
+.founder-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    color: #111;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.contact-benefits-section {
+    padding: 100px 0;
+    background: var(--contact-light);
+}
+
+.contact-benefits-section p {
+    color: var(--contact-muted);
+    line-height: 1.8;
+}
+
+.contact-dark-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 14px 23px;
+    background: #111;
+    color: white;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.benefit-card {
+    height: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 17px;
+    border: 1px solid var(--contact-border);
+}
+
+.benefit-card > i {
+    color: #b98200;
+    font-size: 1.8rem;
+}
+
+.benefit-card h4 {
+    margin: 18px 0 8px;
+    font-weight: 800;
+}
+
+.benefit-card p {
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.location-card {
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+}
+
+.location-info {
+    padding: 55px;
+    background: #171717;
+    color: white;
+}
+
+.location-info p {
+    color: #c8c8c8;
+    line-height: 1.8;
+    margin: 20px 0 35px;
+}
+
+.location-detail {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.location-detail > i {
+    color: var(--contact-gold);
+    font-size: 1.2rem;
+}
+
+.location-detail strong,
+.location-detail span {
+    display: block;
+}
+
+.location-detail span {
+    color: #bbb;
+    margin-top: 5px;
+    line-height: 1.6;
+}
+
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 20px;
+    background: var(--contact-gold);
+    color: #111;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: 800;
+}
+
+.map-wrapper {
+    height: 100%;
+    min-height: 500px;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+}
+
+
+/* =========================================================
+   EXPLORE LINKS
+========================================================= */
+
+.contact-links-section {
+    padding: 100px 0;
+    background: var(--contact-light);
+}
+
+.explore-card {
+    display: block;
+    height: 100%;
+    padding: 30px;
+    background: white;
+    border: 1px solid var(--contact-border);
+    border-radius: 17px;
+    text-decoration: none;
+    color: #111;
+    transition: 0.25s ease;
+}
+
+.explore-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--contact-gold);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.explore-card > i {
+    color: #b98200;
+    font-size: 1.8rem;
+}
+
+.explore-card h4 {
+    margin: 18px 0 8px;
+    font-weight: 800;
+}
+
+.explore-card p {
+    color: #777;
+    line-height: 1.6;
+    min-height: 50px;
+}
+
+.explore-card span {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.88rem;
+    font-weight: 800;
+}
+
+.explore-card span i {
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.contact-final-cta {
+    padding: 80px 0;
+    background: #111;
+    color: white;
+}
+
+.final-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.final-cta-inner > div:first-child {
+    max-width: 720px;
+}
+
+.final-cta-inner span {
+    color: var(--contact-gold);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.final-cta-inner h2 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 800;
+    margin: 12px 0;
+}
+
+.final-cta-inner p {
+    color: #c2c2c2;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.final-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.final-shop-btn,
+.final-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 15px 22px;
+    border-radius: 9px;
+    text-decoration: none;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.final-shop-btn {
+    background: var(--contact-gold);
+    color: #111;
+}
+
+.final-call-btn {
+    border: 1px solid #555;
+    color: white;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .contact-hero {
+        padding: 75px 0;
+    }
+
+    .contact-hero-card {
+        margin-top: 10px;
+    }
+
+    .contact-form-card {
+        padding: 30px;
+    }
+
+    .contact-details {
+        padding: 10px 0;
+    }
+
+    .final-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .contact-hero {
+        padding: 60px 0;
+    }
+
+    .contact-hero h1 {
+        font-size: 2.65rem;
+    }
+
+    .contact-hero-actions {
+        flex-direction: column;
+    }
+
+    .contact-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-hero-trust {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-hero-card {
+        padding: 28px;
+    }
+
+    .contact-main-section,
+    .founders-section,
+    .contact-benefits-section,
+    .location-section,
+    .contact-links-section {
+        padding: 65px 0;
+    }
+
+    .contact-form-card {
+        padding: 24px;
+        border-radius: 17px;
+    }
+
+    .founder-image-wrapper {
+        height: 390px;
+    }
+
+    .location-info {
+        padding: 35px 25px;
+    }
+
+    .map-wrapper,
+    .map-wrapper iframe {
+        min-height: 380px;
+    }
+
+    .final-cta-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .final-shop-btn,
+    .final-call-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

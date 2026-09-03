@@ -1,0 +1,660 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Reviews | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     REVIEWS HERO
+========================================================= -->
+
+<section class="reviews-hero py-5">
+
+    <div class="container py-5">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    What Our
+                    <span class="text-warning">Customers Say</span>
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    Every piece of furniture we create is part of someone's
+                    home, office or business. Here's what some of our customers
+                    have to say about their experience with Eagle Furniture Ngara.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-dark btn-lg px-4">
+                        <i class="bi bi-shop me-2"></i>
+                        Shop Furniture
+                    </a>
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-outline-dark btn-lg px-4">
+                        <i class="bi bi-chat-dots me-2"></i>
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5 mt-5 mt-lg-0">
+
+                <div class="review-rating-box">
+
+                    <div class="display-4 fw-bold">
+                        4.9
+                    </div>
+
+                    <div class="review-stars mb-2">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="mb-1 fw-semibold">
+                        Excellent Customer Experience
+                    </p>
+
+                    <small class="text-muted">
+                        Trusted by furniture buyers across Kenya
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TRUST STATISTICS
+========================================================= -->
+
+<section class="py-5 bg-white">
+
+    <div class="container">
+
+        <div class="row g-4 text-center">
+
+            <div class="col-lg-3 col-6">
+
+                <div class="review-stat-card">
+
+                    <i class="bi bi-people-fill"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        500+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Happy Customers
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-6">
+
+                <div class="review-stat-card">
+
+                    <i class="bi bi-star-fill"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        4.9/5
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Customer Rating
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-6">
+
+                <div class="review-stat-card">
+
+                    <i class="bi bi-house-check-fill"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        300+
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Projects Completed
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-6">
+
+                <div class="review-stat-card">
+
+                    <i class="bi bi-patch-check-fill"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        2 Years
+                    </h2>
+
+                    <p class="text-muted mb-0">
+                        Warranty
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOMER REVIEWS
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                Customer Experiences
+            </span>
+
+            <h2 class="display-6 fw-bold">
+                Hear From Our Customers
+            </h2>
+
+            <p class="text-muted lead">
+                Real experiences from people who chose Eagle Furniture
+                for their homes and spaces.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- REVIEW 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "The sofa set I ordered was exactly what I wanted.
+                        The finishing was beautiful and the team was very
+                        helpful throughout the process. I would definitely
+                        recommend Eagle Furniture."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            JM
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                James M.
+                            </h6>
+
+                            <small class="text-muted">
+                                Nairobi
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "I bought a complete dining set and I was impressed
+                        by the quality. The chairs are comfortable and the
+                        table looks amazing in my home. Delivery was also
+                        handled professionally."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            AN
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                Ann N.
+                            </h6>
+
+                            <small class="text-muted">
+                                Nairobi
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "I needed a custom wardrobe for my bedroom and the
+                        result was better than I expected. They listened to
+                        what I wanted and delivered a beautiful piece."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            DK
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                David K.
+                            </h6>
+
+                            <small class="text-muted">
+                                Kiambu
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW 4 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "The bed is solid, comfortable and beautifully
+                        finished. Communication was excellent and everything
+                        arrived safely. Great value for money."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            SW
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                Sarah W.
+                            </h6>
+
+                            <small class="text-muted">
+                                Nairobi
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW 5 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "We furnished several rooms for our Airbnb property
+                        through Eagle Furniture. The team helped us choose
+                        furniture that looked great while staying within
+                        our budget."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            PM
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                Peter M.
+                            </h6>
+
+                            <small class="text-muted">
+                                Nairobi
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW 6 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="review-card h-100">
+
+                    <div class="review-stars mb-3">
+
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+
+                    </div>
+
+                    <p class="review-text">
+                        "Beautiful furniture and excellent service. I
+                        especially loved that they allowed me to customize
+                        the colour and fabric of my sofa. The final result
+                        was exactly what I imagined."
+                    </p>
+
+                    <div class="review-author">
+
+                        <div class="review-avatar">
+                            MN
+                        </div>
+
+                        <div>
+                            <h6 class="fw-bold mb-0">
+                                Mary N.
+                            </h6>
+
+                            <small class="text-muted">
+                                Nairobi
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY CUSTOMERS CHOOSE US
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                Why Customers Come Back
+            </span>
+
+            <h2 class="display-6 fw-bold">
+                More Than Just Furniture
+            </h2>
+
+            <p class="lead text-muted">
+                We focus on quality, service and creating furniture
+                that our customers can enjoy for years.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="review-benefit text-center">
+
+                    <div class="benefit-icon">
+                        <i class="bi bi-hammer"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Quality Craftsmanship
+                    </h5>
+
+                    <p class="text-muted">
+                        Carefully crafted furniture with attention
+                        to detail and finishing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="review-benefit text-center">
+
+                    <div class="benefit-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Custom Designs
+                    </h5>
+
+                    <p class="text-muted">
+                        Choose your preferred size, colour, fabric
+                        and design.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="review-benefit text-center">
+
+                    <div class="benefit-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Reliable Delivery
+                    </h5>
+
+                    <p class="text-muted">
+                        We help ensure your furniture gets to you
+                        safely and professionally.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="review-benefit text-center">
+
+                    <div class="benefit-icon">
+                        <i class="bi bi-heart"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Customer Care
+                    </h5>
+
+                    <p class="text-muted">
+                        We're here to help before, during and
+                        after your purchase.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CALL TO ACTION
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="review-cta text-center p-5">
+
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                Your Home Deserves Better
+            </span>
+
+            <h2 class="display-6 fw-bold mb-3">
+                Ready to Find Your Perfect Furniture?
+            </h2>
+
+            <p class="lead text-muted mb-4">
+                Join hundreds of customers who have trusted
+                Eagle Furniture Ngara to transform their spaces.
+            </p>
+
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-dark btn-lg px-5">
+                    <i class="bi bi-shop me-2"></i>
+                    Browse Furniture
+                </a>
+
+                <a href="{{ url_for('main.contact') }}"
+                   class="btn btn-outline-dark btn-lg px-5">
+                    <i class="bi bi-chat-dots me-2"></i>
+                    Request a Quote
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

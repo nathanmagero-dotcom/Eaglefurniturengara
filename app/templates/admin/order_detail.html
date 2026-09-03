@@ -1,0 +1,430 @@
+{% extends "admin/layout.html" %}
+
+{% block title %}
+Order {{ order.order_number }} | Eagle Furniture
+{% endblock %}
+
+{% block content %}
+
+<div class="order-header">
+
+<div>
+    <h1>Order Details</h1>
+
+    <p class="order-number">
+        {{ order.order_number }}
+    </p>
+</div>
+
+<div class="order-actions">
+
+    {% set whatsapp_phone = order.customer_phone
+        |replace("+", "")
+        |replace(" ", "")
+        |replace("-", "") %}
+
+    <a
+        href="https://wa.me/{{ whatsapp_phone }}?text=Hello%20{{ order.customer_name|replace(' ', '%20') }},%20this%20is%20Eagle%20Furniture%20Ngara%20regarding%20your%20order%20{{ order.order_number }}."
+        target="_blank"
+        class="btn whatsapp"
+    >
+        WhatsApp Customer
+    </a>
+
+    <a
+        href="{{ url_for('main.admin_orders') }}"
+        class="btn btn-secondary"
+    >
+        ← Back to Orders
+    </a>
+
+</div>
+
+</div>
+
+<!-- STATUS SUMMARY -->
+
+<div class="status-grid">
+
+<div class="status-card">
+
+    <span class="status-label">
+        Order Status
+    </span>
+
+    <span class="status-badge
+        {% if order.order_status == 'Pending' %}
+            status-pending
+        {% elif order.order_status == 'Confirmed' %}
+            status-confirmed
+        {% elif order.order_status == 'Processing' %}
+            status-processing
+        {% elif order.order_status == 'Ready for Delivery' %}
+            status-ready
+        {% elif order.order_status == 'Delivered' %}
+            status-delivered
+        {% elif order.order_status == 'Cancelled' %}
+            status-cancelled
+        {% endif %}
+    ">
+        {{ order.order_status }}
+    </span>
+
+</div>
+
+
+<div class="status-card">
+
+    <span class="status-label">
+        Payment
+    </span>
+
+    <span class="status-badge
+        {% if order.payment_status == 'Paid' %}
+            status-paid
+        {% elif order.payment_status == 'Failed' %}
+            status-cancelled
+        {% elif order.payment_status == 'Refunded' %}
+            status-refunded
+        {% else %}
+            status-pending
+        {% endif %}
+    ">
+        {{ order.payment_status }}
+    </span>
+
+</div>
+
+
+<div class="status-card">
+
+    <span class="status-label">
+        Payment Method
+    </span>
+
+    <strong>
+        {{ order.payment_method }}
+    </strong>
+
+</div>
+
+</div>
+
+<!-- CUSTOMER -->
+
+<div class="admin-grid">
+
+<div class="admin-card">
+
+    <h2>Customer Information</h2>
+
+    <div class="info-row">
+        <span>Name</span>
+        <strong>{{ order.customer_name }}</strong>
+    </div>
+
+    <div class="info-row">
+        <span>Phone</span>
+        <strong>{{ order.customer_phone }}</strong>
+    </div>
+    <p>
+    <a
+        class="whatsapp-btn"
+        href="https://wa.me/{{ order.customer_phone|replace('+', '') }}"
+        target="_blank"
+    >
+        💬 WhatsApp Customer
+    </a>
+</p>
+
+    {% if order.customer_email %}
+
+    <div class="info-row">
+        <span>Email</span>
+        <strong>{{ order.customer_email }}</strong>
+    </div>
+
+    {% endif %}
+
+</div>
+
+
+<!-- DELIVERY -->
+
+<div class="admin-card">
+
+    <h2>Delivery Information</h2>
+
+    <div class="info-row">
+        <span>County</span>
+        <strong>{{ order.county }}</strong>
+    </div>
+
+    <div class="info-row">
+        <span>Town</span>
+        <strong>{{ order.town }}</strong>
+    </div>
+
+    <div class="info-row">
+        <span>Address</span>
+        <strong>{{ order.delivery_address }}</strong>
+    </div>
+
+</div>
+
+</div>
+
+<!-- UPDATE ORDER -->
+
+<div class="admin-card update-card">
+
+<h2>Update Order</h2>
+
+<form
+    method="POST"
+    action="{{ url_for(
+        'main.admin_order_update',
+        order_id=order.id
+    ) }}"
+    class="order-update-form"
+>
+
+    <div>
+
+        <label for="payment_status">
+            Payment Status
+        </label>
+
+        <select
+            id="payment_status"
+            name="payment_status"
+        >
+
+            {% for status in [
+                "Pending",
+                "Paid",
+                "Failed",
+                "Refunded"
+            ] %}
+
+            <option
+                value="{{ status }}"
+                {% if order.payment_status == status %}
+                    selected
+                {% endif %}
+            >
+                {{ status }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+
+    <div>
+
+        <label for="order_status">
+            Order Status
+        </label>
+
+        <select
+            id="order_status"
+            name="order_status"
+        >
+
+            {% for status in [
+                "Pending",
+                "Confirmed",
+                "Processing",
+                "Ready for Delivery",
+                "Delivered",
+                "Cancelled"
+            ] %}
+
+            <option
+                value="{{ status }}"
+                {% if order.order_status == status %}
+                    selected
+                {% endif %}
+            >
+                {{ status }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+
+    <div class="update-button">
+
+        <button type="submit" class="btn btn-primary">
+            Update Order
+        </button>
+
+    </div>
+
+</form>
+
+</div>
+
+<!-- ORDER ITEMS -->
+
+<div class="admin-card">
+
+<h2>Order Items</h2>
+
+<div class="table-wrapper">
+
+    <table class="admin-table">
+
+        <thead>
+
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Subtotal</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for item in order.items %}
+
+            <tr>
+
+                <td>
+                    <strong>
+                        {{ item.product_name }}
+                    </strong>
+                </td>
+
+                <td>
+                    {{ item.quantity }}
+                </td>
+
+                <td>
+                    KSh {{ "{:,.0f}".format(item.unit_price) }}
+                </td>
+
+                <td>
+                    <strong>
+                        KSh {{ "{:,.0f}".format(item.subtotal) }}
+                    </strong>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</div>
+
+<!-- ORDER SUMMARY -->
+
+<div class="admin-card order-summary">
+
+<h2>Order Summary</h2>
+
+<div class="summary-row">
+    <span>Subtotal</span>
+    <strong>
+        KSh {{ "{:,.0f}".format(order.subtotal) }}
+    </strong>
+</div>
+
+<div class="summary-row">
+    <span>Delivery Fee</span>
+    <strong>
+        KSh {{ "{:,.0f}".format(order.delivery_fee) }}
+    </strong>
+</div>
+
+<div class="summary-total">
+    <span>Total</span>
+
+    <strong>
+        KSh {{ "{:,.0f}".format(order.total) }}
+    </strong>
+</div>
+
+</div>
+
+<!-- CUSTOMER NOTES -->
+
+{% if order.notes %}
+
+<div class="admin-card notes-card">
+
+<h2>Customer Notes</h2>
+
+<p>
+    {{ order.notes }}
+</p>
+
+</div>
+
+{% endif %}
+
+<!-- QUICK WHATSAPP ACTIONS -->
+
+<div class="admin-card">
+
+<h2>Customer Communication</h2>
+
+<p class="communication-help">
+    Quickly contact the customer about this order.
+</p>
+
+<div class="whatsapp-actions">
+
+    <a
+        href="https://wa.me/{{ whatsapp_phone }}?text=Hello%20{{ order.customer_name|replace(' ', '%20') }},%20we%20have%20received%20your%20Eagle%20Furniture%20Ngara%20order%20{{ order.order_number }}.%20We%20are%20reviewing%20it%20and%20will%20confirm%20shortly."
+        target="_blank"
+        class="btn whatsapp"
+    >
+        Confirm Order
+    </a>
+
+
+    <a
+        href="https://wa.me/{{ whatsapp_phone }}?text=Hello%20{{ order.customer_name|replace(' ', '%20') }},%20your%20Eagle%20Furniture%20Ngara%20order%20{{ order.order_number }}%20is%20being%20prepared."
+        target="_blank"
+        class="btn whatsapp"
+    >
+        Processing
+    </a>
+
+
+    <a
+        href="https://wa.me/{{ whatsapp_phone }}?text=Hello%20{{ order.customer_name|replace(' ', '%20') }},%20your%20Eagle%20Furniture%20Ngara%20order%20{{ order.order_number }}%20is%20ready%20for%20delivery."
+        target="_blank"
+        class="btn whatsapp"
+    >
+        Ready for Delivery
+    </a>
+
+
+    <a
+        href="https://wa.me/{{ whatsapp_phone }}?text=Hello%20{{ order.customer_name|replace(' ', '%20') }},%20your%20Eagle%20Furniture%20Ngara%20order%20{{ order.order_number }}%20has%20been%20delivered.%20Thank%20you%20for%20shopping%20with%20us!"
+        target="_blank"
+        class="btn whatsapp"
+    >
+        Delivered
+    </a>
+
+</div>
+
+</div>
+
+{% endblock %}

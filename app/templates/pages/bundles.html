@@ -1,0 +1,676 @@
+{% extends "base.html" %}
+
+{% block title %}Furniture Packages | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     BUNDLES HERO
+========================================================= -->
+
+<section class="py-5 text-white"
+         style="background: linear-gradient(135deg, #171717, #343434);">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    Complete Furniture
+                    <span class="text-warning">Packages</span>
+                </h1>
+
+                <p class="lead text-light mb-4">
+                    Furnish your home beautifully with carefully selected
+                    furniture packages designed to give you more value,
+                    convenience and style.
+                </p>
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-warning btn-lg px-4 fw-bold">
+
+                    <i class="bi bi-shop me-2"></i>
+                    Shop Individual Products
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+
+                <i class="bi bi-house-heart display-1 text-warning"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mx-auto"
+             style="max-width: 800px;">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Best Value
+            </span>
+
+            <h2 class="fw-bold mb-3">
+                Everything You Need, In One Package
+            </h2>
+
+            <p class="text-muted mb-0">
+                Save time and money by choosing one of our furniture
+                packages. Whether you're furnishing a new home, Airbnb,
+                office or rental property, we have packages designed
+                around your needs.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PACKAGES
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        {% if bundles %}
+
+        <div class="row g-4">
+
+            {% for bundle in bundles %}
+
+            <div class="col-xl-4 col-lg-6">
+
+                <div class="card border-0 shadow-sm h-100 overflow-hidden">
+
+                    <!-- IMAGE -->
+
+                    <div class="position-relative">
+
+                        {% if bundle.image %}
+
+                        <img
+                            src="{{ url_for('static', filename=bundle.image) }}"
+                            class="card-img-top"
+                            alt="{{ bundle.name }}"
+                            style="height: 260px; object-fit: cover;"
+                        >
+
+                        {% else %}
+
+                        <div class="d-flex align-items-center justify-content-center bg-light"
+                             style="height: 260px;">
+
+                            <i class="bi bi-house-door display-1 text-secondary"></i>
+
+                        </div>
+
+                        {% endif %}
+
+
+                        <!-- FEATURED -->
+
+                        {% if bundle.featured %}
+
+                        <span class="badge bg-danger position-absolute top-0 start-0 m-3">
+                            Featured
+                        </span>
+
+                        {% endif %}
+
+
+                        <!-- POPULAR -->
+
+                        {% if bundle.popular %}
+
+                        <span class="badge bg-success position-absolute top-0 end-0 m-3">
+                            Most Popular
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- BODY -->
+
+                    <div class="card-body p-4 d-flex flex-column">
+
+                        <h3 class="fw-bold mb-2">
+                            {{ bundle.name }}
+                        </h3>
+
+
+                        {% if bundle.description %}
+
+                        <p class="text-muted">
+                            {{ bundle.description }}
+                        </p>
+
+                        {% endif %}
+
+
+                        <!-- PRICE -->
+
+                        <div class="my-3">
+
+                            {% if bundle.price %}
+
+                            <span class="text-muted text-decoration-line-through">
+
+                                KSh {{ "{:,.0f}".format(bundle.price) }}
+
+                            </span>
+
+                            {% endif %}
+
+
+                            {% if bundle.sale_price %}
+
+                            <h3 class="fw-bold text-primary mb-1">
+
+                                KSh {{ "{:,.0f}".format(bundle.sale_price) }}
+
+                            </h3>
+
+                            {% endif %}
+
+
+                            {% if bundle.save %}
+
+                            <span class="badge bg-warning text-dark">
+
+                                Save KSh {{ "{:,.0f}".format(bundle.save) }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <hr>
+
+
+                        <!-- PACKAGE CONTENT -->
+
+                        <h6 class="fw-bold mb-3">
+
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+
+                            Package Includes
+
+                        </h6>
+
+
+                        {% if bundle.items %}
+
+                        <ul class="list-unstyled mb-4">
+
+                            {% for item in bundle["items"] %}
+
+                            <li class="mb-2">
+
+                                <i class="bi bi-check2 text-success me-2"></i>
+
+                                {{ item }}
+
+                            </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+                        {% endif %}
+
+
+                        <!-- PACKAGE STATS -->
+
+                        <div class="row text-center border-top border-bottom py-3 mb-4">
+
+                            <div class="col-4">
+
+                                <div class="fw-bold">
+
+                                    {{ bundle.rooms|default(1) }}
+
+                                </div>
+
+                                <small class="text-muted">
+                                    Rooms
+                                </small>
+
+                            </div>
+
+
+                            <div class="col-4 border-start border-end">
+
+                                <div class="fw-bold">
+
+                                    {{ bundle.pieces|default('-') }}
+
+                                </div>
+
+                                <small class="text-muted">
+                                    Pieces
+                                </small>
+
+                            </div>
+
+
+                            <div class="col-4">
+
+                                <div class="fw-bold">
+
+                                    2 Yrs
+
+                                </div>
+
+                                <small class="text-muted">
+                                    Warranty
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- BUTTONS -->
+
+                        <div class="mt-auto d-grid gap-2">
+
+                            <a href="{{ url_for('main.bundle', bundle_id=bundle.id) }}"
+                               class="btn btn-dark btn-lg">
+
+                                <i class="bi bi-eye me-2"></i>
+
+                                View Package
+
+                            </a>
+
+
+                            <a href="{{ url_for('main.quote') }}"
+                               class="btn btn-outline-warning">
+
+                                <i class="bi bi-chat-dots me-2"></i>
+
+                                Customize Package
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+
+        <!-- =================================================
+             NO PACKAGES
+        ================================================= -->
+
+        <div class="text-center py-5">
+
+            <i class="bi bi-box-seam display-1 text-muted"></i>
+
+            <h3 class="fw-bold mt-4">
+                Packages Coming Soon
+            </h3>
+
+            <p class="text-muted">
+                We're currently preparing exciting furniture
+                packages for you.
+            </p>
+
+            <a href="{{ url_for('main.shop') }}"
+               class="btn btn-dark">
+
+                Browse Our Furniture
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY PACKAGES
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Why Choose a Package?
+            </span>
+
+            <h2 class="fw-bold">
+                More Furniture. More Value.
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- VALUE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-piggy-bank display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Better Value
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Enjoy package savings compared with purchasing
+                        individual furniture pieces separately.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MATCHING -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-palette display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Matching Designs
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Get furniture pieces selected to complement
+                        each other beautifully.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONVENIENCE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-lightning-charge display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Convenient
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Furnish multiple rooms without spending hours
+                        selecting individual items.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- CUSTOM -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-tools display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Customizable
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Need different colours, sizes or fabrics?
+                        We can customize your package.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PACKAGE TYPES
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-dark mb-3">
+                    Furniture Solutions
+                </span>
+
+                <h2 class="display-6 fw-bold mb-3">
+                    Packages For Every Space
+                </h2>
+
+                <p class="text-muted lead">
+                    Whether you're moving into your first home,
+                    furnishing an Airbnb or setting up a professional
+                    office, Eagle Furniture Ngara can help you create
+                    a complete and beautiful space.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="row g-3">
+
+                    <div class="col-6">
+
+                        <div class="p-4 bg-light rounded shadow-sm text-center">
+
+                            <i class="bi bi-house-heart display-5 text-warning"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Home Packages
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6">
+
+                        <div class="p-4 bg-light rounded shadow-sm text-center">
+
+                            <i class="bi bi-building display-5 text-warning"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Office Packages
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6">
+
+                        <div class="p-4 bg-light rounded shadow-sm text-center">
+
+                            <i class="bi bi-key display-5 text-warning"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Airbnb Packages
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-6">
+
+                        <div class="p-4 bg-light rounded shadow-sm text-center">
+
+                            <i class="bi bi-door-open display-5 text-warning"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Rental Packages
+                            </h6>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOM PACKAGE CTA
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="rounded-4 bg-warning p-5 text-center shadow">
+
+            <i class="bi bi-stars display-4 mb-3"></i>
+
+            <h2 class="display-6 fw-bold">
+                Need a Custom Furniture Package?
+            </h2>
+
+            <p class="lead mb-4">
+
+                Tell us what you're furnishing and your budget.
+                Our team can help you create a package that fits
+                your space, style and needs.
+
+            </p>
+
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+
+                <a href="{{ url_for('main.quote') }}"
+                   class="btn btn-dark btn-lg px-5">
+
+                    <i class="bi bi-send me-2"></i>
+
+                    Request a Quote
+
+                </a>
+
+
+                <a href="{{ url_for('main.contact') }}"
+                   class="btn btn-outline-dark btn-lg px-5">
+
+                    <i class="bi bi-telephone me-2"></i>
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL SHOP CTA
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+
+    <div class="container text-center">
+
+        <h2 class="fw-bold mb-3">
+            Prefer to Choose Your Furniture Individually?
+        </h2>
+
+        <p class="text-white-50 mb-4">
+            Browse our complete furniture collection and find
+            exactly what you need.
+        </p>
+
+        <a href="{{ url_for('main.shop') }}"
+           class="btn btn-warning btn-lg px-5 fw-bold">
+
+            <i class="bi bi-shop me-2"></i>
+
+            Browse Furniture
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

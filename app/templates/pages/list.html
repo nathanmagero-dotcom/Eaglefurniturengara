@@ -1,0 +1,825 @@
+{% extends "base.html" %}
+
+{% block title %}
+Furniture Packages | Eagle Furniture Ngara
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/bundles.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     PACKAGE PAGE
+========================================================= -->
+
+<div class="bundles-page">
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="bundles-hero">
+
+        <div class="bundles-hero-overlay"></div>
+
+        <div class="container position-relative">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-7">
+
+                    <span class="bundles-eyebrow">
+                        EAGLE FURNITURE NGARA
+                    </span>
+
+                    <h1>
+                        Complete Furniture
+                        <span>Packages.</span>
+                    </h1>
+
+                    <p>
+                        Furnish your home, apartment, Airbnb or office
+                        with beautifully coordinated furniture packages
+                        designed to save you time, money and effort.
+                    </p>
+
+                    <div class="bundles-hero-buttons">
+
+                        <a href="#packages"
+                           class="bundles-primary-button">
+
+                            Explore Packages
+
+                            <i class="bi bi-arrow-down"></i>
+
+                        </a>
+
+                        <a href="{{ url_for('main.contact') }}"
+                           class="bundles-secondary-button">
+
+                            Request A Quote
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 d-none d-lg-block">
+
+                    <div class="bundles-hero-image">
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='images/hero/bundles-hero.png'
+                            ) }}"
+                            alt="Complete furniture package by Eagle Furniture Ngara"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         INTRODUCTION
+    ====================================================== -->
+
+    <section class="bundles-intro">
+
+        <div class="container">
+
+            <div class="bundles-section-heading">
+
+                <span class="bundles-label">
+                    FURNISH SMARTER
+                </span>
+
+                <h2>
+                    Everything You Need,
+                    Beautifully Coordinated.
+                </h2>
+
+                <p>
+                    Our furniture packages make furnishing simple.
+                    Instead of choosing every piece separately,
+                    select a professionally coordinated package
+                    designed around the way you live.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="bundle-benefit-card">
+
+                        <div class="bundle-benefit-icon">
+                            <i class="bi bi-piggy-bank"></i>
+                        </div>
+
+                        <h3>
+                            Save More
+                        </h3>
+
+                        <p>
+                            Package pricing gives you better value
+                            than purchasing selected furniture pieces
+                            individually.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="bundle-benefit-card">
+
+                        <div class="bundle-benefit-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+
+                        <h3>
+                            Coordinated Design
+                        </h3>
+
+                        <p>
+                            Furniture pieces are selected to work
+                            beautifully together and create a
+                            consistent look.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="bundle-benefit-card">
+
+                        <div class="bundle-benefit-icon">
+                            <i class="bi bi-lightning-charge"></i>
+                        </div>
+
+                        <h3>
+                            Furnish Faster
+                        </h3>
+
+                        <p>
+                            Choose a complete package and avoid the
+                            stress of searching for every piece
+                            separately.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PACKAGE COLLECTION
+    ====================================================== -->
+
+    <section class="bundles-collection"
+             id="packages">
+
+        <div class="container">
+
+            <div class="bundles-section-heading">
+
+                <span class="bundles-label">
+                    OUR PACKAGES
+                </span>
+
+                <h2>
+                    Choose Your Perfect Package
+                </h2>
+
+                <p>
+                    From single-room solutions to complete home
+                    furnishing, find a package that fits your
+                    needs and budget.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                {% for bundle in bundles %}
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="bundle-card">
+
+                        <!-- IMAGE -->
+
+                        <div class="bundle-card-image">
+
+                            <img
+                                src="{{ url_for(
+                                    'static',
+                                    filename=bundle.image
+                                ) }}"
+                                alt="{{ bundle.name }}"
+                                loading="lazy"
+                            >
+
+
+                            <!-- BADGES -->
+
+                            <div class="bundle-card-badges">
+
+                                {% if bundle.featured %}
+
+                                <span class="bundle-featured">
+                                    Featured
+                                </span>
+
+                                {% endif %}
+
+
+                                {% if bundle.popular %}
+
+                                <span class="bundle-popular">
+                                    Most Popular
+                                </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- IMAGE OVERLAY -->
+
+                            <div class="bundle-image-overlay">
+
+                                <a
+                                    href="{{ url_for(
+                                        'main.bundle',
+                                        bundle_id=bundle.id
+                                    ) }}"
+                                    aria-label="View {{ bundle.name }}"
+                                >
+
+                                    <i class="bi bi-arrow-up-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CONTENT -->
+
+                        <div class="bundle-card-content">
+
+                            <span class="bundle-card-label">
+                                FURNITURE PACKAGE
+                            </span>
+
+
+                            <h3>
+                                {{ bundle.name }}
+                            </h3>
+
+
+                            <p class="bundle-description">
+                                {{ bundle.description }}
+                            </p>
+
+
+                            <!-- PRICE -->
+
+                            <div class="bundle-price">
+
+                                <div>
+
+                                    {% if bundle.price %}
+
+                                    <del>
+                                        KSh
+                                        {{ "{:,.0f}".format(
+                                            bundle.price
+                                        ) }}
+                                    </del>
+
+                                    {% endif %}
+
+
+                                    <strong>
+                                        KSh
+                                        {{ "{:,.0f}".format(
+                                            bundle.sale_price
+                                        ) }}
+                                    </strong>
+
+                                </div>
+
+
+                                {% if bundle.save %}
+
+                                <span class="bundle-saving">
+
+                                    Save KSh
+                                    {{ "{:,.0f}".format(
+                                        bundle.save
+                                    ) }}
+
+                                </span>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <!-- PACKAGE STATS -->
+
+                            <div class="bundle-stats">
+
+                                <div>
+
+                                    <strong>
+                                        {{ bundle["rooms"] }}
+                                    </strong>
+
+                                    <span>
+                                        Rooms
+                                    </span>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        {{ bundle["pieces"] }}
+                                    </strong>
+
+                                    <span>
+                                        Pieces
+                                    </span>
+
+                                </div>
+
+
+                                <div>
+
+                                    <strong>
+                                        2 Yr
+                                    </strong>
+
+                                    <span>
+                                        Warranty
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- INCLUDED ITEMS -->
+
+                            {% if bundle["items"] %}
+
+                            <div class="bundle-includes">
+
+                                <h4>
+                                    Package Includes
+                                </h4>
+
+                                <ul>
+
+                                    {% for item in bundle["items"][:5] %}
+
+                                    <li>
+
+                                        <i class="bi bi-check-circle-fill"></i>
+
+                                        {{ item }}
+
+                                    </li>
+
+                                    {% endfor %}
+
+                                </ul>
+
+                                {% if bundle["items"]|length > 5 %}
+
+                                <span class="bundle-more-items">
+                                    + {{ bundle["items"]|length - 5 }}
+                                    more items
+                                </span>
+
+                                {% endif %}
+
+                            </div>
+
+                            {% endif %}
+
+
+                            <!-- ACTIONS -->
+
+                            <div class="bundle-card-actions">
+
+                                <a
+                                    href="{{ url_for(
+                                        'main.bundle',
+                                        bundle_id=bundle.id
+                                    ) }}"
+                                    class="bundle-view-button"
+                                >
+
+                                    View Package
+
+                                    <i class="bi bi-arrow-right"></i>
+
+                                </a>
+
+
+                                <a
+                                    href="{{ url_for(
+                                        'main.contact'
+                                    ) }}"
+                                    class="bundle-customize-button"
+                                >
+
+                                    Customize
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                {% else %}
+
+                <!-- EMPTY STATE -->
+
+                <div class="col-12">
+
+                    <div class="bundles-empty">
+
+                        <i class="bi bi-house-heart"></i>
+
+                        <h3>
+                            Furniture Packages Coming Soon
+                        </h3>
+
+                        <p>
+                            We're preparing beautiful furniture
+                            packages for your home.
+                        </p>
+
+                        <a
+                            href="{{ url_for('main.shop') }}"
+                            class="bundle-view-button"
+                        >
+
+                            Browse Furniture
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         HOW IT WORKS
+    ====================================================== -->
+
+    <section class="bundles-process">
+
+        <div class="container">
+
+            <div class="bundles-section-heading">
+
+                <span class="bundles-label">
+                    SIMPLE PROCESS
+                </span>
+
+                <h2>
+                    Furnishing Your Space Is Easy
+                </h2>
+
+                <p>
+                    Choose your package and let us help you
+                    create a beautiful, comfortable space.
+                </p>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+
+                    <div class="bundle-process-step">
+
+                        <span class="bundle-step-number">
+                            01
+                        </span>
+
+                        <div class="bundle-process-icon">
+                            <i class="bi bi-grid"></i>
+                        </div>
+
+                        <h3>
+                            Choose A Package
+                        </h3>
+
+                        <p>
+                            Browse our furniture packages and
+                            choose the one that best matches
+                            your space and budget.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="bundle-process-step">
+
+                        <span class="bundle-step-number">
+                            02
+                        </span>
+
+                        <div class="bundle-process-icon">
+                            <i class="bi bi-chat-square-text"></i>
+                        </div>
+
+                        <h3>
+                            Talk To Our Team
+                        </h3>
+
+                        <p>
+                            Tell us about your space and let our
+                            team help you customize your package
+                            where necessary.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="bundle-process-step">
+
+                        <span class="bundle-step-number">
+                            03
+                        </span>
+
+                        <div class="bundle-process-icon">
+                            <i class="bi bi-house-check"></i>
+                        </div>
+
+                        <h3>
+                            Enjoy Your Space
+                        </h3>
+
+                        <p>
+                            We help coordinate your furniture and
+                            delivery so you can enjoy your newly
+                            furnished space.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PACKAGE ADVANTAGES
+    ====================================================== -->
+
+    <section class="bundles-advantages">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+
+                    <div class="bundles-advantage-image">
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='images/hero/furniture-package.jpg'
+                            ) }}"
+                            alt="Beautifully furnished home"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <span class="bundles-label">
+                        WHY CHOOSE A PACKAGE?
+                    </span>
+
+                    <h2>
+                        One Decision.
+                        A Complete Space.
+                    </h2>
+
+                    <p class="bundles-advantage-intro">
+                        Furniture packages are ideal when you want
+                        to furnish a space beautifully without the
+                        stress of coordinating every item yourself.
+                    </p>
+
+
+                    <div class="bundle-advantage-list">
+
+                        <div>
+
+                            <i class="bi bi-check2"></i>
+
+                            <span>
+                                Coordinated furniture selections
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="bi bi-check2"></i>
+
+                            <span>
+                                Better value than individual purchases
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="bi bi-check2"></i>
+
+                            <span>
+                                Suitable for homes, apartments and Airbnb
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="bi bi-check2"></i>
+
+                            <span>
+                                Customization available
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="bi bi-check2"></i>
+
+                            <span>
+                                Professional furniture guidance
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="{{ url_for('main.contact') }}"
+                        class="bundles-dark-button"
+                    >
+
+                        Talk To Our Team
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="bundles-final-cta">
+
+        <div class="container">
+
+            <div class="bundles-final-content">
+
+                <span class="bundles-label">
+                    LET'S CREATE YOUR SPACE
+                </span>
+
+                <h2>
+                    Not Sure Which Package Is Right For You?
+                </h2>
+
+                <p>
+                    Tell us about your space, preferred style
+                    and budget. Our team will help you find or
+                    customize the right furniture package.
+                </p>
+
+
+                <div class="bundles-final-buttons">
+
+                    <a
+                        href="{{ url_for('main.contact') }}"
+                        class="bundles-light-button"
+                    >
+
+                        Request A Quote
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('main.shop') }}"
+                        class="bundles-outline-button"
+                    >
+
+                        Browse Furniture
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

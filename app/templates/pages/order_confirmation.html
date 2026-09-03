@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+
+{% block title %}
+Order Confirmed | Eagle Furniture Ngara
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/order-confirmation.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="confirmation-page">
+
+    <div class="container">
+
+        <div class="confirmation-card">
+
+            <!-- SUCCESS ICON -->
+
+            <div class="confirmation-icon">
+
+                <i class="bi bi-check-lg"></i>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <span class="confirmation-tag">
+                ORDER RECEIVED
+            </span>
+
+            <h1>
+                Thank You for Your Order!
+            </h1>
+
+            <p class="confirmation-message">
+
+                Your order has been successfully received.
+                Our team will contact you to confirm the order
+                and arrange delivery.
+
+            </p>
+
+
+            <!-- ORDER NUMBER -->
+
+            <div class="order-number-box">
+
+                <span>
+                    Your Order Number
+                </span>
+
+                <strong>
+                    {{ order.order_number }}
+                </strong>
+
+            </div>
+
+
+            <!-- CUSTOMER DETAILS -->
+
+            <div class="confirmation-details">
+
+                <div class="confirmation-detail">
+
+                    <i class="bi bi-person"></i>
+
+                    <div>
+
+                        <span>
+                            Customer
+                        </span>
+
+                        <strong>
+                            {{ order.customer_name }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="confirmation-detail">
+
+                    <i class="bi bi-telephone"></i>
+
+                    <div>
+
+                        <span>
+                            Phone
+                        </span>
+
+                        <strong>
+                            {{ order.customer_phone }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="confirmation-detail">
+
+                    <i class="bi bi-geo-alt"></i>
+
+                    <div>
+
+                        <span>
+                            Delivery Location
+                        </span>
+
+                        <strong>
+                            {{ order.town }},
+                            {{ order.county }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="confirmation-detail">
+
+                    <i class="bi bi-credit-card"></i>
+
+                    <div>
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <strong>
+                            {{ order.payment_method }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDER SUMMARY -->
+
+            <div class="confirmation-summary">
+
+                <div class="confirmation-summary-header">
+
+                    <h2>
+                        Order Summary
+                    </h2>
+
+                </div>
+
+
+                {% for item in order.items %}
+
+                <div class="confirmation-product">
+
+                    <div>
+
+                        <strong>
+                            {{ item.product_name }}
+                        </strong>
+
+                        <span>
+                            {{ item.quantity }} ×
+                            KSh {{ "{:,.0f}".format(item.unit_price) }}
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        KSh
+                        {{ "{:,.0f}".format(item.subtotal) }}
+                    </strong>
+
+                </div>
+
+                {% endfor %}
+
+
+                <div class="confirmation-total">
+
+                    <span>
+                        Order Total
+                    </span>
+
+                    <strong>
+                        KSh
+                        {{ "{:,.0f}".format(order.total) }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEXT STEPS -->
+
+            <div class="confirmation-next">
+
+                <h2>
+                    What Happens Next?
+                </h2>
+
+                <div class="next-steps">
+
+                    <div>
+
+                        <span>
+                            01
+                        </span>
+
+                        <p>
+                            Our team reviews your order.
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            02
+                        </span>
+
+                        <p>
+                            We contact you to confirm your order
+                            and delivery details.
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            03
+                        </span>
+
+                        <p>
+                            Your furniture is prepared and delivery
+                            is arranged.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="confirmation-actions">
+
+                <a
+                    href="{{ url_for('main.shop') }}"
+                    class="confirmation-primary">
+
+                    <i class="bi bi-shop me-2"></i>
+
+                    Continue Shopping
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('main.home') }}"
+                    class="confirmation-secondary">
+
+                    Back to Home
+
+                </a>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div class="confirmation-support">
+
+                <i class="bi bi-headset"></i>
+
+                <div>
+
+                    <strong>
+                        Need help with your order?
+                    </strong>
+
+                    <p>
+                        Contact Eagle Furniture Ngara and
+                        reference your order number
+                        <strong>{{ order.order_number }}</strong>.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,310 @@
+/*==================================================
+    Eagle Furniture Design System (EFDS)
+    File: forms.css
+    Purpose: Forms & Inputs
+==================================================*/
+
+
+/*=========================================
+    FORM
+=========================================*/
+
+.form{
+
+    width:100%;
+
+}
+
+
+/*=========================================
+    FORM GROUP
+=========================================*/
+
+.form-group{
+
+    margin-bottom:var(--space-xl);
+
+}
+
+
+/*=========================================
+    LABELS
+=========================================*/
+
+.form-label{
+
+    display:block;
+
+    margin-bottom:var(--space-sm);
+
+    font-size:var(--fs-small);
+
+    font-weight:var(--fw-semibold);
+
+    color:var(--color-text);
+
+}
+
+
+/*=========================================
+    INPUTS
+=========================================*/
+
+.form-control{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border:1px solid var(--color-border);
+
+    border-radius:var(--radius-md);
+
+    background:var(--color-surface);
+
+    font-size:var(--fs-body);
+
+    color:var(--color-text);
+
+    transition:var(--transition);
+
+}
+
+
+/*=========================================
+    PLACEHOLDER
+=========================================*/
+
+.form-control::placeholder{
+
+    color:var(--color-text-light);
+
+}
+
+
+/*=========================================
+    FOCUS
+=========================================*/
+
+.form-control:focus{
+
+    border-color:var(--color-primary);
+
+    box-shadow:0 0 0 4px rgba(91,58,41,.10);
+
+}
+
+
+/*=========================================
+    TEXTAREA
+=========================================*/
+
+textarea.form-control{
+
+    min-height:160px;
+
+    resize:vertical;
+
+}
+
+
+/*=========================================
+    SELECT
+=========================================*/
+
+select.form-control{
+
+    cursor:pointer;
+
+}
+
+
+/*=========================================
+    CHECKBOX
+=========================================*/
+
+.form-check{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.form-check input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+.form-check label{
+
+    cursor:pointer;
+
+}
+
+
+/*=========================================
+    RADIO
+=========================================*/
+
+.form-radio{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.form-radio input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+/*=========================================
+    INPUT GROUP
+=========================================*/
+
+.input-group{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid var(--color-border);
+
+    border-radius:var(--radius-md);
+
+    overflow:hidden;
+
+    background:var(--color-surface);
+
+}
+
+.input-group .form-control{
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+.input-group button{
+
+    padding:16px 22px;
+
+    background:var(--color-primary);
+
+    color:#fff;
+
+}
+
+
+/*=========================================
+    ERROR
+=========================================*/
+
+.form-error{
+
+    margin-top:8px;
+
+    color:var(--color-danger);
+
+    font-size:var(--fs-small);
+
+}
+
+
+/*=========================================
+    SUCCESS
+=========================================*/
+
+.form-success{
+
+    margin-top:8px;
+
+    color:var(--color-success);
+
+    font-size:var(--fs-small);
+
+}
+
+
+/*=========================================
+    REQUIRED
+=========================================*/
+
+.required{
+
+    color:var(--color-danger);
+
+}
+
+
+/*=========================================
+    SEARCH BAR
+=========================================*/
+
+.search-form{
+
+    display:flex;
+
+    gap:var(--space-md);
+
+}
+
+.search-form .form-control{
+
+    flex:1;
+
+}
+
+
+/*=========================================
+    NEWSLETTER
+=========================================*/
+
+.newsletter{
+
+    display:flex;
+
+    gap:var(--space-md);
+
+}
+
+.newsletter .form-control{
+
+    flex:1;
+
+}
+
+
+/*=========================================
+    RESPONSIVE
+=========================================*/
+
+@media (max-width:768px){
+
+    .newsletter{
+
+        flex-direction:column;
+
+    }
+
+    .search-form{
+
+        flex-direction:column;
+
+    }
+
+}

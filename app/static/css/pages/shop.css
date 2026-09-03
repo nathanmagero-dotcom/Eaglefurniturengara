@@ -1,0 +1,1032 @@
+css
+/* ==========================================================
+   EAGLE FURNITURE NGARA
+   SHOP PAGE
+   Premium Furniture E-Commerce Styling
+========================================================== */
+
+
+/* ==========================================================
+   SHOP HERO
+========================================================== */
+
+.shop-hero {
+    position: relative;
+    min-height: 620px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20, 17, 14, 0.96),
+            rgba(35, 29, 23, 0.86),
+            rgba(35, 29, 23, 0.55)
+        ),
+        url("../../images/home/home-background.jpg");
+
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.shop-hero::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+
+    right: -180px;
+    bottom: -220px;
+
+    border-radius: 50%;
+
+    background: rgba(176, 141, 87, 0.12);
+}
+
+.shop-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.shop-hero h1 {
+    max-width: 760px;
+
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+}
+
+.shop-hero h1 span {
+    display: block;
+    color: #b08d57 !important;
+}
+
+.shop-hero p {
+    max-width: 650px;
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.shop-hero .badge {
+    background: #b08d57 !important;
+    color: #fff !important;
+
+    border-radius: 3px;
+
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.shop-hero .input-group {
+    max-width: 700px;
+
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.shop-hero .form-control {
+    min-height: 58px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    font-size: 0.95rem;
+}
+
+.shop-hero .form-control:focus {
+    box-shadow: none;
+}
+
+.shop-hero .btn-warning {
+    min-width: 125px;
+
+    border: none;
+
+    background: #b08d57 !important;
+    color: #fff !important;
+
+    font-weight: 600;
+}
+
+.shop-hero .btn-warning:hover {
+    background: #967541 !important;
+}
+
+.shop-hero-image {
+    max-height: 500px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.35));
+
+    transition: transform 0.5s ease;
+}
+
+.shop-hero-image:hover {
+    transform: scale(1.03);
+}
+
+
+/* ==========================================================
+   GENERAL SHOP HEADINGS
+========================================================== */
+
+.shop-page h2 {
+    font-weight: 700;
+}
+
+.shop-page .text-warning {
+    color: #b08d57 !important;
+}
+
+.shop-page .text-primary {
+    color: #b08d57 !important;
+}
+
+
+/* ==========================================================
+   CATEGORY SECTION
+========================================================== */
+
+.category-card {
+    border-radius: 0 !important;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.12) !important;
+}
+
+.category-image-wrapper {
+    height: 190px;
+
+    overflow: hidden;
+
+    background: #f4f1ec;
+}
+
+.category-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image {
+    transform: scale(1.07);
+}
+
+.category-card .card-body {
+    padding: 20px 12px;
+}
+
+.category-card h6 {
+    color: #222;
+
+    font-size: 0.9rem;
+}
+
+.category-card small {
+    font-size: 0.72rem;
+}
+
+
+/* ==========================================================
+   FILTER BAR
+========================================================== */
+
+.shop-filter-bar {
+    background: #fff;
+
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.shop-filter-bar .form-label {
+    font-size: 0.78rem;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    color: #555;
+}
+
+.shop-filter-bar .form-select {
+    min-height: 50px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 3px;
+
+    font-size: 0.9rem;
+}
+
+.shop-filter-bar .form-select:focus {
+    border-color: #b08d57;
+
+    box-shadow: 0 0 0 0.15rem rgba(176,141,87,0.15);
+}
+
+.shop-filter-bar .btn-dark {
+    min-height: 50px;
+
+    border-radius: 3px;
+
+    background: #222;
+
+    border-color: #222;
+}
+
+.shop-filter-bar .btn-dark:hover {
+    background: #b08d57;
+
+    border-color: #b08d57;
+}
+
+
+/* ==========================================================
+   PRODUCT SECTION
+========================================================== */
+
+.product-card {
+    border-radius: 0 !important;
+
+    background: #fff;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.12) !important;
+}
+
+
+/* ==========================================================
+   PRODUCT IMAGE
+========================================================== */
+
+.product-image-wrapper {
+    height: 300px;
+
+    background: #f5f3ef;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================
+   PRODUCT BADGES
+========================================================== */
+
+.product-image-wrapper .badge {
+    border-radius: 2px;
+
+    padding: 7px 10px;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.7px;
+
+    font-weight: 700;
+}
+
+.product-image-wrapper .bg-danger {
+    background: #a94442 !important;
+}
+
+.product-image-wrapper .bg-success {
+    background: #3d6b4b !important;
+}
+
+.product-image-wrapper .bg-warning {
+    background: #b08d57 !important;
+
+    color: #fff !important;
+}
+
+
+/* ==========================================================
+   PRODUCT BODY
+========================================================== */
+
+.product-card .card-body {
+    padding: 22px;
+}
+
+.product-card .card-body > small {
+    color: #999 !important;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 1.2px;
+}
+
+.product-card h5 {
+    min-height: 48px;
+
+    color: #222;
+
+    font-size: 1.05rem;
+
+    line-height: 1.4;
+}
+
+.product-card p {
+    min-height: 48px;
+
+    font-size: 0.82rem;
+
+    line-height: 1.65;
+}
+
+
+/* ==========================================================
+   PRODUCT RATING
+========================================================== */
+
+.product-card .bi-star-fill {
+    font-size: 0.75rem;
+
+    color: #b08d57 !important;
+}
+
+.product-card .mb-3 small {
+    font-size: 0.7rem;
+}
+
+
+/* ==========================================================
+   PRODUCT PRICE
+========================================================== */
+
+.product-card h4 {
+    color: #b08d57 !important;
+
+    font-size: 1.25rem;
+}
+
+.product-card .text-decoration-line-through {
+    font-size: 0.75rem;
+
+    color: #999 !important;
+}
+
+
+/* ==========================================================
+   STOCK BADGES
+========================================================== */
+
+.product-card .bg-success-subtle {
+    background: #edf5ef !important;
+
+    color: #3d6b4b !important;
+}
+
+.product-card .bg-warning-subtle {
+    background: #fff7df !important;
+
+    color: #8a6a20 !important;
+}
+
+.product-card .bg-danger-subtle {
+    background: #fbecec !important;
+
+    color: #a94442 !important;
+}
+
+.product-card .badge {
+    padding: 7px 10px;
+
+    border-radius: 2px;
+
+    font-size: 0.65rem;
+}
+
+
+/* ==========================================================
+   PRODUCT BUTTONS
+========================================================== */
+
+.product-card .btn-dark {
+    min-height: 45px;
+
+    border-radius: 3px;
+
+    background: #222;
+
+    border-color: #222;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+
+    transition: 0.25s ease;
+}
+
+.product-card .btn-dark:hover {
+    background: #b08d57;
+
+    border-color: #b08d57;
+
+    transform: translateY(-1px);
+}
+
+.product-card .btn-outline-warning {
+    min-height: 45px;
+
+    border-radius: 3px;
+
+    border-color: #b08d57;
+
+    color: #967541;
+
+    font-size: 0.82rem;
+
+    font-weight: 600;
+}
+
+.product-card .btn-outline-warning:hover {
+    background: #b08d57;
+
+    border-color: #b08d57;
+
+    color: #fff;
+}
+
+
+/* ==========================================================
+   COMPLETE FURNITURE PACKAGES
+========================================================== */
+
+.package-card {
+    border-radius: 0 !important;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.13) !important;
+}
+
+.package-image {
+    height: 280px;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.package-card:hover .package-image {
+    transform: scale(1.04);
+}
+
+.package-card .card-body {
+    padding: 28px;
+}
+
+.package-card h4 {
+    font-size: 1.35rem;
+
+    color: #222;
+}
+
+.package-card h3 {
+    color: #b08d57 !important;
+
+    font-size: 1.55rem;
+}
+
+.package-card .text-decoration-line-through {
+    font-size: 0.75rem;
+}
+
+.package-card .badge {
+    border-radius: 2px;
+
+    font-size: 0.65rem;
+
+    padding: 7px 10px;
+}
+
+.package-card hr {
+    border-color: #eee;
+
+    margin: 20px 0;
+}
+
+.package-card ul {
+    margin-bottom: 0;
+}
+
+.package-card li {
+    font-size: 0.82rem;
+
+    color: #555;
+}
+
+.package-card .bi-check-circle-fill {
+    color: #3d6b4b !important;
+}
+
+.package-card .btn-dark {
+    min-height: 48px;
+
+    border-radius: 3px;
+
+    font-weight: 600;
+}
+
+.package-card .btn-outline-warning {
+    min-height: 48px;
+
+    border-radius: 3px;
+
+    border-color: #b08d57;
+
+    color: #967541;
+}
+
+.package-card .btn-outline-warning:hover {
+    background: #b08d57;
+
+    color: #fff;
+}
+
+
+/* ==========================================================
+   WHY CHOOSE EAGLE
+========================================================== */
+
+.shop-why-card {
+    height: 100%;
+
+    padding: 38px 25px;
+
+    background: #fff;
+
+    text-align: center;
+
+    border: 1px solid #eee;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.shop-why-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+}
+
+.shop-why-card i {
+    display: block;
+
+    margin-bottom: 20px;
+
+    font-size: 2.6rem;
+
+    color: #b08d57 !important;
+}
+
+.shop-why-card h5 {
+    margin-bottom: 12px;
+
+    font-size: 1rem;
+}
+
+.shop-why-card p {
+    margin: 0;
+
+    font-size: 0.82rem;
+
+    line-height: 1.8;
+
+    color: #777;
+}
+
+
+/* ==========================================================
+   SHOP STATS
+========================================================== */
+
+.shop-stats {
+    position: relative;
+
+    padding: 80px 0;
+
+    background:
+        linear-gradient(
+            rgba(34,34,34,0.96),
+            rgba(34,34,34,0.96)
+        ),
+        url("../../images/home/home-background.jpg");
+
+    background-size: cover;
+
+    color: #fff;
+}
+
+.shop-stats h2 {
+    margin-bottom: 8px;
+
+    color: #b08d57 !important;
+}
+
+.shop-stats p {
+    color: rgba(255,255,255,0.7);
+
+    font-size: 0.8rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==========================================================
+   CTA
+========================================================== */
+
+.cta-card {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 0 !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f5f1,
+            #fff
+        );
+}
+
+.cta-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    top: -180px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(176,141,87,0.12);
+}
+
+.cta-card .card-body {
+    position: relative;
+
+    z-index: 2;
+
+    padding: 70px 40px !important;
+}
+
+.cta-card .badge {
+    border-radius: 2px;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.cta-card h2 {
+    color: #222;
+}
+
+.cta-card p {
+    max-width: 700px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    color: #666;
+
+    font-size: 0.95rem;
+}
+
+.cta-card .btn-dark {
+    min-height: 52px;
+
+    border-radius: 3px;
+
+    background: #222;
+
+    border-color: #222;
+}
+
+.cta-card .btn-dark:hover {
+    background: #b08d57;
+
+    border-color: #b08d57;
+}
+
+.cta-card .btn-outline-dark {
+    min-height: 52px;
+
+    border-radius: 3px;
+}
+
+.cta-card .btn-outline-dark:hover {
+    background: #222;
+
+    color: #fff;
+}
+
+
+/* ==========================================================
+   NO PRODUCTS
+========================================================== */
+
+.shop-no-products {
+    padding: 100px 20px;
+
+    text-align: center;
+}
+
+.shop-no-products i {
+    color: #b08d57;
+}
+
+.shop-no-products h3 {
+    margin-top: 20px;
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLETS
+========================================================== */
+
+@media (max-width: 991px) {
+
+    .shop-hero {
+        min-height: 600px;
+    }
+
+    .shop-hero-image {
+        max-height: 380px;
+    }
+
+    .category-image-wrapper {
+        height: 180px;
+    }
+
+    .product-image-wrapper {
+        height: 280px;
+    }
+
+    .package-image {
+        height: 260px;
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .shop-hero {
+        min-height: auto;
+
+        padding: 80px 0;
+    }
+
+    .shop-hero h1 {
+        font-size: 2.7rem;
+    }
+
+    .shop-hero p {
+        font-size: 0.9rem;
+    }
+
+    .shop-hero .input-group {
+        display: flex;
+        flex-direction: column;
+
+        gap: 10px;
+
+        box-shadow: none !important;
+    }
+
+    .shop-hero .form-control {
+        min-height: 52px;
+
+        border-radius: 3px !important;
+    }
+
+    .shop-hero .btn-warning {
+        width: 100%;
+
+        min-height: 52px;
+
+        border-radius: 3px !important;
+    }
+
+    .shop-hero-image {
+        max-height: 300px;
+
+        margin-top: 20px;
+    }
+
+    .category-image-wrapper {
+        height: 160px;
+    }
+
+    .category-card .card-body {
+        padding: 15px 8px;
+    }
+
+    .category-card h6 {
+        font-size: 0.8rem;
+    }
+
+    .product-image-wrapper {
+        height: 240px;
+    }
+
+    .product-card .card-body {
+        padding: 18px;
+    }
+
+    .product-card h5 {
+        font-size: 0.95rem;
+    }
+
+    .package-image {
+        height: 230px;
+    }
+
+    .package-card .card-body {
+        padding: 22px;
+    }
+
+    .shop-stats {
+        padding: 60px 0;
+    }
+
+    .cta-card .card-body {
+        padding: 50px 25px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .shop-hero {
+        padding: 65px 0;
+    }
+
+    .shop-hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .shop-hero .badge {
+        font-size: 0.62rem;
+    }
+
+    .category-image-wrapper {
+        height: 135px;
+    }
+
+    .product-image-wrapper {
+        height: 200px;
+    }
+
+    .product-card .card-body {
+        padding: 15px;
+    }
+
+    .product-card p {
+        min-height: auto;
+
+        font-size: 0.76rem;
+    }
+
+    .product-card h4 {
+        font-size: 1.05rem;
+    }
+
+    .package-image {
+        height: 210px;
+    }
+
+    .cta-card .card-body {
+        padding: 40px 18px !important;
+    }
+
+    .cta-card .btn {
+        width: 100%;
+
+        margin: 0 0 10px !important;
+    }
+
+}
+
+
+/* ==========================================================
+   SMOOTH INTERACTIONS
+========================================================== */
+
+.category-card,
+.product-card,
+.package-card,
+.shop-why-card,
+.shop-hero-image {
+    will-change: transform;
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.category-card:focus-visible,
+.product-card:focus-within,
+.package-card:focus-within {
+    outline: 2px solid #b08d57;
+
+    outline-offset: 4px;
+}
+
+
+/* ==========================================================
+   REDUCE MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .category-card,
+    .product-card,
+    .package-card,
+    .shop-why-card,
+    .shop-hero-image,
+    .category-image,
+    .product-image,
+    .package-image {
+        transition: none;
+    }
+}

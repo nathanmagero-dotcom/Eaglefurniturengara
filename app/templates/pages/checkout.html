@@ -1,0 +1,625 @@
+{% extends "base.html" %}
+
+{% block title %}
+Checkout | Eagle Furniture Ngara
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/checkout.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="checkout-page">
+
+    <div class="container">
+
+        <!-- =====================================================
+             PAGE HEADER
+        ====================================================== -->
+
+        <div class="checkout-header">
+
+            <span class="checkout-tag">
+                EAGLE FURNITURE NGARA
+            </span>
+
+            <h1>
+                Complete Your Order
+            </h1>
+
+            <p>
+                Provide your delivery details and choose your
+                preferred payment method.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             CHECKOUT LAYOUT
+        ====================================================== -->
+
+        <div class="checkout-layout">
+
+            <!-- =================================================
+                 CUSTOMER INFORMATION
+            ================================================== -->
+
+            <div class="checkout-form-card">
+
+                <form method="POST"
+                      action="{{ url_for('main.checkout') }}">
+
+                    <!-- CUSTOMER DETAILS -->
+
+                    <div class="checkout-section">
+
+                        <div class="checkout-section-heading">
+
+                            <span class="checkout-number">
+                                01
+                            </span>
+
+                            <div>
+                                <h2>
+                                    Customer Information
+                                </h2>
+
+                                <p>
+                                    Tell us how we can reach you.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkout-grid">
+
+                            <!-- FULL NAME -->
+
+                            <div class="checkout-field full-width">
+
+                                <label for="customer_name">
+                                    Full Name
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="customer_name"
+                                    name="customer_name"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="checkout-field">
+
+                                <label for="customer_phone">
+                                    Phone Number
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="customer_phone"
+                                    name="customer_phone"
+                                    placeholder="07XXXXXXXX"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="checkout-field">
+
+                                <label for="customer_email">
+                                    Email Address
+                                    <small>(Optional)</small>
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="customer_email"
+                                    name="customer_email"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DELIVERY INFORMATION
+                    ================================================== -->
+
+                    <div class="checkout-section">
+
+                        <div class="checkout-section-heading">
+
+                            <span class="checkout-number">
+                                02
+                            </span>
+
+                            <div>
+                                <h2>
+                                    Delivery Information
+                                </h2>
+
+                                <p>
+                                    Where should we deliver your furniture?
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkout-grid">
+
+                            <!-- COUNTY -->
+
+                            <div class="checkout-field">
+
+                                <label for="county">
+                                    County
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="county"
+                                    name="county"
+                                    placeholder="e.g. Nairobi"
+                                    autocomplete="address-level1"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- TOWN -->
+
+                            <div class="checkout-field">
+
+                                <label for="town">
+                                    Town / Area
+                                    <span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="town"
+                                    name="town"
+                                    placeholder="e.g. Ngara"
+                                    autocomplete="address-level2"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- DELIVERY ADDRESS -->
+
+                            <div class="checkout-field full-width">
+
+                                <label for="delivery_address">
+                                    Delivery Address
+                                    <span>*</span>
+                                </label>
+
+                                <textarea
+                                    id="delivery_address"
+                                    name="delivery_address"
+                                    rows="4"
+                                    placeholder="Building, estate, street, landmark or any useful delivery information"
+                                    autocomplete="street-address"
+                                    required
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PAYMENT
+                    ================================================== -->
+
+                    <div class="checkout-section">
+
+                        <div class="checkout-section-heading">
+
+                            <span class="checkout-number">
+                                03
+                            </span>
+
+                            <div>
+                                <h2>
+                                    Payment Method
+                                </h2>
+
+                                <p>
+                                    Choose how you would like to pay.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-options">
+
+                            <!-- CASH / PAY ON DELIVERY -->
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    value="Cash on Delivery"
+                                    required
+                                >
+
+                                <span class="payment-option-content">
+
+                                    <span class="payment-icon">
+                                        <i class="bi bi-cash-stack"></i>
+                                    </span>
+
+                                    <span>
+
+                                        <strong>
+                                            Cash on Delivery
+                                        </strong>
+
+                                        <small>
+                                            Pay when your furniture is delivered.
+                                        </small>
+
+                                    </span>
+
+                                </span>
+
+                            </label>
+
+
+                            <!-- MPESA -->
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    value="M-Pesa"
+                                >
+
+                                <span class="payment-option-content">
+
+                                    <span class="payment-icon">
+                                        <i class="bi bi-phone"></i>
+                                    </span>
+
+                                    <span>
+
+                                        <strong>
+                                            M-Pesa
+                                        </strong>
+
+                                        <small>
+                                            Payment instructions will be provided
+                                            after order submission.
+                                        </small>
+
+                                    </span>
+
+                                </span>
+
+                            </label>
+
+
+                            <!-- BANK -->
+
+                            <label class="payment-option">
+
+                                <input
+                                    type="radio"
+                                    name="payment_method"
+                                    value="Bank Transfer"
+                                >
+
+                                <span class="payment-option-content">
+
+                                    <span class="payment-icon">
+                                        <i class="bi bi-bank"></i>
+                                    </span>
+
+                                    <span>
+
+                                        <strong>
+                                            Bank Transfer
+                                        </strong>
+
+                                        <small>
+                                            Payment instructions will be provided
+                                            after order submission.
+                                        </small>
+
+                                    </span>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ORDER NOTES
+                    ================================================== -->
+
+                    <div class="checkout-section">
+
+                        <div class="checkout-section-heading">
+
+                            <span class="checkout-number">
+                                04
+                            </span>
+
+                            <div>
+                                <h2>
+                                    Additional Information
+                                </h2>
+
+                                <p>
+                                    Anything else we should know?
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="notes">
+                                Order Notes
+                                <small>(Optional)</small>
+                            </label>
+
+                            <textarea
+                                id="notes"
+                                name="notes"
+                                rows="4"
+                                placeholder="Special delivery instructions, preferred delivery time, colour confirmation, etc."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUBMIT
+                    ================================================== -->
+
+                    <div class="checkout-submit">
+
+                        <button
+                            type="submit"
+                            class="checkout-submit-button">
+
+                            <i class="bi bi-check-circle me-2"></i>
+
+                            Place Order
+
+                        </button>
+
+                        <p>
+                            By placing your order, you confirm that
+                            the information provided is accurate.
+                        </p>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================================
+                 ORDER SUMMARY
+            ================================================== -->
+
+            <aside class="order-summary">
+
+                <div class="order-summary-card">
+
+                    <div class="order-summary-header">
+
+                        <h2>
+                            Your Order
+                        </h2>
+
+                        <span>
+                            {{ cart_count }}
+                            {% if cart_count == 1 %}
+                            item
+                            {% else %}
+                            items
+                            {% endif %}
+                        </span>
+
+                    </div>
+
+
+                    <!-- PRODUCTS -->
+
+                    <div class="checkout-products">
+
+                        {% for item in items %}
+
+                        <div class="checkout-product">
+
+                            <div class="checkout-product-image">
+
+                                {% if item.product.image %}
+
+                                <img
+                                    src="{{ url_for(
+                                        'static',
+                                        filename=item.product.image
+                                    ) }}"
+                                    alt="{{ item.product.name }}"
+                                >
+
+                                {% else %}
+
+                                <div class="checkout-product-placeholder">
+                                    <i class="bi bi-image"></i>
+                                </div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <div class="checkout-product-info">
+
+                                <h3>
+                                    {{ item.product.name }}
+                                </h3>
+
+                                <p>
+                                    Quantity:
+                                    {{ item.quantity }}
+                                </p>
+
+                                <strong>
+                                    KSh
+                                    {{ "{:,.0f}".format(item.subtotal) }}
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <!-- TOTALS -->
+
+                    <div class="order-summary-totals">
+
+                        <div class="summary-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong>
+                                KSh
+                                {{ "{:,.0f}".format(subtotal) }}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-row">
+
+                            <span>
+                                Delivery
+                            </span>
+
+                            <strong>
+                                To be confirmed
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong>
+                                KSh
+                                {{ "{:,.0f}".format(total) }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRUST -->
+
+                    <div class="checkout-trust">
+
+                        <div>
+                            <i class="bi bi-shield-check"></i>
+
+                            <span>
+                                Secure order processing
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="bi bi-truck"></i>
+
+                            <span>
+                                Delivery available across Kenya
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="bi bi-headset"></i>
+
+                            <span>
+                                Customer support available
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <a
+                        href="{{ url_for('main.cart') }}"
+                        class="back-to-cart">
+
+                        <i class="bi bi-arrow-left me-2"></i>
+
+                        Back to Cart
+
+                    </a>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

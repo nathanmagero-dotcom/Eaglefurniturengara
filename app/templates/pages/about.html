@@ -1,0 +1,1050 @@
+{% extends "base.html" %}
+
+{% block title %}
+About Us | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     ABOUT HERO
+========================================================= -->
+
+<section class="about-hero">
+
+    <div class="about-hero-overlay"></div>
+
+    <div class="container position-relative">
+
+        <div class="row align-items-center min-vh-75">
+
+            <div class="col-lg-8">
+
+                <span class="about-eyebrow">
+                    EAGLE FURNITURE NGARA
+                </span>
+
+                <h1 class="display-3 fw-bold text-white mt-3">
+                    We Create Beautiful Spaces
+                    <span>Made for Living.</span>
+                </h1>
+
+                <p class="lead text-white mt-4">
+                    We are a furniture and interior design company
+                    helping homeowners, businesses, offices and
+                    hospitality spaces create beautiful, functional
+                    and comfortable environments.
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-warning btn-lg px-4 me-2 mb-2">
+
+                        Explore Furniture
+
+                    </a>
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-light btn-lg px-4 mb-2">
+
+                        Interior Design
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <div class="about-image-wrapper">
+
+                    <img
+                        src="{{ url_for('static', filename='images/about/about-main.jpg') }}"
+                        class="img-fluid rounded-4 shadow"
+                        alt="Eagle Furniture Ngara"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <span class="section-label">
+                    WHO WE ARE
+                </span>
+
+                <h2 class="display-5 fw-bold mt-3">
+
+                    More Than Furniture.
+                    <span class="text-warning">
+                        We Create Spaces.
+                    </span>
+
+                </h2>
+
+                <p class="lead text-muted mt-4">
+
+                    Eagle Furniture Ngara is a furniture and interior
+                    design company based in Nairobi, Kenya.
+
+                </p>
+
+                <p class="text-muted">
+
+                    We believe that furniture should do more than fill
+                    an empty room. It should reflect your personality,
+                    complement your lifestyle and make your space feel
+                    truly yours.
+
+                </p>
+
+                <p class="text-muted">
+
+                    From a statement sofa for your living room to a
+                    complete interior transformation, we work with
+                    our customers to create spaces that are beautiful,
+                    practical and built to last.
+
+                </p>
+
+                <p class="text-muted">
+
+                    Whether you are furnishing your home, office,
+                    Airbnb, apartment, restaurant or commercial space,
+                    our team can help you from concept to completion.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OUR TWO SERVICES
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                WHAT WE DO
+            </span>
+
+            <h2 class="display-5 fw-bold mt-3">
+                Two Services. One Complete Solution.
+            </h2>
+
+            <p class="text-muted lead mx-auto"
+               style="max-width: 750px;">
+
+                From individual furniture pieces to complete
+                interior transformations, we help you create
+                spaces that look good and feel right.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- FURNITURE -->
+
+            <div class="col-lg-6">
+
+                <div class="service-card h-100">
+
+                    <div class="service-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/about/furniture-service.jpg') }}"
+                            alt="Furniture by Eagle Furniture Ngara"
+                        >
+
+                    </div>
+
+                    <div class="p-4 p-lg-5">
+
+                        <div class="service-icon">
+                            <i class="bi bi-house-heart"></i>
+                        </div>
+
+                        <h3 class="fw-bold mt-3">
+                            Furniture
+                        </h3>
+
+                        <p class="text-muted">
+
+                            Discover quality furniture designed to
+                            bring comfort, character and functionality
+                            into your space.
+
+                        </p>
+
+                        <ul class="list-unstyled text-muted">
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Sofas and living room furniture
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Beds and bedroom furniture
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Dining sets
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                TV stands and wall units
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Wardrobes and storage
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Custom-made furniture
+                            </li>
+
+                        </ul>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-dark mt-3">
+
+                            Explore Furniture
+
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INTERIOR DESIGN -->
+
+            <div class="col-lg-6">
+
+                <div class="service-card h-100">
+
+                    <div class="service-image">
+
+                        <img
+                            src="{{ url_for('static', filename='images/about/interior-service.jpg') }}"
+                            alt="Interior design by Eagle Furniture Ngara"
+                        >
+
+                    </div>
+
+                    <div class="p-4 p-lg-5">
+
+                        <div class="service-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+
+                        <h3 class="fw-bold mt-3">
+                            Interior Design
+                        </h3>
+
+                        <p class="text-muted">
+
+                            We help transform ordinary spaces into
+                            beautiful, coordinated and functional
+                            environments.
+
+                        </p>
+
+                        <ul class="list-unstyled text-muted">
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Residential interiors
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Office interiors
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Airbnb furnishing and styling
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Space planning
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Furniture selection
+                            </li>
+
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                Complete interior transformations
+                            </li>
+
+                        </ul>
+
+                        <a href="{{ url_for('main.interior_design') }}"
+                           class="btn btn-dark mt-3">
+
+                            Explore Interior Design
+
+                            <i class="bi bi-arrow-right ms-2"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OUR STORY
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6 order-lg-2">
+
+                <img
+                    src="{{ url_for('static', filename='images/about/our-story.jpg') }}"
+                    class="img-fluid rounded-4 shadow"
+                    alt="Our Story"
+                >
+
+            </div>
+
+
+            <div class="col-lg-6 order-lg-1">
+
+                <span class="section-label">
+                    OUR STORY
+                </span>
+
+                <h2 class="display-5 fw-bold mt-3">
+                    Built Around Quality,
+                    Creativity and Trust.
+                </h2>
+
+                <p class="text-muted mt-4">
+
+                    Eagle Furniture Ngara was built with a simple
+                    vision: to make quality furniture and beautiful
+                    interior spaces more accessible to customers
+                    in Kenya.
+
+                </p>
+
+                <p class="text-muted">
+
+                    We understand that furnishing a home or business
+                    is a major investment. That is why we focus on
+                    combining quality workmanship, thoughtful design
+                    and customer-focused service.
+
+                </p>
+
+                <p class="text-muted">
+
+                    Our goal is not simply to sell you a product.
+                    We want to understand what you need, recommend
+                    the right solution and help you create a space
+                    you will be proud of.
+
+                </p>
+
+                <div class="row mt-4">
+
+                    <div class="col-6">
+
+                        <h3 class="fw-bold text-warning">
+                            Quality
+                        </h3>
+
+                        <p class="small text-muted">
+                            Furniture designed and selected with
+                            durability in mind.
+                        </p>
+
+                    </div>
+
+                    <div class="col-6">
+
+                        <h3 class="fw-bold text-warning">
+                            Creativity
+                        </h3>
+
+                        <p class="small text-muted">
+                            Designs that make your space unique.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY CHOOSE US
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                WHY EAGLE FURNITURE
+            </span>
+
+            <h2 class="display-5 fw-bold mt-3">
+                Why Choose Us?
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="why-card text-center">
+
+                    <div class="why-icon">
+                        <i class="bi bi-gem"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Quality
+                    </h5>
+
+                    <p class="text-muted">
+                        We focus on quality materials,
+                        workmanship and finishes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="why-card text-center">
+
+                    <div class="why-icon">
+                        <i class="bi bi-pencil-ruler"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Customization
+                    </h5>
+
+                    <p class="text-muted">
+                        We can adapt designs, sizes,
+                        colours and finishes to suit you.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="why-card text-center">
+
+                    <div class="why-icon">
+                        <i class="bi bi-person-heart"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Customer Focus
+                    </h5>
+
+                    <p class="text-muted">
+                        We listen to your needs and help
+                        you make confident decisions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="why-card text-center">
+
+                    <div class="why-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Delivery
+                    </h5>
+
+                    <p class="text-muted">
+                        We help get your furniture where
+                        you need it across Kenya.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     OUR PROCESS
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                HOW WE WORK
+            </span>
+
+            <h2 class="display-5 fw-bold mt-3">
+                From Idea to Beautiful Space
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        01
+                    </div>
+
+                    <h5 class="fw-bold">
+                        Tell Us What You Need
+                    </h5>
+
+                    <p class="text-muted">
+                        Share your requirements,
+                        preferences, budget and vision.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        02
+                    </div>
+
+                    <h5 class="fw-bold">
+                        We Plan
+                    </h5>
+
+                    <p class="text-muted">
+                        We recommend furniture,
+                        layouts, designs and suitable
+                        solutions.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        03
+                    </div>
+
+                    <h5 class="fw-bold">
+                        We Create
+                    </h5>
+
+                    <p class="text-muted">
+                        Our furniture and interior
+                        solutions are brought to life.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="process-card">
+
+                    <div class="process-number">
+                        04
+                    </div>
+
+                    <h5 class="fw-bold">
+                        You Enjoy
+                    </h5>
+
+                    <p class="text-muted">
+                        Enjoy a beautiful, comfortable
+                        and functional space.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHO WE SERVE
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                WHO WE SERVE
+            </span>
+
+            <h2 class="display-5 fw-bold mt-3">
+                Spaces We Transform
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="audience-card">
+
+                    <i class="bi bi-house-heart"></i>
+
+                    <h5>
+                        Homes
+                    </h5>
+
+                    <p>
+                        Living rooms, bedrooms,
+                        dining spaces and complete homes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="audience-card">
+
+                    <i class="bi bi-building"></i>
+
+                    <h5>
+                        Offices
+                    </h5>
+
+                    <p>
+                        Professional furniture and
+                        interior solutions for workplaces.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="audience-card">
+
+                    <i class="bi bi-key"></i>
+
+                    <h5>
+                        Airbnb & Hospitality
+                    </h5>
+
+                    <p>
+                        Complete furnishing and styling
+                        solutions for hospitality spaces.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="audience-card">
+
+                    <i class="bi bi-shop"></i>
+
+                    <h5>
+                        Commercial Spaces
+                    </h5>
+
+                    <p>
+                        Furniture and interior solutions
+                        for businesses and commercial spaces.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+
+<section class="about-cta">
+
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-9">
+
+                <span class="about-eyebrow">
+                    LET'S CREATE SOMETHING BEAUTIFUL
+                </span>
+
+                <h2 class="display-5 fw-bold text-white mt-3">
+                    Ready to Transform Your Space?
+                </h2>
+
+                <p class="lead text-white mt-3">
+
+                    Whether you need a single piece of furniture,
+                    a custom design or a complete interior
+                    transformation, we're ready to help.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-warning btn-lg px-5 me-2 mb-2">
+
+                        Get in Touch
+
+                    </a>
+
+                    <a href="{{ url_for('main.quote') }}"
+                       class="btn btn-light btn-lg px-5 mb-2">
+
+                        Request a Quote
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT PAGE CSS
+========================================================= -->
+
+<style>
+
+.about-hero {
+    position: relative;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+
+    background-image:
+        url("{{ url_for('static', filename='images/about/about-hero.jpg') }}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.18);
+}
+
+.min-vh-75 {
+    min-height: 650px;
+}
+
+.about-eyebrow,
+.section-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #b8860b;
+}
+
+.about-hero .about-eyebrow {
+    color: #ffffff;
+}
+
+.about-hero h1 span {
+    color: #ffc107;
+    display: block;
+}
+
+.about-hero p {
+    max-width: 760px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+}
+
+.service-card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+}
+
+.service-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff3cd;
+    color: #b8860b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.why-card {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 18px;
+    height: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.why-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #fff3cd;
+    color: #b8860b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.process-card {
+    position: relative;
+    padding: 30px;
+    border: 1px solid #eeeeee;
+    border-radius: 18px;
+    height: 100%;
+    background: #ffffff;
+}
+
+.process-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.audience-card {
+    background: #ffffff;
+    padding: 35px 25px;
+    border-radius: 18px;
+    height: 100%;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.audience-card i {
+    display: block;
+    font-size: 2.5rem;
+    color: #b8860b;
+    margin-bottom: 20px;
+}
+
+.audience-card h5 {
+    font-weight: 700;
+}
+
+.audience-card p {
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+.about-cta {
+    padding: 100px 0;
+
+    background-image:
+        linear-gradient(
+            rgba(90,65,35,0.82),
+            rgba(90,65,35,0.82)
+        ),
+        url("{{ url_for('static', filename='images/about/about-cta.jpg') }}");
+
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+
+    .about-hero {
+        min-height: 600px;
+    }
+
+    .min-vh-75 {
+        min-height: 600px;
+    }
+
+    .about-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .about-image-wrapper img {
+        height: 350px;
+    }
+
+    .service-image {
+        height: 240px;
+    }
+
+}
+
+</style>
+
+{% endblock %}

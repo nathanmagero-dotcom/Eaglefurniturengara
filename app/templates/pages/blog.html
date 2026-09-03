@@ -1,0 +1,504 @@
+{% extends "base.html" %}
+
+{% block title %}Furniture Blog | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     BLOG HERO
+========================================================= -->
+
+<section class="py-5 blog-hero">
+    <div class="container py-4">
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    Furniture Ideas,
+                    <span class="text-warning">Home Inspiration</span>
+                    & Expert Tips
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    Discover furniture ideas, interior design inspiration,
+                    home styling tips, furniture buying guides and practical
+                    advice from Eagle Furniture Ngara.
+                </p>
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-dark btn-lg px-4">
+                    <i class="bi bi-shop me-2"></i>
+                    Explore Our Furniture
+                </a>
+
+            </div>
+
+            <div class="col-lg-5 text-center mt-5 mt-lg-0">
+
+                <img
+                    src="{{ url_for('static', filename='images/blog/blog-hero.jpg') }}"
+                    class="img-fluid rounded-4 shadow"
+                    alt="Furniture and interior design">
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     FEATURED ARTICLES
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                Featured Articles
+            </span>
+
+            <h2 class="fw-bold">
+                Ideas to Make Your Home Beautiful
+            </h2>
+
+            <p class="text-muted">
+                Helpful furniture and interior design advice for
+                Kenyan homes, offices and businesses.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- ARTICLE 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <article class="card border-0 shadow-sm h-100 blog-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/blog/sofa-buying-guide.jpg') }}"
+                        class="card-img-top blog-image"
+                        alt="Sofa buying guide">
+
+                    <div class="card-body p-4">
+
+                        <span class="badge bg-warning text-dark mb-3">
+                            Furniture Guide
+                        </span>
+
+                        <h4 class="fw-bold">
+                            How to Choose the Perfect Sofa for Your Home
+                        </h4>
+
+                        <p class="text-muted">
+                            Learn how to choose the right sofa size,
+                            fabric, colour and design for your living room.
+                        </p>
+
+                        <a href="{{ url_for('main.blog_post', slug='how-to-choose-the-perfect-sofa') }}"
+                           class="btn btn-outline-dark">
+                            Read Article
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- ARTICLE 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <article class="card border-0 shadow-sm h-100 blog-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/blog/living-room.jpg') }}"
+                        class="card-img-top blog-image"
+                        alt="Living room furniture">
+
+                    <div class="card-body p-4">
+
+                        <span class="badge bg-success mb-3">
+                            Interior Design
+                        </span>
+
+                        <h4 class="fw-bold">
+                            7 Ways to Make Your Living Room Look Expensive
+                        </h4>
+
+                        <p class="text-muted">
+                            Simple furniture and styling ideas that can
+                            transform your living room without overspending.
+                        </p>
+
+                        <a href="{{ url_for('main.blog_post', slug='make-your-living-room-look-expensive') }}"
+                           class="btn btn-outline-dark">
+                            Read Article
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- ARTICLE 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <article class="card border-0 shadow-sm h-100 blog-card">
+
+                    <img
+                        src="{{ url_for('static', filename='images/blog/dining-table.jpg') }}"
+                        class="card-img-top blog-image"
+                        alt="Dining table">
+
+                    <div class="card-body p-4">
+
+                        <span class="badge bg-primary mb-3">
+                            Home Ideas
+                        </span>
+
+                        <h4 class="fw-bold">
+                            How to Choose the Right Dining Table
+                        </h4>
+
+                        <p class="text-muted">
+                            From family dining to entertaining guests,
+                            discover how to select the ideal dining table.
+                        </p>
+
+                        <a href="{{ url_for('main.blog_post', slug='how-to-choose-the-right-dining-table') }}"
+                           class="btn btn-outline-dark">
+                            Read Article
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FURNITURE BUYING GUIDES
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Furniture Buying Guides
+                </span>
+
+                <h2 class="display-6 fw-bold mb-4">
+                    Buy Furniture With Confidence
+                </h2>
+
+                <p class="text-muted lead">
+                    Buying furniture is an important investment.
+                    Our guides help you understand what to look for
+                    before making a purchase.
+                </p>
+
+                <div class="mt-4">
+
+                    <div class="d-flex mb-4">
+
+                        <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+
+                        <div>
+                            <h5 class="fw-bold">
+                                Know the Right Size
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Learn how to measure your space before
+                                ordering furniture.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex mb-4">
+
+                        <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+
+                        <div>
+                            <h5 class="fw-bold">
+                                Choose Quality Materials
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Understand fabrics, hardwood, finishes
+                                and construction quality.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex">
+
+                        <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+
+                        <div>
+                            <h5 class="fw-bold">
+                                Get the Best Value
+                            </h5>
+
+                            <p class="text-muted mb-0">
+                                Know what affects furniture prices and
+                                how to choose furniture that lasts.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-6 mt-5 mt-lg-0">
+
+                <img
+                    src="{{ url_for('static', filename='images/blog/furniture-buying.jpg') }}"
+                    class="img-fluid rounded-4 shadow"
+                    alt="Furniture buying guide">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     INTERIOR DESIGN
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                Interior Inspiration
+            </span>
+
+            <h2 class="fw-bold">
+                Create a Home You Love
+            </h2>
+
+            <p class="text-muted">
+                Get practical ideas for creating beautiful and
+                comfortable spaces.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-house-heart display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Living Room
+                    </h5>
+
+                    <p class="text-muted">
+                        Create a comfortable and welcoming living space.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-moon-stars display-4 text-primary mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Bedroom
+                    </h5>
+
+                    <p class="text-muted">
+                        Build a peaceful bedroom designed for comfort.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-cup-hot display-4 text-success mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Dining Area
+                    </h5>
+
+                    <p class="text-muted">
+                        Create a dining space perfect for family moments.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-building display-4 text-danger mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Office
+                    </h5>
+
+                    <p class="text-muted">
+                        Create a professional, productive workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EAGLE FURNITURE CTA
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card border-0 shadow-lg bg-warning">
+
+            <div class="card-body p-5 text-center">
+
+                <span class="badge bg-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h2 class="display-6 fw-bold">
+                    Ready to Transform Your Space?
+                </h2>
+
+                <p class="lead">
+                    Explore our furniture collection or talk to our team
+                    about your next furniture project.
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-dark btn-lg px-5 me-2 mb-2">
+                        <i class="bi bi-shop me-2"></i>
+                        Shop Furniture
+                    </a>
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-outline-dark btn-lg px-5 mb-2">
+                        <i class="bi bi-chat-dots me-2"></i>
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BLOG PAGE CSS
+========================================================= -->
+
+<style>
+
+.blog-hero {
+    background: linear-gradient(
+        135deg,
+        #fff8e7,
+        #ffffff
+    );
+}
+
+.blog-card {
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.12) !important;
+}
+
+.blog-image {
+    height: 240px;
+    object-fit: cover;
+}
+
+.blog-card h4 {
+    line-height: 1.35;
+}
+
+</style>
+
+{% endblock %}

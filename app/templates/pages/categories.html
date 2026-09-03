@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}
+Furniture Categories | Eagle Furniture Ngara
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/categories.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================================================
+     CATEGORIES PAGE
+========================================================= -->
+
+<section class="categories-page">
+
+    <div class="container">
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <header class="categories-header">
+
+            <span class="section-tag">
+                EAGLE FURNITURE NGARA
+            </span>
+
+            <h1>
+                Furniture Categories
+            </h1>
+
+            <p>
+                Explore our furniture collections and find pieces
+                designed to bring comfort, style and functionality
+                into your home.
+            </p>
+
+        </header>
+
+
+        <!-- =================================================
+             CATEGORY GRID
+        ================================================== -->
+
+        {% if categories %}
+
+        <div class="categories-grid">
+
+            {% for category in categories %}
+
+            <article class="category-page-card">
+
+                <!-- IMAGE -->
+
+                <a href="{{ url_for(
+                    'main.category',
+                    slug=category.slug
+                ) }}"
+                   class="category-page-image-link"
+                   aria-label="View {{ category.name }}">
+
+                    <div class="category-page-image">
+
+                        {% if category.image %}
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename=category.image
+                            ) }}"
+                            alt="{{ category.name }} furniture"
+                            loading="lazy"
+                        >
+
+                        {% else %}
+
+                        <div class="category-image-placeholder">
+
+                            <i class="bi bi-house"></i>
+
+                        </div>
+
+                        {% endif %}
+
+
+                        {% if category.featured %}
+
+                        <span class="category-featured">
+                            Featured
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </a>
+
+
+                <!-- CONTENT -->
+
+                <div class="category-page-content">
+
+                    <h2>
+                        {{ category.name }}
+                    </h2>
+
+
+                    {% if category.description %}
+
+                    <p>
+                        {{ category.description }}
+                    </p>
+
+                    {% else %}
+
+                    <p>
+                        Explore our {{ category.name|lower }}
+                        collection at Eagle Furniture Ngara.
+                    </p>
+
+                    {% endif %}
+
+
+                    <!-- CATEGORY ACTION -->
+
+                    <a
+                        href="{{ url_for(
+                            'main.category',
+                            slug=category.slug
+                        ) }}"
+                        class="category-link">
+
+                        Explore {{ category.name }}
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+
+        {% else %}
+
+        <!-- =================================================
+             EMPTY STATE
+        ================================================== -->
+
+        <div class="categories-empty">
+
+            <i class="bi bi-grid"></i>
+
+            <h2>
+                No Categories Available
+            </h2>
+
+            <p>
+                Our furniture collections will appear here soon.
+            </p>
+
+            <a
+                href="{{ url_for('main.shop') }}"
+                class="btn btn-dark">
+
+                Browse Furniture
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOM FURNITURE CTA
+========================================================= -->
+
+<section class="categories-cta">
+
+    <div class="container">
+
+        <div class="categories-cta-inner">
+
+            <div>
+
+                <span class="section-tag">
+                    CUSTOM FURNITURE
+                </span>
+
+                <h2>
+                    Can't Find What You're Looking For?
+                </h2>
+
+                <p>
+                    Get furniture custom made to your preferred
+                    size, colour, fabric and design.
+                </p>
+
+            </div>
+
+
+            <a
+                href="{{ url_for('main.custom_furniture') }}"
+                class="btn btn-warning btn-lg">
+
+                <i class="bi bi-rulers me-2"></i>
+
+                Request Custom Furniture
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,1100 @@
+css
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   FURNITURE PACKAGES / BUNDLES
+   bundles.css
+========================================================= */
+
+
+/* =========================================================
+   1. PAGE VARIABLES
+========================================================= */
+
+.bundles-page {
+    --bundle-dark: #211c18;
+    --bundle-dark-soft: #302923;
+    --bundle-brown: #6b4f3a;
+    --bundle-brown-light: #8b6a4f;
+    --bundle-gold: #c99a3e;
+    --bundle-gold-light: #e6c77b;
+    --bundle-cream: #f7f3ed;
+    --bundle-beige: #eee6da;
+    --bundle-white: #ffffff;
+    --bundle-text: #29231f;
+    --bundle-muted: #766f68;
+    --bundle-border: rgba(33, 28, 24, 0.10);
+    --bundle-shadow: 0 18px 50px rgba(33, 28, 24, 0.10);
+    --bundle-shadow-hover: 0 25px 65px rgba(33, 28, 24, 0.16);
+    --bundle-radius: 18px;
+    --bundle-transition: all 0.35s ease;
+
+    color: var(--bundle-text);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   2. GENERAL
+========================================================= */
+
+.bundles-page img {
+    max-width: 100%;
+    display: block;
+}
+
+.bundles-page a {
+    text-decoration: none;
+}
+
+.bundles-page h1,
+.bundles-page h2,
+.bundles-page h3,
+.bundles-page h4 {
+    font-family: "Playfair Display", serif;
+}
+
+.bundles-page p {
+    line-height: 1.8;
+}
+
+.bundles-section-heading {
+    max-width: 780px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.bundles-section-heading h2 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 10px 0 18px;
+}
+
+.bundles-section-heading p {
+    color: var(--bundle-muted);
+    font-size: 1.05rem;
+    margin: 0;
+}
+
+.bundles-label {
+    display: inline-block;
+    color: var(--bundle-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   3. HERO
+========================================================= */
+
+.bundles-hero {
+    position: relative;
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(
+            105deg,
+            #211c18 0%,
+            #2e2721 52%,
+            #3b3027 100%
+        );
+    color: var(--bundle-white);
+    overflow: hidden;
+}
+
+.bundles-hero::before {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border: 1px solid rgba(230, 199, 123, 0.15);
+    border-radius: 50%;
+    right: -150px;
+    top: -180px;
+}
+
+.bundles-hero::after {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    border: 1px solid rgba(230, 199, 123, 0.10);
+    border-radius: 50%;
+    left: -180px;
+    bottom: -200px;
+}
+
+.bundles-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(33, 28, 24, 0.96),
+            rgba(33, 28, 24, 0.72),
+            rgba(33, 28, 24, 0.25)
+        );
+    z-index: 1;
+}
+
+.bundles-hero .container {
+    position: relative;
+    z-index: 3;
+}
+
+.bundles-hero .row {
+    min-height: 680px;
+}
+
+.bundles-eyebrow {
+    display: inline-block;
+    margin-bottom: 22px;
+    color: var(--bundle-gold-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+}
+
+.bundles-hero h1 {
+    max-width: 700px;
+    margin: 0 0 25px;
+    font-size: clamp(3rem, 6vw, 5.6rem);
+    font-weight: 600;
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+}
+
+.bundles-hero h1 span {
+    display: block;
+    color: var(--bundle-gold-light);
+}
+
+.bundles-hero p {
+    max-width: 650px;
+    margin: 0 0 35px;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.08rem;
+}
+
+.bundles-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.bundles-primary-button,
+.bundles-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: var(--bundle-transition);
+}
+
+.bundles-primary-button {
+    background: var(--bundle-gold);
+    color: var(--bundle-dark);
+}
+
+.bundles-primary-button:hover {
+    background: var(--bundle-gold-light);
+    color: var(--bundle-dark);
+    transform: translateY(-3px);
+}
+
+.bundles-secondary-button {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--bundle-white);
+}
+
+.bundles-secondary-button:hover {
+    background: var(--bundle-white);
+    border-color: var(--bundle-white);
+    color: var(--bundle-dark);
+    transform: translateY(-3px);
+}
+
+.bundles-hero-image {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bundles-hero-image::before {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: rgba(201, 154, 62, 0.10);
+    filter: blur(5px);
+}
+
+.bundles-hero-image img {
+    position: relative;
+    width: 100%;
+    max-width: 540px;
+    max-height: 560px;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.35));
+    animation: bundlesHeroFloat 6s ease-in-out infinite;
+}
+
+@keyframes bundlesHeroFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+
+/* =========================================================
+   4. INTRODUCTION
+========================================================= */
+
+.bundles-intro {
+    padding: 110px 0;
+    background: var(--bundle-white);
+}
+
+.bundle-benefit-card {
+    height: 100%;
+    padding: 38px 30px;
+    border: 1px solid var(--bundle-border);
+    border-radius: var(--bundle-radius);
+    background: var(--bundle-white);
+    text-align: center;
+    transition: var(--bundle-transition);
+}
+
+.bundle-benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--bundle-shadow);
+}
+
+.bundle-benefit-icon {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bundle-cream);
+    color: var(--bundle-gold);
+    font-size: 1.7rem;
+}
+
+.bundle-benefit-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.35rem;
+}
+
+.bundle-benefit-card p {
+    margin: 0;
+    color: var(--bundle-muted);
+    font-size: 0.94rem;
+}
+
+
+/* =========================================================
+   5. COLLECTION
+========================================================= */
+
+.bundles-collection {
+    padding: 110px 0;
+    background: var(--bundle-cream);
+}
+
+.bundles-collection .bundles-section-heading {
+    margin-bottom: 55px;
+}
+
+
+/* =========================================================
+   6. PACKAGE CARD
+========================================================= */
+
+.bundle-card {
+    height: 100%;
+    overflow: hidden;
+    background: var(--bundle-white);
+    border: 1px solid var(--bundle-border);
+    border-radius: var(--bundle-radius);
+    box-shadow: 0 8px 30px rgba(33, 28, 24, 0.06);
+    transition: var(--bundle-transition);
+}
+
+.bundle-card:hover {
+    transform: translateY(-9px);
+    box-shadow: var(--bundle-shadow-hover);
+}
+
+
+/* =========================================================
+   7. PACKAGE IMAGE
+========================================================= */
+
+.bundle-card-image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: var(--bundle-beige);
+}
+
+.bundle-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.65s ease;
+}
+
+.bundle-card:hover .bundle-card-image img {
+    transform: scale(1.07);
+}
+
+.bundle-card-badges {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    z-index: 3;
+}
+
+.bundle-featured,
+.bundle-popular {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border-radius: 3px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.bundle-featured {
+    background: var(--bundle-gold);
+    color: var(--bundle-dark);
+}
+
+.bundle-popular {
+    background: var(--bundle-dark);
+    color: var(--bundle-white);
+}
+
+.bundle-image-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(33, 28, 24, 0.35);
+    opacity: 0;
+    transition: var(--bundle-transition);
+}
+
+.bundle-card:hover .bundle-image-overlay {
+    opacity: 1;
+}
+
+.bundle-image-overlay a {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bundle-white);
+    color: var(--bundle-dark);
+    font-size: 1.2rem;
+    transition: var(--bundle-transition);
+}
+
+.bundle-image-overlay a:hover {
+    background: var(--bundle-gold);
+    transform: rotate(5deg) scale(1.08);
+}
+
+
+/* =========================================================
+   8. PACKAGE CONTENT
+========================================================= */
+
+.bundle-card-content {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 300px);
+    padding: 30px;
+}
+
+.bundle-card-label {
+    margin-bottom: 8px;
+    color: var(--bundle-gold);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.bundle-card-content h3 {
+    margin: 0 0 12px;
+    font-size: 1.55rem;
+    line-height: 1.2;
+}
+
+.bundle-description {
+    min-height: 75px;
+    margin-bottom: 20px;
+    color: var(--bundle-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   9. PACKAGE PRICE
+========================================================= */
+
+.bundle-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 18px 0;
+    border-top: 1px solid var(--bundle-border);
+    border-bottom: 1px solid var(--bundle-border);
+}
+
+.bundle-price del {
+    display: block;
+    margin-bottom: 3px;
+    color: #999;
+    font-size: 0.78rem;
+}
+
+.bundle-price strong {
+    display: block;
+    color: var(--bundle-dark);
+    font-size: 1.5rem;
+}
+
+.bundle-saving {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 10px;
+    border-radius: 3px;
+    background: #f2ead8;
+    color: var(--bundle-brown);
+    font-size: 0.7rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   10. PACKAGE STATS
+========================================================= */
+
+.bundle-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 22px 0;
+    border: 1px solid var(--bundle-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.bundle-stats > div {
+    padding: 13px 7px;
+    text-align: center;
+    border-right: 1px solid var(--bundle-border);
+}
+
+.bundle-stats > div:last-child {
+    border-right: 0;
+}
+
+.bundle-stats strong {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 1rem;
+}
+
+.bundle-stats span {
+    display: block;
+    color: var(--bundle-muted);
+    font-size: 0.68rem;
+}
+
+
+/* =========================================================
+   11. PACKAGE INCLUDES
+========================================================= */
+
+.bundle-includes {
+    margin-bottom: 25px;
+}
+
+.bundle-includes h4 {
+    margin-bottom: 13px;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.bundle-includes ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.bundle-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-bottom: 8px;
+    color: var(--bundle-muted);
+    font-size: 0.82rem;
+}
+
+.bundle-includes li i {
+    flex-shrink: 0;
+    margin-top: 3px;
+    color: #4d8a55;
+}
+
+.bundle-more-items {
+    display: inline-block;
+    margin-top: 3px;
+    color: var(--bundle-brown);
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   12. PACKAGE BUTTONS
+========================================================= */
+
+.bundle-card-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.bundle-view-button,
+.bundle-customize-button,
+.bundles-dark-button,
+.bundles-light-button,
+.bundles-outline-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 20px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--bundle-transition);
+}
+
+.bundle-view-button,
+.bundles-dark-button {
+    background: var(--bundle-dark);
+    color: var(--bundle-white);
+}
+
+.bundle-view-button:hover,
+.bundles-dark-button:hover {
+    background: var(--bundle-gold);
+    color: var(--bundle-dark);
+    transform: translateY(-2px);
+}
+
+.bundle-customize-button {
+    border: 1px solid var(--bundle-border);
+    color: var(--bundle-dark);
+    background: transparent;
+}
+
+.bundle-customize-button:hover {
+    border-color: var(--bundle-gold);
+    background: #f8f1e5;
+    color: var(--bundle-dark);
+}
+
+
+/* =========================================================
+   13. EMPTY STATE
+========================================================= */
+
+.bundles-empty {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 70px 30px;
+    border: 1px dashed rgba(33, 28, 24, 0.18);
+    border-radius: var(--bundle-radius);
+    text-align: center;
+}
+
+.bundles-empty > i {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--bundle-gold);
+    font-size: 3.5rem;
+}
+
+.bundles-empty h3 {
+    margin-bottom: 12px;
+    font-size: 1.7rem;
+}
+
+.bundles-empty p {
+    margin-bottom: 25px;
+    color: var(--bundle-muted);
+}
+
+
+/* =========================================================
+   14. PROCESS
+========================================================= */
+
+.bundles-process {
+    padding: 110px 0;
+    background: var(--bundle-white);
+}
+
+.bundle-process-step {
+    position: relative;
+    height: 100%;
+    padding: 35px;
+    border: 1px solid var(--bundle-border);
+    border-radius: var(--bundle-radius);
+    background: var(--bundle-white);
+    transition: var(--bundle-transition);
+}
+
+.bundle-process-step:hover {
+    transform: translateY(-7px);
+    box-shadow: var(--bundle-shadow);
+}
+
+.bundle-step-number {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: rgba(33, 28, 24, 0.07);
+    font-family: "Playfair Display", serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.bundle-process-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    border-radius: 50%;
+    background: var(--bundle-cream);
+    color: var(--bundle-gold);
+    font-size: 1.4rem;
+}
+
+.bundle-process-step h3 {
+    margin-bottom: 12px;
+    font-size: 1.35rem;
+}
+
+.bundle-process-step p {
+    margin: 0;
+    color: var(--bundle-muted);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   15. ADVANTAGES
+========================================================= */
+
+.bundles-advantages {
+    padding: 110px 0;
+    background: var(--bundle-cream);
+}
+
+.bundles-advantage-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--bundle-radius);
+}
+
+.bundles-advantage-image::after {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.bundles-advantage-image img {
+    width: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.bundles-advantage-image:hover img {
+    transform: scale(1.04);
+}
+
+.bundles-advantages h2 {
+    margin: 12px 0 20px;
+    font-size: clamp(2.3rem, 4vw, 3.7rem);
+    line-height: 1.1;
+}
+
+.bundles-advantage-intro {
+    color: var(--bundle-muted);
+    font-size: 1rem;
+}
+
+.bundle-advantage-list {
+    margin: 28px 0 32px;
+}
+
+.bundle-advantage-list > div {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 15px;
+    color: var(--bundle-text);
+    font-size: 0.92rem;
+}
+
+.bundle-advantage-list i {
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--bundle-gold);
+    color: var(--bundle-dark);
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   16. FINAL CTA
+========================================================= */
+
+.bundles-final-cta {
+    position: relative;
+    padding: 115px 0;
+    background:
+        linear-gradient(
+            135deg,
+            #211c18,
+            #3b3027
+        );
+    color: var(--bundle-white);
+    overflow: hidden;
+}
+
+.bundles-final-cta::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(230, 199, 123, 0.12);
+    border-radius: 50%;
+    right: -200px;
+    top: -250px;
+}
+
+.bundles-final-cta::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 1px solid rgba(230, 199, 123, 0.08);
+    border-radius: 50%;
+    left: -170px;
+    bottom: -220px;
+}
+
+.bundles-final-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bundles-final-content h2 {
+    margin: 14px 0 18px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.1;
+}
+
+.bundles-final-content p {
+    max-width: 700px;
+    margin: 0 auto 32px;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.bundles-final-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.bundles-light-button {
+    background: var(--bundle-gold);
+    color: var(--bundle-dark);
+}
+
+.bundles-light-button:hover {
+    background: var(--bundle-gold-light);
+    color: var(--bundle-dark);
+    transform: translateY(-3px);
+}
+
+.bundles-outline-button {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: var(--bundle-white);
+}
+
+.bundles-outline-button:hover {
+    background: var(--bundle-white);
+    border-color: var(--bundle-white);
+    color: var(--bundle-dark);
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   17. ACCESSIBILITY
+========================================================= */
+
+.bundles-page a:focus-visible,
+.bundles-page button:focus-visible {
+    outline: 3px solid rgba(201, 154, 62, 0.55);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   18. TABLET
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .bundles-hero {
+        min-height: 600px;
+    }
+
+    .bundles-hero .row {
+        min-height: 600px;
+    }
+
+    .bundles-hero h1 {
+        font-size: clamp(3rem, 8vw, 4.5rem);
+    }
+
+    .bundles-intro,
+    .bundles-collection,
+    .bundles-process,
+    .bundles-advantages {
+        padding: 85px 0;
+    }
+
+    .bundle-card-image {
+        height: 280px;
+    }
+
+    .bundles-advantage-image img {
+        min-height: 450px;
+    }
+
+}
+
+
+/* =========================================================
+   19. MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .bundles-hero {
+        min-height: 620px;
+        padding: 90px 0;
+    }
+
+    .bundles-hero .row {
+        min-height: auto;
+    }
+
+    .bundles-hero h1 {
+        font-size: 3rem;
+    }
+
+    .bundles-hero p {
+        font-size: 0.95rem;
+    }
+
+    .bundles-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bundles-primary-button,
+    .bundles-secondary-button {
+        width: 100%;
+    }
+
+    .bundles-section-heading {
+        margin-bottom: 38px;
+    }
+
+    .bundles-intro,
+    .bundles-collection,
+    .bundles-process,
+    .bundles-advantages {
+        padding: 70px 0;
+    }
+
+    .bundle-benefit-card {
+        padding: 30px 22px;
+    }
+
+    .bundle-card-image {
+        height: 260px;
+    }
+
+    .bundle-card-content {
+        padding: 24px;
+    }
+
+    .bundle-description {
+        min-height: auto;
+    }
+
+    .bundle-price {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .bundle-saving {
+        white-space: normal;
+    }
+
+    .bundle-card-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .bundles-advantage-image img {
+        min-height: 350px;
+    }
+
+    .bundles-advantages h2 {
+        font-size: 2.4rem;
+    }
+
+    .bundles-final-cta {
+        padding: 80px 0;
+    }
+
+    .bundles-final-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bundles-light-button,
+    .bundles-outline-button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   20. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .bundles-hero {
+        padding: 75px 0;
+    }
+
+    .bundles-hero h1 {
+        font-size: 2.6rem;
+    }
+
+    .bundles-section-heading h2 {
+        font-size: 2rem;
+    }
+
+    .bundle-card-image {
+        height: 230px;
+    }
+
+    .bundle-stats {
+        font-size: 0.8rem;
+    }
+
+    .bundle-stats strong {
+        font-size: 0.9rem;
+    }
+
+    .bundle-stats span {
+        font-size: 0.62rem;
+    }
+
+    .bundles-advantage-image img {
+        min-height: 300px;
+    }
+
+}
+
+
+/* =========================================================
+   21. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bundles-page *,
+    .bundles-page *::before,
+    .bundles-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}

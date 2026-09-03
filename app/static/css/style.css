@@ -1,0 +1,394 @@
+css
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   SAFE GLOBAL STYLESHEET
+
+   Purpose:
+   - Global fallback styling
+   - Typography
+   - Basic spacing
+   - Buttons
+   - Images
+   - Utility classes
+   - Responsive defaults
+
+   IMPORTANT:
+   Do NOT add broad page-specific rules here.
+   Page-specific styling belongs inside:
+   static/css/pages/
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HTML / BODY
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #F8F7F5;
+    color: #2C2C2C;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+
+/*
+   IMPORTANT:
+   We intentionally DO NOT set a global heading color here.
+
+   This allows individual pages and sections to decide whether
+   their headings should be dark, white, gold, etc.
+*/
+
+
+/* =========================================================
+   IMAGES
+========================================================= */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn {
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Primary Eagle Furniture button */
+
+.btn-dark {
+    background-color: #5D4037;
+    border-color: #5D4037;
+    color: #ffffff;
+}
+
+.btn-dark:hover,
+.btn-dark:focus {
+    background-color: #4A322B;
+    border-color: #4A322B;
+    color: #ffffff;
+}
+
+
+/* Gold button */
+
+.btn-warning {
+    background-color: #C89B3C;
+    border-color: #C89B3C;
+    color: #ffffff;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+    background-color: #A67C24;
+    border-color: #A67C24;
+    color: #ffffff;
+}
+
+
+/* Outline button */
+
+.btn-outline-dark {
+    color: #5D4037;
+    border-color: #5D4037;
+}
+
+.btn-outline-dark:hover,
+.btn-outline-dark:focus {
+    background-color: #5D4037;
+    border-color: #5D4037;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SECTION DEFAULTS
+========================================================= */
+
+section {
+    position: relative;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+    width: 100%;
+}
+
+
+/* =========================================================
+   COMMON SECTION TAG
+========================================================= */
+
+.section-tag {
+    display: inline-block;
+    background: #F2E7DA;
+    color: #5D4037;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   COMMON PAGE TITLE
+========================================================= */
+
+.page-title {
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.page-subtitle {
+    color: #666666;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   DARK BACKGROUNDS
+========================================================= */
+
+.bg-dark {
+    background-color: #212529 !important;
+}
+
+
+/*
+   Only elements explicitly inside Bootstrap's .bg-dark
+   receive white text.
+
+   We do NOT globally force all h1-h6 to white.
+*/
+
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4,
+.bg-dark h5,
+.bg-dark h6,
+.bg-dark p {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TEXT UTILITIES
+========================================================= */
+
+.text-white {
+    color: #ffffff !important;
+}
+
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.70) !important;
+}
+
+
+/* =========================================================
+   EAGLE BRAND COLORS
+========================================================= */
+
+.text-eagle-brown {
+    color: #5D4037 !important;
+}
+
+.text-eagle-gold {
+    color: #C89B3C !important;
+}
+
+.bg-eagle-brown {
+    background-color: #5D4037 !important;
+}
+
+.bg-eagle-gold {
+    background-color: #C89B3C !important;
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #C89B3C;
+    box-shadow: 0 0 0 0.2rem rgba(200, 155, 60, 0.15);
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+ul,
+ol {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+table {
+    width: 100%;
+}
+
+
+/* =========================================================
+   HORIZONTAL RULE
+========================================================= */
+
+hr {
+    opacity: 0.15;
+}
+
+
+/* =========================================================
+   COMMON HOVER EFFECT
+========================================================= */
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   VISUALLY HIDDEN
+========================================================= */
+
+.visually-hidden-custom {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .container {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    body {
+        font-size: 0.95rem;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .page-title {
+        font-size: 1.9rem;
+    }
+
+    .section-tag {
+        font-size: 0.78rem;
+        padding: 7px 14px;
+    }
+
+}
+
+
+/* =========================================================
+   END OF SAFE GLOBAL STYLES
+========================================================= */

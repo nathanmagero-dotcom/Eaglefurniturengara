@@ -1,0 +1,668 @@
+{% extends "base.html" %}
+
+{% block title %}
+Eagle Furniture Ngara | Quality Furniture & Interior Design
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/home.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =========================================================
+     HOME PAGE
+========================================================= -->
+
+<div class="home-page">
+
+    <!-- =====================================================
+         HERO SECTION
+    ====================================================== -->
+
+    <section class="home-hero">
+
+        <div class="home-hero-overlay"></div>
+
+        <div class="container">
+
+            <div class="home-hero-content">
+
+                <span class="home-hero-eyebrow">
+                    EAGLE FURNITURE NGARA
+                </span>
+
+                <h1>
+                    Beautiful Furniture.
+                    <span>Beautiful Living.</span>
+                </h1>
+
+                <p>
+                    Discover quality furniture designed to transform
+                    your home, office and living spaces into places
+                    you will love.
+                </p>
+
+                <div class="home-hero-actions">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="home-btn home-btn-primary">
+                        <i class="bi bi-bag"></i>
+                        Shop Furniture
+                    </a>
+
+                    <a href="{{ url_for('main.custom_furniture') }}"
+                       class="home-btn home-btn-outline">
+                        <i class="bi bi-rulers"></i>
+                        Custom Furniture
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURE HIGHLIGHTS
+    ====================================================== -->
+
+    <section class="home-features">
+
+        <div class="container">
+
+            <div class="home-feature-grid">
+
+                <div class="home-feature">
+
+                    <div class="home-feature-icon">
+                        <i class="bi bi-award"></i>
+                    </div>
+
+                    <div>
+                        <h3>Quality Furniture</h3>
+                        <p>
+                            Carefully crafted furniture built
+                            for comfort and durability.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="home-feature">
+
+                    <div class="home-feature-icon">
+                        <i class="bi bi-pencil-ruler"></i>
+                    </div>
+
+                    <div>
+                        <h3>Custom Designs</h3>
+                        <p>
+                            Furniture designed according to
+                            your space and style.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="home-feature">
+
+                    <div class="home-feature-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+
+                    <div>
+                        <h3>Reliable Delivery</h3>
+                        <p>
+                            Convenient furniture delivery
+                            within Nairobi and beyond.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="home-feature">
+
+                    <div class="home-feature-icon">
+                        <i class="bi bi-house-heart"></i>
+                    </div>
+
+                    <div>
+                        <h3>Complete Interiors</h3>
+                        <p>
+                            Furniture and interior solutions
+                            for beautiful spaces.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORIES
+    ====================================================== -->
+
+    <section class="home-section home-categories">
+
+        <div class="container">
+
+            <div class="home-section-heading">
+
+                <span>EXPLORE OUR COLLECTION</span>
+
+                <h2>
+                    Shop By Category
+                </h2>
+
+                <p>
+                    Find the perfect furniture for every room
+                    in your home.
+                </p>
+
+            </div>
+
+
+            <div class="home-category-grid">
+
+                {% for category in categories[:8] %}
+
+                <a href="{{ url_for('main.category',
+                                     slug=category.slug) }}"
+                   class="home-category-card">
+
+                    {% if category.image %}
+
+<img src="{{ url_for('static', filename=category.image) }}"
+     alt="{{ category.name }}"
+     loading="lazy">
+
+{% else %}
+
+<div class="home-category-placeholder">
+    <i class="bi bi-house"></i>
+</div>
+
+{% endif %}
+
+                    <div class="home-category-content">
+
+                        <h3>
+                            {{ category.name }}
+                        </h3>
+
+                        <span>
+                            Explore Collection
+                            <i class="bi bi-arrow-right"></i>
+                        </span>
+
+                    </div>
+
+                </a>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURED PRODUCTS
+    ====================================================== -->
+
+    <section class="home-section home-products">
+
+        <div class="container">
+
+            <div class="home-section-heading home-section-heading-row">
+
+                <div>
+
+                    <span>OUR COLLECTION</span>
+
+                    <h2>
+                        Featured Furniture
+                    </h2>
+
+                    <p>
+                        Explore some of our most popular pieces.
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="home-view-all">
+                    View All
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="home-product-grid">
+
+                {% for product in featured_products[:8] %}
+
+                <article class="home-product-card">
+
+                    <a href="{{ url_for('main.product',
+                                         product_id=product.id) }}"
+                       class="home-product-image">
+
+                        {% if product.image %}
+
+                        <img src="{{ url_for('static',
+                                  filename=product.image) }}"
+                             alt="{{ product.name }}"
+                             loading="lazy">
+
+                        {% else %}
+
+                        <div class="home-product-placeholder">
+                            <i class="bi bi-image"></i>
+                        </div>
+
+                        {% endif %}
+
+
+                        {% if product.sale_price and
+                              product.price and
+                              product.sale_price < product.price %}
+
+                        <span class="home-sale-badge">
+                            Sale
+                        </span>
+
+                        {% endif %}
+
+                    </a>
+
+
+                    <div class="home-product-info">
+
+                        <span class="home-product-category">
+                            {{ product.category }}
+                        </span>
+
+                        <h3>
+                            <a href="{{ url_for('main.product',
+                                                product_id=product.id) }}">
+                                {{ product.name }}
+                            </a>
+                        </h3>
+
+
+                        <div class="home-product-price">
+
+                            {% if product.sale_price and
+                                  product.sale_price < product.price %}
+
+                            <span class="home-price-current">
+                                KSh {{ "{:,.0f}".format(product.sale_price) }}
+                            </span>
+
+                            <span class="home-price-old">
+                                KSh {{ "{:,.0f}".format(product.price) }}
+                            </span>
+
+                            {% else %}
+
+                            <span class="home-price-current">
+                                KSh {{ "{:,.0f}".format(product.price) }}
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <a href="{{ url_for('main.product',
+                                             product_id=product.id) }}"
+                           class="home-product-button">
+                            View Product
+                        </a>
+
+                    </div>
+
+                </article>
+
+                {% else %}
+
+                <div class="home-empty-state">
+
+                    <i class="bi bi-box-seam"></i>
+
+                    <h3>
+                        No featured products yet
+                    </h3>
+
+                    <p>
+                        Our featured furniture collection
+                        will appear here.
+                    </p>
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="home-btn home-btn-primary">
+                        Browse Furniture
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FEATURED BUNDLES
+    ====================================================== -->
+
+    {% if featured_bundles %}
+
+    <section class="home-section home-bundles">
+
+        <div class="container">
+
+            <div class="home-section-heading">
+
+                <span>COMPLETE YOUR SPACE</span>
+
+                <h2>
+                    Furniture Packages
+                </h2>
+
+                <p>
+                    Beautiful furniture combinations designed
+                    to make furnishing your space easier.
+                </p>
+
+            </div>
+
+
+            <div class="home-bundle-grid">
+
+                {% for bundle in featured_bundles[:6] %}
+
+                <article class="home-bundle-card">
+
+                    {% if bundle.image %}
+
+                    <img src="{{ url_for('static',
+                              filename=bundle.image) }}"
+                         alt="{{ bundle.name }}"
+                         loading="lazy">
+
+                    {% endif %}
+
+
+                    <div class="home-bundle-content">
+
+                        <span>
+                            FURNITURE PACKAGE
+                        </span>
+
+                        <h3>
+                            {{ bundle.name }}
+                        </h3>
+
+                        {% if bundle.description %}
+
+                        <p>
+                            {{ bundle.description }}
+                        </p>
+
+                        {% endif %}
+
+                        <a href="{{ url_for('main.bundle',
+                                             bundle_id=bundle.id) }}"
+                           class="home-btn home-btn-primary">
+                            View Package
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         CUSTOM FURNITURE CTA
+    ====================================================== -->
+
+    <section class="home-custom">
+
+        <div class="container">
+
+            <div class="home-custom-content">
+
+                <span>
+                    MADE FOR YOUR SPACE
+                </span>
+
+                <h2>
+                    Can't Find Exactly What You Want?
+                </h2>
+
+                <p>
+                    Tell us what you have in mind and let our
+                    team create furniture that matches your
+                    space, style and needs.
+                </p>
+
+                <a href="{{ url_for('main.custom_furniture') }}"
+                   class="home-btn home-btn-light">
+                    Request Custom Furniture
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="home-section home-services">
+
+        <div class="container">
+
+            <div class="home-section-heading">
+
+                <span>WHAT WE DO</span>
+
+                <h2>
+                    More Than Furniture
+                </h2>
+
+                <p>
+                    Complete solutions for beautiful and
+                    functional spaces.
+                </p>
+
+            </div>
+
+
+            <div class="home-service-grid">
+
+                <a href="{{ url_for('main.custom_furniture') }}"
+                   class="home-service-card">
+
+                    <div class="home-service-icon">
+                        <i class="bi bi-rulers"></i>
+                    </div>
+
+                    <h3>
+                        Custom Furniture
+                    </h3>
+
+                    <p>
+                        Get furniture made specifically
+                        for your space.
+                    </p>
+
+                    <span>
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a href="{{ url_for('main.interior_design') }}"
+                   class="home-service-card">
+
+                    <div class="home-service-icon">
+                        <i class="bi bi-palette"></i>
+                    </div>
+
+                    <h3>
+                        Interior Design
+                    </h3>
+
+                    <p>
+                        Transform your space with thoughtful
+                        interior design solutions.
+                    </p>
+
+                    <span>
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a href="{{ url_for('main.office_furniture') }}"
+                   class="home-service-card">
+
+                    <div class="home-service-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <h3>
+                        Office Furniture
+                    </h3>
+
+                    <p>
+                        Create productive and professional
+                        working environments.
+                    </p>
+
+                    <span>
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+
+                </a>
+
+
+                <a href="{{ url_for('main.airbnb_packages') }}"
+                   class="home-service-card">
+
+                    <div class="home-service-icon">
+                        <i class="bi bi-house-check"></i>
+                    </div>
+
+                    <h3>
+                        Airbnb Packages
+                    </h3>
+
+                    <p>
+                        Furnish your Airbnb with practical
+                        and stylish packages.
+                    </p>
+
+                    <span>
+                        Learn More
+                        <i class="bi bi-arrow-right"></i>
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="home-final-cta">
+
+        <div class="container">
+
+            <div class="home-final-content">
+
+                <span>
+                    EAGLE FURNITURE NGARA
+                </span>
+
+                <h2>
+                    Let's Create a Space You'll Love.
+                </h2>
+
+                <p>
+                    Visit our showroom in Ngara or explore
+                    our collection online.
+                </p>
+
+                <div class="home-final-actions">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="home-btn home-btn-primary">
+                        Shop Now
+                    </a>
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="home-btn home-btn-outline">
+                        Contact Us
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

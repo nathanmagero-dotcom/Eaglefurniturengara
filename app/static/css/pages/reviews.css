@@ -1,0 +1,169 @@
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   REVIEWS PAGE
+========================================================= */
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.reviews-hero {
+    background: #f8f5ef;
+}
+
+.review-rating-box {
+    background: #ffffff;
+    padding: 45px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.review-stars {
+    color: #f4b400;
+    font-size: 1.2rem;
+}
+
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.review-stat-card {
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.review-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.review-stat-card > i {
+    font-size: 2.2rem;
+    color: #f4b400;
+}
+
+
+/* =========================================================
+   REVIEW CARDS
+========================================================= */
+
+.review-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+.review-text {
+    color: #555555;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   REVIEW AUTHOR
+========================================================= */
+
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review-avatar {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f4b400;
+    color: #212529;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.review-benefit {
+    padding: 25px 20px;
+}
+
+.benefit-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff4cc;
+    color: #d99b00;
+
+    font-size: 1.8rem;
+}
+
+.review-benefit p {
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.review-cta {
+    background: #ffffff;
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .review-rating-box {
+        padding: 35px 20px;
+    }
+
+    .review-card {
+        padding: 25px;
+    }
+
+    .review-cta {
+        padding: 35px 20px !important;
+    }
+
+}

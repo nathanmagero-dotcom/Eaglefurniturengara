@@ -1,0 +1,708 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ bundle.name }} | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     BUNDLE HERO
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+
+    <div class="container py-4">
+
+        <div class="row align-items-center g-5">
+
+            <!-- IMAGE -->
+
+            <div class="col-lg-6">
+
+                <div class="position-relative">
+
+                    {% if bundle.image %}
+
+                    <img
+                        src="{{ url_for('static', filename=bundle.image) }}"
+                        alt="{{ bundle.name }}"
+                        class="img-fluid rounded-4 shadow-lg w-100"
+                        style="max-height: 550px; object-fit: cover;"
+                    >
+
+                    {% else %}
+
+                    <div
+                        class="bg-secondary rounded-4 d-flex align-items-center justify-content-center"
+                        style="height: 450px;"
+                    >
+
+                        <i class="bi bi-house-door display-1"></i>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if bundle.featured %}
+
+                    <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2">
+                        Featured Package
+                    </span>
+
+                    {% endif %}
+
+
+                    {% if bundle.popular %}
+
+                    <span class="badge bg-success position-absolute top-0 end-0 m-3 px-3 py-2">
+                        Most Popular
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-warning text-dark mb-3 px-3 py-2">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-5 fw-bold mb-3">
+                    {{ bundle.name }}
+                </h1>
+
+
+                {% if bundle.description %}
+
+                <p class="lead text-white-50 mb-4">
+                    {{ bundle.description }}
+                </p>
+
+                {% endif %}
+
+
+                <!-- PRICE -->
+
+                <div class="mb-4">
+
+                    {% if bundle.price %}
+
+                    <div class="text-white-50 text-decoration-line-through fs-5">
+
+                        KSh {{ "{:,.0f}".format(bundle.price) }}
+
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if bundle.sale_price %}
+
+                    <div class="display-5 fw-bold text-warning">
+
+                        KSh {{ "{:,.0f}".format(bundle.sale_price) }}
+
+                    </div>
+
+                    {% endif %}
+
+
+                    {% if bundle.save %}
+
+                    <span class="badge bg-warning text-dark mt-2 px-3 py-2">
+
+                        Save KSh {{ "{:,.0f}".format(bundle.save) }}
+
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- PACKAGE STATS -->
+
+                <div class="row g-3 mb-4">
+
+                    <div class="col-4">
+
+                        <div class="border border-secondary rounded-3 p-3 text-center">
+
+                            <i class="bi bi-house text-warning fs-4"></i>
+
+                            <div class="fw-bold mt-2">
+                                {{ bundle.rooms|default(1) }}
+                            </div>
+
+                            <small class="text-white-50">
+                                Rooms
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="border border-secondary rounded-3 p-3 text-center">
+
+                            <i class="bi bi-grid text-warning fs-4"></i>
+
+                            <div class="fw-bold mt-2">
+                                {{ bundle.pieces|default('-') }}
+                            </div>
+
+                            <small class="text-white-50">
+                                Pieces
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-4">
+
+                        <div class="border border-secondary rounded-3 p-3 text-center">
+
+                            <i class="bi bi-shield-check text-warning fs-4"></i>
+
+                            <div class="fw-bold mt-2">
+                                2 Yrs
+                            </div>
+
+                            <small class="text-white-50">
+                                Warranty
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="d-grid gap-3 d-md-flex">
+
+                    <a
+                        href="{{ url_for('main.quote') }}"
+                        class="btn btn-warning btn-lg px-4 fw-bold"
+                    >
+
+                        <i class="bi bi-chat-dots me-2"></i>
+
+                        Request This Package
+
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('main.bundle_list') }}"
+                        class="btn btn-outline-light btn-lg px-4"
+                    >
+
+                        <i class="bi bi-arrow-left me-2"></i>
+
+                        All Packages
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     PACKAGE INCLUDES
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- ITEMS -->
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark mb-3">
+                    Package Contents
+                </span>
+
+                <h2 class="fw-bold mb-4">
+                    What's Included
+                </h2>
+
+
+                {% if bundle.items %}
+
+                <div class="row g-3">
+
+                    {% for item in bundle.items %}
+
+                    <div class="col-md-6">
+
+                        <div class="card border-0 shadow-sm h-100">
+
+                            <div class="card-body d-flex align-items-center">
+
+                                <div
+                                    class="rounded-circle bg-success-subtle text-success d-flex align-items-center justify-content-center me-3"
+                                    style="width: 42px; height: 42px; min-width: 42px;"
+                                >
+
+                                    <i class="bi bi-check-lg"></i>
+
+                                </div>
+
+                                <span class="fw-semibold">
+                                    {{ item }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+                {% else %}
+
+                <div class="alert alert-light border">
+
+                    Package contents will be confirmed with our team.
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- VALUE -->
+
+            <div class="col-lg-5">
+
+                <div class="card border-0 shadow-sm bg-light h-100">
+
+                    <div class="card-body p-4">
+
+                        <h4 class="fw-bold mb-4">
+
+                            <i class="bi bi-stars text-warning me-2"></i>
+
+                            Package Benefits
+
+                        </h4>
+
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-piggy-bank text-success fs-4 me-3"></i>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Better Value
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+                                    Save compared with buying the furniture
+                                    pieces individually.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-palette text-warning fs-4 me-3"></i>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Coordinated Design
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+                                    Furniture pieces selected to complement
+                                    one another.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <i class="bi bi-truck text-primary fs-4 me-3"></i>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Delivery Support
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+                                    We help coordinate delivery and
+                                    installation where applicable.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex">
+
+                            <i class="bi bi-tools text-danger fs-4 me-3"></i>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Customization Available
+                                </h6>
+
+                                <p class="text-muted small mb-0">
+                                    Ask our team about available colours,
+                                    fabrics, sizes and finishes.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY EAGLE FURNITURE
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Why Eagle Furniture?
+            </span>
+
+            <h2 class="fw-bold">
+                Furniture Designed Around You
+            </h2>
+
+            <p class="text-muted mx-auto"
+               style="max-width: 700px;">
+
+                We combine quality craftsmanship, beautiful designs
+                and practical solutions to help you create a space
+                you will love.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm text-center h-100 p-4">
+
+                    <i class="bi bi-hammer display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Quality Craftsmanship
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Carefully crafted furniture designed for
+                        durability and everyday use.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm text-center h-100 p-4">
+
+                    <i class="bi bi-palette display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Custom Designs
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        Choose finishes, colours, fabrics and sizes
+                        where customization is available.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm text-center h-100 p-4">
+
+                    <i class="bi bi-truck display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Delivery
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        We support furniture delivery across Kenya.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm text-center h-100 p-4">
+
+                    <i class="bi bi-shield-check display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Quality Assurance
+                    </h5>
+
+                    <p class="text-muted small mb-0">
+                        We are committed to delivering furniture
+                        that meets our quality standards.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RELATED PACKAGES
+========================================================= -->
+
+{% if related_bundles %}
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+
+                <span class="badge bg-warning text-dark mb-2">
+                    You May Also Like
+                </span>
+
+                <h2 class="fw-bold mb-0">
+                    Other Furniture Packages
+                </h2>
+
+            </div>
+
+
+            <a
+                href="{{ url_for('main.bundle_list') }}"
+                class="btn btn-outline-dark d-none d-md-inline-block"
+            >
+
+                View All
+
+            </a>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            {% for related in related_bundles %}
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 overflow-hidden">
+
+                    {% if related.image %}
+
+                    <img
+                        src="{{ url_for('static', filename=related.image) }}"
+                        class="card-img-top"
+                        alt="{{ related.name }}"
+                        style="height: 220px; object-fit: cover;"
+                    >
+
+                    {% else %}
+
+                    <div
+                        class="bg-light d-flex align-items-center justify-content-center"
+                        style="height: 220px;"
+                    >
+
+                        <i class="bi bi-house-door display-4 text-muted"></i>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <div class="card-body p-4">
+
+                        <h5 class="fw-bold">
+                            {{ related.name }}
+                        </h5>
+
+
+                        {% if related.description %}
+
+                        <p class="text-muted small">
+                            {{ related.description }}
+                        </p>
+
+                        {% endif %}
+
+
+                        {% if related.sale_price %}
+
+                        <h5 class="fw-bold text-primary">
+
+                            KSh {{ "{:,.0f}".format(related.sale_price) }}
+
+                        </h5>
+
+                        {% endif %}
+
+
+                        <a
+                            href="{{ url_for('main.bundle', bundle_id=related.id) }}"
+                            class="btn btn-dark w-100 mt-2"
+                        >
+
+                            View Package
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- =========================================================
+     CUSTOM PACKAGE CTA
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="bg-warning rounded-4 shadow p-5 text-center">
+
+            <i class="bi bi-stars display-4 mb-3"></i>
+
+            <h2 class="display-6 fw-bold">
+                Want to Customize This Package?
+            </h2>
+
+            <p class="lead mb-4">
+
+                Tell us your preferred colours, sizes, fabrics,
+                budget and space requirements. Our team will help
+                you create a package that works for you.
+
+            </p>
+
+
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+
+                <a
+                    href="{{ url_for('main.quote') }}"
+                    class="btn btn-dark btn-lg px-5"
+                >
+
+                    <i class="bi bi-chat-dots me-2"></i>
+
+                    Request a Quote
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('main.contact') }}"
+                    class="btn btn-outline-dark btn-lg px-5"
+                >
+
+                    <i class="bi bi-envelope me-2"></i>
+
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

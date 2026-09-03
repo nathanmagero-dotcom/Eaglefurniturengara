@@ -1,0 +1,639 @@
+{% extends "base.html" %}
+
+{% block title %}Compare Products | Eagle Furniture Ngara{% endblock %}
+
+{% block extra_css %}
+<style>
+    .compare-hero {
+        background: linear-gradient(135deg, #1f1f1f, #3a2a1f);
+        color: white;
+        padding: 80px 0;
+    }
+
+    .compare-hero h1 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+    }
+
+    .compare-wrapper {
+        overflow-x: auto;
+    }
+
+    .compare-table {
+        min-width: 900px;
+        background: #fff;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .compare-table th,
+    .compare-table td {
+        padding: 20px;
+        vertical-align: middle;
+        border-color: #eee;
+    }
+
+    .compare-table th {
+        background: #f8f6f2;
+        font-weight: 600;
+        min-width: 220px;
+    }
+
+    .compare-product {
+        text-align: center;
+        min-width: 240px;
+    }
+
+    .compare-product-image {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 15px;
+    }
+
+    .compare-product h5 {
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .compare-price {
+        color: #b8860b;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #999;
+        font-size: .9rem;
+        margin-right: 6px;
+    }
+
+    .compare-label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .rating {
+        color: #f4b400;
+    }
+
+    .empty-compare {
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .empty-compare i {
+        font-size: 70px;
+        color: #c9a227;
+    }
+
+    .empty-compare h2 {
+        font-family: 'Playfair Display', serif;
+        margin-top: 25px;
+    }
+
+    .compare-section {
+        padding: 70px 0;
+    }
+
+    @media (max-width: 768px) {
+        .compare-hero {
+            padding: 55px 0;
+        }
+
+        .compare-hero h1 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="compare-hero">
+    <div class="container text-center">
+
+        <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+            Eagle Furniture Ngara
+        </span>
+
+        <h1 class="display-4 mb-3">
+            Compare Products
+        </h1>
+
+        <p class="lead mb-0">
+            Compare your favourite furniture pieces and choose
+            the perfect one for your home.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- =====================================================
+     COMPARE SECTION
+===================================================== -->
+
+<section class="compare-section bg-light">
+
+    <div class="container">
+
+        {% if products and products|length > 0 %}
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+                <h2 class="fw-bold mb-1">
+                    Product Comparison
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Compare features, prices and details.
+                </p>
+            </div>
+
+            <a href="{{ url_for('main.shop') }}"
+               class="btn btn-outline-dark">
+
+                <i class="bi bi-arrow-left me-1"></i>
+                Continue Shopping
+
+            </a>
+
+        </div>
+
+
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+
+                <div class="compare-wrapper">
+
+                    <table class="table compare-table mb-0">
+
+                        <!-- PRODUCT HEADER -->
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Compare
+                                </th>
+
+                                {% for product in products %}
+
+                                <th class="compare-product">
+
+                                    <img
+                                        src="{{ url_for('static', filename=product.image) }}"
+                                        alt="{{ product.name }}"
+                                        class="compare-product-image"
+                                    >
+
+                                    <h5>
+                                        {{ product.name }}
+                                    </h5>
+
+                                    <a
+                                        href="{{ url_for('main.product', product_id=product.id) }}"
+                                        class="btn btn-sm btn-dark">
+
+                                        View Details
+
+                                    </a>
+
+                                </th>
+
+                                {% endfor %}
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <!-- CATEGORY -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Category
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td class="text-center">
+                                    {{ product.category }}
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- PRICE -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Price
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td class="text-center">
+
+                                    {% if product.sale_price < product.price %}
+
+                                    <span class="old-price">
+                                        KSh {{ "{:,.0f}".format(product.price) }}
+                                    </span>
+
+                                    {% endif %}
+
+                                    <div class="compare-price">
+                                        KSh {{ "{:,.0f}".format(product.sale_price) }}
+                                    </div>
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- RATING -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Customer Rating
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td class="text-center">
+
+                                    <div class="rating">
+
+                                        {% for i in range(5) %}
+                                            <i class="bi bi-star-fill"></i>
+                                        {% endfor %}
+
+                                    </div>
+
+                                    <small class="text-muted">
+                                        {{ product.reviews|default(0) }} Reviews
+                                    </small>
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- STOCK -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Availability
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td class="text-center">
+
+                                    {% if product.stock|default(0) > 5 %}
+
+                                        <span class="badge bg-success">
+                                            In Stock
+                                        </span>
+
+                                    {% elif product.stock|default(0) > 0 %}
+
+                                        <span class="badge bg-warning text-dark">
+                                            Limited Stock
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge bg-danger">
+                                            Out of Stock
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- DESCRIPTION -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Description
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td>
+
+                                    <p class="text-muted small mb-0">
+                                        {{ product.description|default("Premium quality furniture designed for comfort, durability and style.") }}
+                                    </p>
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- FEATURES -->
+                            <tr>
+
+                                <th>
+                                    <span class="compare-label">
+                                        Features
+                                    </span>
+                                </th>
+
+                                {% for product in products %}
+
+                                <td>
+
+                                    <ul class="list-unstyled mb-0 small">
+
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                            Quality craftsmanship
+                                        </li>
+
+                                        <li class="mb-2">
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                            Customization available
+                                        </li>
+
+                                        <li>
+                                            <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                            Delivery available
+                                        </li>
+
+                                    </ul>
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+
+                            <!-- ACTION -->
+                            <tr>
+
+                                <th>
+                                    Action
+                                </th>
+
+                                {% for product in products %}
+
+                                <td class="text-center">
+
+                                    <div class="d-grid gap-2">
+
+                                        <a
+                                            href="{{ url_for('main.product', product_id=product.id) }}"
+                                            class="btn btn-dark">
+
+                                            <i class="bi bi-eye me-1"></i>
+                                            View Product
+
+                                        </a>
+
+                                        <a
+                                            href="{{ url_for('main.quote') }}"
+                                            class="btn btn-outline-warning">
+
+                                            <i class="bi bi-chat-dots me-1"></i>
+                                            Request Quote
+
+                                        </a>
+
+                                    </div>
+
+                                </td>
+
+                                {% endfor %}
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- CLEAR COMPARISON -->
+
+        <div class="text-center mt-4">
+
+            <a
+                href="{{ url_for('main.compare') }}"
+                class="btn btn-outline-danger">
+
+                <i class="bi bi-trash me-1"></i>
+                Clear Comparison
+
+            </a>
+
+        </div>
+
+
+        {% else %}
+
+        <!-- =================================================
+             EMPTY COMPARISON
+        ================================================== -->
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="empty-compare">
+
+                <i class="bi bi-arrow-left-right"></i>
+
+                <h2>
+                    No Products to Compare
+                </h2>
+
+                <p class="text-muted lead">
+                    Add furniture products to your comparison
+                    list to compare their prices, features and
+                    availability.
+                </p>
+
+                <a
+                    href="{{ url_for('main.shop') }}"
+                    class="btn btn-dark btn-lg px-5 mt-3">
+
+                    <i class="bi bi-shop me-2"></i>
+                    Browse Furniture
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY COMPARE
+===================================================== -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Shop With Confidence
+            </span>
+
+            <h2 class="display-6 fw-bold">
+                Find The Right Furniture
+            </h2>
+
+            <p class="text-muted lead">
+                Take your time, compare your options and choose
+                furniture that fits your space and lifestyle.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-award display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Quality Craftsmanship
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Carefully crafted furniture designed
+                        for comfort, strength and durability.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-palette display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Custom Designs
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Customize colours, fabrics, dimensions
+                        and designs to suit your space.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <i class="bi bi-truck display-4 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Reliable Delivery
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Get your furniture delivered safely
+                        with professional support.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="py-5 bg-dark text-white">
+
+    <div class="container text-center">
+
+        <h2 class="display-6 fw-bold">
+            Need Help Choosing?
+        </h2>
+
+        <p class="lead text-white-50">
+            Our team can help you choose furniture that
+            matches your space, style and budget.
+        </p>
+
+        <a
+            href="{{ url_for('main.contact') }}"
+            class="btn btn-warning btn-lg px-5">
+
+            Talk To Us
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

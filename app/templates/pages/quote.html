@@ -1,0 +1,648 @@
+{% extends "base.html" %}
+
+{% block title %}Request a Quote | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     QUOTE HERO
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+    <div class="container py-4">
+
+        <div class="row justify-content-center text-center">
+
+            <div class="col-lg-8">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    Request a Quote
+                </h1>
+
+                <p class="lead text-light mb-0">
+                    Tell us what you need and our team will help you
+                    find the perfect furniture solution for your space.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================================================
+     QUOTE FORM
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <div class="col-lg-8">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-4 p-lg-5">
+
+                        <div class="mb-4">
+
+                            <h2 class="fw-bold">
+                                Tell Us What You Need
+                            </h2>
+
+                            <p class="text-muted">
+                                Complete the form below and provide as
+                                much information as possible.
+                            </p>
+
+                        </div>
+
+
+                        <form method="POST"
+      action="https://api.web3forms.com/submit">
+
+    <input type="hidden"
+           name="access_key"
+           value="{{ config.WEB3FORMS_ACCESS_KEY }}">
+
+    <input type="hidden"
+           name="subject"
+           value="New Furniture Quote Request - Eagle Furniture Ngara">
+
+    <input type="hidden"
+           name="from_name"
+           value="Eagle Furniture Ngara">
+
+    <input type="hidden"
+           name="redirect"
+           value="{{ url_for('main.quote_success', _external=True) }}">
+
+                            <!-- CUSTOMER DETAILS -->
+
+                            <h5 class="fw-bold mb-3">
+                                <i class="bi bi-person me-2 text-warning"></i>
+                                Your Details
+                            </h5>
+
+                            <div class="row g-3 mb-4">
+
+                                <div class="col-md-6">
+
+                                    <label for="name"
+                                           class="form-label fw-semibold">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control form-control-lg"
+                                           id="name"
+                                           name="name"
+                                           placeholder="Your full name"
+                                           required>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="phone"
+                                           class="form-label fw-semibold">
+                                        Phone Number
+                                    </label>
+
+                                    <input type="tel"
+                                           class="form-control form-control-lg"
+                                           id="phone"
+                                           name="phone"
+                                           placeholder="07XX XXX XXX"
+                                           required>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="email"
+                                           class="form-label fw-semibold">
+                                        Email Address
+                                    </label>
+
+                                    <input type="email"
+                                           class="form-control form-control-lg"
+                                           id="email"
+                                           name="email"
+                                           placeholder="you@example.com">
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="location"
+                                           class="form-label fw-semibold">
+                                        Delivery Location
+                                    </label>
+
+                                    <input type="text"
+                                           class="form-control form-control-lg"
+                                           id="location"
+                                           name="location"
+                                           placeholder="e.g. Nairobi, Westlands">
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PRODUCT DETAILS -->
+
+                            <h5 class="fw-bold mb-3">
+                                <i class="bi bi-house-door me-2 text-warning"></i>
+                                Furniture Requirements
+                            </h5>
+
+                            <div class="row g-3 mb-4">
+
+                                <div class="col-md-6">
+
+                                    <label for="category"
+                                           class="form-label fw-semibold">
+                                        Furniture Category
+                                    </label>
+
+                                    <select class="form-select form-select-lg"
+                                            id="category"
+                                            name="category"
+                                            required>
+
+                                        <option value="">
+                                            Select category
+                                        </option>
+
+                                        <option value="Sofas">
+                                            Sofas
+                                        </option>
+
+                                        <option value="Beds">
+                                            Beds
+                                        </option>
+
+                                        <option value="Dining Sets">
+                                            Dining Sets
+                                        </option>
+
+                                        <option value="Wardrobes">
+                                            Wardrobes
+                                        </option>
+
+                                        <option value="TV Stands">
+                                            TV Stands
+                                        </option>
+
+                                        <option value="Wall Units">
+                                            Wall Units
+                                        </option>
+
+                                        <option value="Coffee Tables">
+                                            Coffee Tables
+                                        </option>
+
+                                        <option value="Office Furniture">
+                                            Office Furniture
+                                        </option>
+
+                                        <option value="Baby Furniture">
+                                            Baby Furniture
+                                        </option>
+
+                                        <option value="Complete Furniture Package">
+                                            Complete Furniture Package
+                                        </option>
+
+                                        <option value="Custom Furniture">
+                                            Custom Furniture
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="quantity"
+                                           class="form-label fw-semibold">
+                                        Quantity
+                                    </label>
+
+                                    <input type="number"
+                                           class="form-control form-control-lg"
+                                           id="quantity"
+                                           name="quantity"
+                                           min="1"
+                                           value="1">
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="budget"
+                                           class="form-label fw-semibold">
+                                        Estimated Budget
+                                    </label>
+
+                                    <select class="form-select form-select-lg"
+                                            id="budget"
+                                            name="budget">
+
+                                        <option value="">
+                                            Select budget
+                                        </option>
+
+                                        <option value="Below KSh 50,000">
+                                            Below KSh 50,000
+                                        </option>
+
+                                        <option value="KSh 50,000 - 100,000">
+                                            KSh 50,000 - 100,000
+                                        </option>
+
+                                        <option value="KSh 100,000 - 200,000">
+                                            KSh 100,000 - 200,000
+                                        </option>
+
+                                        <option value="KSh 200,000 - 500,000">
+                                            KSh 200,000 - 500,000
+                                        </option>
+
+                                        <option value="Above KSh 500,000">
+                                            Above KSh 500,000
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col-md-6">
+
+                                    <label for="service"
+                                           class="form-label fw-semibold">
+                                        Service Needed
+                                    </label>
+
+                                    <select class="form-select form-select-lg"
+                                            id="service"
+                                            name="service">
+
+                                        <option value="">
+                                            Select service
+                                        </option>
+
+                                        <option value="Furniture Purchase">
+                                            Furniture Purchase
+                                        </option>
+
+                                        <option value="Custom Furniture">
+                                            Custom Furniture
+                                        </option>
+
+                                        <option value="Interior Design">
+                                            Interior Design
+                                        </option>
+
+                                        <option value="Office Furnishing">
+                                            Office Furnishing
+                                        </option>
+
+                                        <option value="Airbnb Furnishing">
+                                            Airbnb Furnishing
+                                        </option>
+
+                                        <option value="Complete Home Furnishing">
+                                            Complete Home Furnishing
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div class="mb-4">
+
+                                <label for="message"
+                                       class="form-label fw-semibold">
+
+                                    Tell Us More
+
+                                </label>
+
+                                <textarea class="form-control"
+                                          id="message"
+                                          name="message"
+                                          rows="6"
+                                          placeholder="Tell us about the furniture you need, preferred colour, size, material, design, number of rooms or any other requirements..."
+                                          required></textarea>
+
+                            </div>
+
+
+                            <!-- TIMELINE -->
+
+                            <div class="mb-4">
+
+                                <label for="timeline"
+                                       class="form-label fw-semibold">
+
+                                    When Do You Need It?
+
+                                </label>
+
+                                <select class="form-select form-select-lg"
+                                        id="timeline"
+                                        name="timeline">
+
+                                    <option value="">
+                                        Select preferred timeline
+                                    </option>
+
+                                    <option value="As soon as possible">
+                                        As soon as possible
+                                    </option>
+
+                                    <option value="Within 1 week">
+                                        Within 1 week
+                                    </option>
+
+                                    <option value="Within 2 weeks">
+                                        Within 2 weeks
+                                    </option>
+
+                                    <option value="Within 1 month">
+                                        Within 1 month
+                                    </option>
+
+                                    <option value="Flexible">
+                                        I'm flexible
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- SUBMIT -->
+
+                            <div class="d-grid">
+
+                                <button type="submit"
+                                        class="btn btn-dark btn-lg py-3">
+
+                                    <i class="bi bi-send me-2"></i>
+                                    Request My Quote
+
+                                </button>
+
+                            </div>
+
+
+                            <p class="text-muted small text-center mt-3 mb-0">
+
+                                By submitting this form, you agree that
+                                Eagle Furniture Ngara may contact you
+                                regarding your quotation request.
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 SIDEBAR
+            ================================================== -->
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm mb-4">
+
+                    <div class="card-body p-4">
+
+                        <div class="text-center mb-4">
+
+                            <div class="display-5 text-warning mb-3">
+                                <i class="bi bi-chat-square-text"></i>
+                            </div>
+
+                            <h4 class="fw-bold">
+                                Why Request a Quote?
+                            </h4>
+
+                            <p class="text-muted">
+                                Get a furniture solution based on your
+                                needs, space and budget.
+                            </p>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-rulers"></i>
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Custom Sizes
+                                </h6>
+
+                                <p class="small text-muted mb-0">
+                                    We can customize furniture to suit
+                                    your available space.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-palette"></i>
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Your Preferred Design
+                                </h6>
+
+                                <p class="small text-muted mb-0">
+                                    Choose your preferred colour,
+                                    fabric, finish and style.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex mb-4">
+
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-wallet2"></i>
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Budget-Friendly Options
+                                </h6>
+
+                                <p class="small text-muted mb-0">
+                                    Tell us your budget and we'll help
+                                    you explore suitable options.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="d-flex">
+
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-truck"></i>
+                            </div>
+
+                            <div>
+
+                                <h6 class="fw-bold mb-1">
+                                    Delivery Available
+                                </h6>
+
+                                <p class="small text-muted mb-0">
+                                    We can arrange furniture delivery
+                                    to your location.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CUSTOM FURNITURE -->
+
+                <div class="card border-0 bg-warning shadow-sm">
+
+                    <div class="card-body p-4">
+
+                        <h4 class="fw-bold">
+                            Looking for Custom Furniture?
+                        </h4>
+
+                        <p class="mb-4">
+                            Share your ideas with us and our team can
+                            help turn your vision into furniture.
+                        </p>
+
+                        <a href="{{ url_for('main.custom_furniture') }}"
+                           class="btn btn-dark">
+
+                            <i class="bi bi-hammer me-2"></i>
+                            Explore Custom Furniture
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BOTTOM CTA
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="fw-bold mb-3">
+                Not Sure What You Need?
+            </h2>
+
+            <p class="lead text-muted mb-4">
+                Our team can guide you through the best furniture
+                options for your home, office, Airbnb or project.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-dark btn-lg px-4">
+
+                    <i class="bi bi-shop me-2"></i>
+                    Browse Furniture
+
+                </a>
+
+                <a href="{{ url_for('main.contact') }}"
+                   class="btn btn-outline-dark btn-lg px-4">
+
+                    <i class="bi bi-envelope me-2"></i>
+                    Contact Us
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

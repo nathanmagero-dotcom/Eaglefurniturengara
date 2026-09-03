@@ -1,0 +1,512 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ product.name }} | Eagle Furniture Ngara
+{% endblock %}
+
+{% block meta_description %}
+{{ product.description or "Buy " ~ product.name ~ " from Eagle Furniture Ngara in Nairobi, Kenya. Quality furniture with delivery available across Nairobi." }}
+{% endblock %}
+
+{% block og_type %}
+product
+{% endblock %}
+
+{% block og_title %}
+{{ product.name }} | Eagle Furniture Ngara
+{% endblock %}
+
+{% block og_description %}
+{{ product.description or "Shop " ~ product.name ~ " from Eagle Furniture Ngara in Nairobi, Kenya." }}
+{% endblock %}
+
+{% block twitter_title %}
+{{ product.name }} | Eagle Furniture Ngara
+{% endblock %}
+
+{% block twitter_description %}
+{{ product.description or "Shop " ~ product.name ~ " from Eagle Furniture Ngara in Nairobi, Kenya." }}
+{% endblock %}
+{% block page_css %}
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/pages/product.css') }}">
+{% endblock %}
+
+
+{% block content %}
+
+<section class="product-page">
+
+    <div class="container">
+
+        <!-- BREADCRUMB -->
+
+        <nav class="product-breadcrumb"
+             aria-label="Breadcrumb">
+
+            <a href="{{ url_for('main.home') }}">
+                Home
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <a href="{{ url_for('main.shop') }}">
+                Shop
+            </a>
+
+            <i class="bi bi-chevron-right"></i>
+
+            <span>
+                {{ product.name }}
+            </span>
+
+        </nav>
+
+
+        <!-- PRODUCT -->
+
+        <div class="product-detail">
+
+            <!-- PRODUCT IMAGE -->
+
+            <div class="product-gallery">
+
+                <div class="product-main-image">
+
+                    {% if product.image %}
+
+                    <img
+                        src="{{ url_for('static', filename=product.image) }}"
+                        alt="{{ product.name }}"
+                    >
+
+                    {% else %}
+
+                    <div class="product-image-placeholder">
+
+                        <i class="bi bi-image"></i>
+
+                        <span>
+                            Image coming soon
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="product-information">
+
+                {% if product.category %}
+
+                <span class="product-category">
+
+                    {{ product.category.name }}
+
+                </span>
+
+                {% endif %}
+
+
+                <h1 class="product-title">
+
+                    {{ product.name }}
+
+                </h1>
+
+
+                <!-- PRICE -->
+
+                <div class="product-price">
+
+                    KSh
+                    {{ "{:,.0f}".format(product.price or 0) }}
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                {% if product.description %}
+
+                <div class="product-description">
+
+                    <h2>
+                        Product Details
+                    </h2>
+
+                    <p>
+                        {{ product.description }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- PURCHASE -->
+
+                <div class="product-purchase">
+
+                    <form
+                        method="POST"
+                        action="{{ url_for(
+                            'main.add_product_to_cart',
+                            product_id=product.id
+                        ) }}"
+                        class="product-cart-form"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="redirect_to"
+                            value="cart"
+                        >
+
+
+                        <!-- QUANTITY -->
+
+                        <div class="quantity-wrapper">
+
+                            <label
+                                for="product-quantity"
+                            >
+                                Quantity
+                            </label>
+
+
+                            <div class="quantity-control">
+
+                                <button
+                                    type="button"
+                                    class="quantity-button"
+                                    onclick="decreaseQuantity()"
+                                    aria-label="Decrease quantity"
+                                >
+                                    <i class="bi bi-dash"></i>
+                                </button>
+
+
+                                <input
+                                    type="number"
+                                    id="product-quantity"
+                                    name="quantity"
+                                    value="1"
+                                    min="1"
+                                    aria-label="Quantity"
+                                    required
+                                >
+
+
+                                <button
+                                    type="button"
+                                    class="quantity-button"
+                                    onclick="increaseQuantity()"
+                                    aria-label="Increase quantity"
+                                >
+                                    <i class="bi bi-plus"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ADD TO CART -->
+
+                        <button
+                            type="submit"
+                            class="add-to-cart-button"
+                        >
+
+                            <i class="bi bi-cart-plus"></i>
+
+                            Add to Cart
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- BUY NOW -->
+
+                    <a
+                        href="{{ url_for('main.cart') }}"
+                        class="view-cart-button"
+                    >
+
+                        <i class="bi bi-cart3"></i>
+
+                        View Cart
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRUST INFORMATION -->
+
+                <div class="product-trust">
+
+                    <div class="trust-item">
+
+                        <i class="bi bi-truck"></i>
+
+                        <div>
+
+                            <strong>
+                                Delivery Available
+                            </strong>
+
+                            <span>
+                                Nairobi and beyond
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <div>
+
+                            <strong>
+                                Quality Furniture
+                            </strong>
+
+                            <span>
+                                Built for comfort and durability
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <i class="bi bi-headset"></i>
+
+                        <div>
+
+                            <strong>
+                                Need Help?
+                            </strong>
+
+                            <span>
+                                Contact Eagle Furniture Ngara
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RELATED PRODUCTS -->
+
+        {% if related_products %}
+
+        <section class="related-products">
+
+            <div class="related-header">
+
+                <span class="section-label">
+                    YOU MAY ALSO LIKE
+                </span>
+
+                <h2>
+                    Related Furniture
+                </h2>
+
+                <p>
+                    Explore more furniture from this collection.
+                </p>
+
+            </div>
+
+
+            <div class="related-grid">
+
+                {% for related in related_products %}
+
+                <article class="related-card">
+
+                    <a
+                        href="{{ url_for(
+                            'main.product',
+                            product_id=related.id
+                        ) }}"
+                        class="related-image"
+                    >
+
+                        {% if related.image %}
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename=related.image
+                            ) }}"
+                            alt="{{ related.name }}"
+                            loading="lazy"
+                        >
+
+                        {% else %}
+
+                        <div class="related-placeholder">
+                            <i class="bi bi-image"></i>
+                        </div>
+
+                        {% endif %}
+
+                    </a>
+
+
+                    <div class="related-content">
+
+                        <h3>
+                            {{ related.name }}
+                        </h3>
+
+                        <span class="related-price">
+
+                            KSh
+                            {{ "{:,.0f}".format(
+                                related.price or 0
+                            ) }}
+
+                        </span>
+
+
+                        <a
+                            href="{{ url_for(
+                                'main.product',
+                                product_id=related.id
+                            ) }}"
+                            class="related-button"
+                        >
+                            View Product
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script>
+
+function increaseQuantity() {
+
+    const input =
+        document.getElementById(
+            "product-quantity"
+        );
+
+    if (!input) return;
+
+    input.value =
+        parseInt(input.value || 1) + 1;
+}
+
+
+function decreaseQuantity() {
+
+    const input =
+        document.getElementById(
+            "product-quantity"
+        );
+
+    if (!input) return;
+
+    const current =
+        parseInt(input.value || 1);
+
+    if (current > 1) {
+
+        input.value =
+            current - 1;
+    }
+}
+
+</script>
+<!-- =====================================================
+     LOCAL BUSINESS + ORGANIZATION SCHEMA
+====================================================== -->
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+
+        {
+            "@type": "Organization",
+            "@id": "{{ site_url }}/#organization",
+            "name": "Eagle Furniture Ngara",
+            "url": "{{ site_url }}/",
+            "telephone": "{{ config.BUSINESS_PHONE }}",
+            "sameAs": []
+        },
+
+        {
+            "@type": "FurnitureStore",
+            "@id": "{{ site_url }}/#business",
+            "name": "Eagle Furniture Ngara",
+            "url": "{{ site_url }}/",
+            "telephone": "{{ config.BUSINESS_PHONE }}",
+            "priceRange": "KES 10,000 - KES 200,000",
+
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Murang'a Road",
+                "addressLocality": "Ngara",
+                "addressRegion": "Nairobi",
+                "addressCountry": "KE"
+            },
+
+            "areaServed": {
+                "@type": "City",
+                "name": "Nairobi"
+            },
+
+            "parentOrganization": {
+                "@id": "{{ site_url }}/#organization"
+            }
+        }
+
+    ]
+}
+</script>
+
+{% endblock %}

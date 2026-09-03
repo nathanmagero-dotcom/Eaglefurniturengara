@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Login | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-5 col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-4">
+
+                        <h1 class="h3 mb-2">
+                            Admin Login
+                        </h1>
+
+                        <p class="text-muted mb-0">
+                            Eagle Furniture Ngara
+                        </p>
+
+                    </div>
+
+                    {% with messages = get_flashed_messages(
+                        with_categories=true
+                    ) %}
+
+                        {% if messages %}
+
+                            {% for category, message in messages %}
+
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    {% endwith %}
+
+                    <form method="POST">
+
+                        <div class="mb-3">
+
+                            <label
+                                for="username"
+                                class="form-label"
+                            >
+                                Username
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="username"
+                                name="username"
+                                required
+                                autocomplete="username"
+                            >
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label
+                                for="password"
+                                class="form-label"
+                            >
+                                Password
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                required
+                                autocomplete="current-password"
+                            >
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-dark w-100"
+                        >
+                            Login
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

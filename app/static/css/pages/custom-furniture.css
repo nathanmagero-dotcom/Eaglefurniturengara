@@ -1,0 +1,877 @@
+css
+/* =========================================================
+   EAGLE FURNITURE NGARA
+   CUSTOM FURNITURE PAGE
+   app/static/css/pages/custom-furniture.css
+========================================================= */
+
+.custom-page {
+    --custom-dark: #2f2420;
+    --custom-dark-2: #3f2b25;
+    --custom-brown: #5d4037;
+    --custom-brown-light: #8b6a55;
+    --custom-gold: #d7b899;
+    --custom-cream: #f2e7da;
+    --custom-bg: #f8f7f5;
+    --custom-white: #ffffff;
+    --custom-text: #2c2c2c;
+    --custom-muted: #666666;
+    --custom-border: #eee6df;
+
+    background: var(--custom-bg);
+    color: var(--custom-text);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+.custom-page *,
+.custom-page *::before,
+.custom-page *::after {
+    box-sizing: border-box;
+}
+
+.custom-page a {
+    text-decoration: none;
+}
+
+.custom-page img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.custom-hero {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    padding: 110px 0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(38, 28, 24, 0.97) 0%,
+            rgba(38, 28, 24, 0.88) 48%,
+            rgba(38, 28, 24, 0.65) 100%
+        ),
+        url("/static/images/custom-furniture-hero.jpg")
+        center center / cover no-repeat;
+    color: #fff;
+}
+
+.custom-hero-content {
+    max-width: 850px;
+}
+
+.custom-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 18px;
+    color: var(--custom-brown-light);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.custom-hero .custom-eyebrow {
+    color: var(--custom-gold);
+}
+
+.custom-hero h1 {
+    max-width: 850px;
+    margin: 0 0 25px;
+    color: #fff !important;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -1px;
+}
+
+.custom-hero p {
+    max-width: 720px;
+    margin: 0 0 32px;
+    color: rgba(255, 255, 255, 0.88) !important;
+    font-size: 1.12rem;
+    line-height: 1.85;
+}
+
+.custom-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.custom-primary-btn,
+.custom-secondary-btn {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 27px;
+    border-radius: 7px;
+    font-size: 0.96rem;
+    font-weight: 700;
+    line-height: 1.2;
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.custom-primary-btn {
+    background: var(--custom-gold);
+    color: #2c211d !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.custom-primary-btn:hover {
+    background: #fff;
+    color: #2c211d !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.custom-secondary-btn {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff !important;
+}
+
+.custom-secondary-btn:hover {
+    border-color: #fff;
+    background: #fff;
+    color: var(--custom-dark) !important;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   GENERAL SECTIONS
+========================================================= */
+
+.custom-section {
+    padding: 95px 0;
+}
+
+.custom-section-light {
+    background: #fff;
+}
+
+.custom-section-dark {
+    background: var(--custom-dark);
+}
+
+.custom-section-heading {
+    max-width: 780px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.custom-section-heading .custom-eyebrow {
+    margin-bottom: 12px;
+}
+
+.custom-section-heading h2 {
+    margin: 0 0 18px;
+    color: var(--custom-text) !important;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.custom-section-heading p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--custom-muted) !important;
+    font-size: 1rem;
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   INTRODUCTION
+========================================================= */
+
+.custom-intro-text h2 {
+    margin: 0 0 22px;
+    color: var(--custom-text) !important;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.custom-intro-text p {
+    margin: 0 0 18px;
+    color: var(--custom-muted) !important;
+    line-height: 1.9;
+}
+
+.custom-check-list {
+    padding: 0;
+    margin: 28px 0 0;
+    list-style: none;
+}
+
+.custom-check-list li {
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 14px;
+    color: #555;
+    line-height: 1.65;
+}
+
+.custom-check-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: -1px;
+
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--custom-cream);
+    color: var(--custom-brown);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.custom-intro-box {
+    position: relative;
+    height: 100%;
+    padding: 42px;
+    background:
+        linear-gradient(
+            145deg,
+            #f6ece2,
+            #eee0d0
+        );
+    border: 1px solid #eadbca;
+    border-radius: 20px;
+    box-shadow: 0 18px 45px rgba(68, 48, 36, 0.08);
+}
+
+.custom-intro-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+
+    border-radius: 20px 0 0 20px;
+    background: var(--custom-brown);
+}
+
+.custom-intro-box h3 {
+    margin: 0 0 20px;
+    color: var(--custom-text) !important;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.custom-intro-box p {
+    margin: 0 0 18px;
+    color: #5d514a !important;
+    line-height: 1.85;
+}
+
+.custom-intro-box p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   CUSTOM PRODUCT TYPES
+========================================================= */
+
+.custom-product-list {
+    margin-top: 10px;
+}
+
+.custom-product-item {
+    position: relative;
+    height: 100%;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid var(--custom-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.custom-product-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 4px;
+    height: 0;
+
+    background: var(--custom-brown);
+    border-radius: 0 0 5px 5px;
+
+    transition: height 0.3s ease;
+}
+
+.custom-product-item:hover {
+    transform: translateY(-7px);
+    border-color: #e2d4c7;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.custom-product-item:hover::before {
+    height: 100%;
+}
+
+.custom-product-item h3 {
+    margin: 0 0 13px;
+    color: var(--custom-text) !important;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.custom-product-item h3 i {
+    color: var(--custom-brown);
+    font-size: 1.05rem;
+}
+
+.custom-product-item p {
+    margin: 0;
+    color: var(--custom-muted) !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.custom-process {
+    position: relative;
+}
+
+.custom-step {
+    position: relative;
+    height: 100%;
+    padding: 32px 28px;
+    background: #fff;
+    border: 1px solid var(--custom-border);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.045);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.custom-step:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
+}
+
+.custom-step-number {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 21px;
+
+    border-radius: 50%;
+    background: var(--custom-brown);
+    color: #fff;
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    box-shadow: 0 8px 20px rgba(93, 64, 55, 0.2);
+}
+
+.custom-step h3 {
+    margin: 0 0 12px;
+    color: var(--custom-text) !important;
+    font-size: 1.18rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.custom-step p {
+    margin: 0;
+    color: var(--custom-muted) !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+.custom-benefits {
+    background:
+        linear-gradient(
+            135deg,
+            #2f2420 0%,
+            #3b2b25 100%
+        );
+}
+
+.custom-benefits .custom-section-heading h2 {
+    color: #fff !important;
+}
+
+.custom-benefits .custom-section-heading p {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.custom-benefits .custom-eyebrow {
+    color: var(--custom-gold);
+}
+
+.custom-benefit {
+    position: relative;
+    height: 100%;
+    padding: 32px 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.custom-benefit:hover {
+    transform: translateY(-7px);
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(215, 184, 153, 0.4);
+}
+
+.custom-benefit i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+    background: rgba(215, 184, 153, 0.12);
+
+    color: var(--custom-gold);
+    font-size: 1.45rem;
+}
+
+.custom-benefit h3 {
+    margin: 0 0 12px;
+    color: #fff !important;
+    font-size: 1.17rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.custom-benefit p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7) !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   WHO WE SERVE
+========================================================= */
+
+.custom-audience-card {
+    position: relative;
+    height: 100%;
+    padding: 30px;
+
+    background: #fff;
+    border: 1px solid var(--custom-border);
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.035);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.custom-audience-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.075);
+}
+
+.custom-audience-card::after {
+    content: "";
+    position: absolute;
+    left: 30px;
+    bottom: 0;
+
+    width: 38px;
+    height: 3px;
+
+    background: var(--custom-gold);
+    border-radius: 5px;
+}
+
+.custom-audience-card h3 {
+    margin: 0 0 12px;
+    color: var(--custom-text) !important;
+    font-size: 1.18rem;
+    font-weight: 700;
+}
+
+.custom-audience-card p {
+    margin: 0;
+    color: var(--custom-muted) !important;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.custom-faq {
+    background: #fff;
+}
+
+.custom-faq .accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.custom-faq .accordion-item {
+    margin-bottom: 12px;
+
+    border: 1px solid #e9e0d8;
+    border-radius: 10px !important;
+
+    overflow: hidden;
+    background: #fff;
+}
+
+.custom-faq .accordion-button {
+    padding: 20px 22px;
+
+    background: #fff;
+    color: var(--custom-text) !important;
+
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+
+    box-shadow: none !important;
+}
+
+.custom-faq .accordion-button:hover {
+    background: #faf7f3;
+}
+
+.custom-faq .accordion-button:not(.collapsed) {
+    background: var(--custom-cream);
+    color: var(--custom-brown) !important;
+}
+
+.custom-faq .accordion-button::after {
+    background-size: 1rem;
+}
+
+.custom-faq .accordion-body {
+    padding: 20px 22px;
+
+    background: #fff;
+    color: var(--custom-muted) !important;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.custom-cta {
+    position: relative;
+    padding: 95px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4e8db,
+            #ead9c8
+        );
+
+    text-align: center;
+}
+
+.custom-cta::before,
+.custom-cta::after {
+    content: "";
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(93, 64, 55, 0.08);
+}
+
+.custom-cta::before {
+    top: -90px;
+    left: -90px;
+}
+
+.custom-cta::after {
+    right: -90px;
+    bottom: -90px;
+}
+
+.custom-cta h2 {
+    position: relative;
+    z-index: 1;
+
+    margin: 0 0 18px;
+
+    color: var(--custom-text) !important;
+
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.1rem, 4vw, 3.3rem);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.custom-cta p {
+    position: relative;
+    z-index: 1;
+
+    max-width: 700px;
+    margin: 0 auto 28px;
+
+    color: #62574f !important;
+    line-height: 1.85;
+}
+
+.custom-cta-btn {
+    position: relative;
+    z-index: 1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+    padding: 14px 30px;
+
+    border-radius: 7px;
+
+    background: var(--custom-brown);
+    color: #fff !important;
+
+    font-size: 0.96rem;
+    font-weight: 700;
+
+    box-shadow: 0 8px 25px rgba(93, 64, 55, 0.2);
+
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.custom-cta-btn:hover {
+    background: var(--custom-dark-2);
+    color: #fff !important;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 13px 30px rgba(93, 64, 55, 0.28);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .custom-hero {
+        min-height: auto;
+        padding: 95px 0;
+    }
+
+    .custom-section {
+        padding: 80px 0;
+    }
+
+    .custom-intro-box {
+        margin-top: 10px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .custom-hero {
+        padding: 75px 0;
+        background-position: 60% center;
+    }
+
+    .custom-hero h1 {
+        font-size: clamp(2.35rem, 12vw, 3.4rem);
+        letter-spacing: -0.5px;
+    }
+
+    .custom-hero p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    .custom-hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .custom-primary-btn,
+    .custom-secondary-btn {
+        width: 100%;
+    }
+
+    .custom-section {
+        padding: 65px 0;
+    }
+
+    .custom-section-heading {
+        margin-bottom: 40px;
+    }
+
+    .custom-section-heading h2 {
+        font-size: 2rem;
+    }
+
+    .custom-intro-text h2 {
+        font-size: 2rem;
+    }
+
+    .custom-intro-box {
+        padding: 32px 28px;
+        margin-top: 5px;
+    }
+
+    .custom-product-item,
+    .custom-step,
+    .custom-benefit,
+    .custom-audience-card {
+        padding: 26px 24px;
+    }
+
+    .custom-faq .accordion-button {
+        padding: 17px 18px;
+        font-size: 0.95rem;
+    }
+
+    .custom-faq .accordion-body {
+        padding: 18px;
+        font-size: 0.95rem;
+    }
+
+    .custom-cta {
+        padding: 70px 0;
+    }
+
+    .custom-cta h2 {
+        font-size: 2rem;
+    }
+
+    .custom-cta p {
+        font-size: 0.97rem;
+    }
+
+    .custom-cta-btn {
+        width: 100%;
+        max-width: 420px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .custom-hero {
+        padding: 65px 0;
+    }
+
+    .custom-eyebrow {
+        font-size: 0.74rem;
+        letter-spacing: 2px;
+    }
+
+    .custom-hero h1 {
+        font-size: 2.35rem;
+    }
+
+    .custom-hero p {
+        font-size: 0.95rem;
+    }
+
+    .custom-intro-box {
+        padding: 28px 24px;
+    }
+
+    .custom-check-list li {
+        padding-left: 30px;
+        font-size: 0.94rem;
+    }
+
+    .custom-product-item h3,
+    .custom-step h3,
+    .custom-benefit h3,
+    .custom-audience-card h3 {
+        font-size: 1.08rem;
+    }
+
+}

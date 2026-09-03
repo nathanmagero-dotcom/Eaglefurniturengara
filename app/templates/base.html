@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+
+    {% set site_url = config.SITE_URL.rstrip('/') %}
+    {% set canonical_url = site_url ~ request.path %}
+
+
+    <!-- =====================================================
+         BASIC SEO
+    ====================================================== -->
+
+    <title>
+        {% block title %}
+        Eagle Furniture Ngara | Furniture & Interior Design
+        {% endblock %}
+    </title>
+
+    <meta name="description"
+          content="{% block meta_description %}Eagle Furniture Ngara offers quality sofas, beds, dining sets, TV stands, wardrobes, coffee tables and custom furniture in Nairobi, Kenya. Shop quality furniture and enjoy delivery across Nairobi.{% endblock %}">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta name="author"
+          content="Eagle Furniture Ngara">
+
+    <meta name="theme-color"
+          content="#3E2723">
+
+    <link rel="canonical"
+          href="{{ canonical_url }}">
+
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta property="og:type"
+          content="{% block og_type %}website{% endblock %}">
+
+    <meta property="og:title"
+          content="{% block og_title %}Eagle Furniture Ngara | Furniture & Interior Design{% endblock %}">
+
+    <meta property="og:description"
+          content="{% block og_description %}Quality furniture and interior design in Nairobi, Kenya. Shop sofas, beds, dining sets, TV stands, wardrobes and custom furniture.{% endblock %}">
+
+    <meta property="og:url"
+          content="{{ canonical_url }}">
+
+    <meta property="og:site_name"
+          content="Eagle Furniture Ngara">
+
+    {% block og_image %}
+    <meta property="og:image"
+          content="{{ site_url }}/static/images/logo.png">
+    {% endblock %}
+
+
+    <!-- =====================================================
+         TWITTER / X
+    ====================================================== -->
+
+    <meta name="twitter:card"
+          content="summary_large_image">
+
+    <meta name="twitter:title"
+          content="{% block twitter_title %}Eagle Furniture Ngara | Furniture & Interior Design{% endblock %}">
+
+    <meta name="twitter:description"
+          content="{% block twitter_description %}Quality furniture and interior design in Nairobi, Kenya.{% endblock %}">
+
+    <meta name="twitter:image"
+          content="{{ site_url }}/static/images/logo.png">
+
+
+    <!-- =====================================================
+         ORGANIZATION + LOCAL BUSINESS SCHEMA
+    ====================================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+
+        "@graph": [
+
+            {
+                "@type": "Organization",
+
+                "@id": {{ (site_url ~ "/#organization") | tojson }},
+
+                "name": "Eagle Furniture Ngara",
+
+                "url": {{ (site_url ~ "/") | tojson }},
+
+                "telephone": {{ config.BUSINESS_PHONE | tojson }},
+
+                "sameAs": [
+                    "https://www.facebook.com/eaglefurniturengara",
+                    "https://www.instagram.com/eaglefurniturengara",
+                    "https://youtube.com/@eaglefurniturer",
+                    "https://www.linkedin.com/in/eagle-ngara-"
+                ]
+            },
+
+
+            {
+                "@type": "FurnitureStore",
+
+                "@id": {{ (site_url ~ "/#business") | tojson }},
+
+                "name": "Eagle Furniture Ngara",
+
+                "url": {{ (site_url ~ "/") | tojson }},
+
+                "telephone": {{ config.BUSINESS_PHONE | tojson }},
+
+                "priceRange": "KES",
+
+                "currenciesAccepted": "KES",
+
+                "paymentAccepted": "Cash, M-Pesa",
+
+                "address": {
+
+                    "@type": "PostalAddress",
+
+                    "streetAddress": "Murang'a Road",
+
+                    "addressLocality": "Ngara",
+
+                    "addressRegion": "Nairobi",
+
+                    "addressCountry": "KE"
+                },
+
+                "hasMap": "https://maps.app.goo.gl/MzLDzahRYtpgzEp6",
+
+                "sameAs": [
+                    "https://www.facebook.com/eaglefurniturengara",
+                    "https://www.instagram.com/eaglefurniturengara",
+                    "https://youtube.com/@eaglefurniturer",
+                    "https://www.linkedin.com/in/eagle-ngara-"
+                ],
+
+                "parentOrganization": {
+                    "@id": {{ (site_url ~ "/#organization") | tojson }}
+                }
+            }
+
+        ]
+    }
+    </script>
+
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         GLOBAL CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/variables.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/base.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/layout.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/animations.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/responsive.css') }}">
+
+
+    <!-- =====================================================
+         COMPONENT CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/components/buttons.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/components/cards.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/components/forms.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/components/navbar.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/components/products.css') }}">
+
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/components/footer.css') }}">
+
+
+    <!-- =====================================================
+         SHARED CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/category.css') }}">
+
+     <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/pages/contact.css') }}"> 
+    
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/pages/custom-furniture.css') }}">
+
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/pages/offers.css') }}">
+
+
+    <!-- =====================================================
+         PAGE-SPECIFIC CSS
+    ====================================================== -->
+
+    {% block page_css %}{% endblock %}
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    {% include "partials/navbar.html" %}
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main id="main-content">
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    {% include "partials/footer.html" %}
+
+
+    <!-- =====================================================
+         BOOTSTRAP JS
+    ====================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- =====================================================
+         GLOBAL JS
+    ====================================================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/search.js') }}">
+    </script>
+
+
+    <!-- =====================================================
+         OPTIONAL PAGE JS
+    ====================================================== -->
+
+    {% block extra_js %}{% endblock %}
+
+
+</body>
+
+</html>

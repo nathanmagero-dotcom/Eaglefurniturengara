@@ -1,0 +1,1356 @@
+/* ==========================================================
+   EAGLE FURNITURE NGARA
+   HOMEPAGE STYLES
+   Version: Clean / Connected / Responsive
+========================================================== */
+
+
+/* ==========================================================
+   HOMEPAGE VARIABLES
+========================================================== */
+
+.home-hero,
+.home-services,
+.home-about,
+.home-categories,
+.home-products,
+.home-interior,
+.home-why,
+.home-cta {
+    --eagle-gold: #b08d57;
+    --eagle-gold-dark: #92713f;
+    --eagle-dark: #222222;
+    --eagle-soft: #f7f5f1;
+    --eagle-border: #e9e5df;
+    --eagle-text: #222222;
+    --eagle-muted: #6f6f6f;
+}
+
+
+/* ==========================================================
+   GENERAL HOMEPAGE SECTIONS
+========================================================== */
+
+.home-section {
+    padding: 95px 0;
+}
+
+.home-section-heading {
+    max-width: 780px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.home-label {
+    display: inline-block;
+    margin-bottom: 14px;
+
+    color: #b08d57;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.home-section-heading h2,
+.home-about h2 {
+    margin: 0 0 18px;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.15;
+    font-weight: 700;
+}
+
+.home-section-heading p {
+    max-width: 680px;
+    margin: 0 auto;
+
+    color: #6f6f6f;
+
+    font-size: 0.95rem;
+    line-height: 1.85;
+}
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.home-hero {
+    position: relative;
+
+    min-height: 720px;
+
+    display: flex;
+    align-items: center;
+
+    background-image:
+        url("../images/home/hero.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    overflow: hidden;
+}
+
+.home-hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.62) 45%,
+            rgba(0, 0, 0, 0.25) 100%
+        );
+}
+
+.home-hero-container {
+    position: relative;
+    z-index: 2;
+}
+
+.home-hero-content {
+    max-width: 740px;
+
+    padding: 100px 0;
+
+    color: #fff;
+}
+
+.home-eyebrow {
+    display: inline-block;
+
+    margin-bottom: 22px;
+
+    color: #d9bb86;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+.home-hero h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(3rem, 6vw, 5.8rem);
+    line-height: 1.02;
+
+    font-weight: 700;
+}
+
+.home-hero h1 span {
+    display: block;
+
+    color: #d9bb86;
+}
+
+.home-hero p {
+    max-width: 650px;
+
+    margin: 28px 0 0;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 1.02rem;
+    line-height: 1.85;
+}
+
+.home-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 35px;
+}
+
+
+/* ==========================================================
+   HOMEPAGE BUTTONS
+========================================================== */
+
+.home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 52px;
+
+    padding: 0 28px;
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    font-size: 0.86rem;
+    font-weight: 600;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.home-btn:hover {
+    transform: translateY(-2px);
+}
+
+.home-btn-primary {
+    background: #b08d57;
+    color: #fff;
+    border-color: #b08d57;
+
+    box-shadow: 0 8px 20px rgba(176, 141, 87, 0.25);
+}
+
+.home-btn-primary:hover {
+    background: #92713f;
+    border-color: #92713f;
+    color: #fff;
+}
+
+.home-btn-outline {
+    border-color: rgba(255, 255, 255, 0.75);
+    color: #fff;
+    background: transparent;
+}
+
+.home-btn-outline:hover {
+    background: #fff;
+    color: #222;
+}
+
+.home-btn-dark {
+    background: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+.home-btn-dark:hover {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+.home-btn-light {
+    background: #fff;
+    color: #222;
+    border-color: #fff;
+}
+
+.home-btn-light:hover {
+    background: #eee;
+    border-color: #eee;
+    color: #111;
+}
+
+.home-btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: #fff;
+    background: transparent;
+}
+
+.home-btn-outline-light:hover {
+    background: #fff;
+    color: #222;
+}
+
+
+/* ==========================================================
+   HERO TRUST
+========================================================== */
+
+.home-hero-trust {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 45px;
+
+    margin-top: 55px;
+}
+
+.home-hero-trust div {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-hero-trust strong {
+    color: #fff;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.home-hero-trust span {
+    margin-top: 4px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 0.7rem;
+}
+
+
+/* ==========================================================
+   SPECIAL OFFERS HOME BANNER
+========================================================== */
+
+.offers-home-banner {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding: 38px 42px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8e6,
+            #ffffff
+        );
+
+    border: 1px solid #ead7a4;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+.offers-home-banner::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: #b08d57;
+}
+
+.offers-home-banner > div {
+    position: relative;
+    z-index: 1;
+}
+
+.offers-home-banner .badge {
+    padding: 7px 11px;
+
+    font-size: 0.65rem;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.offers-home-banner h2 {
+    margin: 8px 0;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.offers-home-banner p {
+    margin: 0;
+
+    color: #666;
+
+    line-height: 1.7;
+}
+
+.offers-home-banner .btn {
+    min-height: 50px;
+
+    border-radius: 5px;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   SERVICES
+========================================================== */
+
+.home-services {
+    background: #f7f5f1;
+}
+
+.service-card {
+    position: relative;
+
+    min-height: 430px;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 45px;
+
+    overflow: hidden;
+
+    background-size: cover;
+    background-position: center;
+
+    color: #fff;
+
+    transition: transform 0.35s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-furniture {
+    background-image:
+        url("../../images/categories/sofas.jpg");
+}
+
+.service-interior {
+    background-image:
+        url("../../images/categories/packages.jpg");
+}
+
+.service-card-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.08)
+        );
+
+    transition: background 0.35s ease;
+}
+
+.service-card:hover .service-card-overlay {
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.94),
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.1)
+        );
+}
+
+.service-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 510px;
+}
+
+.service-number {
+    display: block;
+
+    margin-bottom: 18px;
+
+    color: #d9bb86;
+
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.service-icon {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #d9bb86;
+
+    font-size: 2.1rem;
+}
+
+.service-content h3 {
+    margin-bottom: 14px;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.service-content p {
+    margin-bottom: 25px;
+
+    color: rgba(255, 255, 255, 0.84);
+
+    font-size: 0.92rem;
+    line-height: 1.8;
+}
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 0.82rem;
+    font-weight: 700;
+
+    transition: color 0.25s ease;
+}
+
+.service-link i {
+    margin-left: 8px;
+
+    transition: transform 0.25s ease;
+}
+
+.service-link:hover {
+    color: #d9bb86;
+}
+
+.service-link:hover i {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================================
+   ABOUT
+========================================================== */
+
+.home-about {
+    background: #fff;
+}
+
+.about-image-wrapper {
+    position: relative;
+}
+
+.about-image {
+    width: 100%;
+    height: 540px;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.about-badge {
+    position: absolute;
+
+    right: 25px;
+    bottom: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 145px;
+
+    padding: 20px 25px;
+
+    background: #fff;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.about-badge strong {
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.2rem;
+}
+
+.about-badge span {
+    margin-top: 3px;
+
+    color: #777;
+
+    font-size: 0.72rem;
+}
+
+.home-about h2 span {
+    display: block;
+
+    color: #b08d57;
+}
+
+.home-about p {
+    margin-bottom: 18px;
+
+    color: #666;
+
+    font-size: 0.92rem;
+    line-height: 1.9;
+}
+
+.about-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin: 28px 0;
+}
+
+.about-points div {
+    color: #444;
+
+    font-size: 0.83rem;
+}
+
+.about-points i {
+    margin-right: 7px;
+
+    color: #b08d57;
+}
+
+
+/* ==========================================================
+   CATEGORIES
+========================================================== */
+
+.home-categories {
+    background: #f7f5f1;
+}
+
+.home-category-card {
+    display: block;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.home-category-card:hover {
+    transform: translateY(-6px);
+
+    color: inherit;
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.category-image {
+    width: 100%;
+    height: 230px;
+
+    overflow: hidden;
+
+    background: #eee;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.home-category-card:hover img {
+    transform: scale(1.06);
+}
+
+.category-info {
+    padding: 20px;
+}
+
+.category-info h3 {
+    margin: 0 0 10px;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.category-info span {
+    color: #777;
+
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+.category-info i {
+    margin-left: 5px;
+
+    transition: transform 0.2s ease;
+}
+
+.home-category-card:hover .category-info i {
+    transform: translateX(4px);
+}
+
+
+/* ==========================================================
+   FEATURED PRODUCTS
+========================================================== */
+
+.home-products {
+    background: #fff;
+}
+
+.home-product-card {
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #fff;
+
+    border: 1px solid #e9e9e9;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.home-product-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.home-product-image {
+    position: relative;
+
+    width: 100%;
+    height: 270px;
+
+    overflow: hidden;
+
+    background: #f4f4f4;
+}
+
+.home-product-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.home-product-card:hover .home-product-image img {
+    transform: scale(1.05);
+}
+
+.product-tag {
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    padding: 7px 11px;
+
+    background: #222;
+    color: #fff;
+
+    font-size: 0.62rem;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+.home-product-content {
+    padding: 20px;
+}
+
+.product-category {
+    color: #999;
+
+    font-size: 0.66rem;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.home-product-content h3 {
+    min-height: 45px;
+
+    margin: 8px 0;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1rem;
+    line-height: 1.4;
+
+    font-weight: 600;
+}
+
+.product-rating {
+    margin-bottom: 12px;
+
+    color: #b08d57;
+
+    font-size: 0.75rem;
+}
+
+.product-rating small {
+    color: #999;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.product-price strong {
+    color: #222;
+
+    font-size: 1rem;
+}
+
+.product-price del {
+    color: #999;
+
+    font-size: 0.72rem;
+}
+
+.product-view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 14px;
+
+    border-top: 1px solid #eee;
+
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+.product-view-btn i {
+    transition: transform 0.25s ease;
+}
+
+.product-view-btn:hover {
+    color: #b08d57;
+}
+
+.product-view-btn:hover i {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================================
+   INTERIOR DESIGN
+========================================================== */
+
+.home-interior {
+    padding: 105px 0;
+
+    background: #222;
+
+    color: #fff;
+}
+
+.home-interior .home-label {
+    color: #d9bb86;
+}
+
+.home-interior h2 {
+    max-width: 620px;
+
+    margin-bottom: 25px;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(2.2rem, 4vw, 3.7rem);
+
+    line-height: 1.12;
+}
+
+.home-interior p {
+    max-width: 600px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.94rem;
+    line-height: 1.9;
+}
+
+.interior-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin: 30px 0;
+}
+
+.interior-features div {
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 0.84rem;
+}
+
+.interior-features i {
+    margin-right: 7px;
+
+    color: #d9bb86;
+}
+
+.interior-image {
+    height: 520px;
+
+    overflow: hidden;
+}
+
+.interior-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+}
+
+.interior-image:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ==========================================================
+   WHY CHOOSE US
+========================================================== */
+
+.home-why {
+    background: #f7f5f1;
+}
+
+.why-card {
+    height: 100%;
+
+    padding: 38px 25px;
+
+    background: #fff;
+
+    text-align: center;
+
+    border: 1px solid transparent;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.why-card i {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #b08d57;
+
+    font-size: 2rem;
+}
+
+.why-card h3 {
+    margin-bottom: 14px;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 1.05rem;
+}
+
+.why-card p {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 0.82rem;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   FINAL CTA
+========================================================== */
+
+.home-cta {
+    padding: 100px 0;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.72),
+            rgba(0, 0, 0, 0.72)
+        ),
+        url("../../images/home/home-background.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.home-cta-box {
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+
+    color: #fff;
+}
+
+.home-cta-box .home-label {
+    color: #d9bb86;
+}
+
+.home-cta-box h2 {
+    margin: 15px 0;
+
+    color: #fff;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.1;
+}
+
+.home-cta-box p {
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 0.94rem;
+    line-height: 1.8;
+}
+
+.home-cta-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 14px;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 991px) {
+
+    .home-hero {
+        min-height: 650px;
+    }
+
+    .home-hero-content {
+        padding: 80px 0;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(2.8rem, 8vw, 4.5rem);
+    }
+
+    .service-card {
+        min-height: 400px;
+    }
+
+    .about-image {
+        height: 450px;
+    }
+
+    .home-interior {
+        padding: 85px 0;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 767px) {
+
+    .home-section {
+        padding: 65px 0;
+    }
+
+    .home-section-heading {
+        margin-bottom: 40px;
+    }
+
+    .home-hero {
+        min-height: 650px;
+
+        background-position: 60% center;
+    }
+
+    .home-hero-overlay {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.86),
+                rgba(0, 0, 0, 0.58)
+            );
+    }
+
+    .home-hero-content {
+        padding: 60px 0;
+    }
+
+    .home-hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .home-hero p {
+        font-size: 0.9rem;
+    }
+
+    .home-hero-buttons {
+        gap: 10px;
+    }
+
+    .home-hero-trust {
+        gap: 25px;
+
+        margin-top: 40px;
+    }
+
+    .home-hero-trust strong {
+        font-size: 1.2rem;
+    }
+
+    .home-hero-trust span {
+        font-size: 0.65rem;
+    }
+
+    .offers-home-banner {
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 30px;
+    }
+
+    .offers-home-banner .btn {
+        width: 100%;
+    }
+
+    .service-card {
+        min-height: 370px;
+
+        padding: 30px;
+    }
+
+    .service-content h3 {
+        font-size: 1.9rem;
+    }
+
+    .service-content p {
+        font-size: 0.86rem;
+    }
+
+    .about-points,
+    .interior-features {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 380px;
+    }
+
+    .category-image {
+        height: 180px;
+    }
+
+    .home-product-image {
+        height: 220px;
+    }
+
+    .home-product-content {
+        padding: 15px;
+    }
+
+    .home-product-content h3 {
+        font-size: 0.9rem;
+    }
+
+    .product-price {
+        display: block;
+    }
+
+    .product-price del {
+        display: block;
+
+        margin-top: 3px;
+    }
+
+    .interior-image {
+        height: 380px;
+    }
+
+    .home-cta {
+        padding: 75px 0;
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .home-hero {
+        min-height: 620px;
+    }
+
+    .home-hero h1 {
+        font-size: 2.35rem;
+    }
+
+    .home-hero-buttons {
+        flex-direction: column;
+    }
+
+    .home-btn {
+        width: 100%;
+    }
+
+    .home-hero-trust {
+        justify-content: space-between;
+
+        gap: 10px;
+    }
+
+    .home-product-image {
+        height: 180px;
+    }
+
+    .category-image {
+        height: 150px;
+    }
+
+    .offers-home-banner {
+        padding: 25px 22px;
+    }
+
+    .offers-home-banner h2 {
+        font-size: 1.7rem;
+    }
+
+    .service-card {
+        min-height: 350px;
+
+        padding: 25px;
+    }
+
+    .about-badge {
+        right: 15px;
+        bottom: 15px;
+
+        padding: 15px 18px;
+    }
+
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.home-btn:focus-visible,
+.service-link:focus-visible,
+.product-view-btn:focus-visible,
+.home-category-card:focus-visible {
+    outline: 3px solid rgba(176, 141, 87, 0.45);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-btn,
+    .service-card,
+    .home-category-card,
+    .home-product-card,
+    .home-product-image img,
+    .category-image img,
+    .interior-image img,
+    .service-card-overlay,
+    .product-view-btn i,
+    .service-link i {
+        transition: none;
+    }
+
+}

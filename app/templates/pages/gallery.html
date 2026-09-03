@@ -1,0 +1,665 @@
+{% extends "base.html" %}
+
+{% block title %}Furniture Gallery | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     GALLERY HERO
+========================================================= -->
+
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    Our Furniture
+                    <span class="text-warning">Gallery</span>
+                </h1>
+
+                <p class="lead text-muted mb-4">
+                    Explore some of our furniture designs, completed projects
+                    and interior transformations. From elegant sofas to
+                    stylish dining sets, bedrooms and complete home packages,
+                    discover furniture designed to make your space feel like home.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-dark btn-lg px-4">
+                        <i class="bi bi-shop me-2"></i>
+                        Shop Furniture
+                    </a>
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-outline-dark btn-lg px-4">
+                        <i class="bi bi-chat-dots me-2"></i>
+                        Talk to Us
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 mt-4 mt-lg-0">
+
+                <div class="gallery-hero-image shadow rounded-4 overflow-hidden">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/hero/gallery-hero.png'
+                        ) }}"
+                        class="img-fluid w-100"
+                        alt="Eagle Furniture Ngara furniture collection"
+                        onerror="this.style.display='none';"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================================================
+     GALLERY FILTER
+========================================================= -->
+
+<section class="py-4 border-bottom bg-white">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="fw-bold mb-2">
+                Explore Our Collection
+            </h2>
+
+            <p class="text-muted mb-4">
+                Browse furniture inspiration from Eagle Furniture Ngara.
+            </p>
+
+            <div class="d-flex justify-content-center flex-wrap gap-2">
+
+                <button
+                    type="button"
+                    class="btn btn-dark gallery-filter active"
+                    data-filter="all">
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="sofas">
+                    Sofas
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="beds">
+                    Beds
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="dining">
+                    Dining
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="tv">
+                    TV Units
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="wardrobes">
+                    Wardrobes
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-outline-dark gallery-filter"
+                    data-filter="interior">
+                    Interiors
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY GRID
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row g-4 gallery-grid">
+
+
+            <!-- SOFA -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="sofas">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/sofa-1.jpg'
+                        ) }}"
+                        alt="Modern sofa set"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Sofas
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Modern Sofa Collection
+                        </h4>
+
+                        <p>
+                            Stylish and comfortable sofas designed
+                            for modern homes.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            View Sofas
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SOFA 2 -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="sofas">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/sofa-2.jpg'
+                        ) }}"
+                        alt="Luxury sofa"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Sofas
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Luxury Living Room
+                        </h4>
+
+                        <p>
+                            Elegant furniture that transforms
+                            your living space.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            Shop Sofas
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BED -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="beds">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/bed-1.jpg'
+                        ) }}"
+                        alt="Modern bedroom furniture"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Beds
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Bedroom Collection
+                        </h4>
+
+                        <p>
+                            Create a comfortable and beautiful
+                            bedroom.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            Shop Beds
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DINING -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="dining">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/dining-1.jpg'
+                        ) }}"
+                        alt="Dining furniture"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Dining
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Dining Collection
+                        </h4>
+
+                        <p>
+                            Beautiful dining sets made for memorable
+                            family moments.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            Shop Dining
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TV UNIT -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="tv">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/tv-unit-1.jpg'
+                        ) }}"
+                        alt="Modern TV unit"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            TV Units
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Modern TV Units
+                        </h4>
+
+                        <p>
+                            Give your entertainment space a clean,
+                            stylish finish.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            View TV Units
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WARDROBE -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="wardrobes">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/wardrobe-1.jpg'
+                        ) }}"
+                        alt="Modern wardrobe"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Wardrobes
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Custom Wardrobes
+                        </h4>
+
+                        <p>
+                            Smart storage solutions designed around
+                            your space.
+                        </p>
+
+                        <a href="{{ url_for('main.shop') }}"
+                           class="btn btn-light btn-sm">
+                            View Wardrobes
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INTERIOR -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="interior">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/interior-1.jpg'
+                        ) }}"
+                        alt="Interior furniture project"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Interiors
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Interior Transformation
+                        </h4>
+
+                        <p>
+                            Complete furniture solutions for beautiful
+                            living spaces.
+                        </p>
+
+                        <a href="{{ url_for('main.contact') }}"
+                           class="btn btn-light btn-sm">
+                            Start Your Project
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CUSTOM FURNITURE -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="interior">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/custom-1.jpg'
+                        ) }}"
+                        alt="Custom furniture"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Custom
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Bespoke Furniture
+                        </h4>
+
+                        <p>
+                            Tell us what you need and we'll help bring
+                            your furniture idea to life.
+                        </p>
+
+                        <a href="{{ url_for('main.custom_furniture') }}"
+                           class="btn btn-light btn-sm">
+                            Custom Furniture
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PACKAGE -->
+
+            <div class="col-lg-4 col-md-6 gallery-item"
+                 data-category="interior">
+
+                <div class="gallery-card">
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='images/gallery/package-1.jpg'
+                        ) }}"
+                        alt="Complete furniture package"
+                        class="gallery-image"
+                    >
+
+                    <div class="gallery-overlay">
+
+                        <span class="badge bg-warning text-dark mb-2">
+                            Packages
+                        </span>
+
+                        <h4 class="fw-bold">
+                            Complete Home Packages
+                        </h4>
+
+                        <p>
+                            Furnish your home with carefully selected
+                            matching furniture.
+                        </p>
+
+                        <a href="{{ url_for('main.bundle_list') }}"
+                           class="btn btn-light btn-sm">
+                            View Packages
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOM FURNITURE CTA
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+            <div class="card-body p-5">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-8">
+
+                        <span class="badge bg-warning text-dark mb-3 px-3 py-2">
+                            Have Something Specific in Mind?
+                        </span>
+
+                        <h2 class="display-6 fw-bold">
+                            Let's Create Something
+                            <span class="text-warning">Beautiful Together.</span>
+                        </h2>
+
+                        <p class="lead text-muted mb-0">
+                            Whether you need a custom sofa, wardrobe,
+                            bed, dining set or complete interior solution,
+                            our team can help you create furniture
+                            that fits your style and space.
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+
+                        <a href="{{ url_for('main.custom_furniture') }}"
+                           class="btn btn-dark btn-lg px-4">
+                            <i class="bi bi-hammer me-2"></i>
+                            Custom Furniture
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const buttons = document.querySelectorAll(".gallery-filter");
+    const items = document.querySelectorAll(".gallery-item");
+
+    buttons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            const filter = this.getAttribute("data-filter");
+
+            buttons.forEach(btn => {
+
+                btn.classList.remove("active");
+                btn.classList.remove("btn-dark");
+                btn.classList.add("btn-outline-dark");
+
+            });
+
+            this.classList.add("active");
+            this.classList.remove("btn-outline-dark");
+            this.classList.add("btn-dark");
+
+
+            items.forEach(item => {
+
+                const category = item.getAttribute("data-category");
+
+                if (filter === "all" || category === filter) {
+
+                    item.style.display = "";
+
+                } else {
+
+                    item.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,805 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ category.name }} | Eagle Furniture Ngara
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     CATEGORY HERO
+========================================================= -->
+
+<section class="category-hero">
+
+    <div class="container">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-lg-7">
+
+                <span class="category-eyebrow">
+                    EAGLE FURNITURE NGARA
+                </span>
+
+                <h1>
+                    {{ category.name }}
+                </h1>
+
+                <p>
+                    Explore our collection of quality
+                    {{ category.name|lower }} designed to bring
+                    comfort, style and functionality into your home.
+                </p>
+
+                <div class="category-hero-actions">
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-warning">
+
+                        <i class="bi bi-shop me-2"></i>
+                        Shop All Furniture
+
+                    </a>
+
+                    <a href="{{ url_for('main.category_list') }}"
+                       class="btn btn-outline-light">
+
+                        <i class="bi bi-grid me-2"></i>
+                        All Categories
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- CATEGORY IMAGE -->
+
+            <div class="col-lg-5">
+
+                {% if category.image %}
+
+                <div class="category-hero-image">
+
+                    <img
+                        src="{{ url_for('static', filename=category.image) }}"
+                        alt="{{ category.name }}"
+                        loading="eager"
+                    >
+
+                </div>
+
+                {% else %}
+
+                <div class="category-hero-placeholder">
+
+                    <i class="bi bi-house"></i>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BREADCRUMB
+========================================================= -->
+
+<section class="category-breadcrumb">
+
+    <div class="container">
+
+        <nav aria-label="breadcrumb">
+
+            <ol class="breadcrumb mb-0">
+
+                <li class="breadcrumb-item">
+
+                    <a href="{{ url_for('main.home') }}">
+                        Home
+                    </a>
+
+                </li>
+
+                <li class="breadcrumb-item">
+
+                    <a href="{{ url_for('main.shop') }}">
+                        Shop
+                    </a>
+
+                </li>
+
+                <li class="breadcrumb-item active"
+                    aria-current="page">
+
+                    {{ category.name }}
+
+                </li>
+
+            </ol>
+
+        </nav>
+
+    </div>
+
+</section>
+<!-- =========================================================
+     SHOP BY STYLE
+========================================================= -->
+
+{% set category_subcategories = {
+    "sofas": [
+        ("L-Shaped Sofas", "l-shaped-sofas", "bi-layers", "Modern L-shaped designs for spacious and stylish living rooms."),
+        ("Recliner Sofas", "recliner-sofas", "bi-person-arms-up", "Relax in comfort with stylish reclining designs."),
+        ("Chesterfield Sofas", "chesterfield-sofas", "bi-stars", "Timeless elegance with classic Chesterfield detailing."),
+        ("Crescent Sofas", "crescent-sofas", "bi-circle", "Beautiful curved designs that make a statement."),
+        ("Sectional Sofas", "sectional-sofas", "bi-grid", "Spacious modular seating for modern family living."),
+        ("3-Seater Sofas", "3-seater-sofas", "bi-sofa", "Comfortable everyday seating for modern homes.")
+    ],
+
+    "beds": [
+        ("King Size Beds", "king-size-beds", "bi-moon-stars", "Spacious beds designed for luxury and comfort."),
+        ("Queen Size Beds", "queen-size-beds", "bi-moon-stars", "Elegant bedroom designs for comfortable living."),
+        ("4x6 Beds", "4x6-beds", "bi-moon", "Practical and stylish beds for modern bedrooms."),
+        ("5x6 Beds", "5x6-beds", "bi-moon", "Comfortable designs available in different styles."),
+        ("6x6 Beds", "6x6-beds", "bi-moon-stars", "Large beds designed for maximum comfort."),
+        ("Storage Beds", "storage-beds", "bi-box", "Beautiful beds with practical storage solutions.")
+    ],
+
+    "dining-tables": [
+        ("4-Seater Dining Sets", "4-seater-dining-sets", "bi-grid-3x3", "Perfect for compact dining spaces."),
+        ("6-Seater Dining Sets", "6-seater-dining-sets", "bi-grid-3x3", "Ideal for everyday family dining."),
+        ("8-Seater Dining Sets", "8-seater-dining-sets", "bi-grid-3x3", "Spacious dining designs for family gatherings."),
+        ("10-Seater Dining Sets", "10-seater-dining-sets", "bi-grid-3x3", "Designed for large families and entertaining."),
+        ("Modern Dining Sets", "modern-dining-sets", "bi-stars", "Contemporary designs for modern homes."),
+        ("Luxury Dining Sets", "luxury-dining-sets", "bi-gem", "Premium dining designs for elegant interiors.")
+    ],
+
+    "tv-stands": [
+        ("Modern TV Units", "modern-tv-units", "bi-tv", "Clean modern designs for contemporary living rooms."),
+        ("Floating TV Units", "floating-tv-units", "bi-tv", "Space-saving designs with a sleek modern look."),
+        ("Wall-Mounted TV Units", "wall-mounted-tv-units", "bi-tv", "Stylish entertainment solutions for modern homes."),
+        ("Luxury TV Units", "luxury-tv-units", "bi-gem", "Statement pieces for sophisticated interiors."),
+        ("Entertainment Walls", "entertainment-walls", "bi-layout-text-sidebar-reverse", "Complete entertainment and storage solutions.")
+    ],
+
+    "wardrobes": [
+        ("2-Door Wardrobes", "2-door-wardrobes", "bi-door-closed", "Compact and practical bedroom storage."),
+        ("3-Door Wardrobes", "3-door-wardrobes", "bi-door-closed", "Spacious storage with elegant designs."),
+        ("Sliding Door Wardrobes", "sliding-door-wardrobes", "bi-layout-sidebar", "Modern space-saving wardrobe solutions."),
+        ("Walk-In Wardrobes", "walk-in-wardrobes", "bi-house", "Custom storage solutions for luxury bedrooms.")
+    ],
+
+    "coffee-tables": [
+        ("Modern Coffee Tables", "modern-coffee-tables", "bi-table", "Contemporary designs for stylish living rooms."),
+        ("Marble Coffee Tables", "marble-coffee-tables", "bi-gem", "Elegant statement pieces for sophisticated interiors."),
+        ("Glass Coffee Tables", "glass-coffee-tables", "bi-circle", "Light and modern designs for contemporary homes.")
+    ],
+
+    "office-furniture": [
+        ("Executive Desks", "executive-desks", "bi-briefcase", "Professional desks for modern offices."),
+        ("Office Chairs", "office-chairs", "bi-person-workspace", "Comfortable seating for productive workspaces."),
+        ("Office Storage", "office-storage", "bi-archive", "Practical storage for organised offices.")
+    ],
+
+    "outdoor-furniture": [
+        ("Outdoor Patio Sets", "outdoor-patio-sets", "bi-tree", "Furniture for patios, gardens and outdoor spaces."),
+        ("Outdoor Swing Chairs", "outdoor-swing-chairs", "bi-cloud-sun", "Relaxing outdoor seating for your home.")
+    ]
+} %}
+
+{% if category.slug in category_subcategories %}
+
+<section class="category-style-section">
+
+    <div class="container">
+
+        <div class="style-section-header">
+
+            <div>
+                <span class="section-label">
+                    EXPLORE THE COLLECTION
+                </span>
+
+                <h2>
+                    Shop {{ category.name }} by Style
+                </h2>
+
+                <p>
+                    Discover different designs, sizes and styles
+                    and find the perfect piece for your space.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="style-category-grid">
+
+            {% for item in category_subcategories[category.slug] %}
+
+            <a
+                href="{{ url_for(
+                    'main.shop',
+                    category=category.slug,
+                    subcategory=item[1]
+                ) }}"
+                class="style-category-card"
+            >
+
+                <div class="style-card-icon">
+
+                    <i class="bi {{ item[2] }}"></i>
+
+                </div>
+
+                <div class="style-card-content">
+
+                    <h3>
+                        {{ item[0] }}
+                    </h3>
+
+                    <p>
+                        {{ item[3] }}
+                    </p>
+
+                    <span class="style-card-link">
+
+                        Explore Collection
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </span>
+
+                </div>
+
+            </a>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     PRODUCTS
+========================================================= -->
+
+<section class="category-products">
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="category-products-header">
+
+            <div>
+
+                <span class="section-label">
+                    OUR COLLECTION
+                </span>
+
+                <h2>
+                    {{ category.name }}
+                </h2>
+
+                <p>
+                    {{ products|length }} products available
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('main.shop') }}"
+               class="btn btn-outline-dark">
+
+                <i class="bi bi-arrow-left me-2"></i>
+                Back to Shop
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCT GRID
+        ================================================== -->
+
+        {% if products %}
+
+        <div class="category-product-grid">
+
+            {% for product in products %}
+
+            <article class="category-product-card">
+
+                <!-- PRODUCT IMAGE -->
+
+                <div class="category-product-image">
+
+                    <a href="{{ url_for(
+                        'main.product',
+                        product_id=product.id
+                    ) }}">
+
+                    {% if product.image %}
+
+    <img
+        src="{{ url_for(
+            'static',
+            filename=product.image
+        ) }}"
+        alt="{{ product.name }} - Eagle Furniture Ngara"
+        loading="lazy"
+    >
+
+{% else %}
+
+    <div class="category-image-placeholder">
+        <i class="bi bi-image"></i>
+        <span>Image Coming Soon</span>
+    </div>
+
+{% endif %}    
+
+                    </a>
+
+
+                    <!-- SALE -->
+
+                    {% if product.sale_price is defined
+                          and product.price is defined
+                          and product.sale_price < product.price %}
+
+                    <span class="product-badge sale-badge">
+                        SALE
+                    </span>
+
+                    {% endif %}
+
+
+                    <!-- BEST SELLER -->
+
+                    {% if product.best_seller %}
+
+                    <span class="product-badge bestseller-badge">
+                        BEST SELLER
+                    </span>
+
+                    {% endif %}
+
+
+                    <!-- NEW -->
+
+                    {% if product.new_arrival %}
+
+                    <span class="product-badge new-badge">
+                        NEW
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+
+                <!-- PRODUCT INFORMATION -->
+
+                <div class="category-product-body">
+
+                    <span class="product-category">
+                        {{ product.category }}
+                    </span>
+
+
+                    <h3>
+                        {{ product.name }}
+                    </h3>
+
+
+                    {% if product.description %}
+
+                    <p class="product-description">
+
+                        {{ product.description[:90] }}
+
+                        {% if product.description|length > 90 %}
+                        ...
+                        {% endif %}
+
+                    </p>
+
+                    {% endif %}
+
+
+                    <!-- RATING -->
+
+                    <div class="product-rating">
+
+                        {% for i in range(5) %}
+
+                        <i class="bi bi-star-fill"></i>
+
+                        {% endfor %}
+
+                        {% if product.reviews is defined %}
+
+                        <span>
+                            ({{ product.reviews }})
+                        </span>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- PRICE -->
+
+                    <div class="product-price">
+
+                        {% if product.sale_price is defined
+                              and product.price is defined
+                              and product.sale_price < product.price %}
+
+                        <span class="old-price">
+                            KSh {{ "{:,.0f}".format(product.price) }}
+                        </span>
+
+                        <strong>
+                            KSh {{ "{:,.0f}".format(product.sale_price) }}
+                        </strong>
+
+                        {% else %}
+
+                        <strong>
+                            KSh {{ "{:,.0f}".format(product.price) }}
+                        </strong>
+
+                        {% endif %}
+
+                    </div>
+
+
+                    <!-- STOCK -->
+
+                    {% if product.stock is defined %}
+
+                        {% if product.stock > 5 %}
+
+                        <span class="stock-status in-stock">
+                            <i class="bi bi-check-circle me-1"></i>
+                            In Stock
+                        </span>
+
+                        {% elif product.stock > 0 %}
+
+                        <span class="stock-status limited-stock">
+                            <i class="bi bi-exclamation-circle me-1"></i>
+                            Limited Stock
+                        </span>
+
+                        {% else %}
+
+                        <span class="stock-status out-stock">
+                            <i class="bi bi-x-circle me-1"></i>
+                            Out of Stock
+                        </span>
+
+                        {% endif %}
+
+                    {% endif %}
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="product-actions">
+
+                        <!-- VIEW DETAILS -->
+
+                        <a
+                            href="{{ url_for(
+                                'main.product',
+                                product_id=product.id
+                            ) }}"
+                            class="btn btn-dark">
+
+                            <i class="bi bi-eye me-1"></i>
+                            View Details
+
+                        </a>
+
+
+                        <!-- ADD TO CART -->
+
+                        {% if product.stock is not defined
+                              or product.stock > 0 %}
+
+                        <form
+                            action="{{ url_for(
+                                'main.add_product_to_cart',
+                                product_id=product.id
+                            ) }}"
+                            method="POST"
+                            class="add-cart-form">
+
+                            <input
+                                type="hidden"
+                                name="quantity"
+                                value="1"
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-warning w-100">
+
+                                <i class="bi bi-cart-plus me-1"></i>
+                                Add to Cart
+
+                            </button>
+
+                        </form>
+
+                        {% else %}
+
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            disabled>
+
+                            <i class="bi bi-x-circle me-1"></i>
+                            Out of Stock
+
+                        </button>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% endfor %}
+
+        </div>
+
+
+        {% else %}
+
+        <!-- =================================================
+             NO PRODUCTS
+        ================================================== -->
+
+        <div class="category-empty">
+
+            <i class="bi bi-box-seam"></i>
+
+            <h3>
+                No Products Available
+            </h3>
+
+            <p>
+                We currently don't have products available
+                in this category.
+            </p>
+
+            <a href="{{ url_for('main.shop') }}"
+               class="btn btn-dark">
+
+                Browse All Furniture
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CUSTOM FURNITURE CTA
+========================================================= -->
+
+<section class="category-custom-cta">
+
+    <div class="container">
+
+        <div class="custom-cta-box">
+
+            <div>
+
+                <span>
+                    NEED SOMETHING DIFFERENT?
+                </span>
+
+                <h2>
+                    Get Your Furniture Custom Made
+                </h2>
+
+                <p>
+                    Choose your preferred size, colour, fabric
+                    and design. We can create furniture according
+                    to your space and style.
+                </p>
+
+            </div>
+
+            <a href="{{ url_for('main.custom_furniture') }}"
+               class="btn btn-dark">
+
+                <i class="bi bi-hammer me-2"></i>
+                Custom Furniture
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY EAGLE FURNITURE
+========================================================= -->
+
+<section class="category-benefits">
+
+    <div class="container">
+
+        <div class="text-center category-benefits-header">
+
+            <span>
+                EAGLE FURNITURE NGARA
+            </span>
+
+            <h2>
+                Quality You Can Trust
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-benefit">
+
+                    <i class="bi bi-patch-check"></i>
+
+                    <h3>
+                        Quality Craftsmanship
+                    </h3>
+
+                    <p>
+                        Carefully crafted furniture built for
+                        comfort, durability and style.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-benefit">
+
+                    <i class="bi bi-rulers"></i>
+
+                    <h3>
+                        Custom Designs
+                    </h3>
+
+                    <p>
+                        Choose your preferred size, fabric,
+                        colour and design.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-benefit">
+
+                    <i class="bi bi-truck"></i>
+
+                    <h3>
+                        Delivery Available
+                    </h3>
+
+                    <p>
+                        Convenient furniture delivery options
+                        available across Kenya.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="category-benefit">
+
+                    <i class="bi bi-headset"></i>
+
+                    <h3>
+                        Customer Support
+                    </h3>
+
+                    <p>
+                        Our team is ready to help you choose
+                        the right furniture.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="category-final-cta">
+
+    <div class="container text-center">
+
+        <h2>
+            Find Furniture You'll Love
+        </h2>
+
+        <p>
+            Explore more furniture from Eagle Furniture Ngara.
+        </p>
+
+        <div class="category-final-actions">
+
+            <a href="{{ url_for('main.shop') }}"
+               class="btn btn-warning">
+
+                Shop Furniture
+
+            </a>
+
+            <a href="{{ url_for('main.contact') }}"
+               class="btn btn-outline-light">
+
+                Contact Us
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

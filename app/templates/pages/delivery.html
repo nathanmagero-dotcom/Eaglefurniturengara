@@ -1,0 +1,621 @@
+{% extends "base.html" %}
+
+{% block title %}Furniture Delivery | Eagle Furniture Ngara{% endblock %}
+
+{% block content %}
+
+<!-- =========================================================
+     DELIVERY HERO
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+
+    <div class="container py-5">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <span class="badge bg-warning text-dark px-3 py-2 mb-3">
+                    Eagle Furniture Ngara
+                </span>
+
+                <h1 class="display-4 fw-bold mb-3">
+                    Furniture Delivery
+                    <span class="text-warning">Made Easy.</span>
+                </h1>
+
+                <p class="lead text-light mb-4">
+                    From our showroom in Ngara to your doorstep,
+                    we help make getting your furniture home simple,
+                    safe and convenient.
+                </p>
+
+                <a href="{{ url_for('main.shop') }}"
+                   class="btn btn-warning btn-lg px-4">
+
+                    <i class="bi bi-bag me-2"></i>
+                    Shop Furniture
+
+                </a>
+
+            </div>
+
+            <div class="col-lg-5 text-center mt-5 mt-lg-0">
+
+                <i class="bi bi-truck display-1 text-warning"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DELIVERY PROCESS
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Simple Process
+            </span>
+
+            <h2 class="display-6 fw-bold">
+                How Furniture Delivery Works
+            </h2>
+
+            <p class="text-muted lead">
+                We make every step straightforward.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- STEP 1 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <div class="mb-3">
+                        <i class="bi bi-cart-check display-4 text-warning"></i>
+                    </div>
+
+                    <span class="text-muted small">
+                        STEP 01
+                    </span>
+
+                    <h5 class="fw-bold mt-2">
+                        Choose Your Furniture
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Browse our collection and select
+                        the furniture that suits your home,
+                        office or project.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 2 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <div class="mb-3">
+                        <i class="bi bi-chat-dots display-4 text-warning"></i>
+                    </div>
+
+                    <span class="text-muted small">
+                        STEP 02
+                    </span>
+
+                    <h5 class="fw-bold mt-2">
+                        Confirm Your Order
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Our team confirms your furniture,
+                        delivery location, availability
+                        and delivery arrangements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 3 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <div class="mb-3">
+                        <i class="bi bi-truck display-4 text-warning"></i>
+                    </div>
+
+                    <span class="text-muted small">
+                        STEP 03
+                    </span>
+
+                    <h5 class="fw-bold mt-2">
+                        We Deliver
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Your furniture is prepared and
+                        transported to your agreed delivery
+                        location.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STEP 4 -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+
+                    <div class="mb-3">
+                        <i class="bi bi-house-heart display-4 text-warning"></i>
+                    </div>
+
+                    <span class="text-muted small">
+                        STEP 04
+                    </span>
+
+                    <h5 class="fw-bold mt-2">
+                        Enjoy Your Furniture
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Receive your furniture and transform
+                        your space into somewhere you love.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DELIVERY COVERAGE
+========================================================= -->
+
+<section class="py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <span class="badge bg-warning text-dark mb-3">
+                    Delivery Coverage
+                </span>
+
+                <h2 class="display-6 fw-bold mb-4">
+                    We Help Get Your Furniture Where You Need It.
+                </h2>
+
+                <p class="text-muted lead">
+                    Based in Ngara, Nairobi, Eagle Furniture serves
+                    customers in Nairobi and can arrange delivery
+                    to locations across Kenya.
+                </p>
+
+                <p class="text-muted">
+                    Delivery arrangements may vary depending on
+                    the destination, furniture size, quantity and
+                    installation requirements.
+                </p>
+
+                <a href="{{ url_for('main.contact') }}"
+                   class="btn btn-dark btn-lg mt-3">
+
+                    <i class="bi bi-chat-dots me-2"></i>
+                    Ask About Delivery
+
+                </a>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body p-4 p-lg-5">
+
+                        <h4 class="fw-bold mb-4">
+                            Delivery Areas
+                        </h4>
+
+                        <div class="row g-3">
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Nairobi
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Kiambu
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Machakos
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Kajiado
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Nakuru
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-6">
+
+                                <div class="p-3 bg-light rounded">
+
+                                    <i class="bi bi-geo-alt-fill text-warning me-2"></i>
+
+                                    Other Counties
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="small text-muted mt-4 mb-0">
+                            Contact us to confirm delivery availability
+                            and the applicable delivery arrangements
+                            for your location.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     DELIVERY INFORMATION
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="badge bg-warning text-dark mb-3">
+                Good To Know
+            </span>
+
+            <h2 class="fw-bold">
+                Delivery Information
+            </h2>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <!-- DELIVERY COST -->
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 p-4">
+
+                    <i class="bi bi-cash-stack display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Delivery Cost
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Delivery charges depend on your location,
+                        order size and delivery requirements.
+                        Please contact us for a delivery quotation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERY TIME -->
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 p-4">
+
+                    <i class="bi bi-calendar-check display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Delivery Scheduling
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Delivery dates are agreed with customers
+                        after order confirmation and depend on
+                        product availability and preparation time.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- INSTALLATION -->
+
+            <div class="col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100 p-4">
+
+                    <i class="bi bi-tools display-5 text-warning mb-3"></i>
+
+                    <h5 class="fw-bold">
+                        Installation Support
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Where applicable, installation or assembly
+                        arrangements can be discussed with our team
+                        before delivery.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     CAREFUL DELIVERY
+========================================================= -->
+
+<section class="py-5 bg-dark text-white">
+
+    <div class="container">
+
+        <div class="row align-items-center g-5">
+
+            <div class="col-lg-6">
+
+                <i class="bi bi-shield-check display-3 text-warning mb-3"></i>
+
+                <h2 class="display-6 fw-bold">
+                    Your Furniture Deserves Care.
+                </h2>
+
+                <p class="lead text-light">
+                    Furniture is an investment in your home.
+                    We aim to ensure your pieces are handled
+                    carefully throughout the delivery process.
+                </p>
+
+            </div>
+
+
+            <div class="col-lg-6">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+
+                        <div class="p-4 border border-secondary rounded h-100">
+
+                            <i class="bi bi-box-seam text-warning fs-3"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Careful Handling
+                            </h6>
+
+                            <p class="small text-light mb-0">
+                                Furniture is handled with care
+                                during transportation.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="p-4 border border-secondary rounded h-100">
+
+                            <i class="bi bi-house-check text-warning fs-3"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Doorstep Delivery
+                            </h6>
+
+                            <p class="small text-light mb-0">
+                                Delivery arrangements are made
+                                around your agreed location.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="p-4 border border-secondary rounded h-100">
+
+                            <i class="bi bi-person-check text-warning fs-3"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Customer Coordination
+                            </h6>
+
+                            <p class="small text-light mb-0">
+                                We coordinate delivery details
+                                with you before dispatch.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="p-4 border border-secondary rounded h-100">
+
+                            <i class="bi bi-check-circle text-warning fs-3"></i>
+
+                            <h6 class="fw-bold mt-3">
+                                Order Confirmation
+                            </h6>
+
+                            <p class="small text-light mb-0">
+                                Delivery details are confirmed
+                                before your order is dispatched.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FAQ CTA
+========================================================= -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="card border-0 bg-warning shadow-lg">
+
+            <div class="card-body p-5 text-center">
+
+                <h2 class="display-6 fw-bold">
+                    Have Questions About Delivery?
+                </h2>
+
+                <p class="lead mb-4">
+                    Our team is ready to help you understand
+                    delivery options for your furniture order.
+                </p>
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+                    <a href="{{ url_for('main.contact') }}"
+                       class="btn btn-dark btn-lg px-5">
+
+                        <i class="bi bi-chat-dots me-2"></i>
+                        Contact Us
+
+                    </a>
+
+                    <a href="{{ url_for('main.shop') }}"
+                       class="btn btn-outline-dark btn-lg px-5">
+
+                        <i class="bi bi-shop me-2"></i>
+                        Shop Furniture
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

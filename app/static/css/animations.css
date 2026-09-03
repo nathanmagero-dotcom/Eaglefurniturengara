@@ -1,0 +1,329 @@
+/*==================================================
+    Eagle Furniture Design System (EFDS)
+    File: animations.css
+    Purpose: Global Animations
+==================================================*/
+
+
+/*=========================================
+    TRANSITIONS
+=========================================*/
+
+.fade{
+
+    animation:fade .8s ease forwards;
+
+}
+
+.fade-up{
+
+    animation:fadeUp .8s ease forwards;
+
+}
+
+.fade-down{
+
+    animation:fadeDown .8s ease forwards;
+
+}
+
+.fade-left{
+
+    animation:fadeLeft .8s ease forwards;
+
+}
+
+.fade-right{
+
+    animation:fadeRight .8s ease forwards;
+
+}
+
+.zoom{
+
+    animation:zoom .8s ease forwards;
+
+}
+
+.float{
+
+    animation:float 4s ease-in-out infinite;
+
+}
+
+
+/*=========================================
+    FADE
+=========================================*/
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*=========================================
+    FADE UP
+=========================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*=========================================
+    FADE DOWN
+=========================================*/
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*=========================================
+    FADE LEFT
+=========================================*/
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/*=========================================
+    FADE RIGHT
+=========================================*/
+
+@keyframes fadeRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(50px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/*=========================================
+    ZOOM
+=========================================*/
+
+@keyframes zoom{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.9);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*=========================================
+    FLOAT
+=========================================*/
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/*=========================================
+    BUTTON HOVER
+=========================================*/
+
+.btn{
+
+    transition:all .3s ease;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+
+/*=========================================
+    CARD HOVER
+=========================================*/
+
+.card{
+
+    transition:all .35s ease;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+/*=========================================
+    IMAGE HOVER
+=========================================*/
+
+.card-image{
+
+    overflow:hidden;
+
+}
+
+.card-image img{
+
+    transition:transform .5s ease;
+
+}
+
+.card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+
+/*=========================================
+    LINK HOVER
+=========================================*/
+
+.nav-link{
+
+    transition:.3s ease;
+
+}
+
+
+/*=========================================
+    ICON HOVER
+=========================================*/
+
+.trust-icon{
+
+    transition:.35s ease;
+
+}
+
+.trust-card:hover .trust-icon{
+
+    transform:rotate(8deg) scale(1.08);
+
+}
+
+
+/*=========================================
+    REDUCED MOTION
+=========================================*/
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}

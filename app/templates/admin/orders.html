@@ -1,0 +1,498 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+
+<style>
+
+    .orders-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .orders-header h1 {
+        margin: 0;
+    }
+
+    /* FILTERS */
+
+    .filter-form {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 25px;
+    }
+
+    .filter-form input,
+    .filter-form select {
+        padding: 10px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .filter-form button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        background: #222;
+        color: white;
+        cursor: pointer;
+    }
+
+    .filter-form button:hover {
+        background: #444;
+    }
+
+    /* TABLE */
+
+    .orders-table-wrapper {
+        overflow-x: auto;
+    }
+
+    .orders-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    .orders-table th {
+        background: #222;
+        color: white;
+        padding: 13px;
+        text-align: left;
+        font-size: 13px;
+    }
+
+    .orders-table td {
+        padding: 13px;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    .orders-table tr:hover {
+        background: #fafafa;
+    }
+
+    /* STATUS BADGES */
+
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .status-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .status-confirmed {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+
+    .status-processing {
+        background: #ede9fe;
+        color: #6d28d9;
+    }
+
+    .status-ready {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .status-delivered {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .status-cancelled {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    /* PAYMENT */
+
+    .payment-paid {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .payment-pending {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    .payment-failed {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .payment-refunded {
+        background: #e5e7eb;
+        color: #374151;
+    }
+
+    /* ACTION BUTTONS */
+
+    .action-buttons {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 7px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .btn-view {
+        background: #222;
+        color: white;
+    }
+
+    .btn-view:hover {
+        background: #444;
+    }
+
+    .btn-whatsapp {
+        background: #25D366;
+        color: white;
+    }
+
+    .btn-whatsapp:hover {
+        background: #1ebe5d;
+    }
+
+    .customer-phone {
+        margin-top: 3px;
+        color: #666;
+        font-size: 12px;
+    }
+
+    .order-total {
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+</style>
+
+
+<div class="orders-header">
+
+    <div>
+        <h1>Orders Management</h1>
+        <p>Manage customer orders, payments and delivery status.</p>
+    </div>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<form method="GET" class="filter-form">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search order, name or phone..."
+        value="{{ search }}"
+    >
+
+    <select name="order_status">
+
+        <option value="">All Order Status</option>
+
+        {% for s in [
+            "Pending",
+            "Confirmed",
+            "Processing",
+            "Ready for Delivery",
+            "Delivered",
+            "Cancelled"
+        ] %}
+
+            <option
+                value="{{ s }}"
+                {% if order_status == s %}selected{% endif %}
+            >
+                {{ s }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <select name="payment_status">
+
+        <option value="">All Payment Status</option>
+
+        {% for s in [
+            "Pending",
+            "Paid",
+            "Failed",
+            "Refunded"
+        ] %}
+
+            <option
+                value="{{ s }}"
+                {% if payment_status == s %}selected{% endif %}
+            >
+                {{ s }}
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+
+    <button type="submit">
+        Filter
+    </button>
+
+</form>
+
+
+<!-- ORDERS TABLE -->
+
+<div class="orders-table-wrapper">
+
+<table class="orders-table">
+
+    <thead>
+
+        <tr>
+
+            <th>Order</th>
+
+            <th>Customer</th>
+
+            <th>Total</th>
+
+            <th>Payment</th>
+
+            <th>Order Status</th>
+
+            <th>Date</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+
+    {% for order in orders %}
+
+        <tr>
+
+            <!-- ORDER -->
+
+            <td>
+
+                <strong>
+                    {{ order.order_number }}
+                </strong>
+
+            </td>
+
+
+            <!-- CUSTOMER -->
+
+            <td>
+
+                <strong>
+                    {{ order.customer_name }}
+                </strong>
+
+                <div class="customer-phone">
+                    {{ order.customer_phone }}
+                </div>
+
+            </td>
+
+
+            <!-- TOTAL -->
+
+            <td>
+
+                <span class="order-total">
+
+                    KSh
+                    {{ "{:,.0f}".format(order.total) }}
+
+                </span>
+
+            </td>
+
+
+            <!-- PAYMENT STATUS -->
+
+            <td>
+
+                {% if order.payment_status == "Paid" %}
+
+                    <span class="status-badge payment-paid">
+                        Paid
+                    </span>
+
+                {% elif order.payment_status == "Failed" %}
+
+                    <span class="status-badge payment-failed">
+                        Failed
+                    </span>
+
+                {% elif order.payment_status == "Refunded" %}
+
+                    <span class="status-badge payment-refunded">
+                        Refunded
+                    </span>
+
+                {% else %}
+
+                    <span class="status-badge payment-pending">
+                        Pending
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+
+            <!-- ORDER STATUS -->
+
+            <td>
+
+                {% if order.order_status == "Confirmed" %}
+
+                    <span class="status-badge status-confirmed">
+                        Confirmed
+                    </span>
+
+                {% elif order.order_status == "Processing" %}
+
+                    <span class="status-badge status-processing">
+                        Processing
+                    </span>
+
+                {% elif order.order_status == "Ready for Delivery" %}
+
+                    <span class="status-badge status-ready">
+                        Ready for Delivery
+                    </span>
+
+                {% elif order.order_status == "Delivered" %}
+
+                    <span class="status-badge status-delivered">
+                        Delivered
+                    </span>
+
+                {% elif order.order_status == "Cancelled" %}
+
+                    <span class="status-badge status-cancelled">
+                        Cancelled
+                    </span>
+
+                {% else %}
+
+                    <span class="status-badge status-pending">
+                        Pending
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+
+            <!-- DATE -->
+
+            <td>
+
+                {{ order.created_at.strftime("%d %b %Y") }}
+
+                <br>
+
+                <small>
+                    {{ order.created_at.strftime("%H:%M") }}
+                </small>
+
+            </td>
+
+
+            <!-- ACTIONS -->
+
+            <td>
+
+                <div class="action-buttons">
+
+                    <!-- VIEW -->
+
+                    <a
+                        href="{{ url_for('main.admin_order_detail', order_id=order.id) }}"
+                        class="btn btn-view"
+                    >
+                        View
+                    </a>
+
+
+                    <!-- WHATSAPP -->
+
+                    {% if order.customer_phone %}
+
+                        {% set whatsapp_number = order.customer_phone
+                            |replace("+", "")
+                            |replace(" ", "")
+                            |replace("-", "")
+                        %}
+
+                        <a
+                            href="https://wa.me/{{ whatsapp_number }}"
+                            target="_blank"
+                            class="btn btn-whatsapp"
+                        >
+                            WhatsApp
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    {% else %}
+
+        <tr>
+
+            <td colspan="7" style="text-align:center; padding:30px;">
+
+                No orders found.
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

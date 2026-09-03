@@ -1,0 +1,369 @@
+<footer class="site-footer">
+
+<div class="container">
+
+    <div class="row g-4">
+
+
+        <!-- ==============================================
+             COMPANY
+        =============================================== -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="site-footer-brand">
+
+                <a
+                    href="{{ url_for('main.home') }}"
+                    class="site-footer-logo"
+                >
+                    <span>EAGLE</span>
+                    FURNITURE NGARA
+                </a>
+
+
+                <p class="site-footer-description">
+
+                    Premium furniture designed to make
+                    your home beautiful, comfortable and
+                    uniquely yours.
+
+                </p>
+
+
+                <div class="site-footer-location">
+
+                    <i
+                        class="bi bi-geo-alt-fill"
+                        aria-hidden="true"
+                    ></i>
+
+                    <span>
+                        Murang'a Road, Ngara,
+                        Nairobi, Kenya
+                    </span>
+
+                </div>
+
+
+                <div class="site-footer-phone">
+
+                    <i
+                        class="bi bi-telephone-fill"
+                        aria-hidden="true"
+                    ></i>
+
+                    <a href="tel:{{ config.BUSINESS_PHONE }}">
+
+                        {{ config.BUSINESS_PHONE }}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================================
+             QUICK LINKS
+        =============================================== -->
+
+        <div class="col-lg-2 col-md-6">
+
+            <h5 class="site-footer-heading">
+                Quick Links
+            </h5>
+
+
+            <ul class="site-footer-links">
+
+
+                <li>
+
+                    <a href="{{ url_for('main.home') }}">
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.shop') }}">
+                        Shop
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.category_list') }}">
+                        Categories
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.offers') }}"
+                       class="footer-offer-link">
+
+                        Offers
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.about') }}">
+                        About Us
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.gallery') }}">
+                        Gallery
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.reviews') }}">
+                        Reviews
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.blog') }}">
+                        Blog
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ==============================================
+             CUSTOMER CARE
+        =============================================== -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <h5 class="site-footer-heading">
+                Customer Care
+            </h5>
+
+
+            <ul class="site-footer-links">
+
+
+                <li>
+
+                    <a href="{{ url_for('main.contact') }}">
+                        Contact Us
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.faq') }}">
+                        FAQ
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.delivery') }}">
+                        Delivery Information
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.payment') }}">
+                        Payment Options
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.returns') }}">
+                        Returns & Refunds
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="{{ url_for('main.quote') }}">
+                        Request a Quote
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ==============================================
+             GET IN TOUCH
+        =============================================== -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <h5 class="site-footer-heading">
+                Get In Touch
+            </h5>
+
+
+            <p class="site-footer-description">
+
+                Have questions about a product
+                or need custom furniture?
+
+            </p>
+
+
+            <a
+                href="{{ url_for('main.quote') }}"
+                class="site-footer-quote-button"
+            >
+
+                <i
+                    class="bi bi-chat-dots"
+                    aria-hidden="true"
+                ></i>
+
+                Request a Quote
+
+            </a>
+
+
+            <div class="site-footer-social">
+
+
+                <a
+                    href="{{ url_for('main.gallery') }}"
+                    title="Furniture Gallery"
+                    aria-label="Furniture Gallery"
+                >
+
+                    <i
+                        class="bi bi-images"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('main.reviews') }}"
+                    title="Customer Reviews"
+                    aria-label="Customer Reviews"
+                >
+
+                    <i
+                        class="bi bi-star-fill"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+
+                <a
+                    href="{{ url_for('main.blog') }}"
+                    title="Furniture Blog"
+                    aria-label="Furniture Blog"
+                >
+
+                    <i
+                        class="bi bi-journal-text"
+                        aria-hidden="true"
+                    ></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================================
+         DIVIDER
+    =============================================== -->
+
+    <hr class="site-footer-divider">
+
+
+    <!-- ==============================================
+         BOTTOM
+    =============================================== -->
+
+    <div class="row align-items-center pb-4">
+
+
+        <div class="col-md-6">
+
+            <p class="site-footer-copyright">
+
+                &copy;
+                {{ current_year if current_year is defined else 2026 }}
+
+                Eagle Furniture Ngara.
+
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            <div class="site-footer-legal">
+
+                <a href="{{ url_for('main.privacy') }}">
+                    Privacy Policy
+                </a>
+
+                <a href="{{ url_for('main.terms') }}">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</footer>
