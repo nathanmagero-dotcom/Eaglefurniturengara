@@ -80,16 +80,6 @@ class Product(db.Model):
     )
 
     # ========================================================
-    # SERVICE
-    # ========================================================
-
-    service_id = db.Column(
-        db.Integer,
-        db.ForeignKey("services.id"),
-        nullable=False
-    )
-
-    # ========================================================
     # CATEGORY
     # ========================================================
 
@@ -128,11 +118,6 @@ class Product(db.Model):
     # ========================================================
     # RELATIONSHIPS
     # ========================================================
-
-    service = db.relationship(
-        "Service",
-        backref="products"
-    )
 
     category = db.relationship(
         "Category",
