@@ -1856,6 +1856,7 @@ def admin_order_update(order_id):
 @main.route("/sitemap.xml")
 def sitemap():
 
+    site_url = current_app.config["SITE_URL"].rstrip("/")
     urls = []
 
     # --------------------------------------------------------
@@ -1891,11 +1892,8 @@ def sitemap():
         try:
 
             urls.append(
-                url_for(
-                    endpoint,
-                    _external=True
-                )
-            )
+    site_url + url_for(endpoint)
+)
 
         except Exception:
 
@@ -1914,12 +1912,12 @@ def sitemap():
     for product in products:
 
         urls.append(
-            url_for(
-                "main.product",
-                product_id=product.id,
-                _external=True
-            )
-        )
+    site_url + url_for(
+        "main.product",
+        product_id=product.id
+    )
+)
+
 
     # --------------------------------------------------------
     # CATEGORY PAGES
@@ -1935,12 +1933,12 @@ def sitemap():
     for category in categories:
 
         urls.append(
-            url_for(
-                "main.category",
-                slug=category.slug,
-                _external=True
-            )
-        )
+    site_url + url_for(
+        "main.category",
+        slug=category.slug
+    )
+)
+        
 
     # --------------------------------------------------------
     # REMOVE DUPLICATES
