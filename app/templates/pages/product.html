@@ -461,51 +461,35 @@ function decreaseQuantity() {
 }
 
 </script>
-<!-- =====================================================
-     LOCAL BUSINESS + ORGANIZATION SCHEMA
-====================================================== -->
-
+<!-- PRODUCT STRUCTURED DATA -->
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@graph": [
+    "@type": "Product",
+    "@id": {{ (canonical_url ~ "#product") | tojson }},
+    "name": {{ product.name | tojson }},
+    "description": {{ (product.description or ("Buy " ~ product.name ~ " from Eagle Furniture Ngara in Nairobi, Kenya.")) | tojson }},
+    "url": {{ canonical_url | tojson }},
 
-        {
-            "@type": "Organization",
-            "@id": "{{ site_url }}/#organization",
-            "name": "Eagle Furniture Ngara",
-            "url": "{{ site_url }}/",
-            "telephone": "{{ config.BUSINESS_PHONE }}",
-            "sameAs": []
-        },
+    {% if product.image %}
+    "image": [
+        {{ (site_url ~ url_for('static', filename=product.image)) | tojson }}
+    ],
+    {% endif %}
 
-        {
-            "@type": "FurnitureStore",
-            "@id": "{{ site_url }}/#business",
-            "name": "Eagle Furniture Ngara",
-            "url": "{{ site_url }}/",
-            "telephone": "{{ config.BUSINESS_PHONE }}",
-            "priceRange": "KES 10,000 - KES 200,000",
+    "brand": {
+        "@type": "Brand",
+        "name": "Eagle Furniture Ngara"
+    },
 
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Murang'a Road",
-                "addressLocality": "Ngara",
-                "addressRegion": "Nairobi",
-                "addressCountry": "KE"
-            },
-
-            "areaServed": {
-                "@type": "City",
-                "name": "Nairobi"
-            },
-
-            "parentOrganization": {
-                "@id": "{{ site_url }}/#organization"
-            }
-        }
-
-    ]
+    "offers": {
+        "@type": "Offer",
+        "url": {{ canonical_url | tojson }},
+        "priceCurrency": "KES",
+        "price": {{ (product.sale_price if product.sale_price else product.price or 0) | tojson }},
+        "availability": "https://schema.org/{% if product.stock is defined and product.stock <= 0 %}OutOfStock{% else %}InStock{% endif %}",
+        "itemCondition": "https://schema.org/NewCondition"
+    }
 }
 </script>
 
