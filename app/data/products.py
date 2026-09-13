@@ -1,4 +1,4 @@
-# ==========================================================
+﻿# ==========================================================
 # Eagle Furniture Ngara
 # Master Product Catalogue
 # ==========================================================
@@ -44,6 +44,7 @@ products = [
             "images/products/lshape2.jpg",
             "images/products/lshape4.jpg",
             "images/products/lshape5.jpg",
+            "images/products/lshape6.jpg",
         ],
         "description": (
             "Modern custom-made L-shaped sofa built with a "
@@ -73,7 +74,10 @@ products = [
         "gallery": [
             "images/products/sofa2.jpg",
             "images/products/sofa3.jpg",
+            "images/products/sofa4.jpg",
             "images/products/sofa5.jpg",
+            "images/products/sofa6.jpg",
+            "images/products/sofa7.jpg",
         ],
         "description": (
             "Elegant modern sofa suitable for apartments "
@@ -105,6 +109,8 @@ products = [
             "images/products/luxury3.jpg",
             "images/products/luxury4.jpg",
             "images/products/luxury5.jpg",
+            "images/products/luxury6.jpg",
+            "images/products/luxury7.jpg",
         ],
         "description": (
             "Luxury sofa designed for spacious living rooms "
@@ -132,6 +138,12 @@ products = [
         "image": "images/products/3-seater-chesterfield-sofa.jpg",
         "gallery": [
             "images/products/3-seater-chesterfield-sofa.jpg",
+            "images/products/4-seater-chesterfield-sofa2.jpg",
+            "images/products/5-seater-chesterfield-sofa3.jpg",
+            "images/products/6-seater-chesterfield-sofa4.jpg",
+            "images/products/7-seater-chesterfield-sofa5.jpg",
+            "images/products/5-seater-chesterfield-sofa6.jpg",
+            "images/products/6-seater-chesterfield-sofa7.jpg",
         ],
         "description": (
             "Classic Chesterfield sofa with timeless "
@@ -160,7 +172,10 @@ products = [
         "gallery": [
             "images/products/recliner.jpg",
             "images/products/recliner3.jpg",
-            "images/products/recliner-sofa-set.jpg",
+            "images/products/recliner4.jpg",
+            "images/products/recliner5.jpg",
+            "images/products/recliner6.jpg",
+            "images/products/recliner7.jpg",
         ],
         "description": (
             "Premium reclining sofa designed for maximum "
@@ -183,11 +198,16 @@ products = [
         "name": "U-Shaped Family Sofa",
         "category": "Sofas",
         "subcategory": "Luxury",
-        "price": 118000,
-        "sale_price": 110000,
+        "price": 110000,
         "image": "images/products/u-shaped sofa.jpg",
         "gallery": [
             "images/products/u-shaped sofa.jpg",
+            "images/products/u-shaped sofa2.jpg",
+            "images/products/u-shaped sofa3.jpg",
+            "images/products/u-shaped sofa4.jpg",
+            "images/products/u-shaped sofa5.jpg",
+            "images/products/u-shaped sofa6.jpg",
+            "images/products/u-shaped sofa7.jpg",
         ],
         "description": (
             "Luxury U-shaped sofa suitable for large family "
@@ -225,6 +245,10 @@ products = [
             "images/products/bed2.jpg",
             "images/products/bed3.jpg",
             "images/products/bed4.jpg",
+            "images/products/bed5.jpg",
+            "images/products/bed6.jpg",
+            "images/products/bed7.jpg",
+
         ],
         "description": (
             "Modern queen-size bed crafted from seasoned "
@@ -252,6 +276,12 @@ products = [
         "image": "images/products/king-size-bed.jpg",
         "gallery": [
             "images/products/king-size-bed.jpg",
+            "images/products/king-size-bed2.jpg",
+            "images/products/king-size-bed3.jpg",
+            "images/products/king-size-bed4.jpg",
+            "images/products/king-size-bed5.jpg",
+            "images/products/king-size-bed6.jpg",
+            "images/products/king-size-bed7.jpg",
         ],
         "description": (
             "Luxury king-size bed designed for spacious "
@@ -283,6 +313,9 @@ products = [
             "images/products/bed2.jpg",
             "images/products/bed3.jpg",
             "images/products/bed4.jpg",
+            "images/products/bed5.jpg",
+            "images/products/bed6.jpg",
+            "images/products/bed7.jpg",
         ],
         "description": (
             "Affordable and durable 4x6 storage bed suitable "
@@ -310,6 +343,12 @@ products = [
         "image": "images/products/bunk-bed.jpg",
         "gallery": [
             "images/products/bunk-bed.jpg",
+            "images/products/bunk-bed2.jpg",
+            "images/products/bunk-bed3.jpg",
+            "images/products/bunk-bed4.jpg",
+            "images/products/bunk-bed5.jpg",
+            "images/products/bunk-bed6.jpg",
+            "images/products/bunk-bed7.jpg",
         ],
         "description": (
             "Strong hardwood bunk bed suitable for children."
@@ -337,10 +376,15 @@ products = [
         "category": "Dining Sets",
         "subcategory": "Dining",
         "price": 40000,
-        "image": "images/products/dining04.jpg",
+        "image": "images/products/dining.jpg",
         "gallery": [
-            "images/products/dining04.jpg",
-            "images/products/dining10.jpg",
+            "images/products/dining.jpg",
+            "images/products/dining2.jpg",
+            "images/products/dining3.jpg",
+            "images/products/dining4.jpg",
+            "images/products/dining5.jpg",
+            "images/products/dining6.jpg",
+            "images/products/dining7.jpg",
         ],
         "description": (
             "Elegant four-seater dining set perfect for "
@@ -360,24 +404,28 @@ products = [
     {
         "id": 10,
         "sku": "DIN002",
-        "name": "6 Seater Dining Set",
+        "name": "8 Seater Dining Set",
         "category": "Dining Sets",
         "subcategory": "Dining",
-        "price": 55000,
-        "image": "images/products/dining-set.jpg",
+        "price": 75000,
+        "image": "images/products/dining.jpg",
         "gallery": [
-            "images/products/dining-set.jpg",
-            "images/products/dining04.jpg",
-            "images/products/dining10.jpg",
+            "images/products/dining.jpg",
+            "images/products/dining2.jpg",
+            "images/products/dining3.jpg",
+            "images/products/dining4.jpg",
+            "images/products/dining5.jpg",
+            "images/products/dining6.jpg",
+            "images/products/dining7.jpg",
         ],
         "description": (
-            "Beautiful six-seater dining table built for "
+            "Beautiful 8-seater dining table built for "
             "everyday family dining."
         ),
         "material": "Hardwood",
         "fabric": "Wood Finish",
         "colour": "Oak",
-        "size": "6 Seater",
+        "size": "8 Seater",
         "stock": 9,
         "featured": True,
         "best_seller": True,
@@ -388,24 +436,29 @@ products = [
     {
         "id": 11,
         "sku": "DIN003",
-        "name": "8 Seater Dining Set",
+        "name": "10 Seater Dining Set",
         "category": "Dining Sets",
         "subcategory": "Luxury",
-        "price": 75000,
+        "price": 95000,
         "sale_price": 72000,
-        "image": "images/products/dining-set.jpg",
+        "image": "images/products/dining.jpg",
         "gallery": [
-            "images/products/dining10.jpg",
-            "images/products/dining-set.jpg",
+            "images/products/dining.jpg",
+            "images/products/dining2.jpg",
+            "images/products/dining3.jpg",
+            "images/products/dining4.jpg",
+            "images/products/dining5.jpg",
+            "images/products/dining6.jpg",
+            "images/products/dining7.jpg",
         ],
         "description": (
-            "Luxury eight-seater dining set for larger "
+            "Luxury 10-seater dining set for larger "
             "families and entertaining."
         ),
         "material": "Mahogany Hardwood",
         "fabric": "Wood Finish",
         "colour": "Dark Walnut",
-        "size": "8 Seater",
+        "size": "10 Seater",
         "stock": 4,
         "featured": True,
         "best_seller": False,
@@ -416,22 +469,28 @@ products = [
     {
         "id": 28,
         "sku": "DIN004",
-        "name": "10 Seater Dining Set",
+        "name": "3 Seater Dining Set",
         "category": "Dining Sets",
         "subcategory": "Luxury",
-        "price": 115000,
-        "sale_price": 109000,
-        "image": "images/products/dining10.jpg",
+        "price": 28000,
+        "sale_price": 24000,
+        "image": "images/products/dining.jpg",
         "gallery": [
-            "images/products/dining10.jpg",
+            "images/products/dining1.jpg",
+            "images/products/dining2.jpg",
+            "images/products/dining3.jpg",
+            "images/products/dining4.jpg",
+            "images/products/dining5.jpg",
+            "images/products/dining6.jpg",
+            "images/products/dining7.jpg",
         ],
         "description": (
-            "Premium 10-seater dining set ideal for large "
+            "Premium 3-seater dining set ideal for small "
             "homes."
         ),
         "material": "Mahogany Hardwood",
         "colour": "Walnut",
-        "size": "10 Seater",
+        "size": "3 Seater",
         "stock": 3,
         "featured": True,
         "best_seller": False,
@@ -456,9 +515,12 @@ products = [
         "image": "images/products/tv1.jpg",
         "gallery": [
             "images/products/tv1.jpg",
-            "images/products/tv-unit.jpg",
-            "images/products/tv-luxury.jpg",
-            "images/products/modern-tv-unit.jpg",
+            "images/products/tv2.jpg",
+            "images/products/tv3.jpg",
+            "images/products/tv4.jpg",
+            "images/products/tv5.jpg",
+            "images/products/tv6.jpg",
+            "images/products/tv7.jpg",
         ],
         "description": (
             "Stylish TV unit with spacious storage for "
@@ -484,9 +546,15 @@ products = [
         "subcategory": "Wall Mounted",
         "price": 28000,
         "sale_price": 25000,
-        "image": "images/products/floating-tv-unit.jpg",
+        "image": "images/products/floating.jpg",
         "gallery": [
-            "images/products/floating-tv-unit.jpg",
+            "images/products/floating.jpg",
+            "images/products/floating2.jpg",
+            "images/products/floating3.jpg",
+            "images/products/floating4.jpg",
+            "images/products/floating5.jpg",
+            "images/products/floating6.jpg",
+            "images/products/floating7.jpg",
         ],
         "description": (
             "Wall-mounted floating TV unit with a sleek "
@@ -512,11 +580,17 @@ products = [
         "name": "Luxury Entertainment Unit",
         "category": "TV Units",
         "subcategory": "Luxury",
-        "price": 52000,
-        "sale_price": 49000,
+        "price": 32000,
+        "sale_price": 28000,
         "image": "images/products/tv-luxury.jpg",
         "gallery": [
             "images/products/tv-luxury.jpg",
+            "images/products/tv-luxury2.jpg",
+            "images/products/tv-luxury3.jpg",
+            "images/products/tv-luxury4.jpg",
+            "images/products/tv-luxury5.jpg",
+            "images/products/tv-luxury6.jpg",
+            "images/products/tv-luxury7.jpg",
         ],
         "description": (
             "Large entertainment wall unit with shelves "
@@ -549,6 +623,12 @@ products = [
         "image": "images/products/coffee1.jpg",
         "gallery": [
             "images/products/coffee1.jpg",
+            "images/products/coffee2.jpg",
+            "images/products/coffee3.jpg",
+            "images/products/coffee4.jpg",
+            "images/products/coffee5.jpg",
+            "images/products/coffee6.jpg",
+            "images/products/coffee7.jpg",
         ],
         "description": (
             "Minimalist coffee table with elegant wood finish."
@@ -573,9 +653,15 @@ products = [
         "subcategory": "Luxury",
         "price": 24000,
         "sale_price": 22000,
-        "image": "images/products/luxury-marble-coffee-table.jpg",
+        "image": "images/products/marble.jpg",
         "gallery": [
-            "images/products/luxury-marble-coffee-table.jpg",
+            "images/products/marble.jpg",
+            "images/products/marble2.jpg",
+            "images/products/marble3.jpg",
+            "images/products/marble4.jpg",
+            "images/products/marble5.jpg",
+            "images/products/marble6.jpg",
+            "images/products/marble7.jpg",
         ],
         "description": (
             "Premium marble-top coffee table that adds "
@@ -608,9 +694,15 @@ products = [
         "subcategory": "Bedroom",
         "price": 35000,
         "sale_price": 33000,
-        "image": "images/products/wardrobe2.jpg",
+        "image": "images/products/wardrobe.jpg",
         "gallery": [
+            "images/products/wardrobe.jpg",
             "images/products/wardrobe2.jpg",
+            "images/products/wardrobe3.jpg",
+            "images/products/wardrobe4.jpg",
+            "images/products/wardrobe5.jpg",
+            "images/products/wardrobe6.jpg",
+            "images/products/wardrobe7.jpg",
         ],
         "description": (
             "Compact two-door wardrobe with hanging space "
@@ -632,14 +724,20 @@ products = [
     {
         "id": 17,
         "sku": "WRD002",
-        "name": "3 Door Wardrobe",
+        "name": "luxury and modern Wardrobe",
         "category": "Wardrobes",
         "subcategory": "Bedroom",
         "price": 48000,
         "sale_price": 45000,
-        "image": "images/products/3-door-wardrobe.jpg",
+        "image": "images/products/modern wardrobe.jpg",
         "gallery": [
-            "images/products/3-door-wardrobe.jpg",
+            "images/products/modern wardrobe.jpg",
+            "images/products/modern wardrobe2.jpg",
+            "images/products/modern wardrobe3.jpg",
+            "images/products/modern wardrobe4.jpg",
+            "images/products/modern wardrobe5.jpg",
+            "images/products/modern wardrobe6.jpg",
+            "images/products/modern wardrobe7.jpg",
         ],
         "description": (
             "Spacious wardrobe with shelves, drawers and "
@@ -666,9 +764,15 @@ products = [
         "subcategory": "Luxury",
         "price": 68000,
         "sale_price": 65000,
-        "image": "images/products/sliding-door-wardrobe.jpg",
+        "image": "images/products/sliding.jpg",
         "gallery": [
-            "images/products/sliding-door-wardrobe.jpg",
+            "images/products/sliding.jpg",
+            "images/products/sliding2.jpg",
+            "images/products/sliding3.jpg",
+            "images/products/sliding4.jpg",
+            "images/products/sliding5.jpg",
+            "images/products/sliding6.jpg",
+            "images/products/sliding7.jpg",
         ],
         "description": (
             "Modern sliding wardrobe ideal for contemporary "
@@ -693,11 +797,17 @@ products = [
         "name": "Walk-in Wardrobe System",
         "category": "Wardrobes",
         "subcategory": "Luxury",
-        "price": 75000,
-        "sale_price": 68000,
-        "image": "images/products/3-door-wardrobe.jpg",
+        "price": 35000,
+        "sale_price": 32000,
+        "image": "images/products/walk-in.jpg",
         "gallery": [
-            "images/products/3-door-wardrobe.jpg",
+            "images/products/walk-in.jpg",
+            "images/products/walk-in2.jpg",
+            "images/products/walk-in3.jpg",
+            "images/products/walk-in4.jpg",
+            "images/products/walk-in5.jpg",
+            "images/products/walk-in6.jpg",
+            "images/products/walk-in7.jpg"
         ],
         "description": (
             "Custom-made walk-in wardrobe system with drawers "
@@ -732,6 +842,12 @@ products = [
         "image": "images/products/office-desk.jpg",
         "gallery": [
             "images/products/office-desk.jpg",
+            "images/products/office-desk2.jpg",
+            "images/products/office-desk3.jpg",
+            "images/products/office-desk4.jpg",
+            "images/products/office-desk5.jpg",
+            "images/products/office-desk6.jpg",
+            "images/products/office-desk7.jpg",
         ],
         "description": (
             "Professional executive office desk with drawers "
@@ -759,6 +875,12 @@ products = [
         "image": "images/products/office-chair.jpg",
         "gallery": [
             "images/products/office-chair.jpg",
+            "images/products/office-chair2.jpg",
+            "images/products/office-chair3.jpg",
+            "images/products/office-chair4.jpg",
+            "images/products/office-chair5.jpg",
+            "images/products/office-chair6.jpg",
+            "images/products/office-chair7.jpg",
         ],
         "description": (
             "Comfortable ergonomic chair with adjustable "
@@ -792,6 +914,12 @@ products = [
         "image": "images/categories/mattressess.jpg",
         "gallery": [
             "images/categories/mattressess.jpg",
+            "images/categories/mattressess2.jpg",
+            "images/categories/mattressess3.jpg",
+            "images/categories/mattressess4.jpg",
+            "images/categories/mattressess5.jpg",
+            "images/categories/mattressess6.jpg",
+            "images/categories/mattressess7.jpg",
         ],
         "description": (
             "Premium orthopedic mattress offering excellent "
@@ -818,9 +946,15 @@ products = [
         "subcategory": "Spring",
         "price": 15000,
         "sale_price": 12000,
-        "image": "images/categories/mattressess.jpg",
+        "image": "images/categories/spring.jpg",
         "gallery": [
-            "images/categories/mattressess.jpg",
+            "images/categories/spring.jpg",
+            "images/categories/spring2.jpg",
+            "images/categories/spring3.jpg",
+            "images/categories/spring4.jpg",
+            "images/categories/spring5.jpg",
+            "images/categories/spring6.jpg",
+            "images/categories/spring7.jpg",
         ],
         "description": (
             "Comfortable spring mattress designed for "
@@ -850,9 +984,15 @@ products = [
         "subcategory": "Patio",
         "price": 58000,
         "sale_price": 55000,
-        "image": "images/categories/outdoor.jpg",
+        "image": "images/categories/modern-outdoor1.jpg",
         "gallery": [
-            "images/categories/outdoor.jpg",
+            "images/categories/modern-outdoor1.jpg",
+            "images/categories/modern-outdoor2.jpg",
+            "images/categories/modern-outdoor3.jpg",
+            "images/categories/modern-outdoor4.jpg",
+            "images/categories/modern-outdoor5.jpg",
+            "images/categories/modern-outdoor6.jpg",
+            "images/categories/modern_outdoor7.jpg",
         ],
         "description": (
             "Weather-resistant patio set perfect for gardens "
@@ -874,17 +1014,23 @@ products = [
     {
         "id": 24,
         "sku": "OUT002",
-        "name": "Outdoor Swing Chair",
+        "name": "Outdoor, classic tables and Chair",
         "category": "Outdoor Furniture",
-        "subcategory": "Swing",
-        "price": 26000,
-        "sale_price": 24000,
-        "image": "images/categories/outdoor.jpg",
+        "subcategory": "Patio",
+        "price": 36000,
+        "sale_price": 32000,
+        "image": "images/categories/outdoor1.jpg",
         "gallery": [
-            "images/categories/outdoor.jpg",
+            "images/categories/outdoor1.jpg",
+            "images/categories/outdoor2.jpg",
+            "images/categories/outdoor3.jpg",
+            "images/categories/outdoor4.jpg",
+            "images/categories/outdoor5.jpg",
+            "images/categories/outdoor6.jpg",
+            "images/categories/outdoor7.jpg",
         ],
         "description": (
-            "Stylish hanging swing chair for indoor and outdoor "
+            "Stylish outdoor tables and chairs for indoor and outdoor "
             "relaxation."
         ),
         "material": "Rattan & Steel",
@@ -916,6 +1062,12 @@ products = [
         "image": "images/products/mirror.jpg",
         "gallery": [
             "images/products/mirror.jpg",
+            "images/products/mirror2.jpg",
+            "images/products/mirror3.jpg",
+            "images/products/mirror4.jpg",
+            "images/products/mirror5.jpg",
+            "images/products/mirror6.jpg",
+            "images/products/mirror7.jpg",
         ],
         "description": (
             "Elegant decorative mirror that complements "
@@ -1059,3 +1211,122 @@ def search_products(query):
             or query in str(product.get("description", "")).lower()
         )
     ]
+
+# ==========================================================
+# CATALOGUE VALIDATION
+# ==========================================================
+
+def validate_catalogue():
+    """
+    Validate the master catalogue for common importer problems.
+
+    Returns:
+        list[str]: Empty list means the catalogue is valid.
+    """
+
+    errors = []
+
+    ids = set()
+    skus = set()
+    slugs = set()
+
+    required_fields = (
+        "id",
+        "sku",
+        "name",
+        "category",
+        "subcategory",
+        "price",
+        "image",
+        "gallery",
+        "description",
+    )
+
+    for index, product in enumerate(products, start=1):
+
+        prefix = f"Product #{index}"
+
+        # Required fields
+        for field in required_fields:
+            if not product.get(field):
+                errors.append(
+                    f"{prefix}: missing '{field}'"
+                )
+
+        # Duplicate ID
+        product_id = product.get("id")
+
+        if product_id in ids:
+            errors.append(
+                f"{prefix}: duplicate id '{product_id}'"
+            )
+
+        ids.add(product_id)
+
+        # Duplicate SKU
+        sku = str(
+            product.get("sku", "")
+        ).strip().upper()
+
+        if sku in skus:
+            errors.append(
+                f"{prefix}: duplicate SKU '{sku}'"
+            )
+
+        skus.add(sku)
+
+        # Slug
+        slug = product.get("slug")
+
+        if not slug:
+            slug = slugify(
+                product.get("name", "")
+            )
+
+        if slug in slugs:
+            errors.append(
+                f"{prefix}: duplicate slug '{slug}'"
+            )
+
+        slugs.add(slug)
+
+        # Price validation
+        price = product.get("price")
+        sale_price = product.get("sale_price")
+
+        if price is not None and price < 0:
+            errors.append(
+                f"{prefix}: negative price"
+            )
+
+        if sale_price is not None and sale_price < 0:
+            errors.append(
+                f"{prefix}: negative sale price"
+            )
+
+        if (
+            price is not None
+            and sale_price is not None
+            and sale_price >= price
+        ):
+            errors.append(
+                f"{prefix}: sale_price must be lower than price"
+            )
+
+        # Gallery validation
+        gallery = product.get("gallery") or []
+
+        if not gallery:
+            errors.append(
+                f"{prefix}: gallery is empty"
+            )
+
+        if (
+            product.get("image")
+            and product["image"] not in gallery
+        ):
+            errors.append(
+                f"{prefix}: main image is missing from gallery"
+            )
+
+    return errors
