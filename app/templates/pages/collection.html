@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ subcategory.name }} | {{ category.name }} | Eagle Furniture Ngara{% endblock %}
+
+{% block meta_description %}Explore {{ subcategory.name }} by Eagle Furniture Ngara in Nairobi. Browse available designs in the {{ category.name }} collection and contact us for custom sizes, colours and finishes.{% endblock %}
+
+{% block content %}
+<main class="collection-page">
+    <section class="collection-hero">
+        <div class="container">
+            <span class="collection-eyebrow">{{ category.name }}</span>
+            <h1>{{ subcategory.name }}</h1>
+            {% if subcategory.description %}
+                <p>{{ subcategory.description }}</p>
+            {% endif %}
+            <div class="collection-crumbs">
+                <a href="{{ url_for('main.home') }}">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <a href="{{ url_for('main.category', slug=category.slug) }}">{{ category.name }}</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>{{ subcategory.name }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-products">
+        <div class="container">
+            <div class="collection-toolbar">
+                <span>{{ products|length }} {{ 'design' if products|length == 1 else 'designs' }} available</span>
+                <a href="https://wa.me/254717369779?text=Hello%20Eagle%20Furniture%2C%20I%27m%20interested%20in%20{{ subcategory.name|urlencode }}."
+                   target="_blank" rel="noopener">
+                    <i class="bi bi-whatsapp"></i> Ask about this collection
+                </a>
+            </div>
+
+            {% if products %}
+            <div class="collection-grid">
+                {% for product in products %}
+                <article class="collection-card">
+                    <a href="{{ url_for('main.product', product_id=product.id) }}" class="collection-card-image">
+                        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" loading="lazy">
+                        {% if product.sale_price and product.price and product.sale_price < product.price %}
+                            <span>SALE</span>
+                        {% endif %}
+                    </a>
+                    <div class="collection-card-body">
+                        <small>{{ category.name }}</small>
+                        <h2><a href="{{ url_for('main.product', product_id=product.id) }}">{{ product.name }}</a></h2>
+                        <div class="collection-price">
+                            {% if product.sale_price and product.price and product.sale_price < product.price %}
+                                <strong>KSh {{ "{:,.0f}".format(product.sale_price) }}</strong>
+                                <del>KSh {{ "{:,.0f}".format(product.price) }}</del>
+                            {% elif product.price %}
+                                <strong>KSh {{ "{:,.0f}".format(product.price) }}</strong>
+                            {% else %}
+                                <strong>Request Price</strong>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="collection-empty">
+                <h2>New designs are being added.</h2>
+                <p>Contact Eagle Furniture on 0717 369 779 for current availability.</p>
+                <a href="tel:0717369779">Call us</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}

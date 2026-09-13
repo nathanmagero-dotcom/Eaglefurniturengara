@@ -271,56 +271,42 @@ def build_showroom_department(
 
 @main.route("/")
 def home():
-    """Homepage showroom built entirely from the database."""
-
-    # ---------------------------------------------------------
-    # FEATURED PRODUCTS
-    # ---------------------------------------------------------
     featured_products = (
         Product.query
         .filter(
             Product.active.is_(True),
             Product.featured.is_(True),
             Product.image.isnot(None),
-            Product.image != "",
+            Product.image != ""
         )
         .order_by(Product.created_at.desc())
         .all()
     )
 
-    # ---------------------------------------------------------
-    # BEST SELLERS
-    # ---------------------------------------------------------
     best_sellers = (
         Product.query
         .filter(
             Product.active.is_(True),
             Product.best_seller.is_(True),
             Product.image.isnot(None),
-            Product.image != "",
+            Product.image != ""
         )
         .order_by(Product.created_at.desc())
         .all()
     )
 
-    # ---------------------------------------------------------
-    # NEW ARRIVALS
-    # ---------------------------------------------------------
     new_arrivals = (
         Product.query
         .filter(
             Product.active.is_(True),
             Product.new_arrival.is_(True),
             Product.image.isnot(None),
-            Product.image != "",
+            Product.image != ""
         )
         .order_by(Product.created_at.desc())
         .all()
     )
 
-    # ---------------------------------------------------------
-    # CURRENT OFFERS
-    # ---------------------------------------------------------
     offers = (
         Product.query
         .filter(
@@ -330,27 +316,24 @@ def home():
             Product.sale_price.isnot(None),
             Product.sale_price > 0,
             Product.price.isnot(None),
-            Product.sale_price < Product.price,
+            Product.sale_price < Product.price
         )
         .order_by(Product.created_at.desc())
         .all()
     )
 
-    # ---------------------------------------------------------
-    # ACTIVE CATEGORIES
-    # Used by homepage navigation and supporting sections.
-    # ---------------------------------------------------------
     categories = (
         Category.query
         .filter(Category.active.is_(True))
         .order_by(
             Category.display_order.asc(),
-            Category.name.asc(),
+            Category.name.asc()
         )
         .all()
     )
 
-    # Attach active subcategories without changing the database.
+    # Attach active subcategories for the showroom homepage.
+    # This does NOT change the database.
     for category in categories:
         category.home_subcategories = [
             subcategory
@@ -358,24 +341,28 @@ def home():
             if subcategory.active
         ]
 
-    # ---------------------------------------------------------
-    # FEATURED BUNDLES
-    # ---------------------------------------------------------
     featured_bundles = [
-        bundle
-        for bundle in bundles
+        bundle for bundle in bundles
         if bundle.get("featured")
     ]
 
+    return render_template(
+        "pages/home.html",
+        featured_products=featured_products,
+        best_sellers=best_sellers,
+        new_arrivals=new_arrivals,
+        offers=offers,
+        categories=categories,
+        bundles=bundles,
+        featured_bundles=featured_bundles,
+    )
     # ---------------------------------------------------------
     # HOMEPAGE SHOWROOM DEPARTMENTS
     #
-    # These are populated from the real database categories,
-    # subcategories and products through build_showroom_department().
-    #
-    # Homepage products are curated.
-    # Collection pages remain unlimited.
+    # These are customer-facing departments.
+    # They are built from the existing database categories.
     # ---------------------------------------------------------
+
     showroom_departments = [
 
         build_showroom_department(
@@ -417,7 +404,7 @@ def home():
                 "dining sets made to suit your space."
             ),
             category_slugs=[
-                "dining-sets",
+                "dining-tables",
             ],
             subcategory_limit=5,
             products_per_subcategory=6,
@@ -431,7 +418,7 @@ def home():
                 "units, wall-mounted designs and entertainment walls."
             ),
             category_slugs=[
-                "tv-units",
+                "tv-stands",
             ],
             subcategory_limit=5,
             products_per_subcategory=6,
@@ -466,8 +453,7 @@ def home():
         ),
     ]
 
-    # Remove departments where the database has no matching
-    # active category/subcategory/product data.
+    # Remove departments where the database has no matching category.
     showroom_departments = [
         department
         for department in showroom_departments
@@ -486,11 +472,10 @@ def home():
         bundles=bundles,
         featured_bundles=featured_bundles,
 
-        # Database-driven showroom data
+        # New showroom homepage data
         showroom_departments=showroom_departments,
     )
-
-
+    # ============================================================
 # SHOP
 # ============================================================
 

@@ -1119,15 +1119,6 @@
 
 {% block extra_js %}
 
-{% set has_sale = (
-    product.sale_price is not none
-    and product.price is not none
-    and product.sale_price > 0
-    and product.sale_price < product.price
-) %}
-
-{% set current_price = product.sale_price if has_sale else product.price %}
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -1351,4 +1342,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 {% endblock %}
-

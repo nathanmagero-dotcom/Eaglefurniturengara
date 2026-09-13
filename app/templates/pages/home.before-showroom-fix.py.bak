@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}
 Eagle Furniture Ngara | Furniture Shop in Nairobi | Sofas, Beds, Dining & Custom Furniture
@@ -877,7 +877,7 @@ Eagle Furniture Ngara is a trusted furniture shop in Nairobi offering bespoke so
             <div class="ef-hero-content">
 
                 <span class="ef-hero-kicker">
-                    Eagle Furniture Ngara Â· Nairobi
+                    Eagle Furniture Ngara · Nairobi
                 </span>
 
                 <h1>
@@ -1034,18 +1034,18 @@ Eagle Furniture Ngara is a trusted furniture shop in Nairobi offering bespoke so
                     </h2>
 
                     <p>
-                        Browse our furniture by department and discover
-                        specific designs, styles and collections made to
-                        suit your space.
+                        Browse by department, choose a specific design,
+                        then explore the complete collection. Every product
+                        is connected to its exact category and collection.
                     </p>
                 </div>
 
             </div>
 
 
-            {% if showroom_departments %}
+            {% for category in categories %}
 
-                {% for department in showroom_departments %}
+                {% if category.home_subcategories %}
 
                     <div class="ef-department">
 
@@ -1056,245 +1056,253 @@ Eagle Furniture Ngara is a trusted furniture shop in Nairobi offering bespoke so
                             <div>
 
                                 <span class="ef-eyebrow">
-                                    {{ loop.index }} &middot; Department
+                                    {{ loop.index }} · Department
                                 </span>
 
                                 <h3>
-                                    {{ department.name }}
+                                    {{ category.name }}
                                 </h3>
 
-                                <p>
-                                    {{ department.description }}
-                                </p>
+                                {% if category.description %}
+                                    <p>
+                                        {{ category.description }}
+                                    </p>
+                                {% else %}
+                                    <p>
+                                        Explore our {{ category.name|lower }}
+                                        collection.
+                                    </p>
+                                {% endif %}
 
                             </div>
 
                         </div>
 
 
-                        {% for category_data in department.categories %}
+                        <!-- Subcategory selectors -->
 
-                            {% set category = category_data.category %}
+                        <div class="ef-subcategories">
 
-                            {% if category_data.subcategory_data %}
+                            {% for subcategory in category.home_subcategories %}
 
-                                <div class="ef-category-group">
+                                <a href="{{ url_for('main.collection', slug=subcategory.slug) }}"
+                                   class="ef-subcategory">
 
-                                    <div class="ef-subcategories">
+                                    {% if subcategory.image %}
 
-                                        {% for subcategory_data in category_data.subcategory_data %}
+                                        <img src="{{ url_for('static', filename=subcategory.image) }}"
+                                             alt="{{ subcategory.name }} - {{ category.name }} at Eagle Furniture Ngara"
+                                             loading="lazy">
 
-                                            {% set subcategory = subcategory_data.subcategory %}
+                                    {% else %}
 
-                                            <a href="{{ url_for('main.collection', slug=subcategory.slug) }}"
-                                               class="ef-subcategory">
+                                        <div style="
+                                            width:100%;
+                                            height:100%;
+                                            min-height:150px;
+                                            background:#d8cec5;
+                                        "></div>
 
-                                                {% if subcategory_data.image %}
+                                    {% endif %}
 
-                                                    <img src="{{ url_for('static', filename=subcategory_data.image) }}"
-                                                         alt="{{ subcategory.name }} - {{ category.name }} - Eagle Furniture Ngara"
-                                                         loading="lazy">
+                                    <div class="ef-subcategory-content">
 
-                                                {% else %}
+                                        <strong>
+                                            {{ subcategory.name }}
+                                        </strong>
 
-                                                    <div class="ef-subcategory-placeholder"
-                                                         aria-hidden="true">
-                                                    </div>
-
-                                                {% endif %}
-
-                                                <div class="ef-subcategory-content">
-
-                                                    <strong>
-                                                        {{ subcategory.name }}
-                                                    </strong>
-
-                                                    <small>
-                                                        {{ subcategory_data.product_count }}
-                                                        {% if subcategory_data.product_count == 1 %}
-                                                            design
-                                                        {% else %}
-                                                            designs
-                                                        {% endif %}
-                                                    </small>
-
-                                                </div>
-
-                                            </a>
-
-                                        {% endfor %}
+                                        <small>
+                                            {% if subcategory.products %}
+                                                {{ subcategory.products|selectattr('active')|list|length }}
+                                                designs
+                                            {% else %}
+                                                Explore designs
+                                            {% endif %}
+                                        </small>
 
                                     </div>
 
+                                </a>
 
-                                    {% for subcategory_data in category_data.subcategory_data %}
+                            {% endfor %}
 
-                                        {% set subcategory = subcategory_data.subcategory %}
-
-                                        {% if subcategory_data.products %}
-
-                                            <div class="ef-subcategory-products">
-
-                                                <div class="ef-subcategory-products-head">
-
-                                                    <div>
-
-                                                        <span class="ef-eyebrow">
-                                                            {{ category.name }}
-                                                        </span>
-
-                                                        <h4>
-                                                            {{ subcategory.name }}
-                                                        </h4>
-
-                                                    </div>
-
-                                                    <a href="{{ url_for('main.collection', slug=subcategory.slug) }}"
-                                                       class="ef-link">
-                                                        View Collection
-                                                        <i class="bi bi-arrow-right"></i>
-                                                    </a>
-
-                                                </div>
+                        </div>
 
 
-                                                <div class="ef-products">
+                        <!-- Products belonging to this department -->
 
-                                                    {% for product in subcategory_data.products %}
+                        {% set department_products = [] %}
 
-                                                        <article class="ef-product">
+                        {% for subcategory in category.home_subcategories %}
 
-                                                            <a href="{{ url_for('main.product', product_id=product.id) }}"
-                                                               class="ef-product-media">
+                            {% for product in subcategory.products %}
 
-                                                                {% if product.sale_price and product.price and product.sale_price < product.price %}
+                                {% if product.active and product.image %}
 
-                                                                    <span class="ef-badge">
-                                                                        Sale
-                                                                    </span>
+                                    {% set department_products =
+                                        department_products + [product] %}
 
-                                                                {% elif product.best_seller %}
+                                {% endif %}
 
-                                                                    <span class="ef-badge">
-                                                                        Best Seller
-                                                                    </span>
+                            {% endfor %}
 
-                                                                {% elif product.new_arrival %}
-
-                                                                    <span class="ef-badge">
-                                                                        New
-                                                                    </span>
-
-                                                                {% endif %}
-
-                                                                <img src="{{ url_for('static', filename=product.image) }}"
-                                                                     alt="{{ product.name }} - Eagle Furniture Ngara"
-                                                                     loading="lazy">
-
-                                                            </a>
+                        {% endfor %}
 
 
-                                                            <div class="ef-product-body">
+                        {% if department_products %}
 
-                                                                <span class="ef-product-category">
-                                                                    {{ subcategory.name }}
-                                                                </span>
+                            <div class="ef-products">
 
-                                                                <h3 class="ef-product-name">
+                                {% for product in department_products[:8] %}
 
-                                                                    <a href="{{ url_for('main.product', product_id=product.id) }}">
-                                                                        {{ product.name }}
-                                                                    </a>
+                                    <article class="ef-product">
 
-                                                                </h3>
+                                        <a href="{{ url_for('main.product', product_id=product.id) }}"
+                                           class="ef-product-media">
 
+                                            {% if product.sale_price and product.price and product.sale_price < product.price %}
 
-                                                                <div class="ef-product-price">
+                                                <span class="ef-badge">
+                                                    Sale
+                                                </span>
 
-                                                                    {% if product.sale_price and product.price and product.sale_price < product.price %}
+                                            {% elif product.best_seller %}
 
-                                                                        <span class="ef-price-current">
-                                                                            KSh {{ "{:,.0f}".format(product.sale_price) }}
-                                                                        </span>
+                                                <span class="ef-badge">
+                                                    Best Seller
+                                                </span>
 
-                                                                        <span class="ef-price-old">
-                                                                            KSh {{ "{:,.0f}".format(product.price) }}
-                                                                        </span>
+                                            {% elif product.new_arrival %}
 
-                                                                    {% elif product.price %}
+                                                <span class="ef-badge">
+                                                    New
+                                                </span>
 
-                                                                        <span class="ef-price-current">
-                                                                            KSh {{ "{:,.0f}".format(product.price) }}
-                                                                        </span>
+                                            {% endif %}
 
-                                                                    {% else %}
+                                            <img src="{{ url_for('static', filename=product.image) }}"
+                                                 alt="{{ product.name }} - Eagle Furniture Ngara"
+                                                 loading="lazy">
 
-                                                                        <span class="ef-price-current">
-                                                                            Price on Request
-                                                                        </span>
-
-                                                                    {% endif %}
-
-                                                                </div>
+                                        </a>
 
 
-                                                                {% if product.description %}
+                                        <div class="ef-product-body">
 
-                                                                    <p class="ef-product-description">
-                                                                        {{ product.description|striptags|truncate(90, True, '...') }}
-                                                                    </p>
+                                            <span class="ef-product-category">
+                                                {{ category.name }}
+                                            </span>
 
-                                                                {% else %}
+                                            <h3 class="ef-product-name">
 
-                                                                    <p class="ef-product-description">
-                                                                        Quality {{ product.name|lower }}
-                                                                        made to order by Eagle Furniture.
-                                                                    </p>
+                                                <a href="{{ url_for('main.product', product_id=product.id) }}">
+                                                    {{ product.name }}
+                                                </a>
 
-                                                                {% endif %}
+                                            </h3>
 
 
-                                                                <div class="ef-product-action">
+                                            <div class="ef-product-price">
 
-                                                                    <a href="{{ url_for('main.product', product_id=product.id) }}"
-                                                                       class="ef-view-product">
-                                                                        View Product
-                                                                    </a>
+                                                {% if product.sale_price and product.price and product.sale_price < product.price %}
 
-                                                                    <a href="https://wa.me/254717369779?text={{ ('Hello Eagle Furniture, I am interested in ' ~ product.name ~ '. Please share more details and availability.')|urlencode }}"
-                                                                       class="ef-whatsapp"
-                                                                       target="_blank"
-                                                                       rel="noopener"
-                                                                       aria-label="Ask about {{ product.name }} on WhatsApp">
-                                                                        <i class="bi bi-whatsapp"></i>
-                                                                        Enquire
-                                                                    </a>
+                                                    <span class="ef-price-current">
+                                                        KSh {{ "{:,.0f}".format(product.sale_price) }}
+                                                    </span>
 
-                                                                </div>
+                                                    <span class="ef-price-old">
+                                                        KSh {{ "{:,.0f}".format(product.price) }}
+                                                    </span>
 
-                                                            </div>
+                                                {% elif product.price %}
 
-                                                        </article>
+                                                    <span class="ef-price-current">
+                                                        KSh {{ "{:,.0f}".format(product.price) }}
+                                                    </span>
 
-                                                    {% endfor %}
+                                                {% else %}
 
-                                                </div>
+                                                    <span class="ef-price-current">
+                                                        Price on Request
+                                                    </span>
+
+                                                {% endif %}
 
                                             </div>
 
-                                        {% endif %}
 
-                                    {% endfor %}
+                                            {% if product.description %}
+
+                                                <p class="ef-product-description">
+                                                    {{ product.description|striptags|truncate(90, True, '...') }}
+                                                </p>
+
+                                            {% else %}
+
+                                                <p class="ef-product-description">
+                                                    Quality {{ product.name|lower }}
+                                                    made to order by Eagle Furniture.
+                                                </p>
+
+                                            {% endif %}
+
+
+                                            <div class="ef-product-action">
+
+                                                <a href="{{ url_for('main.product', product_id=product.id) }}"
+                                                   class="ef-view-product">
+                                                    View Product
+                                                </a>
+
+                                                <a href="https://wa.me/254717369779?text={{ ('Hello Eagle Furniture, I am interested in ' ~ product.name ~ '. Please share more details and availability.')|urlencode }}"
+                                                   class="ef-whatsapp"
+                                                   target="_blank"
+                                                   rel="noopener"
+                                                   aria-label="Ask about {{ product.name }} on WhatsApp">
+                                                    <i class="bi bi-whatsapp"></i>
+                                                    Enquire
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                    </article>
+
+                                {% endfor %}
+
+                            </div>
+
+
+                            <!-- Collection link -->
+
+                            {% if category.home_subcategories|length > 0 %}
+
+                                <div class="ef-collection-footer">
+
+                                    <a href="{{ url_for('main.collection', slug=category.home_subcategories[0].slug) }}"
+                                       class="ef-collection-button">
+
+                                        Explore {{ category.name }}
+                                        <i class="bi bi-arrow-right"></i>
+
+                                    </a>
 
                                 </div>
 
                             {% endif %}
 
-                        {% endfor %}
+                        {% else %}
+
+                            <div class="ef-empty">
+                                More {{ category.name|lower }} designs are being prepared.
+                            </div>
+
+                        {% endif %}
 
                     </div>
 
-                {% endfor %}
+                {% endif %}
 
             {% else %}
 
@@ -1302,11 +1310,12 @@ Eagle Furniture Ngara is a trusted furniture shop in Nairobi offering bespoke so
                     Our furniture collections are being updated.
                 </div>
 
-            {% endif %}
+            {% endfor %}
 
         </div>
 
     </section>
+
 
     <!-- =====================================================
          SPECIAL OFFERS

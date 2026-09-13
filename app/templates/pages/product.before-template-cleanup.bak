@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}
     {{ product.seo_title or product.name }} | Eagle Furniture Ngara
@@ -34,6 +34,29 @@
     href="{{ url_for('static', filename='css/pages/product.css') }}"
 >
 {% endblock %}
+
+{% block content %}
+
+{% set has_sale = (
+    product.sale_price is not none
+    and product.price is not none
+    and product.sale_price > 0
+    and product.sale_price < product.price
+) %}
+
+{% set current_price = product.sale_price if has_sale else product.price %}
+
+{% if has_sale %}
+    {% set discount_percentage = ((product.price - product.sale_price) / product.price * 100) | round(0) %}
+{% else %}
+    {% set discount_percentage = 0 %}
+{% endif %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/pages/product.css') }}"
+>
+{% endblock %}
+
 
 {% block content %}
 
@@ -1119,15 +1142,6 @@
 
 {% block extra_js %}
 
-{% set has_sale = (
-    product.sale_price is not none
-    and product.price is not none
-    and product.sale_price > 0
-    and product.sale_price < product.price
-) %}
-
-{% set current_price = product.sale_price if has_sale else product.price %}
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -1351,4 +1365,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 {% endblock %}
-

@@ -356,8 +356,6 @@ products = [
         "fabric": "Wood Finish",
         "colour": "Gloss White",
         "size": "200 cm",
-        "rating": 4.9,
-        "reviews": 17,
         "stock": 5,
         "featured": False,
         "best_seller": False,

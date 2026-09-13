@@ -57,6 +57,29 @@ class Product(db.Model):
         nullable=True
     )
 
+    sku = db.Column(
+    db.String(100),
+    unique=True,
+    nullable=True,
+    index=True,
+)
+
+    seo_title = db.Column(
+    db.String(255),
+    nullable=True,
+)
+
+    seo_description = db.Column(
+    db.Text,
+    nullable=True,
+)
+
+    active = db.Column(
+    db.Boolean,
+    default=True,
+    nullable=False,
+    server_default="1",
+)
     # ========================================================
     # STOREFRONT FLAGS
     # ========================================================
@@ -128,6 +151,20 @@ class Product(db.Model):
         "Subcategory",
         back_populates="products"
     )
+
+    gallery = db.relationship(
+    "ProductImage",
+    back_populates="product",
+    cascade="all, delete-orphan",
+    order_by="ProductImage.display_order",
+)
+
+    specifications = db.relationship(
+    "ProductSpecification",
+    back_populates="product",
+    cascade="all, delete-orphan",
+    order_by="ProductSpecification.display_order",
+)
 
     # ========================================================
     # REPRESENTATION
