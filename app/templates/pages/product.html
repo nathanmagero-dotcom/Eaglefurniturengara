@@ -1291,7 +1291,6 @@ document.addEventListener("DOMContentLoaded", function () {
 =========================================== -->
 
 <script type="application/ld+json">
-
 {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -1305,7 +1304,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "item": {{ (site_url ~ url_for('main.home')) | tojson }}
         }
 
-        {% if product.category %}
+        {% if product.subcategory and product.category %}
 
         ,
 
@@ -1317,11 +1316,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 (
                     site_url ~
                     url_for(
-                        'main.category',
-                        slug=product.category.slug
+                        'main.collection',
+                        slug=product.subcategory.slug
                     )
                 ) | tojson
             }}
+        }
+
+        ,
+
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": {{ product.subcategory.name | tojson }},
+            "item": {{
+                (
+                    site_url ~
+                    url_for(
+                        'main.collection',
+                        slug=product.subcategory.slug
+                    )
+                ) | tojson
+            }}
+        }
+
+        ,
+
+        {
+            "@type": "ListItem",
+            "position": 4,
+            "name": {{ product.name | tojson }},
+            "item": {{ canonical_url | tojson }}
+        }
+
+        {% elif product.category %}
+
+        ,
+
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ product.category.name | tojson }},
+            "item": {{ canonical_url | tojson }}
         }
 
         ,

@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import re
 import sys
@@ -37,15 +37,14 @@ SPECIFICATION_FIELDS = (
 # SUBCATEGORY ALIASES
 # ==========================================================
 #
-# The catalogue uses shorter names while the database already
-# contains the correct, richer collection names.
+# These map the catalogue names to the EXACT existing
+# database subcategory names.
 #
-# We map catalogue names to existing database records.
-#
-# We DO NOT create duplicate subcategories.
+# No duplicate categories or subcategories are created.
 # ==========================================================
 
 SUBCATEGORY_ALIASES = {
+
     "Sofas": {
         "L-Shaped": "L-Shaped Sofas",
         "Modern": "Modern Sofas",
@@ -55,12 +54,92 @@ SUBCATEGORY_ALIASES = {
     },
 
     "Beds": {
+        "Queen Size Beds": "Queen",
+        "King Size Beds": "King",
         "Standard": "Standard Beds",
-        "Kids": "Bunk Beds",
+        "Kids Beds": "Bunk Beds",
     },
 
     "Dining Sets": {
+        "4-Seater Dining Sets": "4 Seater",
+        "6-Seater Dining Sets": "6 Seater",
+        "8-Seater Dining Sets": "8 Seater",
+        "10-Seater Dining Sets": "10 Seater",
         "Luxury": "Luxury Dining",
+    },
+
+    "TV Units": {
+        "Modern TV Units": "Modern",
+        "Floating TV Units": "Floating",
+        "Luxury TV Units": "Luxury",
+        "Wall Mounted TV Units": "Wall Mounted",
+    },
+
+    "Coffee Tables": {
+        "Modern Coffee Tables": "Modern",
+        "Marble Coffee Tables": "Marble",
+        "Luxury Coffee Tables": "Luxury",
+    },
+
+    "Wardrobes": {
+        "2-Door Wardrobes": "2 Door",
+        "3-Door Wardrobes": "3 Door",
+        "Sliding Door Wardrobes": "Sliding Door",
+        "Walk-In Wardrobes": "Bedroom",
+    },
+
+    "Office Furniture": {
+        "Executive Desks": "Office Desk",
+        "Office Chairs": "Office Chair",
+    },
+
+    "Mattresses": {
+        "Orthopedic Mattresses": "Orthopedic",
+        "Spring Mattresses": "Spring",
+    },
+
+    "Outdoor Furniture": {
+        "Outdoor Patio Sets": "Patio",
+        "Outdoor Swing Chairs": "Swing",
+    },
+
+    "Home Accessories": {
+        "Wall Mirrors": "Mirror",
+    },
+
+    "Restaurant Furniture": {
+        "Restaurant Tables": "Restaurant Tables",
+        "Restaurant Chairs": "Restaurant Chairs",
+        "RestaurantBooths": "Restaurant Booths",
+        "Restaurant Booths": "Restaurant Booths",
+        "Bar Furniture": "Bar Furniture",
+        "Outdoor Restaurant Furniture": "Outdoor Restaurant Furniture",
+    },
+
+    "School Furniture": {
+        "Student Desks": "Student Desks",
+        "Student Chairs": "Student Chairs",
+        "Teachers Desks": "Teachers Desks",
+        "School Tables": "School Tables",
+        "School Storage": "School Storage",
+    },
+
+    "Home Furniture": {
+        "Wall Units": "Wall Units",
+        "Console Tables": "Console Tables",
+        "Side Tables": "Side Tables",
+        "Benches": "Benches",
+        "Home Storage": "Home Storage",
+    },
+
+    "Full Package Furniture": {
+        "Living Room Package": "Living Room Package",
+        "Bedroom Package": "Bedroom Package",
+        "Dining Package": "Dining Package",
+        "CompleteHome Package": "Complete Home Package",
+        "Complete Home Package": "Complete Home Package",
+        "OfficePackage": "Office Package",
+        "Office Package": "Office Package",
     },
 }
 
@@ -70,10 +149,6 @@ SUBCATEGORY_ALIASES = {
 # ==========================================================
 
 def slugify(value):
-    """
-    Convert a value into a clean URL slug.
-    """
-
     value = unicodedata.normalize(
         "NFKD",
         str(value),
@@ -102,12 +177,6 @@ def slugify(value):
 
 
 def unique_product_slug(name, product_id=None):
-    """
-    Generate a unique product slug.
-
-    Existing product slugs are preserved during updates.
-    """
-
     base_slug = slugify(name)
 
     if not base_slug:
@@ -143,9 +212,6 @@ def unique_product_slug(name, product_id=None):
 # ==========================================================
 
 def normalize_price(value, field_name, product_name):
-    """
-    Validate and normalize a price.
-    """
 
     if value is None:
         raise ValueError(
@@ -182,11 +248,6 @@ def normalize_price(value, field_name, product_name):
 # ==========================================================
 
 def get_category(category_name):
-    """
-    Find an existing category.
-
-    Categories are never automatically created.
-    """
 
     if not category_name:
         raise ValueError(
@@ -207,13 +268,6 @@ def get_category(category_name):
 
 
 def get_subcategory(category, subcategory_name):
-    """
-    Find an existing subcategory belonging to
-    the correct category.
-
-    Catalogue aliases are mapped to the existing
-    database structure.
-    """
 
     if not subcategory_name:
         raise ValueError(
@@ -232,7 +286,7 @@ def get_subcategory(category, subcategory_name):
 
     resolved_name = category_aliases.get(
         requested_name,
-        requested_name
+        requested_name,
     )
 
     for item in category.subcategories:
@@ -243,36 +297,19 @@ def get_subcategory(category, subcategory_name):
         ):
             return item
 
-    if resolved_name != requested_name:
-
-        raise ValueError(
-            f"Subcategory '{requested_name}' "
-            f"maps to '{resolved_name}', but "
-            f"'{resolved_name}' was not found under "
-            f"category '{category.name}'."
-        )
-
     raise ValueError(
         f"Subcategory '{requested_name}' "
-        f"not found under category "
-        f"'{category.name}'."
+        f"resolved to '{resolved_name}', but "
+        f"that subcategory was not found under "
+        f"category '{category.name}'."
     )
 
 
 # ==========================================================
-# GALLERY NORMALIZATION
+# GALLERY HELPERS
 # ==========================================================
 
 def normalize_gallery(product_data):
-    """
-    Build a clean product gallery.
-
-    Rules:
-    - Main image comes first.
-    - Empty values are removed.
-    - Duplicate images are removed.
-    - Original order is preserved.
-    """
 
     images = []
 
@@ -285,7 +322,7 @@ def normalize_gallery(product_data):
 
     gallery_data = product_data.get(
         "gallery",
-        []
+        [],
     )
 
     if gallery_data is None:
@@ -313,10 +350,6 @@ def normalize_gallery(product_data):
 # ==========================================================
 
 def build_specifications(product_data):
-    """
-    Convert catalogue fields into
-    ProductSpecification records.
-    """
 
     specifications = []
 
@@ -334,7 +367,7 @@ def build_specifications(product_data):
             {
                 "name": field.replace(
                     "_",
-                    " "
+                    " ",
                 ).title(),
                 "value": str(value).strip(),
             }
@@ -344,66 +377,129 @@ def build_specifications(product_data):
 
 
 # ==========================================================
-# PRODUCT VALIDATION
+# PRODUCT LOOKUP
 # ==========================================================
 
-def validate_database_requirements():
-    """
-    Validate the complete catalogue against
-    the current database.
+def find_existing_product(product_data):
 
-    No database writes happen here.
-    """
+    catalogue_id = product_data.get("id")
 
-    errors = []
+    if catalogue_id is not None:
 
-    seen_skus = set()
+        try:
+            catalogue_id = int(catalogue_id)
+        except (TypeError, ValueError):
+            catalogue_id = None
 
-    for product_data in products:
+    # ------------------------------------------------------
+    # PRIMARY IDENTITY: DATABASE PRODUCT ID
+    # ------------------------------------------------------
 
-        name = product_data.get(
-            "name",
-            "Unnamed Product",
+    if catalogue_id is not None:
+
+        product = db.session.get(
+            Product,
+            catalogue_id,
         )
 
-        # --------------------------------------------------
-        # SKU
-        # --------------------------------------------------
+        if product is not None:
+            return product
 
-        sku = product_data.get("sku")
+    # ------------------------------------------------------
+    # FALLBACK IDENTITY: SKU
+    #
+    # Used only if an existing product cannot be found
+    # by catalogue/database ID.
+    # ------------------------------------------------------
 
-        if not sku:
-            errors.append(
-                f"{name}: SKU is missing."
-            )
-            continue
+    sku = product_data.get("sku")
+
+    if sku:
 
         sku = str(
             sku
         ).strip().upper()
 
-        if sku in seen_skus:
+        product = Product.query.filter(
+            Product.sku == sku
+        ).first()
+
+        if product is not None:
+            return product
+
+    return None
+
+
+# ==========================================================
+# VALIDATION
+# ==========================================================
+
+def validate_database_requirements():
+
+    errors = []
+    warnings = []
+
+    seen_catalogue_ids = set()
+    seen_skus = set()
+
+    for product_data in products:
+
+        name = str(
+            product_data.get(
+                "name",
+                "Unnamed Product",
+            )
+        ).strip()
+
+        catalogue_id = product_data.get("id")
+
+        # --------------------------------------------------
+        # ID
+        # --------------------------------------------------
+
+        if catalogue_id is None:
 
             errors.append(
-                f"{name}: duplicate SKU {sku}."
+                f"{name}: catalogue ID is missing."
             )
 
-        seen_skus.add(sku)
+        else:
+
+            try:
+                catalogue_id = int(catalogue_id)
+            except (TypeError, ValueError):
+
+                errors.append(
+                    f"{name}: catalogue ID must be numeric."
+                )
+                catalogue_id = None
+
+            if catalogue_id is not None:
+
+                if catalogue_id in seen_catalogue_ids:
+
+                    errors.append(
+                        f"{name}: duplicate catalogue ID "
+                        f"{catalogue_id}."
+                    )
+
+                seen_catalogue_ids.add(catalogue_id)
 
         # --------------------------------------------------
         # NAME
         # --------------------------------------------------
 
-        if not str(name).strip():
+        if not name:
 
             errors.append(
-                f"Product with SKU {sku}: "
-                f"name is missing."
+                f"Product {catalogue_id}: name is missing."
             )
 
         # --------------------------------------------------
         # PRICE
         # --------------------------------------------------
+
+        price = None
 
         try:
 
@@ -416,7 +512,6 @@ def validate_database_requirements():
         except ValueError as exc:
 
             errors.append(str(exc))
-            price = None
 
         # --------------------------------------------------
         # SALE PRICE
@@ -442,9 +537,8 @@ def validate_database_requirements():
                 ):
 
                     errors.append(
-                        f"{name}: sale price "
-                        f"must be lower than "
-                        f"regular price."
+                        f"{name}: sale price must be "
+                        f"lower than regular price."
                     )
 
             except ValueError as exc:
@@ -484,7 +578,60 @@ def validate_database_requirements():
             errors.append(str(exc))
 
         # --------------------------------------------------
+        # SKU
+        #
+        # Existing products do NOT require a SKU.
+        # Only genuinely new database products require one.
+        # --------------------------------------------------
+
+        existing_product = find_existing_product(
+            product_data
+        )
+
+        sku = product_data.get("sku")
+
+        if existing_product is None:
+
+            if not sku:
+
+                errors.append(
+                    f"{name}: SKU is required for a "
+                    f"new product."
+                )
+
+            else:
+
+                sku = str(
+                    sku
+                ).strip().upper()
+
+                if sku in seen_skus:
+
+                    errors.append(
+                        f"{name}: duplicate SKU {sku}."
+                    )
+
+                seen_skus.add(sku)
+
+        elif sku:
+
+            sku = str(
+                sku
+            ).strip().upper()
+
+            if sku in seen_skus:
+
+                errors.append(
+                    f"{name}: duplicate catalogue SKU {sku}."
+                )
+
+            seen_skus.add(sku)
+
+        # --------------------------------------------------
         # IMAGE
+        #
+        # Missing images are warnings, NOT errors.
+        # Existing database images/galleries are preserved.
         # --------------------------------------------------
 
         gallery = normalize_gallery(
@@ -493,11 +640,21 @@ def validate_database_requirements():
 
         if not gallery:
 
-            errors.append(
-                f"{name}: no product images found."
-            )
+            if existing_product is None:
 
-    return errors
+                warnings.append(
+                    f"{name}: no new image supplied; "
+                    f"product will remain without a primary image."
+                )
+
+            elif not existing_product.image:
+
+                warnings.append(
+                    f"{name}: no verified image supplied "
+                    f"and database product has no image."
+                )
+
+    return errors, warnings
 
 
 # ==========================================================
@@ -505,43 +662,35 @@ def validate_database_requirements():
 # ==========================================================
 
 def upsert_product(product_data):
-    """
-    Insert or update one product.
-
-    SKU is the permanent catalogue identity.
-
-    Important:
-    A new Product is NOT added to the SQLAlchemy session
-    until all required Product fields have been populated.
-    This prevents premature autoflush errors.
-    """
-
-    sku = str(
-        product_data["sku"]
-    ).strip().upper()
 
     name = str(
         product_data["name"]
     ).strip()
 
-    # ------------------------------------------------------
-    # Find existing product
-    # ------------------------------------------------------
-
-    product = Product.query.filter(
-        Product.sku == sku
-    ).first()
+    product = find_existing_product(
+        product_data
+    )
 
     is_new = product is None
 
+    # ------------------------------------------------------
+    # Create genuinely new product
+    # ------------------------------------------------------
+
     if is_new:
 
-        # Create an uncommitted object.
-        #
-        # DO NOT call db.session.add(product) here.
-        #
-        # The object will be added only after all required
-        # fields have been populated.
+        sku = product_data.get("sku")
+
+        if not sku:
+
+            raise ValueError(
+                f"{name}: SKU is required for a new product."
+            )
+
+        sku = str(
+            sku
+        ).strip().upper()
+
         product = Product(
             sku=sku
         )
@@ -582,24 +731,26 @@ def upsert_product(product_data):
         if sale_price >= price:
 
             raise ValueError(
-                f"{name}: sale price "
-                f"must be lower than "
-                f"regular price."
+                f"{name}: sale price must be "
+                f"lower than regular price."
             )
 
     # ------------------------------------------------------
-    # Gallery
+    # Images
+    #
+    # IMPORTANT:
+    # If the catalogue has a verified image/gallery,
+    # update it.
+    #
+    # If it does not, preserve the existing database
+    # image/gallery.
     # ------------------------------------------------------
 
     gallery = normalize_gallery(
         product_data
     )
 
-    if not gallery:
-
-        raise ValueError(
-            f"{name}: no product images found."
-        )
+    has_new_gallery = bool(gallery)
 
     # ------------------------------------------------------
     # Basic product data
@@ -615,13 +766,16 @@ def upsert_product(product_data):
         product_data.get("description")
     )
 
-    product.image = gallery[0]
-
     product.category = category
 
     product.subcategory = subcategory
 
-    product.active = True
+    product.active = bool(
+        product_data.get(
+            "active",
+            True,
+        )
+    )
 
     product.featured = bool(
         product_data.get(
@@ -645,7 +799,22 @@ def upsert_product(product_data):
     )
 
     # ------------------------------------------------------
+    # DO NOT overwrite an existing SKU.
+    #
+    # Existing products may intentionally have no SKU.
+    # Only genuinely new products receive the catalogue SKU.
+    # ------------------------------------------------------
+
+    if is_new and product_data.get("sku"):
+
+        product.sku = str(
+            product_data["sku"]
+        ).strip().upper()
+
+    # ------------------------------------------------------
     # Slug
+    #
+    # Existing slugs are preserved.
     # ------------------------------------------------------
 
     if not product.slug:
@@ -657,70 +826,106 @@ def upsert_product(product_data):
 
     # ------------------------------------------------------
     # SEO
+    #
+    # Fill missing SEO from catalogue first.
+    # Otherwise use safe generated defaults.
     # ------------------------------------------------------
 
-    if not product.seo_title:
+    catalogue_seo_title = product_data.get(
+        "seo_title"
+    )
+
+    catalogue_seo_description = product_data.get(
+        "seo_description"
+    )
+
+    if catalogue_seo_title:
+
+        product.seo_title = str(
+            catalogue_seo_title
+        ).strip()
+
+    elif not product.seo_title:
 
         product.seo_title = (
             f"{name} | Eagle Furniture Ngara"
         )
 
-    if not product.seo_description:
+    if catalogue_seo_description:
+
+        product.seo_description = str(
+            catalogue_seo_description
+        ).strip()
+
+    elif not product.seo_description:
 
         product.seo_description = (
             f"Buy {name} from Eagle Furniture Ngara. "
             f"Custom-made furniture in Nairobi with "
-            f"delivery available."
+            f"delivery available across Kenya."
         )
 
     # ------------------------------------------------------
     # Gallery records
+    #
+    # Only replace gallery when the catalogue actually
+    # supplies verified images.
     # ------------------------------------------------------
 
-    product.gallery.clear()
+    if has_new_gallery:
 
-    for index, image in enumerate(gallery):
+        product.image = gallery[0]
 
-        gallery_image = ProductImage(
-            image=image,
-            alt_text=name,
-            display_order=index,
-            is_primary=(index == 0),
-        )
+        product.gallery.clear()
 
-        product.gallery.append(
-            gallery_image
-        )
+        for index, image in enumerate(gallery):
+
+            gallery_image = ProductImage(
+                image=image,
+                alt_text=name,
+                display_order=index,
+                is_primary=(index == 0),
+            )
+
+            product.gallery.append(
+                gallery_image
+            )
 
     # ------------------------------------------------------
-    # Specification records
+    # Specifications
+    #
+    # Only replace specifications when catalogue data
+    # actually contains specifications.
     # ------------------------------------------------------
-
-    product.specifications.clear()
 
     specifications = build_specifications(
         product_data
     )
 
-    for index, specification in enumerate(
-        specifications
-    ):
+    if specifications:
 
-        product_specification = ProductSpecification(
-            name=specification["name"],
-            value=specification["value"],
-            display_order=index,
-        )
+        product.specifications.clear()
 
-        product.specifications.append(
-            product_specification
-        )
+        for index, specification in enumerate(
+            specifications
+        ):
+
+            product_specification = ProductSpecification(
+                name=specification["name"],
+                value=specification["value"],
+                display_order=index,
+            )
+
+            product.specifications.append(
+                product_specification
+            )
 
     # ------------------------------------------------------
-    # Add NEW product only after it is fully populated
+    # Add genuinely new product only after it is populated
     # ------------------------------------------------------
 
     if is_new:
+
         db.session.add(product)
 
     return product, is_new
@@ -731,34 +936,23 @@ def upsert_product(product_data):
 # ==========================================================
 
 def import_catalogue():
-    """
-    Import the complete catalogue into the database.
-
-    The entire operation is transactional.
-
-    If any product fails, the entire transaction
-    is rolled back.
-    """
 
     print()
     print("=" * 65)
     print(
-        "EAGLE FURNITURE NGARA — DATABASE IMPORTER"
+        "EAGLE FURNITURE NGARA - DATABASE IMPORTER"
     )
     print("=" * 65)
     print()
-
-    # ------------------------------------------------------
-    # Validate first
-    # ------------------------------------------------------
 
     print(
         "Running database compatibility validation..."
     )
-
     print()
 
-    errors = validate_database_requirements()
+    errors, warnings = (
+        validate_database_requirements()
+    )
 
     if errors:
 
@@ -766,7 +960,7 @@ def import_catalogue():
         print("-" * 65)
 
         for error in errors:
-            print(f"✗ {error}")
+            print(f"X {error}")
 
         print()
 
@@ -777,8 +971,18 @@ def import_catalogue():
         return False
 
     print(
-        "✓ Catalogue is compatible with the database."
+        "OK - Catalogue is compatible with the database."
     )
+
+    if warnings:
+
+        print()
+        print(
+            f"Warnings: {len(warnings)}"
+        )
+
+        for warning in warnings:
+            print(f"  ! {warning}")
 
     print()
 
@@ -800,17 +1004,23 @@ def import_catalogue():
                 print(
                     f"  + Created: "
                     f"{product.name} "
-                    f"[{product.sku}]"
+                    f"[ID {product.id}]"
                 )
 
             else:
 
                 updated += 1
 
+                sku_display = (
+                    product.sku
+                    if product.sku
+                    else "NO-SKU"
+                )
+
                 print(
-                    f"  ↻ Updated: "
+                    f"  -> Updated: "
                     f"{product.name} "
-                    f"[{product.sku}]"
+                    f"[ID {product.id} | {sku_display}]"
                 )
 
         # --------------------------------------------------
@@ -826,7 +1036,7 @@ def import_catalogue():
         print()
         print("=" * 65)
         print(
-            "IMPORT FAILED — DATABASE ROLLED BACK"
+            "IMPORT FAILED - DATABASE ROLLED BACK"
         )
         print("=" * 65)
         print()
@@ -865,15 +1075,11 @@ def import_catalogue():
 # ==========================================================
 
 def dry_run():
-    """
-    Validate the catalogue against the database
-    without changing database records.
-    """
 
     print()
     print("=" * 65)
     print(
-        "EAGLE FURNITURE NGARA — DATABASE IMPORT DRY RUN"
+        "EAGLE FURNITURE NGARA - DATABASE IMPORT DRY RUN"
     )
     print("=" * 65)
     print()
@@ -884,7 +1090,9 @@ def dry_run():
 
     print()
 
-    errors = validate_database_requirements()
+    errors, warnings = (
+        validate_database_requirements()
+    )
 
     if errors:
 
@@ -892,27 +1100,58 @@ def dry_run():
         print("-" * 65)
 
         for error in errors:
-            print(f"✗ {error}")
+            print(f"X {error}")
+
+        print()
+
+        print(
+            f"{len(errors)} validation error(s) found."
+        )
+
+        if warnings:
+
+            print()
+            print(
+                f"Warnings: {len(warnings)}"
+            )
+
+            for warning in warnings:
+                print(f"  ! {warning}")
 
         print()
 
         return False
 
     print(
-        "✓ All products match existing "
+        "OK - All products match existing "
         "categories and subcategories."
     )
 
     print(
-        "✓ Prices are valid."
+        "OK - Product IDs can be matched safely."
     )
 
     print(
-        "✓ Gallery data is valid."
+        "OK - Prices are valid."
     )
 
     print(
-        "✓ No database records were changed."
+        "OK - Missing images will not block import."
+    )
+
+    if warnings:
+
+        print()
+        print(
+            f"Warnings: {len(warnings)}"
+        )
+
+        for warning in warnings:
+            print(f"  ! {warning}")
+
+    print()
+    print(
+        "OK - No database records were changed."
     )
 
     print()
