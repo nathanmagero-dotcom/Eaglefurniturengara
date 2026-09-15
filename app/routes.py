@@ -2421,3 +2421,111 @@ def page_not_found(error):
         "pages/404.html"
     ), 404
 
+
+# ============================================================
+# GOOGLE MERCHANT CENTER PRODUCT FEED
+# ============================================================
+
+@main.route("/merchant-feed.xml")
+def merchant_feed():
+
+    products = (
+        Product.query
+        .filter(
+            Product.active.is_(True),
+            Product.image.isnot(None),
+            Product.image != "",
+        )
+        .order_by(Product.id.asc())
+        .all()
+    )
+
+    site_url = current_app.config["SITE_URL"].rstrip("/")
+
+    items = []
+
+    for product in products:
+
+        selling_price = (
+            product.sale_price
+            if product.sale_price is not None
+            else product.price
+        )
+
+        if selling_price is None:
+            continue
+
+        product_url = f"{site_url}/product/{product.id}"
+        image_url = f"{site_url}/static/{product.image}"
+
+        title = product.name or ""
+        description = (
+            product.description
+            or f"{product.name} from Eagle Furniture Ngara."
+        )
+
+        category_name = ""
+        if product.category:
+            category_name = product.category.name or ""
+
+        items.append(
+            f"""
+            <item>
+                <g:id>{escape_xml(str(product.id))}</g:id>
+                <g:title>{escape_xml(title)}</g:title>
+                <g:description>{escape_xml(description)}</g:description>
+                <g:link>{escape_xml(product_url)}</g:link>
+                <g:image_link>{escape_xml(image_url)}</g:image_link>
+                <g:availability>in_stock</g:availability>
+                <g:condition>new</g:condition>
+                <g:price>{selling_price:.2f} KES</g:price>
+                <g:brand>Eagle Furniture Ngara</g:brand>
+                <g:product_type>{escape_xml(category_name)}</g:product_type>
+            </item>
+            """
+        )
+
+    xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:g="http://base.google.com/ns/1.0">
+
+    <channel>
+
+        <title>Eagle Furniture Ngara</title>
+
+        <link>{escape_xml(site_url)}</link>
+
+        <description>
+            Furniture from Eagle Furniture Ngara, Nairobi, Kenya.
+        </description>
+
+        {''.join(items)}
+
+    </channel>
+
+</rss>
+"""
+
+    return Response(
+        xml,
+        mimetype="application/xml"
+    )
+
+
+# ============================================================
+# XML ESCAPE HELPER
+# ============================================================
+
+def escape_xml(value):
+    if value is None:
+        return ""
+
+    return (
+        str(value)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+        .replace("'", "&apos;")
+    )
+
