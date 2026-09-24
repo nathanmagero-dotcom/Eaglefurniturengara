@@ -201,7 +201,7 @@
                                     </h5>
 
                                     <a
-                                        href="{{ url_for('main.product', product_id=product.id) }}"
+                                        href="{{ url_for('main.product', slug=product.slug) }}"
                                         class="btn btn-sm btn-dark">
 
                                         View Details
@@ -420,7 +420,7 @@
                                     <div class="d-grid gap-2">
 
                                         <a
-                                            href="{{ url_for('main.product', product_id=product.id) }}"
+                                            href="{{ url_for('main.product', slug=product.slug) }}"
                                             class="btn btn-dark">
 
                                             <i class="bi bi-eye me-1"></i>

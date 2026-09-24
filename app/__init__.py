@@ -1,4 +1,5 @@
 from flask import Flask
+from werkzeug.routing import BaseConverter
 from dotenv import load_dotenv
 
 from config import Config
@@ -6,7 +7,8 @@ from app.extensions import db, migrate
 
 load_dotenv()
 
-
+class SlugConverter(BaseConverter):
+    regex = r"[a-z0-9]+(?:-[a-z0-9]+)*"
 def create_app():
     """
     Application factory for Eagle Furniture Ngara.
@@ -15,6 +17,8 @@ def create_app():
     app = Flask(__name__)
 
     app.config.from_object(Config)
+
+    app.url_map.converters["slug"] = SlugConverter
 
     # ---------------------------------------------------------
     # INITIALIZE DATABASE

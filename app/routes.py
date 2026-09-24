@@ -34,7 +34,7 @@ from app.cart import (
 )
 
 from app.data.bundles import bundles
-from app.data.products import products
+from app.data.products import products, search_products
 
 
 # ============================================================
@@ -177,17 +177,26 @@ def build_showroom_department(
     name,
     description,
     category_slugs,
-    subcategory_limit=5,
-            products_per_subcategory=6,
+    subcategory_limit=None,
+    products_per_subcategory=10,
 ):
-    """Build populated, scalable showroom data from the database.
-
-    Empty subcategories are excluded from the homepage. Collection pages
-    remain unlimited and are handled by the dedicated collection route.
     """
+    Build a homepage showroom department automatically from the database.
+
+    Structure:
+
+        Department
+            -> Subcategory
+                -> 5-10 relevant products
+
+    Products are NEVER mixed between subcategories.
+    Collection pages remain unlimited.
+    """
+
     department_categories = []
 
     for category_slug in category_slugs:
+
         category = (
             Category.query
             .filter(
@@ -196,6 +205,7 @@ def build_showroom_department(
             )
             .first()
         )
+
         if not category:
             continue
 
@@ -215,6 +225,10 @@ def build_showroom_department(
         subcategory_data = []
 
         for subcategory in subcategories:
+
+            # -------------------------------------------------
+            # ONLY PRODUCTS BELONGING TO THIS SUBCATEGORY
+            # -------------------------------------------------
             products = (
                 Product.query
                 .filter(
@@ -227,21 +241,26 @@ def build_showroom_department(
                 .order_by(
                     Product.featured.desc(),
                     Product.best_seller.desc(),
+                    Product.new_arrival.desc(),
+                    Product.display_order.asc()
+                    if hasattr(Product, "display_order")
+                    else Product.created_at.desc(),
                     Product.created_at.desc(),
                 )
                 .all()
             )
 
+            # Do not create an artificial collection.
             if not products:
                 continue
 
-            # Keep homepage sections curated, while collection pages stay
-            # unlimited. Use the strongest products first.
             visible_products = products[:products_per_subcategory]
 
             image = subcategory.image
-            if not image and visible_products:
+
+            if not image:
                 image = visible_products[0].image
+
             if not image:
                 image = category.image
 
@@ -250,12 +269,17 @@ def build_showroom_department(
                 "products": visible_products,
                 "product_count": len(products),
                 "image": image,
+                "has_more": len(products) > products_per_subcategory,
             })
 
-            if len(subcategory_data) >= subcategory_limit:
+            if (
+                subcategory_limit is not None
+                and len(subcategory_data) >= subcategory_limit
+            ):
                 break
 
         if subcategory_data:
+
             department_categories.append({
                 "category": category,
                 "subcategory_data": subcategory_data,
@@ -268,78 +292,138 @@ def build_showroom_department(
         "categories": department_categories,
     }
 
+HOMEPAGE_DEPARTMENT_ALIASES = {
+    "living-room": [
+        "living room",
+        "living-room",
+        "sofas",
+    ],
+
+    "bedroom": [
+        "bedroom",
+        "beds",
+        "bed",
+    ],
+
+    "dining-sets": [
+        "dining",
+        "dining sets",
+        "dining-set",
+    ],
+
+    "tv-units": [
+        "tv units",
+        "tv unit",
+        "tv stands",
+        "tv stand",
+        "entertainment units",
+    ],
+
+    "coffee-tables": [
+        "coffee tables",
+        "coffee table",
+    ],
+
+    "wardrobes": [
+        "wardrobes",
+        "wardrobe",
+    ],
+
+    "office-furniture": [
+        "office furniture",
+        "office",
+    ],
+
+    "mattresses": [
+        "mattresses",
+        "mattress",
+    ],
+
+    "outdoor": [
+        "outdoor",
+        "outdoor furniture",
+        "patio",
+    ],
+
+    "home-accessories": [
+        "home accessories",
+        "accessories",
+        "home decor",
+    ],
+}
+
+def get_homepage_category_order(categories):
+    """
+    Automatically organize categories into the intended
+    Eagle Furniture showroom order.
+    """
+
+    ordered = []
+    used_ids = set()
+
+    normalized_categories = {
+        category.id: (
+            category.name or ""
+        ).strip().lower()
+        for category in categories
+    }
+
+    for department_key, aliases in HOMEPAGE_DEPARTMENT_ALIASES.items():
+
+        for category in categories:
+
+            if category.id in used_ids:
+                continue
+
+            name = normalized_categories[category.id]
+
+            if any(
+                alias in name
+                for alias in aliases
+            ):
+                ordered.append(category)
+                used_ids.add(category.id)
+                break
+
+    # ---------------------------------------------------------
+    # Anything not matched above comes afterwards.
+    # ---------------------------------------------------------
+    remaining = [
+        category
+        for category in categories
+        if category.id not in used_ids
+    ]
+
+    ordered.extend(remaining)
+
+    return ordered
 
 @main.route("/")
 def home():
-    """Homepage showroom built entirely from the database."""
+    """
+    Simple showroom homepage.
 
-    # ---------------------------------------------------------
-    # FEATURED PRODUCTS
-    # ---------------------------------------------------------
-    featured_products = (
-        Product.query
-        .filter(
-            Product.active.is_(True),
-            Product.featured.is_(True),
-            Product.image.isnot(None),
-            Product.image != "",
-        )
-        .order_by(Product.created_at.desc())
-        .all()
-    )
+    The homepage is intentionally product-first:
+    real image-backed products, clear prices, direct product pages,
+    and WhatsApp ordering. More complicated catalogue features stay
+    off the homepage so customers can shop immediately.
+    """
 
-    # ---------------------------------------------------------
-    # BEST SELLERS
-    # ---------------------------------------------------------
-    best_sellers = (
-        Product.query
-        .filter(
-            Product.active.is_(True),
-            Product.best_seller.is_(True),
-            Product.image.isnot(None),
-            Product.image != "",
-        )
-        .order_by(Product.created_at.desc())
-        .all()
-    )
-
-    # ---------------------------------------------------------
-    # NEW ARRIVALS
-    # ---------------------------------------------------------
-    new_arrivals = (
-        Product.query
-        .filter(
-            Product.active.is_(True),
-            Product.new_arrival.is_(True),
-            Product.image.isnot(None),
-            Product.image != "",
-        )
-        .order_by(Product.created_at.desc())
-        .all()
-    )
-
-    # ---------------------------------------------------------
-    # CURRENT OFFERS
-    # ---------------------------------------------------------
-    offers = (
+    products_on_homepage = (
         Product.query
         .filter(
             Product.active.is_(True),
             Product.image.isnot(None),
             Product.image != "",
-            Product.sale_price.isnot(None),
-            Product.sale_price > 0,
-            Product.price.isnot(None),
-            Product.sale_price < Product.price,
         )
-        .order_by(Product.created_at.desc())
+        .join(Category, Product.category_id == Category.id, isouter=True)
+        .order_by(
+            Category.display_order.asc(),
+            Product.id.asc(),
+        )
         .all()
     )
 
-    # ---------------------------------------------------------
-    # ACTIVE CATEGORIES
-    # Used by homepage navigation and supporting sections.
-    # ---------------------------------------------------------
     categories = (
         Category.query
         .filter(Category.active.is_(True))
@@ -350,144 +434,36 @@ def home():
         .all()
     )
 
-    # Attach active subcategories without changing the database.
+    storefront_departments = []
+
     for category in categories:
-        category.home_subcategories = [
-            subcategory
-            for subcategory in category.subcategories
-            if subcategory.active
+        category_products = [
+            product
+            for product in products_on_homepage
+            if product.category_id == category.id
         ]
 
-    # ---------------------------------------------------------
-    # FEATURED BUNDLES
-    # ---------------------------------------------------------
-    featured_bundles = [
-        bundle
-        for bundle in bundles
-        if bundle.get("featured")
-    ]
+        if category_products:
+            storefront_departments.append({
+                "category": category,
+                "products": category_products,
+            })
 
-    # ---------------------------------------------------------
-    # HOMEPAGE SHOWROOM DEPARTMENTS
-    #
-    # These are populated from the real database categories,
-    # subcategories and products through build_showroom_department().
-    #
-    # Homepage products are curated.
-    # Collection pages remain unlimited.
-    # ---------------------------------------------------------
-    showroom_departments = [
-
-        build_showroom_department(
-            key="living-room",
-            name="Living Room",
-            description=(
-                "Discover bespoke sofas and living-room furniture "
-                "designed for comfort, style and everyday living."
-            ),
-            category_slugs=[
-                "sofas",
-                "coffee-tables",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-
-        build_showroom_department(
-            key="bedroom",
-            name="Bedroom",
-            description=(
-                "Create a beautiful bedroom with custom beds, "
-                "wardrobes and carefully selected bedroom furniture."
-            ),
-            category_slugs=[
-                "beds",
-                "wardrobes",
-                "mattresses",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-
-        build_showroom_department(
-            key="dining",
-            name="Dining",
-            description=(
-                "Bring family and guests together around elegant "
-                "dining sets made to suit your space."
-            ),
-            category_slugs=[
-                "dining-sets",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-
-        build_showroom_department(
-            key="entertainment",
-            name="TV & Entertainment",
-            description=(
-                "Complete your entertainment space with modern TV "
-                "units, wall-mounted designs and entertainment walls."
-            ),
-            category_slugs=[
-                "tv-units",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-
-        build_showroom_department(
-            key="office",
-            name="Office Furniture",
-            description=(
-                "Professional office furniture designed for productive "
-                "workspaces, businesses and modern offices."
-            ),
-            category_slugs=[
-                "office-furniture",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-
-        build_showroom_department(
-            key="outdoor",
-            name="Outdoor Furniture",
-            description=(
-                "Upgrade your outdoor space with comfortable and "
-                "stylish furniture made for relaxing and entertaining."
-            ),
-            category_slugs=[
-                "outdoor-furniture",
-            ],
-            subcategory_limit=5,
-            products_per_subcategory=6,
-        ),
-    ]
-
-    # Remove departments where the database has no matching
-    # active category/subcategory/product data.
-    showroom_departments = [
-        department
-        for department in showroom_departments
-        if department["categories"]
+    offers = [
+        product for product in products_on_homepage
+        if (
+            product.sale_price
+            and product.price
+            and product.sale_price < product.price
+        )
     ]
 
     return render_template(
         "pages/home.html",
-
-        # Existing homepage data
-        featured_products=featured_products,
-        best_sellers=best_sellers,
-        new_arrivals=new_arrivals,
+        products_on_homepage=products_on_homepage,
+        storefront_departments=storefront_departments,
         offers=offers,
         categories=categories,
-        bundles=bundles,
-        featured_bundles=featured_bundles,
-
-        # Database-driven showroom data
-        showroom_departments=showroom_departments,
     )
 
 
@@ -773,17 +749,125 @@ def shop():
 # PRODUCT DETAILS
 # ============================================================
 
+# Legacy product slugs retained for SEO-safe redirects after automatic
+# slug cleanup. New links always use the canonical Product.slug.
+LEGACY_PRODUCT_SLUGS = {
+    'luxury-marble-coffee-table': 'ergonomic-office-chair',
+    '5x6-spring-mattress': 'double-decker-bed',
+    'outdoor-swing-chair': 'luxury-entertainment-unit',
+    '6-seater-l-shaped-sofa-2': '6-seater-l-shaped-sofa',
+    '5-seater-modern-sofa-2': '5-seater-modern-sofa',
+    '7-seater-luxury-sofa-2': '7-seater-luxury-sofa',
+    '3-seater-chesterfield-sofa-2': '3-seater-chesterfield-sofa',
+    'u-shaped-family-sofa-2': 'u-shaped-family-sofa',
+    'queen-size-bed-2': 'queen-size-bed',
+    'king-size-bed-2': 'king-size-bed',
+    '4-seater-dining-set-2': '4-seater-dining-set',
+    '6-seater-dining-set-2': '6-seater-dining-set',
+    '8-seater-dining-set-2': '8-seater-dining-set',
+    '10-seater-dining-set-2': '10-seater-dining-set',
+    'modern-tv-unit-2': 'modern-tv-unit',
+    'floating-tv-unit-2': 'floating-tv-unit',
+    'modern-coffee-table-2': 'modern-coffee-table',
+    '2-door-wardrobe-2': '2-door-wardrobe',
+    '3-door-wardrobe-2': '3-door-wardrobe',
+    'sliding-door-wardrobe-2': 'sliding-door-wardrobe',
+    'executive-office-desk-2': 'executive-office-desk',
+    '6x6-orthopedic-mattress-2': '6x6-orthopedic-mattress',
+    'outdoor-patio-set-2': 'outdoor-patio-set',
+    'decorative-wall-mirror-2': 'decorative-wall-mirror',
+
+}
+
+@main.route("/product/<slug:slug>")
+def product(slug):
+    """Display one active product using its stable SEO-friendly slug."""
+    selected_product = (
+        Product.query
+        .filter(
+            Product.slug == slug,
+            Product.active.is_(True)
+        )
+        .first()
+    )
+
+    if selected_product is None:
+        legacy_slug = LEGACY_PRODUCT_SLUGS.get(slug)
+        if legacy_slug:
+            return redirect(
+                url_for("main.product", slug=legacy_slug),
+                code=301,
+            )
+        abort(404)
+
+    related_query = Product.query.filter(
+        Product.id != selected_product.id,
+        Product.active.is_(True)
+    )
+
+    if selected_product.subcategory_id:
+        related_query = related_query.filter(
+            Product.subcategory_id == selected_product.subcategory_id
+        )
+    elif selected_product.category_id:
+        related_query = related_query.filter(
+            Product.category_id == selected_product.category_id
+        )
+
+    related_products = (
+        related_query
+        .order_by(
+            Product.featured.desc(),
+            Product.best_seller.desc(),
+            Product.created_at.desc()
+        )
+        .limit(4)
+        .all()
+    )
+
+    related_product_ids = [p.id for p in related_products]
+
+    collection_query = Product.query.filter(
+        Product.id != selected_product.id,
+        Product.active.is_(True)
+    )
+
+    if selected_product.subcategory_id:
+        collection_query = collection_query.filter(
+            Product.subcategory_id == selected_product.subcategory_id
+        )
+    elif selected_product.category_id:
+        collection_query = collection_query.filter(
+            Product.category_id == selected_product.category_id
+        )
+
+    if related_product_ids:
+        collection_query = collection_query.filter(
+            ~Product.id.in_(related_product_ids)
+        )
+
+    collection_products = (
+        collection_query
+        .order_by(
+            Product.featured.desc(),
+            Product.best_seller.desc(),
+            Product.created_at.desc()
+        )
+        .limit(12)
+        .all()
+    )
+
+    return render_template(
+        "pages/product.html",
+        product=selected_product,
+        related_products=related_products,
+        collection_products=collection_products,
+    )
+
+
 @main.route("/product/<int:product_id>")
-def product(product_id):
-    """
-    Display the individual product page.
-
-    The selected product must be active.
-    Related products and collection products are also limited
-    to active products so legacy/deactivated records never
-    appear on the storefront.
-    """
-
+def product_legacy(product_id):
+    """Redirect legacy numeric product URLs to the canonical slug URL."""
     selected_product = (
         Product.query
         .filter(
@@ -796,171 +880,11 @@ def product(product_id):
     if selected_product is None:
         abort(404)
 
-    # ---------------------------------------------------------
-    # RELATED PRODUCTS
-    # ---------------------------------------------------------
-    #
-    # Priority:
-    # 1. Same subcategory
-    # 2. Same category if no subcategory exists
-    #
-    # The current product is always excluded.
-    #
-
-    related_query = Product.query.filter(
-        Product.id != selected_product.id,
-        Product.active.is_(True)
+    return redirect(
+        url_for("main.product", slug=selected_product.slug),
+        code=301,
     )
 
-    if selected_product.subcategory_id:
-        related_query = related_query.filter(
-            Product.subcategory_id == selected_product.subcategory_id
-        )
-
-    elif selected_product.category_id:
-        related_query = related_query.filter(
-            Product.category_id == selected_product.category_id
-        )
-
-    related_products = (
-        related_query
-        .order_by(
-            Product.featured.desc(),
-            Product.best_seller.desc(),
-            Product.created_at.desc()
-        )
-        .limit(4)
-        .all()
-    )
-
-    # ---------------------------------------------------------
-    # MORE PRODUCTS FROM SAME COLLECTION
-    # ---------------------------------------------------------
-    #
-    # Additional active products from the same category.
-    #
-    # Products already shown in Related Products are excluded.
-    #
-
-    related_product_ids = [
-        product.id for product in related_products
-    ]
-
-    collection_query = Product.query.filter(
-        Product.id != selected_product.id,
-        Product.active.is_(True)
-    )
-
-    if selected_product.category_id:
-        collection_query = collection_query.filter(
-            Product.category_id == selected_product.category_id
-        )
-
-    if related_product_ids:
-        collection_query = collection_query.filter(
-            ~Product.id.in_(related_product_ids)
-        )
-
-    collection_products = (
-        collection_query
-        .order_by(
-            Product.featured.desc(),
-            Product.best_seller.desc(),
-            Product.created_at.desc()
-        )
-        .limit(12)
-        .all()
-    )
-
-    # ---------------------------------------------------------
-    # RENDER PRODUCT PAGE
-    # ---------------------------------------------------------
-
-    return render_template(
-        "pages/product.html",
-        product=selected_product,
-        related_products=related_products,
-        collection_products=collection_products,
-    )
-
-    # ---------------------------------------------------------
-    # RELATED PRODUCTS
-    # ---------------------------------------------------------
-    #
-    # Priority:
-    # 1. Products from the same subcategory
-    # 2. If no subcategory exists, products from same category
-    #
-    # The current product is always excluded.
-    #
-
-    related_query = Product.query.filter(
-        Product.id != selected_product.id
-    )
-
-    if selected_product.subcategory_id:
-        related_query = related_query.filter(
-            Product.subcategory_id == selected_product.subcategory_id
-        )
-    elif selected_product.category_id:
-        related_query = related_query.filter(
-            Product.category_id == selected_product.category_id
-        )
-
-    related_products = (
-        related_query
-        .order_by(Product.created_at.desc())
-        .limit(4)
-        .all()
-    )
-
-
-    # ---------------------------------------------------------
-    # MORE PRODUCTS FROM SAME COLLECTION
-    # ---------------------------------------------------------
-    #
-    # These are additional products from the same category.
-    #
-    # Products already displayed in Related Products are
-    # excluded so the customer does not see duplicate cards.
-    #
-
-    related_product_ids = [
-        product.id for product in related_products
-    ]
-
-    collection_query = Product.query.filter(
-        Product.id != selected_product.id
-    )
-
-    if selected_product.category_id:
-        collection_query = collection_query.filter(
-            Product.category_id == selected_product.category_id
-        )
-
-    if related_product_ids:
-        collection_query = collection_query.filter(
-            ~Product.id.in_(related_product_ids)
-        )
-
-    collection_products = (
-        collection_query
-        .order_by(Product.created_at.desc())
-        .limit(12)
-        .all()
-    )
-
-
-    # ---------------------------------------------------------
-    # RENDER PRODUCT PAGE
-    # ---------------------------------------------------------
-
-    return render_template(
-        "pages/product.html",
-        product=selected_product,
-        related_products=related_products,
-        collection_products=collection_products,
-    )
 # ============================================================
 # CATEGORIES
 # ============================================================
@@ -1037,8 +961,7 @@ def collection(slug):
         Product.query
         .filter(
             Product.subcategory_id == selected_subcategory.id,
-            Product.image.isnot(None),
-            Product.image != "",
+            Product.active.is_(True),
         )
         .order_by(
             Product.featured.desc(),
@@ -1735,7 +1658,7 @@ def airbnb_packages():
 
 
 # ============================================================
-# API — SEARCH
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â SEARCH
 # ============================================================
 
 @main.route("/api/search")
@@ -1752,11 +1675,11 @@ def api_search():
 
 
 # ============================================================
-# API — PRODUCTS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â PRODUCTS
 # ============================================================
 
 # ============================================================
-# API — PRODUCTS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â PRODUCTS
 # ============================================================
 
 @main.route("/api/products")
@@ -1795,11 +1718,11 @@ def api_products():
     ])
 
 # ============================================================
-# API — CATEGORIES
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CATEGORIES
 # ============================================================
 
 # ============================================================
-# API — CATEGORIES
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CATEGORIES
 # ============================================================
 
 @main.route("/api/categories")
@@ -1834,11 +1757,11 @@ def api_categories():
 
     ])
 # ============================================================
-# API — FEATURED
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FEATURED
 # ============================================================
 
 # ============================================================
-# API — FEATURED
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FEATURED
 # ============================================================
 
 @main.route("/api/featured")
@@ -1867,11 +1790,11 @@ def api_featured():
     ])
 
 # ============================================================
-# API — BEST SELLERS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â BEST SELLERS
 # ============================================================
 
 # ============================================================
-# API — BEST SELLERS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â BEST SELLERS
 # ============================================================
 
 @main.route("/api/best-sellers")
@@ -1900,11 +1823,11 @@ def api_best_sellers():
     ])
 
 # ============================================================
-# API — NEW ARRIVALS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â NEW ARRIVALS
 # ============================================================
 
 # ============================================================
-# API — NEW ARRIVALS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â NEW ARRIVALS
 # ============================================================
 
 @main.route("/api/new-arrivals")
@@ -1933,7 +1856,7 @@ def api_new_arrivals():
     ])
 
 # ============================================================
-# API — FEATURED BUNDLES
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FEATURED BUNDLES
 # ============================================================
 
 @main.route("/api/featured-bundles")
@@ -1949,7 +1872,7 @@ def api_featured_bundles():
 
 
 # ============================================================
-# API — STATS
+# API ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â STATS
 # ============================================================
 
 @main.route("/api/stats")
@@ -2054,7 +1977,7 @@ def admin_logout():
     )  
 
 # ============================================================
-# ADMIN — TEMPORARY STOREFRONT ADMIN
+# ADMIN ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â TEMPORARY STOREFRONT ADMIN
 # ============================================================
 # These routes are kept for the current project structure.
 # They can later be moved into a dedicated admin blueprint
@@ -2256,7 +2179,7 @@ def admin_order_update(order_id):
 
 
 # ============================================================
-# SEO — XML SITEMAP
+# SEO ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â XML SITEMAP
 # ============================================================
 
 @main.route("/sitemap.xml")
@@ -2311,6 +2234,7 @@ def sitemap():
 
     products = (
         Product.query
+        .filter(Product.active.is_(True))
         .order_by(Product.id.asc())
         .all()
     )
@@ -2318,11 +2242,11 @@ def sitemap():
     for product in products:
 
         urls.append(
-    site_url + url_for(
-        "main.product",
-        product_id=product.id
-    )
-)
+            site_url + url_for(
+                "main.product",
+                slug=product.slug
+            )
+        )
 
 
     # --------------------------------------------------------
@@ -2345,6 +2269,25 @@ def sitemap():
     )
 )
         
+
+    # --------------------------------------------------------
+    # SUBCATEGORY COLLECTION PAGES
+    # --------------------------------------------------------
+
+    subcategories = (
+        Subcategory.query
+        .filter(Subcategory.active.is_(True))
+        .order_by(Subcategory.id.asc())
+        .all()
+    )
+
+    for subcategory in subcategories:
+        urls.append(
+            site_url + url_for(
+                "main.collection",
+                slug=subcategory.slug
+            )
+        )
 
     # --------------------------------------------------------
     # REMOVE DUPLICATES
@@ -2383,7 +2326,7 @@ def sitemap():
     )
 
 # ============================================================
-# SEO — ROBOTS.TXT
+# SEO ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â ROBOTS.TXT
 # ============================================================
 
 @main.route("/robots.txt")
@@ -2428,88 +2371,77 @@ def page_not_found(error):
 
 @main.route("/merchant-feed.xml")
 def merchant_feed():
-
+    """Generate a crawlable RSS feed from complete active products."""
     products = (
         Product.query
         .filter(
             Product.active.is_(True),
             Product.image.isnot(None),
             Product.image != "",
+            Product.price.isnot(None),
+            Product.price > 0,
         )
         .order_by(Product.id.asc())
         .all()
     )
 
     site_url = current_app.config["SITE_URL"].rstrip("/")
-
     items = []
 
     for product in products:
-
-        selling_price = (
-            product.sale_price
+        regular_price = float(product.price)
+        sale_price = (
+            float(product.sale_price)
             if product.sale_price is not None
-            else product.price
+            and product.sale_price > 0
+            and product.sale_price < product.price
+            else None
+        )
+        product_url = f"{site_url}{url_for('main.product', slug=product.slug)}"
+        image_url = f"{site_url}{url_for('static', filename=product.image)}"
+        title = product.name or "Eagle Furniture Product"
+        description = product.description or f"{title} from Eagle Furniture Ngara."
+        category_name = product.category.name if product.category else "Furniture"
+
+        sale_line = (
+            f"<g:sale_price>{sale_price:.2f} KES</g:sale_price>"
+            if sale_price is not None else ""
+        )
+        mpn_line = (
+            f"<g:mpn>{escape_xml(product.sku)}</g:mpn>"
+            if product.sku else "<g:identifier_exists>no</g:identifier_exists>"
         )
 
-        if selling_price is None:
-            continue
-
-        product_url = f"{site_url}/product/{product.id}"
-        image_url = f"{site_url}/static/{product.image}"
-
-        title = product.name or ""
-        description = (
-            product.description
-            or f"{product.name} from Eagle Furniture Ngara."
-        )
-
-        category_name = ""
-        if product.category:
-            category_name = product.category.name or ""
-
-        items.append(
-            f"""
-            <item>
-                <g:id>{escape_xml(str(product.id))}</g:id>
-                <g:title>{escape_xml(title)}</g:title>
-                <g:description>{escape_xml(description)}</g:description>
-                <g:link>{escape_xml(product_url)}</g:link>
-                <g:image_link>{escape_xml(image_url)}</g:image_link>
-                <g:availability>in_stock</g:availability>
-                <g:condition>new</g:condition>
-                <g:price>{selling_price:.2f} KES</g:price>
-                <g:brand>Eagle Furniture Ngara</g:brand>
-                <g:product_type>{escape_xml(category_name)}</g:product_type>
-            </item>
-            """
-        )
+        items.append(f"""
+        <item>
+            <g:id>{escape_xml(str(product.id))}</g:id>
+            <g:title>{escape_xml(title)}</g:title>
+            <g:description>{escape_xml(description)}</g:description>
+            <g:link>{escape_xml(product_url)}</g:link>
+            <g:image_link>{escape_xml(image_url)}</g:image_link>
+            <g:availability>in_stock</g:availability>
+            <g:condition>new</g:condition>
+            <g:price>{regular_price:.2f} KES</g:price>
+            {sale_line}
+            <g:brand>Eagle Furniture Ngara</g:brand>
+            {mpn_line}
+            <g:product_type>{escape_xml(category_name)}</g:product_type>
+            <g:custom_label_0>Made to order</g:custom_label_0>
+        </item>
+        """)
 
     xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"
-     xmlns:g="http://base.google.com/ns/1.0">
-
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
     <channel>
-
         <title>Eagle Furniture Ngara</title>
-
         <link>{escape_xml(site_url)}</link>
-
-        <description>
-            Furniture from Eagle Furniture Ngara, Nairobi, Kenya.
-        </description>
-
+        <description>Furniture from Eagle Furniture Ngara, Nairobi, Kenya.</description>
         {''.join(items)}
-
     </channel>
-
 </rss>
 """
 
-    return Response(
-        xml,
-        mimetype="application/xml"
-    )
+    return Response(xml, mimetype="application/xml")
 
 
 # ============================================================

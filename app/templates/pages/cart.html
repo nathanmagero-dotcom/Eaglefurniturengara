@@ -64,7 +64,7 @@ Shopping Cart | Eagle Furniture Ngara
                                 <a
                                     href="{{ url_for(
                                         'main.product',
-                                        product_id=product.id
+                                        slug=product.slug
                                     ) }}"
                                     class="cart-product-image"
                                 >
@@ -104,7 +104,7 @@ Shopping Cart | Eagle Furniture Ngara
                                     <a
                                         href="{{ url_for(
                                             'main.product',
-                                            product_id=product.id
+                                            slug=product.slug
                                         ) }}"
                                     >
                                         {{ product.name }}

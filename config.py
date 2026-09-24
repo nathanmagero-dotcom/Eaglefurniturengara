@@ -67,7 +67,10 @@ class Config:
     BUSINESS_AREA = "Ngara"
     BUSINESS_COUNTRY = "Kenya"
     BUSINESS_CURRENCY = "KES"
-    BUSINESS_EMAIL = ""
+    BUSINESS_EMAIL = os.environ.get(
+        "BUSINESS_EMAIL",
+        "nathanmagero@gmail.com"
+    )
 
     # ---------------------------------------------------------
     # SOCIAL MEDIA

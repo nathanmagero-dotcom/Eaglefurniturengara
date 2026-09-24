@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     <div class="product-image">
 
-                        <a href="/product/${product.id}">
+                        <a href="/product/${product.slug}">
 
                             <img
                                 src="/static/${product.image}"
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <h3>
 
-                            <a href="/product/${product.id}">
+                            <a href="/product/${product.slug}">
 
                                 ${product.name}
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="product-actions">
 
                             <a
-                                href="/product/${product.id}"
+                                href="/product/${product.slug}"
                                 class="btn btn-outline"
                             >
                                 View Details

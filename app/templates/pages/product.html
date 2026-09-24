@@ -830,7 +830,7 @@
                 <article class="related-card">
 
                     <a
-                        href="{{ url_for('main.product', product_id=related.id) }}"
+                        href="{{ url_for('main.product', slug=related.slug) }}"
                         class="related-image"
                     >
 
@@ -893,7 +893,7 @@
 
 
                         <a
-                            href="{{ url_for('main.product', product_id=related.id) }}"
+                            href="{{ url_for('main.product', slug=related.slug) }}"
                             class="related-button"
                         >
 
@@ -979,7 +979,7 @@
                 <article class="collection-card">
 
                     <a
-                        href="{{ url_for('main.product', product_id=item.id) }}"
+                        href="{{ url_for('main.product', slug=item.slug) }}"
                         class="collection-image"
                     >
 
@@ -1033,7 +1033,7 @@
 
 
                         <a
-                            href="{{ url_for('main.product', product_id=item.id) }}"
+                            href="{{ url_for('main.product', slug=item.slug) }}"
                             class="collection-button"
                         >
 
@@ -1316,8 +1316,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 (
                     site_url ~
                     url_for(
-                        'main.collection',
-                        slug=product.subcategory.slug
+                        'main.category',
+                        slug=product.category.slug
                     )
                 ) | tojson
             }}
@@ -1387,4 +1387,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 {% endblock %}
-

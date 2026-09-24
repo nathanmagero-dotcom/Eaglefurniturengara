@@ -332,7 +332,7 @@
 
                     <a href="{{ url_for(
                         'main.product',
-                        product_id=product.id
+                        slug=product.slug
                     ) }}">
 
                     {% if product.image %}
@@ -511,7 +511,7 @@
                         <a
                             href="{{ url_for(
                                 'main.product',
-                                product_id=product.id
+                                slug=product.slug
                             ) }}"
                             class="btn btn-dark">
 
@@ -529,7 +529,7 @@
                         <form
                             action="{{ url_for(
                                 'main.add_product_to_cart',
-                                product_id=product.id
+                                slug=product.slug
                             ) }}"
                             method="POST"
                             class="add-cart-form">

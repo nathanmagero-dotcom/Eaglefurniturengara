@@ -379,7 +379,7 @@ Furniture Offers & Deals in Nairobi | Eagle Furniture Ngara
                             <div class="offer-image-wrapper">
 
                                 <a
-                                    href="{{ url_for('main.product', product_id=product.id) }}"
+                                    href="{{ url_for('main.product', slug=product.slug) }}"
                                 >
 
                                     {% if product.image %}
@@ -572,7 +572,7 @@ Furniture Offers & Deals in Nairobi | Eagle Furniture Ngara
                                 <div class="offer-buttons">
 
                                     <a
-                                        href="{{ url_for('main.product', product_id=product.id) }}"
+                                        href="{{ url_for('main.product', slug=product.slug) }}"
                                         class="btn btn-dark w-100"
                                     >
 

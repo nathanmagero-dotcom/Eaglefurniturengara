@@ -37,15 +37,21 @@
             <div class="collection-grid">
                 {% for product in products %}
                 <article class="collection-card">
-                    <a href="{{ url_for('main.product', product_id=product.id) }}" class="collection-card-image">
+                    <a href="{{ url_for('main.product', slug=product.slug) }}" class="collection-card-image">
+                        {% if product.image %}
                         <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" loading="lazy">
+                        {% else %}
+                        <div class="product-image-placeholder" role="img" aria-label="Image coming soon for {{ product.name }}">
+                            <span>Image coming soon</span>
+                        </div>
+                        {% endif %}
                         {% if product.sale_price and product.price and product.sale_price < product.price %}
                             <span>SALE</span>
                         {% endif %}
                     </a>
                     <div class="collection-card-body">
                         <small>{{ category.name }}</small>
-                        <h2><a href="{{ url_for('main.product', product_id=product.id) }}">{{ product.name }}</a></h2>
+                        <h2><a href="{{ url_for('main.product', slug=product.slug) }}">{{ product.name }}</a></h2>
                         <div class="collection-price">
                             {% if product.sale_price and product.price and product.sale_price < product.price %}
                                 <strong>KSh {{ "{:,.0f}".format(product.sale_price) }}</strong>

@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import re
 import sys
@@ -48,6 +48,7 @@ SUBCATEGORY_ALIASES = {
     "Sofas": {
         "L-Shaped": "L-Shaped Sofas",
         "Modern": "Modern Sofas",
+        "Modern 5 seater sofas, 3 seater sofas, 2 seater sofas": "Modern Sofas",
         "Luxury": "Luxury Sofas",
         "Chesterfield": "Chesterfield Sofas",
         "Recliner": "Recliner Sofas",
@@ -55,6 +56,7 @@ SUBCATEGORY_ALIASES = {
 
     "Beds": {
         "Queen Size Beds": "Queen",
+        "upholstered queen Size Beds": "Queen",
         "King Size Beds": "King",
         "Standard": "Standard Beds",
         "Kids Beds": "Bunk Beds",
@@ -72,6 +74,7 @@ SUBCATEGORY_ALIASES = {
         "Modern TV Units": "Modern",
         "Floating TV Units": "Floating",
         "Luxury TV Units": "Luxury",
+        "Luxury TV Stands": "Luxury",
         "Wall Mounted TV Units": "Wall Mounted",
     },
 
@@ -382,47 +385,27 @@ def build_specifications(product_data):
 
 def find_existing_product(product_data):
 
+    # SKU is the primary identity for current catalogue products.
+    sku = product_data.get("sku")
+
+    if sku:
+        sku = str(sku).strip().upper()
+        product = Product.query.filter(Product.sku == sku).first()
+
+        if product is not None:
+            return product
+
+    # Database ID is only a fallback for legacy products.
     catalogue_id = product_data.get("id")
 
     if catalogue_id is not None:
-
         try:
             catalogue_id = int(catalogue_id)
         except (TypeError, ValueError):
             catalogue_id = None
 
-    # ------------------------------------------------------
-    # PRIMARY IDENTITY: DATABASE PRODUCT ID
-    # ------------------------------------------------------
-
     if catalogue_id is not None:
-
-        product = db.session.get(
-            Product,
-            catalogue_id,
-        )
-
-        if product is not None:
-            return product
-
-    # ------------------------------------------------------
-    # FALLBACK IDENTITY: SKU
-    #
-    # Used only if an existing product cannot be found
-    # by catalogue/database ID.
-    # ------------------------------------------------------
-
-    sku = product_data.get("sku")
-
-    if sku:
-
-        sku = str(
-            sku
-        ).strip().upper()
-
-        product = Product.query.filter(
-            Product.sku == sku
-        ).first()
+        product = db.session.get(Product, catalogue_id)
 
         if product is not None:
             return product
@@ -805,7 +788,7 @@ def upsert_product(product_data):
     # Only genuinely new products receive the catalogue SKU.
     # ------------------------------------------------------
 
-    if is_new and product_data.get("sku"):
+    if product_data.get("sku"):
 
         product.sku = str(
             product_data["sku"]
@@ -1218,3 +1201,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
