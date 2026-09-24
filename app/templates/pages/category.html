@@ -361,7 +361,9 @@
                     <!-- SALE -->
 
                     {% if product.sale_price is defined
+                          and product.sale_price is not none
                           and product.price is defined
+                          and product.price is not none
                           and product.sale_price < product.price %}
 
                     <span class="product-badge sale-badge">
@@ -450,7 +452,9 @@
                     <div class="product-price">
 
                         {% if product.sale_price is defined
+                              and product.sale_price is not none
                               and product.price is defined
+                              and product.price is not none
                               and product.sale_price < product.price %}
 
                         <span class="old-price">
@@ -529,7 +533,7 @@
                         <form
                             action="{{ url_for(
                                 'main.add_product_to_cart',
-                                slug=product.slug
+                                product_id=product.id
                             ) }}"
                             method="POST"
                             class="add-cart-form">
@@ -802,3 +806,7 @@
 </section>
 
 {% endblock %}
+
+
+
+
