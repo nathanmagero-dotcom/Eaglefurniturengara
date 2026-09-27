@@ -767,12 +767,10 @@ wardrobes and custom furniture. View our products, prices and order directly.
             <div class="ef-category-nav">
 
                 {% for department in storefront_departments %}
-
-                    <a href="#category-{{ department.category.slug }}">
-                        {{ department.category.name }}
-                    </a>
-
-                {% endfor %}
+    <a href="{{ url_for('main.category', slug=department.category.slug) }}">
+        {{ department.category.name }}
+    </a>
+{% endfor %}
 
             </div>
 
