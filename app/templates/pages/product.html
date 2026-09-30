@@ -282,7 +282,7 @@
 
                     <form
                         method="POST"
-                        action="{{ url_for('main.add_product_to_cart', slug=product.slug) }}"
+                        action="{{ url_for('main.add_product_to_cart', product_id=product.id) }}"
                         class="product-cart-form"
                     >
 
