@@ -766,10 +766,16 @@ wardrobes and custom furniture. View our products, prices and order directly.
 
             <div class="ef-category-nav">
 
-                {% for department in storefront_departments %}
-    <a href="{{ url_for('main.category', slug=department.category.slug) }}">
-        {{ department.category.name }}
-    </a>
+            {% for department in storefront_departments %}
+    {% if department.category.slug == 'complete-packages' %}
+        <a href="{{ url_for('main.collection', slug='full-package-complete-home') }}">
+            {{ department.category.name }}
+        </a>
+    {% else %}
+        <a href="{{ url_for('main.category', slug=department.category.slug) }}">
+            {{ department.category.name }}
+        </a>
+    {% endif %}
 {% endfor %}
 
             </div>
