@@ -547,5 +547,16 @@
     </div>
 
 </section>
+</section>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "MerchantReturnPolicy",
+    "@id": "{{ site_url ~ url_for('main.returns') ~ '#policy' }}",
+    "applicableCountry": "KE",
+    "merchantReturnLink": "{{ site_url ~ url_for('main.returns') }}"
+}
+</script>
 
 {% endblock %}

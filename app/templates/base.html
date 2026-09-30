@@ -103,12 +103,38 @@
                 "telephone": {{ config.BUSINESS_PHONE | tojson }},
 
                 "sameAs": [
-                    "https://www.facebook.com/eaglefurniturengara",
-                    "https://www.instagram.com/eaglefurniturengara",
-                    "https://youtube.com/@eaglefurniturer",
-                    "https://www.linkedin.com/in/eagle-ngara-"
-                ]
-            },
+    "https://www.facebook.com/eaglefurniturengara",
+    "https://www.instagram.com/eaglefurniturengara",
+    "https://youtube.com/@eaglefurniturer",
+    "https://www.linkedin.com/in/eagle-ngara-"
+],
+
+"hasMerchantReturnPolicy": {
+    "@type": "MerchantReturnPolicy",
+    "@id": {{ (site_url ~ url_for('main.returns') ~ "#policy") | tojson }},
+    "merchantReturnLink": {{ (site_url ~ url_for('main.returns')) | tojson }},
+    "applicableCountry": "KE"
+},
+
+"hasShippingService": {
+    "@type": "ShippingService",
+    "@id": {{ (site_url ~ "/#nairobi-shipping") | tojson }},
+    "name": "Nairobi Delivery",
+    "description": "Free delivery within Nairobi. Deliveries outside Nairobi may be arranged with applicable transport costs depending on destination and furniture requirements.",
+    "fulfillmentType": "https://schema.org/FulfillmentTypeDelivery",
+    "shippingConditions": {
+        "@type": "ShippingConditions",
+        "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "KE"
+        },
+        "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 0,
+            "currency": "KES"
+        }
+    }
+}
 
 
             {
