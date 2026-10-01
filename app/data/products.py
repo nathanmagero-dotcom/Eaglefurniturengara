@@ -1,4 +1,4 @@
-"""\nEagle Furniture Ngara
+﻿"""\nEagle Furniture Ngara
 Master Product Catalogue
 
 This file is the catalogue source used by the product/database importer.
@@ -560,7 +560,7 @@ products = [{'id': 1,
   'name': 'Luxury Entertainment tv stands',
   'category': 'TV Units',
   'subcategory': 'Luxury TV Stands',
-  'price': 18000,
+  'price': 20000,
   'image': 'images/products/tv stand.jpg',
   'gallery': ['images/products/tv stand1.jpg',
               'images/products/tv stand2.jpg',

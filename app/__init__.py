@@ -48,6 +48,15 @@ def create_app():
     )
 
     # ---------------------------------------------------------
+    # AUTOMATIC STOREFRONT CATALOGUE SYNC
+    # ---------------------------------------------------------
+    # Keeps production focused on the real, image-backed
+    # catalogue without requiring a manual database rebuild.
+    with app.app_context():
+        from app.catalogue_sync import sync_storefront_catalogue
+        sync_storefront_catalogue(app)
+
+    # ---------------------------------------------------------
     # REGISTER MAIN BLUEPRINT
     # ---------------------------------------------------------
 
