@@ -925,8 +925,9 @@ def category(slug):
 
     category_products = (
         Product.query
-        .filter_by(
-            category_id=selected_category.id
+        .filter(
+            Product.category_id == selected_category.id,
+            Product.active.is_(True),
         )
         .order_by(
             Product.created_at.desc()
@@ -2460,4 +2461,5 @@ def escape_xml(value):
         .replace('"', "&quot;")
         .replace("'", "&apos;")
     )
+
 
