@@ -503,7 +503,7 @@ def shop():
     # BASE PRODUCT QUERY
     # --------------------------------------------------------
 
-    query = Product.query
+    query = Product.query.filter(Product.active.is_(True))
 
 
     # --------------------------------------------------------
